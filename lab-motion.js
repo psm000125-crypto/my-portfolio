@@ -22,7 +22,8 @@ function bindPortfolioMotion(root){
   raf=0;
   if(!hero?.isConnected)return;
   const rect=hero.getBoundingClientRect();
-  const progress=Math.min(1,Math.max(0,-rect.top/Math.max(1,rect.height-innerHeight*.3)));
+  // Begin rotating as the hero enters the viewport below the profile.
+  const progress=Math.min(1,Math.max(0,(innerHeight-rect.top)/Math.max(1,rect.height+innerHeight*.7)));
   const pageProgress=Math.min(1,Math.max(0,scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight)));
   root.style.setProperty('--page-progress',String(pageProgress));
   if(preference.matches){hero.style.setProperty('--hero-progress','0');return;}

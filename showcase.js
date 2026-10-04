@@ -29,7 +29,7 @@ function portfolioHomeMarkup(){
    <div class="specimen-guide" aria-hidden="true"><span class="specimen-cross cross-a">+</span><span class="specimen-cross cross-b">+</span><span class="specimen-axis">OBSERVE / ROTATE / EXPLORE</span></div>
    <span class="object-coordinate">FIG. 01 / MIM COMPONENT</span>
    <iframe src="artifacts/parts-3d/index.html?hero=1&lab=1" title="MIM 부품의 사진 기반 3D 재구성" loading="eager"></iframe>
-   <div class="object-caption"><span>금속의 형태를 관찰하다</span><small>사진 기반 형상 재구성 · 실제 CAD 및 치수와 다름</small></div>
+   <div class="object-caption"><span>금속의 형태를 관찰하다</span></div>
    <span class="specimen-note">SCROLL TO CHANGE THE VIEW</span>
   </div>
   <div class="hero-bottom"><span>금오공과대학교 · 신소재공학과</span><span>SCROLL TO EXPLORE ↓</span><span>SELECTED WORK / 01—03</span></div>
