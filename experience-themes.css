@@ -1,0 +1,211 @@
+/* Each journal inherits the material and colour language of its home preview. */
+body[data-project]:not(.showcase-home) {
+ --portfolio-paper:#f0f2eb;
+ --portfolio-ink:#28352b;
+ --portfolio-muted:#586957;
+ --portfolio-line:#bdc9b6;
+ --theme-accent:#465d3c;
+ --theme-muted:#4f604d;
+ --theme-text:#3d4e3e;
+ --theme-surface:#e3e9dc;
+ --theme-raised:#f7f8f2;
+ --theme-selected:#d4dfca;
+ --theme-grid:#bdc9b638;
+ --series-before:#a8b798;
+ --series-after:#526a45;
+ --series-track:#dce3d4;
+ --paper:var(--portfolio-paper);
+ --ink:var(--portfolio-ink);
+ --muted:var(--theme-muted);
+ --line:var(--portfolio-line);
+ --rose:var(--theme-surface);
+ --accent:var(--theme-accent);
+ --case-accent:var(--theme-accent);
+ --experience-box:var(--theme-surface);
+ --experience-box-line:var(--portfolio-line);
+ --experience-box-accent:var(--theme-accent);
+}
+body[data-project="mim"]:not(.showcase-home) {
+ --portfolio-paper:#edf0e7;--portfolio-ink:#29352c;--portfolio-line:#bbc6b2;
+ --theme-accent:#465d40;--theme-muted:#576553;--theme-text:#3d4a3d;
+ --theme-surface:#dfe6d7;--theme-raised:#f5f7f0;--theme-selected:#d2ddc8;
+}
+body[data-project="alloy"]:not(.showcase-home) {
+ --portfolio-paper:#f1ebe2;--portfolio-ink:#493c2e;--portfolio-line:#cfbfaa;
+ --theme-accent:#6f4d32;--theme-muted:#675340;--theme-text:#63513f;
+ --theme-surface:#e8ddce;--theme-raised:#f8f3eb;--theme-selected:#e0d0bb;
+ --theme-grid:#b49a7930;--series-before:#c8b394;--series-after:#896544;--series-track:#e3d7c7;
+}
+body[data-project="energy"]:not(.showcase-home) {
+ --portfolio-paper:#f0e9df;--portfolio-ink:#493f31;--portfolio-line:#ccbea8;
+ --theme-accent:#705332;--theme-muted:#65553f;--theme-text:#60533f;
+ --theme-surface:#e4d9c5;--theme-raised:#f8f2e8;--theme-selected:#dacfba;
+ --series-before:#bfae8e;--series-after:#80643e;--series-track:#e3d9c8;
+}
+body[data-project="xrd"]:not(.showcase-home) {
+ --portfolio-paper:#f1f2e9;--portfolio-ink:#343c2e;--portfolio-line:#c3cab4;
+ --theme-accent:#566336;--theme-muted:#586146;--theme-text:#4d5740;
+ --theme-surface:#e4e8d8;--theme-raised:#f8f9f1;--theme-selected:#dbe2c8;
+ --theme-grid:#87936626;--series-before:#b5bea0;--series-after:#687546;--series-track:#e0e5d6;
+}
+body[data-project="sejong"]:not(.showcase-home) {
+ --portfolio-paper:#edf3ee;--portfolio-ink:#294b3b;--portfolio-line:#b9ccc0;
+ --theme-accent:#355f49;--theme-muted:#4c6858;--theme-text:#3e5e4c;
+ --theme-surface:#dfeae2;--theme-raised:#f5faf6;--theme-selected:#cee1d3;
+ --theme-grid:#88aa9228;--series-before:#a8c5ae;--series-after:#3d6b53;--series-track:#d8e5dc;
+}
+body[data-project="fitness"]:not(.showcase-home) {
+ --portfolio-paper:#f3ebe3;--portfolio-ink:#49362b;--portfolio-line:#d4bdab;
+ --theme-accent:#8f442a;--theme-muted:#75533f;--theme-text:#684c3a;
+ --theme-surface:#ecdfd2;--theme-raised:#faf4ed;--theme-selected:#e8cdb9;
+ --theme-grid:#b2795226;--series-before:#ccaa8a;--series-after:#a04f33;--series-track:#e6d6c7;
+}
+body[data-project="coating"]:not(.showcase-home) {
+ color-scheme:dark;
+ --portfolio-paper:#202c28;--portfolio-ink:#eef2e3;--portfolio-line:#536951;
+ --theme-accent:#bdd595;--theme-muted:#b0c2aa;--theme-text:#d0ddc6;
+ --theme-surface:#2b3c31;--theme-raised:#324637;--theme-selected:#3b5138;
+ --theme-grid:#a5ba8d18;--series-before:#73896b;--series-after:#bdd595;--series-track:#3c503b;
+}
+html:has(body[data-project="coating"]:not(.showcase-home)) {background:#202c28!important}
+
+/* Shared navigation stays in place; its selected state belongs to the experience. */
+body[data-project]:not(.showcase-home) .workspace .navigation {
+ --drawer-background:var(--portfolio-paper);--drawer-ink:var(--portfolio-ink);
+ --drawer-muted:var(--theme-muted);--drawer-line:var(--portfolio-line);
+ --drawer-selected:var(--theme-selected);
+ scrollbar-color:var(--portfolio-line) transparent!important;
+}
+body[data-project]:not(.showcase-home) .workspace :is(.nav-item.active,.nav-academy-title.active,.nav-activity.active,.overview-link.active,.branch-link.active) {
+ color:var(--portfolio-ink)!important;background:var(--theme-selected)!important;
+ box-shadow:inset 2px 0 var(--theme-accent)!important;
+}
+body[data-project]:not(.showcase-home) .workspace :is(.nav-item,.profile-link,.nav-academy-title,.nav-activity,.overview-link,.branch-link,.back-profile,.parent-link) {color:var(--theme-text)!important}
+body[data-project]:not(.showcase-home) .workspace :is(.branch-link:hover,.nav-item:hover,.academy-tree summary:hover,.academy-tree a:hover) {background:var(--theme-surface)!important;color:var(--portfolio-ink)!important}
+body[data-project]:not(.showcase-home) :is(.nav-academy-toggle,.branch-symbol,.project-action,.nav-item .arrow,.academy-cards b) {color:var(--theme-accent)!important}
+body[data-project]:not(.showcase-home) .academy-tree summary::after {color:var(--theme-accent)!important}
+body[data-project]:not(.showcase-home) :is(.detail-label,.branch-group>h2,.section-label,.nav-divider,.num,.nav-academy-number,.branch-link small) {color:var(--theme-muted)!important}
+body[data-project]:not(.showcase-home).drawer-open .drawer-trigger {background:var(--theme-selected)!important}
+body[data-project]:not(.showcase-home) :is(button,a,summary):focus-visible {outline-color:var(--theme-accent)!important}
+body[data-project]:not(.showcase-home) ::selection {background:var(--theme-selected);color:var(--portfolio-ink)}
+
+/* An editorial opening and a consistent reading surface. */
+body[data-project]:not(.showcase-home) .workspace .project-overview {
+ max-width:none;padding:28px 0 0!important;border-top:2px solid var(--theme-accent);
+}
+body[data-project]:not(.showcase-home) .workspace .project-overview .eyebrow {
+ color:var(--theme-accent)!important;font-size:11px;letter-spacing:.12em;
+}
+body[data-project]:not(.showcase-home) .workspace .project-overview .project-title {max-width:24ch;margin:24px 0 12px!important}
+body[data-project]:not(.showcase-home) .workspace .project-overview :is(.project-lead,.project-description) {color:var(--theme-text)!important}
+body[data-project]:not(.showcase-home) .workspace .project-overview .project-description {max-width:760px}
+body[data-project]:not(.showcase-home) .workspace .project-overview .project-facts {
+ padding:18px 0!important;margin:22px 0!important;border-block:1px solid var(--portfolio-line)!important;
+}
+body[data-project]:not(.showcase-home) .workspace .project-overview :is(.project-fact dt,.tags span) {color:var(--theme-accent)!important}
+body[data-project]:not(.showcase-home) .project-fact dd {color:var(--theme-text)!important}
+body[data-project]:not(.showcase-home) .workspace .main-view.has-focus .project-overview {border:0}
+body[data-project]:not(.showcase-home) .workspace .lab-journal-visual:has(.overview-exhibit) {padding:0!important;background:transparent!important;overflow:visible}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(h2,h3,h4,strong,dt,b) {color:var(--portfolio-ink)!important}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(p,dd,td) {color:var(--theme-text)!important}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(span,label,li,th) {color:var(--theme-text)!important}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(small,.story-kicker,.story-section-heading>span,.story-process li>span,.story-flow li>span,.summary-stat>span,.summary-stat>small,.evidence-legend,.evidence-chart-row>b,.artifact-caption,.edu-source) {color:var(--theme-muted)!important}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(a,.artifact-heading button,.slide-controls button,.slide-controls select) {color:var(--theme-accent)!important}
+body[data-project]:not(.showcase-home) .workspace .overview-link>span {color:var(--theme-accent)!important}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(.reading-tabs button>span,.code-cell>span) {color:var(--theme-muted)!important}
+body[data-project]:not(.showcase-home) .workspace .focus-toolbar {border-bottom:1px solid var(--portfolio-line);padding-bottom:15px;color:var(--theme-muted)!important}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(.story-header,.enriched-note,.story-section-visual,.story-visual,.story-compare-list>div,.story-indicator-grid li,.story-count-comparison,.story-sample-table th,.story-sample-table td,.reading-tabs,.mim-tabs,.academy-artifact-section) {border-color:var(--portfolio-line)!important}
+body[data-project]:not(.showcase-home) .workspace .story-article .story-section-heading>span {
+ display:grid;place-items:center;min-width:30px;height:30px;border:1px solid var(--portfolio-line);color:var(--theme-accent)!important;
+}
+body[data-project]:not(.showcase-home) .workspace .story-section-visual {
+ padding:22px;background:var(--theme-surface);border:1px solid var(--portfolio-line);
+}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(.reading-tabs button,.mim-tabs button) {color:var(--theme-muted)!important}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(.reading-tabs button[aria-selected="true"],.mim-tabs button[aria-selected="true"]) {background:var(--theme-selected)!important;color:var(--theme-accent)!important}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(.reading-tabs button,.mim-tabs button)::after {background:var(--theme-accent)!important}
+
+/* Tables, plots and teaching schematics use the same before/after scale. */
+body[data-project]:not(.showcase-home) .workspace .main-view .evidence-chart {--series-before:inherit;--series-after:inherit;--series-track:inherit}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(.evidence-chart,.summary-stat,.pipeline-node,.story-process li,.interface-layer,.phase-comparison article,.research-sample-table,.company-equipment-record,.equipment-photo-card) {border-color:var(--portfolio-line)!important}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(.summary-stat,.pipeline-node,.story-process li,.story-layer-stack li,.interface-layer,.company-equipment-record,.equipment-photo-card,.literature-evidence) {background:var(--theme-raised)!important;border-left-color:var(--theme-accent)!important}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(.summary-callout,.summary-status,.alloy-process-note,.alloy-metric,.alloy-evidence-grid article,.phase-comparison article) {color:var(--theme-text)!important;background:var(--theme-surface)!important;border-color:var(--portfolio-line)!important}
+body[data-project]:not(.showcase-home) .workspace .main-view .interface-gap {color:var(--theme-muted)!important}
+body[data-project]:not(.showcase-home) .workspace .main-view .evidence-bar>span {background:linear-gradient(to right,var(--series-before) var(--bar-value),var(--series-track) var(--bar-value))!important}
+body[data-project]:not(.showcase-home) .workspace .main-view .evidence-bar.after>span {background:linear-gradient(to right,var(--series-after) var(--bar-value),var(--series-track) var(--bar-value))!important}
+body[data-project]:not(.showcase-home) .evidence-legend span::before {background:var(--series-before)!important}
+body[data-project]:not(.showcase-home) .evidence-legend span+span::before {background:var(--series-after)!important}
+body[data-project]:not(.showcase-home) .story-bar-rows i {background:linear-gradient(to right,var(--series-after) var(--value),var(--series-track) var(--value))!important}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(.evidence-bar strong,.story-bar-rows strong,.story-count-comparison strong) {color:var(--theme-accent)!important}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(.edu-label,.edu-small,.edu-number,.story-signal text,.story-dimension text) {fill:var(--theme-text)!important}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(.edu-node,.edu-hull) {fill:var(--theme-raised)!important;stroke:var(--theme-accent)!important}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(.edu-outline,.edu-wire,.edu-arrow) {stroke:var(--theme-accent)!important}
+body[data-project]:not(.showcase-home) .edu-arrowhead {fill:var(--theme-accent)!important}
+body[data-project]:not(.showcase-home) .workspace .main-view :is(.prediction-filter input,.prediction-filter select,.notebook-view,.prediction-table-wrap,.slide-controls select) {background:var(--theme-surface)!important;color:var(--portfolio-ink)!important;border-color:var(--portfolio-line)!important}
+body[data-project]:not(.showcase-home) .prediction-table th {background:var(--theme-raised)!important;color:var(--theme-text)!important}
+body[data-project]:not(.showcase-home) .prediction-table tr:nth-child(even) {background:var(--theme-raised)!important}
+body[data-project]:not(.showcase-home) .code-cell pre {color:var(--theme-text)!important}
+
+/* Distinct project compositions, using their existing evidence and diagrams. */
+body[data-project="mim"]:not(.showcase-home) .workspace .lab-journal-visual:has(.lab-equipment) {border:0;padding:0;background:transparent}
+body[data-project="mim"]:not(.showcase-home) .workspace .lab-equipment.compact {height:440px}
+body[data-project="mim"]:not(.showcase-home) .workspace .lab-equipment .equipment-label strong {color:#f5f3ed!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .lab-equipment .equipment-label>span {color:#d5ddcb!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-photo-copy>a {border-color:var(--portfolio-line)}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-material-flow svg {color:var(--theme-accent)}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-material-flow button[aria-selected="true"] {background:var(--theme-selected)!important;border-color:var(--theme-accent)!important;color:var(--theme-accent)!important}
+body[data-project="alloy"]:not(.showcase-home) .workspace .lab-journal-visual,
+body[data-project="xrd"]:not(.showcase-home) .workspace .lab-journal-visual {
+ background-color:var(--theme-surface);background-image:linear-gradient(var(--theme-grid) 1px,transparent 1px),linear-gradient(90deg,var(--theme-grid) 1px,transparent 1px);
+ background-size:32px 32px;border:1px solid var(--portfolio-line);padding:28px;border-radius:0;
+}
+body[data-project="alloy"]:not(.showcase-home) .workspace .lab-journal-visual .alloy-chart-grid {gap:28px}
+body[data-project="alloy"]:not(.showcase-home) .workspace .lab-journal-visual .alloy-chart {padding:18px!important;background:var(--theme-raised)!important;border-top:2px solid var(--theme-accent)!important}
+body[data-project="xrd"]:not(.showcase-home) .workspace .lab-journal-visual {padding:32px}
+body[data-project="xrd"]:not(.showcase-home) .workspace .lab-journal-visual .evidence-chart-row {margin-top:20px}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-exhibit {background:var(--theme-surface);border-top:3px solid var(--theme-accent);padding:32px}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats {padding:20px 0 28px}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats strong {font-size:clamp(48px,5vw,72px);color:var(--theme-accent)!important}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-indicators>span {padding:17px 0;border-color:var(--portfolio-line);color:var(--theme-text)}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-exhibit footer {border-top:1px solid var(--portfolio-line);padding-top:10px}
+body[data-project="sejong"]:not(.showcase-home) .workspace .map-frame {border:1px solid var(--portfolio-line);border-radius:0;box-shadow:none}
+body[data-project="fitness"]:not(.showcase-home) .workspace .fitness-exhibit {background:var(--theme-surface);padding:32px;border-radius:16px}
+body[data-project="fitness"]:not(.showcase-home) .workspace .stack-assembly {color:var(--theme-accent);padding:20px 0;background:var(--theme-raised);border:1px solid var(--portfolio-line);border-radius:10px}
+body[data-project="fitness"]:not(.showcase-home) .workspace .count-logic li {border-color:var(--portfolio-line)}
+body[data-project="fitness"]:not(.showcase-home) .workspace .count-logic li>span {color:var(--theme-accent)}
+body[data-project="fitness"]:not(.showcase-home) .workspace .story-section-visual {border-radius:12px}
+body[data-project="coating"]:not(.showcase-home) .workspace .lab-journal-visual {background:var(--theme-surface);padding:30px;border:1px solid var(--portfolio-line)}
+body[data-project="coating"]:not(.showcase-home) .workspace .story-section-visual {background-color:var(--theme-surface);background-image:linear-gradient(var(--theme-grid) 1px,transparent 1px);background-size:100% 28px}
+body[data-project="coating"]:not(.showcase-home) .workspace .summary-stat strong {color:var(--theme-accent)!important;font-variant-numeric:tabular-nums}
+body[data-project="coating"]:not(.showcase-home) .workspace :is(.model-predictions,.model-code,.notebook-view) {border:1px solid var(--portfolio-line);background:var(--theme-surface)!important}
+body[data-project="coating"]:not(.showcase-home) .workspace .main-view .slide-image {background:#fff}
+body[data-project="energy"]:not(.showcase-home) .workspace .lab-journal-visual {background:var(--theme-surface);border:1px solid var(--portfolio-line)}
+body[data-project="energy"]:not(.showcase-home) .workspace .story-layer-stack li {border-left-width:4px!important;margin-top:9px}
+body[data-project="energy"]:not(.showcase-home) .workspace .story-layer-stack li:nth-child(2) {background:var(--theme-selected)!important}
+body[data-project="academy"]:not(.showcase-home) .workspace .academy-cards a {background:var(--theme-surface)!important;border-color:var(--portfolio-line)!important;border-left:0!important;border-top:3px solid var(--theme-accent)!important;padding:24px 20px 40px}
+body[data-project="academy"]:not(.showcase-home) .workspace .academy-cards a:hover {background:var(--theme-selected)!important}
+body[data-project="academy"]:not(.showcase-home) .workspace .academy-cards h3 {font-size:22px}
+body[data-project="ocean"]:not(.showcase-home) .workspace .mini-academy {color:var(--theme-accent)}
+
+@media(max-width:900px) {
+ body[data-project]:not(.showcase-home) .workspace .project-overview {padding-top:22px!important}
+ body[data-project]:not(.showcase-home) .workspace .story-section-visual {padding:18px}
+ body[data-project]:not(.showcase-home) .workspace .lab-journal-visual {padding:22px!important}
+ body[data-project="mim"]:not(.showcase-home) .workspace .lab-journal-visual:has(.lab-equipment) {padding:0!important}
+ body[data-project="mim"]:not(.showcase-home) .workspace .lab-equipment.compact {height:340px}
+ body[data-project]:not(.showcase-home) .workspace :is(.fitness-exhibit,.sejong-exhibit) {padding:24px}
+ body[data-project="fitness"]:not(.showcase-home) .workspace .fitness-pipeline {grid-template-columns:1fr}
+ body[data-project="fitness"]:not(.showcase-home) .workspace .stack-assembly {display:flex;align-items:center;justify-content:center;gap:15px;padding:16px}
+ body[data-project="fitness"]:not(.showcase-home) .workspace .stack-assembly svg {max-width:120px;height:150px}
+ body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats strong {font-size:42px}
+}
+@media(max-width:600px) {
+ body[data-project]:not(.showcase-home) .workspace .project-overview .project-facts {gap:16px!important}
+ body[data-project]:not(.showcase-home) .workspace .lab-journal-visual {padding:18px!important}
+ body[data-project]:not(.showcase-home) .workspace :is(.fitness-exhibit,.sejong-exhibit) {padding:22px}
+ body[data-project="alloy"]:not(.showcase-home) .workspace .lab-journal-visual .alloy-chart {padding:14px!important}
+ body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-indicators {grid-template-columns:1fr}
+ body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-indicators>span {padding:13px 0}
+ body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats {gap:8px;grid-template-columns:1fr 18px 1fr}
+ body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats strong {font-size:36px}
+}
