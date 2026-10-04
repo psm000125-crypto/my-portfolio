@@ -152,3 +152,41 @@ body[data-experience-family="academy"]:not(.showcase-home) .workspace .slide-ima
  body[data-experience-family="academy"]:not(.showcase-home) :is(.vessel-body,.vessel-orbits) {animation:none!important}
  body[data-experience-family="academy"]:not(.showcase-home) .academy-track-visual svg {transition:none!important;transform:none!important}
 }
+
+/* The document scrolls; body must not become an unscrollable sticky ancestor. */
+body[data-experience-family="academy"]:not(.showcase-home) {overflow:visible!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel {font-family:'IBM Plex Sans','IBM Plex Sans KR',sans-serif!important;scrollbar-width:thin;scrollbar-color:#557762 transparent;overscroll-behavior:contain}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel .detail-label {position:sticky;top:0;z-index:2;background:#102d25;padding:8px 0 12px;font-size:11px!important;font-weight:500;letter-spacing:.1em!important;line-height:1.5}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel :is(.overview-link,.back-profile,.branch-group>h2) {font-size:12px!important;font-weight:400;line-height:1.6;letter-spacing:0!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel .academy-track>summary {padding:14px 24px 14px 0!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel .academy-track>summary strong {font-size:15px!important;font-weight:500!important;line-height:1.5;letter-spacing:-.02em}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel .academy-activities {margin:0 0 12px 0;padding-left:12px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel .academy-activity-link {padding:10px 12px!important;font-size:13px!important;line-height:1.65!important;font-weight:400;letter-spacing:-.015em;border-radius:0;word-break:keep-all;white-space:normal}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel .branch-group {margin-bottom:14px!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel .back-profile {display:block;margin:14px 0 0!important;padding-bottom:6px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-reading .story-header {padding:12px 0 32px!important;margin-bottom:0}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-reading .story-header h2 {max-width:22ch;font-size:clamp(28px,3vw,42px)!important;font-weight:400!important;line-height:1.3!important;letter-spacing:-.055em}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-reading-date {margin:16px 0 0;color:#a8c1b3;font-size:12px;line-height:1.6}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-reading-topic {position:relative;padding:30px 0!important;margin:0!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-reading .story-section-heading {margin-bottom:18px!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-reading .story-section-heading h3 {font-size:21px!important;font-weight:400!important;line-height:1.4!important;letter-spacing:-.035em}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-reading .story-section-copy p {font-size:14px!important;line-height:1.9!important;margin:0!important;max-width:43ch}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-reading .story-section-body {grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:26px;align-items:start}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-reading .story-section-visual {padding:18px!important;border-radius:2px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-topic-tags {display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:20px 0 0;padding:0}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-topic-tags li {padding:5px 9px;border:1px solid #426053;color:#a8c1b3;font-size:11px;line-height:1.5}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-section-anchor {position:absolute;top:0;scroll-margin-top:24px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-evidence {border-top:1px solid #426053}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-evidence>summary {cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;padding:20px 0;color:#c9ee94;font-size:15px;line-height:1.6}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-evidence>summary::-webkit-details-marker {display:none}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-evidence>summary::after {content:'+'}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-evidence[open]>summary::after {content:'−'}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-evidence .academy-artifact-section {padding-top:0}
+@media(min-width:901px) {
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel {position:sticky!important;top:24px!important;align-self:start!important;margin-top:0!important;max-height:calc(100dvh - 116px)!important;height:auto!important;overflow-y:auto!important;overflow-x:hidden!important;padding-top:0!important;padding-bottom:12px!important;box-sizing:border-box}
+}
+@media(max-width:900px) {
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel {position:static!important;max-height:none!important;overflow:visible!important}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-reading .story-section-body {grid-template-columns:1fr;gap:20px}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-reading .story-section-copy p {max-width:none}
+}
