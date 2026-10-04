@@ -2,8 +2,8 @@
 // Personal actions and outcomes: confirmed experience records only.
 const academy = experiences.find(project => project.id === 'academy');
 Object.assign(academy, {
-  date: '2026.07.06 — 2026.10.08',
-  shortDate: '2026.07 — 10.08',
+  date: '2026.07 — 2026.10',
+  shortDate: '2026.07 — 10',
   summary: '총 402시간의 Ocean Transformation 과정에서 선박·조선공학, 전기전자, AX·DX를 학습하고 현장 실습과 팀 PBL을 진행했습니다. 교과 교육, 기관별 실습, 프로젝트를 세 과정 아래에 나눠 정리했습니다.',
   branches: [
     ['선박 교과 교육', '선박의 설계와 건조 과정을 이해하다', '07.06–07.23 조선공학 과정에서 배운 기본설계·성능·구조·의장·생산과 시운전입니다. 교재의 원리와 현직자 교육 내용을 과목별로 정리했으며, 조선소 견학과 승선 관찰은 별도 활동에서 볼 수 있습니다.', [
