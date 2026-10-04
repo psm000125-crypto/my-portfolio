@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="인턴십에서 관리한 부품의 인터랙티브 3D 아카이브">
+  <title>부품 3D 아카이브 · 편성민</title>
+  <link rel="stylesheet" href="viewer.css">
+  <script src="vendor/three.min.js" defer></script>
+  <script src="models.js" defer></script>
+  <script src="viewer.js" defer></script>
+</head>
+<body>
+  <main class="archive">
+    <section class="exhibit" aria-label="선택한 부품의 3D 뷰어">
+      <div class="viewer-column"><div class="stage" id="stage"><canvas id="scene" tabindex="0" role="img" aria-label="3D 부품. 왼쪽 드래그 또는 방향키로 회전, 휠 또는 더하기와 빼기 키로 확대와 축소"></canvas><div id="load-state" role="status">입체 모델을 준비하고 있습니다.</div><div class="zoom-controls"><button type="button" id="zoom-in" aria-label="확대">＋</button><span id="zoom-value" class="sr-only">100%</span><button type="button" id="zoom-out" aria-label="축소">−</button></div><div class="sr-only"><span id="part-number">01</span><span id="part-english">WHEEL</span><h1 id="part-title">Wheel</h1><p id="part-description"></p><ul id="part-features"></ul><span id="view-label">기본 시점</span></div></div></div>
+    </section>
+    <section class="collection" aria-labelledby="collection-title"><h2 id="collection-title" class="sr-only">부품 선택</h2><div id="part-list" class="part-list" role="group" aria-label="부품 선택"></div></section>
+    <p id="announcement" class="sr-only" aria-live="polite"></p>
+  </main>
+  <noscript>3D 부품을 보려면 브라우저에서 JavaScript를 활성화해 주세요.</noscript>
+</body>
+</html>

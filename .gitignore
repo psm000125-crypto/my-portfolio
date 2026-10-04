@@ -1,0 +1,9 @@
+# Local development and documentation only
+tmp/
+docs/
+*.test.mjs
+preview.mjs
+
+# Operating-system metadata
+Thumbs.db
+Desktop.ini

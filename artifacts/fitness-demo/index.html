@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>운동 횟수 측정 앱</title>
+  <link rel="stylesheet" href="demo.css">
+  <script src="detector.js" defer></script>
+  <script src="demo.js" defer></script>
+</head>
+<body>
+  <main class="demo">
+    <header class="demo-heading"><div><span class="kicker">MOTION → SIGNAL → COUNT</span><h1>한 번의 움직임, 한 번의 카운트.</h1></div><span class="badge">운동 횟수 측정</span></header>
+    <p class="intro">가속도 신호의 봉우리를 감지하고, 임계값과 판정 간격을 조절해 운동 횟수를 측정합니다.</p>
+    <div class="demo-grid">
+      <section class="phone" aria-label="운동 횟수 측정 앱">
+        <div class="phone-top"><span>REP / COUNTER</span><span id="source-label">SIMULATION</span></div>
+        <div class="count-heading"><span class="status-dot"></span><span id="state-label">시연 준비</span></div>
+        <div class="counter"><output id="rep-count" aria-label="판정된 운동 횟수">00</output><span>REPS</span></div>
+        <div class="machine" aria-label="휴대전화를 놓은 중량 스택의 움직임 개념도">
+          <svg viewBox="0 0 240 200" role="img" aria-label="중량 스택과 휴대전화">
+            <path d="M69 20v157M171 20v157M48 180h144" fill="none" stroke="#bac9d3" stroke-width="4"/>
+            <path d="M120 0v56" fill="none" stroke="#59758c" stroke-width="2"/>
+            <g id="weight-stack" fill="#d6e0e7" stroke="#59758c">
+              <rect x="58" y="75" width="124" height="18" rx="3"/><rect x="58" y="96" width="124" height="18" rx="3"/><rect x="58" y="117" width="124" height="18" rx="3"/><rect x="58" y="138" width="124" height="18" rx="3"/>
+              <rect x="104" y="42" width="32" height="30" rx="5" fill="#f8f8f7" stroke-width="2"/><path d="M110 55h7l3-6 4 12 3-6h4" fill="none" stroke="#244b70" stroke-width="1.5"/>
+            </g>
+          </svg>
+          <span id="machine-caption">중량 스택의 상하 움직임 · 개념도</span>
+        </div>
+        <div class="phone-actions"><button id="play" class="primary" type="button">시연 시작</button><button id="reset" type="button">초기화</button></div>
+        <div class="phone-bottom"><span>z축 봉우리 검출</span><span id="elapsed">00:00</span></div>
+      </section>
+      <section class="signal-panel" aria-label="신호와 횟수 판정">
+        <div class="panel-title"><h2>움직임을 신호로 읽기</h2><span id="signal-source">시뮬레이션 신호</span></div>
+        <div class="scenarios" role="group" aria-label="시연 동작 선택"><button type="button" data-scenario="normal" aria-pressed="true">일정한 동작</button><button type="button" data-scenario="fast" aria-pressed="false">빠른 동작 + 진동</button></div>
+        <div class="chart-wrap"><canvas id="signal-chart" aria-label="최근 8초의 원신호·필터 신호와 판정 임계값 그래프" role="img"></canvas></div>
+        <div class="legend"><span class="raw">원신호</span><span class="filtered">필터 신호</span><span class="threshold">판정 임계값</span></div>
+        <div class="metrics"><div><span>봉우리 후보</span><output id="raw-count">00</output></div><div><span>판정된 횟수</span><output id="confirmed-count">00</output></div></div>
+        <p class="explanation">작은 진동은 신호를 부드럽게 처리하고, 가까운 봉우리는 최소 판정 간격으로 걸러냅니다. ‘빠른 동작 + 진동’을 선택해 두 카운트를 비교해보세요.</p>
+        <div class="settings"><label for="threshold">판정 임계값 <output id="threshold-value">1.6 m/s²</output></label><input id="threshold" type="range" min="0.8" max="3.6" step="0.1" value="1.6"><label for="cooldown">최소 판정 간격 <output id="cooldown-value">650 ms</output></label><input id="cooldown" type="range" min="100" max="1000" step="50" value="650"></div>
+        <div class="sensor-option"><button id="sensor" type="button">휴대전화 센서 연결</button><p id="sensor-help" role="status">휴대전화에서는 센서 입력으로도 시험할 수 있습니다.</p></div>
+      </section>
+    </div>
+    <footer>센서 → 신호 필터 → 임계값·간격 판정 → 횟수 표시</footer>
+  </main>
+</body>
+</html>

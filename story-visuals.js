@@ -1,0 +1,96 @@
+// Visual explanations use the same confirmed experience facts as the narrative.
+// Schematics describe a process; they are not reconstructed measurement data.
+function storyFlow(title, steps, caption = '') {
+  return `<figure class="story-diagram"><figcaption><strong>${escapeHTML(title)}</strong>${caption ? `<small>${escapeHTML(caption)}</small>` : ''}</figcaption><ol class="story-process" style="--steps:${steps.length}">${steps.map(([name, detail], i) => `<li><span>${number(i)}</span><strong>${escapeHTML(name)}</strong><small>${escapeHTML(detail)}</small></li>`).join('')}</ol></figure>`;
+}
+function storyMetrics(items) {
+  return `<dl class="story-metrics">${items.map(([value, label]) => `<div><dt>${escapeHTML(label)}</dt><dd>${escapeHTML(value)}</dd></div>`).join('')}</dl>`;
+}
+function storyComparisonChart(title, unit, rows, caption) {
+  const max = Math.max(...rows.map(row => row[1]));
+  return `<figure class="story-bar-chart"><figcaption><strong>${escapeHTML(title)}</strong><small>${escapeHTML(caption)}</small></figcaption><div class="story-bar-rows">${rows.map(([label, value]) => `<div><span>${escapeHTML(label)}</span><i style="--value:${value / max * 100}%" aria-hidden="true"></i><strong>${value} <small>${escapeHTML(unit)}</small></strong></div>`).join('')}</div></figure>`;
+}
+function energyLayerVisual() {
+  return `<figure class="story-diagram"><figcaption><strong>제안한 3층 경사 계면층</strong><small>문헌 기반 설계안 · 위에서 아래로 전극과 가까워지는 구조</small></figcaption><ol class="story-layer-stack"><li><span>상부층</span><strong>다공성 CNT</strong><small>전도 경로 유지 · 표면 성장 억제</small></li><li><span>전이층</span><strong>ZnO/CNT ↔ CNT</strong><small>하부층에서 상부층으로 점진적인 연결</small></li><li><span>하부층</span><strong>Co-doped ZnO/CNT</strong><small>리튬 친화성 · 초기 핵 생성 유도</small></li><li class="story-substrate"><span>전극</span><strong>Li metal</strong><small>리튬 금속 음극</small></li></ol></figure>`;
+}
+function energyLiteratureVisual() {
+  const rows = [['Co/ZnO', 8], ['ZnO', 13], ['무코팅 Cu', 62]];
+  const cycles = [['Co/ZnO', 41], ['ZnO', 43], ['무코팅 Cu', 51]];
+  return `<div class="story-chart-pair">${storyComparisonChart('초기 핵 형성 과전압', 'mV', rows, 'Co 도핑 ZnO 선행논문의 구리 집전체 비교값')}${storyComparisonChart('30사이클 전압 히스테리시스', 'mV', cycles, '같은 선행연구에서 보고한 문헌 수치')}</div>`;
+}
+function alloySampleVisual() {
+  const rows = ['Pure Fe', 'Fe–3.5 wt% Si', 'Fe–4.5 wt% Si', 'Fe–6.5 wt% Si'];
+  return `<figure class="story-diagram"><figcaption><strong>4개 조성 × 압연 전후 = 8종 시편</strong><small>조성과 공정 단계를 구분해 전후 비교</small></figcaption><div class="story-table-wrap"><table class="story-sample-table"><thead><tr><th scope="col">조성</th><th scope="col">열간압연 전</th><th scope="col">열간압연 후</th></tr></thead><tbody>${rows.map(label => `<tr><th scope="row">${label}</th><td><span class="sample-stage">소결 시편</span></td><td><span class="sample-stage rolled">압연 시편</span></td></tr>`).join('')}</tbody></table></div>${storyMetrics([['약 6시간', '한 차례 열처리 소요'], ['1개월', '프로젝트 시작 지연']])}</figure>`;
+}
+function fitnessSignalVisual() {
+  return `<figure class="story-diagram"><figcaption><strong>센서 신호와 횟수 판정은 별개의 단계</strong><small>z축 가속도 봉우리 검출을 설명한 개념도 · 실제 측정 파형 아님</small></figcaption><svg class="story-signal" viewBox="0 0 520 210" role="img" aria-label="주 봉우리와 작은 진동이 함께 나타나는 가속도 신호의 개념도"><path d="M40 25V165H500" fill="none" stroke="#bdbdbd"/><path d="M40 115H85Q108 115 126 63Q140 13 159 60Q179 122 204 125Q220 124 237 93Q249 64 264 95Q282 122 312 115H500" fill="none" stroke="#171717" stroke-width="3"/><path d="M40 85H500" stroke="#9c9c9c" stroke-dasharray="5 6"/><circle cx="145" cy="43" r="5" fill="#171717"/><circle cx="251" cy="82" r="5" fill="#737373"/><text x="16" y="20">z축</text><text x="460" y="190">시간</text><text x="172" y="37">동작 봉우리</text><text x="285" y="74">작은 진동</text><text x="363" y="105">판정 임계값</text></svg>${storyFlow('카운팅 로직', [['센서 입력', '중량 스택의 상하 움직임'], ['신호 정리', '잡음 필터 적용'], ['횟수 판정', '봉우리와 임계값 비교']])}</figure>`;
+}
+function coatingResultVisual() {
+  const classes = [['스크래치', 'Scratch', 357, 'scratch'], ['도막떨어짐', 'Peeling', 310, 'peeling'], ['양품', 'Normal', 168, 'normal'], ['부풀음', 'Blister', 88, 'blister'], ['이물질포함', 'Inclusion', 77, 'inclusion']];
+  return `<figure class="story-diagram coating-result"><figcaption><strong>1,000건의 최종 예측</strong><small>테스트 세트의 클래스별 예측 수 · 학습 데이터 비율 아님</small></figcaption><div class="prediction-strip" aria-hidden="true">${classes.map(([, , count, key]) => `<span class="class-${key}" style="flex:${count}"></span>`).join('')}</div><ul class="prediction-distribution">${classes.map(([label, english, count, key]) => `<li class="class-${key}"><span class="class-dot" aria-hidden="true"></span><span>${label}<small>${english}</small></span><strong>${count}<small>${(count / 10).toFixed(1)}%</small></strong></li>`).join('')}</ul>${storyMetrics([['0.970905', '교육 프로젝트 최종 F1'], ['3개 모델', '검증 F1 가중 소프트보팅']])}</figure>`;
+}
+function xrdSpecimenVisual() {
+  return `<figure class="story-diagram xrd-specimens"><figcaption><strong>3종의 칼 × 2개 분석 위치</strong><small>가격대별 몸통·날 끝의 총 6개 측정 위치 · 개념도</small></figcaption><svg viewBox="0 0 480 130" role="img" aria-label="세라믹 칼의 몸통과 날 끝 분석 위치"><path d="M32 38h112v52H32q-12 0-12-12V50q0-12 12-12" fill="#64748b"/><path d="M144 38h302q-35 60-302 52Z" fill="#e0f2f1" stroke="#0f766e" stroke-width="2"/><circle cx="238" cy="60" r="8" fill="#0f766e"/><circle cx="355" cy="75" r="8" fill="#c76b24"/><path d="M238 52V18M355 84v23" stroke="#94a3b8"/><text x="217" y="14">몸통</text><text x="336" y="125">날 끝</text></svg><div class="specimen-matrix"><span>가격대</span><span>몸통</span><span>날 끝</span>${['저가', '중가', '고가'].map(label => `<strong>${label}</strong><span class="specimen-body">●</span><span class="specimen-edge">●</span>`).join('')}</div>${storyFlow('측정 전 시편 준비', [['절단', '약 1~1.5 cm'], ['세척', '알코올 · 초음파'], ['위치 정렬', '몸통과 날 끝']])}</figure>`;
+}
+function xrdAnalysisVisual() {
+  return storyFlow('측정에서 상분율 계산까지', [['초기 XRD', '가격대 3종 · 6개 위치'], ['열화 시험', '110℃ 수증기 · 100시간'], ['XRD 재측정', '동일 위치의 전후 비교'], ['FullProf', 'CIF 기반 리트벨트 정련']], '실험 패턴과 이론 패턴을 비교한 분석 절차');
+}
+function energyContactVisual() {
+  return `<figure class="story-diagram energy-contact"><figcaption><strong>CNT 단독층에서 경사 구조로</strong><small>GZCNT 선행연구의 계면 접촉과 층별 역할을 정리한 개념도</small></figcaption><div class="interface-comparison"><section><h4>CNT 단독층</h4><div class="interface-layer cnt">다공성 CNT</div><div class="interface-gap">석출·박리 후 접촉 틈 발생 가능</div><div class="interface-layer lithium">Li metal</div><p>전도 경로를 제공하지만 장기 계면 접촉을 함께 검토해야 합니다.</p></section><section><h4>GZCNT 경사층</h4><div class="interface-layer cnt">CNT 상부층</div><div class="interface-layer transition">전이층</div><div class="interface-layer zinc">ZnO/CNT 하부층</div><div class="interface-layer lithium">Li metal</div><p>하부의 리튬 친화성과 상부의 성장 억제 기능을 연결합니다.</p></section></div></figure>`;
+}
+function storySectionVisualMarkup(project, story, index) {
+  const branch = project.branches.indexOf(story);
+  if (project.id === 'academy') {
+    return academyCourseVisualMarkup(branch,index);
+  }
+  if (project.id === 'alloy') {
+    if (index === 0) return alloySampleVisual();
+    if (index === 1) return storyFlow('분말에서 판재까지', [['혼합', '19 rpm · 15분 / IPA 1%'], ['분말압연', '롤갭 0.8 mm'], ['소결', '질소 / 1,150℃ · 1시간'], ['열간압연', '800℃ / 패스당 15%']], '최종 두께 1 mm · 이후 조직과 물성 측정');
+    return `<div class="story-result-charts">${alloyMetricCharts()}</div>`;
+  }
+  if (project.id === 'coating') {
+    if (index === 0) return storyFlow('학습 입력을 정리한 순서', [['5개 클래스', '양품 + 4개 불량 유형'], ['이미지 정리', '손상 이미지 제외 / 224×224 RGB'], ['불균형 대응', '가중치 손실 / Label Smoothing']]);
+    if (index === 1) return coatingResultVisual();
+    return storyFlow('모델의 판단을 이미지에서 확인', [['오분류 확인', '잘못 분류한 이미지 직접 검토'], ['원인 사례', '강한 빛의 하이라이트를 결함으로 판단'], ['분류 보완', '결함의 색과 반사광의 색 구분']], '점수 비교 이후 실제 입력 이미지까지 되돌아가 검토');
+  }
+  if (project.id === 'ocean') {
+    if (branch === 1 || branch === 2) return `<div class="academy-practice-visuals">${academyPracticeVisualMarkup(branch,index)}</div>`;
+    if (branch === 0 && index === 0) return storyFlow('교육에서 현장으로', [['설계·구조', '기본설계 / 선박구조설계'], ['생산·건조', '생산설비 / 선내 배관 관찰'], ['의장·시운전', '선행 공정과 후속 일정의 연결']], '07.23 · HD현대중공업 조선소 견학');
+    if (branch === 0) return `<figure class="story-diagram"><figcaption><strong>선박에서 함께 살핀 두 영역</strong><small>설비 배치와 운전 정보를 관리하는 공간</small></figcaption><dl class="story-compare-list"><div><dt>기관·전력 설비</dt><dd>주·보조발전기 / 윤활 시스템 / 보일러 / 컴프레서 / MSBD·ESBD</dd></div><div><dt>제어·운전 공간</dt><dd>ECR / CCR / 브리지 / 통합관제센터</dd></div><div><dt>전기추진선박</dt><dd>태화호의 발전·배전·전기추진 설비 배치</dd></div></dl></figure>`;
+  }
+  if (project.id === 'sejong') {
+    if (index === 0) return `<figure class="story-diagram"><figcaption><strong>수집 데이터와 지도 표시 단위를 구분</strong><small>원자료 수집량과 현재 공개 지도의 표시 수</small></figcaption><dl class="story-compare-list"><div><dt>API 수집 단계</dt><dd>첫 페이지 1,000건 → 전체 페이지 상가 15,816건 / 주차장 690건</dd></div><div><dt>현재 지도</dt><dd>실제 점포 8,881개 / 비교 가능한 상가 건물 491개</dd></div><div><dt>분류 검토</dt><dd>업소명·인허가 업태·상권업종 → 공통 음식군 → 원자료 표본 대조</dd></div></dl></figure>`;
+    if (index === 1) return `<figure class="story-diagram"><figcaption><strong>평일 점심의 간편식 구매 장면</strong><small>사용자가 비중을 조정하는 6개 지도 지표</small></figcaption><ul class="story-indicator-grid">${[['업무시설', '가까운 기관·회사'], ['정류장 접근성', '정류장까지의 거리'], ['경쟁 완화', '동일 음식군 점포'], ['주차 여건', '주변 주차면'], ['사업체 밀도', '주변 기존 사업체'], ['생활편의시설', '소매·의료·생활서비스']].map(([name, detail]) => `<li><strong>${name}</strong><span>${detail}</span></li>`).join('')}</ul></figure>`;
+    return `${storyFlow('가중치를 선택에서 비교로 연결', [['조건 설정', '6개 지표의 가중치 조절'], ['후보 제안', '상위 상가 건물 5곳'], ['나란히 비교', '선택한 2개 건물의 지표']])}<a class="story-related-link" href="#sejong/work-map">실제 지도에서 가중치 바꿔보기 ↗</a>`;
+  }
+  if (project.id === 'fitness') {
+    if (index === 0) return fitnessSignalVisual();
+    return `<figure class="story-diagram"><figcaption><strong>빠른 동작에서 발견한 중복 카운팅</strong><small>실제 운동 횟수와 앱 결과를 세트별로 대조</small></figcaption><div class="story-count-comparison"><div><span>실제 동작</span><strong>1회</strong></div><span aria-hidden="true">→</span><div><span>발견한 오검출</span><strong>2회</strong></div></div>${storyFlow('반복 시험', [['횟수 대조', '실제 세트와 앱 카운트'], ['조건 조정', '임계값 / 잡음 필터'], ['다시 시험', '중복 계산 감소 확인']])}</figure>`;
+  }
+  if (project.id === 'xrd') {
+    if (index === 0) return xrdSpecimenVisual();
+    if (index === 1) return xrdAnalysisVisual();
+    return xrdPhaseChart();
+  }
+  if (project.id === 'energy') {
+    if (index === 0) return energyContactVisual();
+    if (index === 1) return energyLayerVisual();
+    return energyLiteratureVisual();
+  }
+  return '';
+}
+function mimMaterialVisual() {
+  const states = [
+    ['혼련', 'Feedstock', '<circle cx="40" cy="45" r="10"/><circle cx="67" cy="35" r="8"/><circle cx="90" cy="53" r="12"/><circle cx="64" cy="67" r="10"/>'],
+    ['사출', 'Green part', '<path d="M30 25h70v55H30z"/><path d="M55 45h20v15H55z" fill="#fafafa"/>'],
+    ['탈지', 'Brown part', '<path d="M30 25h70v55H30z" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3"/><circle cx="45" cy="40" r="3"/><circle cx="84" cy="69" r="3"/><circle cx="43" cy="66" r="3"/><path d="M55 45h20v15H55z" fill="none" stroke="currentColor"/>'],
+    ['소결', '소결품', '<path d="M37 30h56v45H37z"/><path d="M57 47h16v12H57z" fill="#fafafa"/>']
+  ];
+  return `<figure class="story-diagram"><figcaption><strong>공정 단계별 시편의 상태</strong><small>공정 그림을 누르면 설명을 볼 수 있습니다. 실제 부품 형상과 축척을 나타낸 그림은 아닙니다.</small></figcaption><ol class="mim-material-flow" role="tablist" aria-label="MIM 공정">${states.map(([name, part, shape], i) => `<li role="presentation"><button type="button" role="tab" id="mim-tab-${i}" aria-label="${name}" aria-controls="mim-panel-${i}" aria-selected="${i===0}" tabindex="${i===0?0:-1}"><svg viewBox="0 0 130 100" aria-hidden="true">${shape}</svg><strong>${name}</strong><span>${part}</span></button></li>`).join('')}</ol></figure>`;
+}
+function mimInspectionVisual() {
+  return `<figure class="story-diagram"><figcaption><strong>측정 위치와 방법을 맞추고 비교</strong><small>내경·외경·길이 확인을 설명한 개념도</small></figcaption><svg class="story-dimension" viewBox="0 0 480 225" role="img" aria-label="원통형 부품의 내경 외경 길이 측정 위치 개념도"><defs><marker id="measure-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10" fill="none" stroke="#626262"/></marker></defs><path d="M105 60h250v95H105z" fill="#ededed" stroke="#171717"/><ellipse cx="105" cy="108" rx="24" ry="48" fill="#fafafa" stroke="#171717"/><ellipse cx="105" cy="108" rx="12" ry="25" fill="#e5e5e5" stroke="#171717"/><path d="M105 25h250M65 60v95M105 83v50" stroke="#626262" marker-start="url(#measure-arrow)" marker-end="url(#measure-arrow)"/><path d="M105 20v34M355 20v34M58 60h32M58 155h32" stroke="#bdbdbd"/><text x="216" y="18">길이</text><text x="22" y="111">외경</text><text x="134" y="112">내경</text></svg><dl class="story-compare-list"><div><dt>선별·치수</dt><dd>디지털 게이지 / 버니어 캘리퍼스</dd></div><div><dt>형상·좌표</dt><dd>형상측정기 / 접촉·비접촉 3D 측정</dd></div><div><dt>검사</dt><dd>누출 / 표면조도 / 밀도 / 탄소·황</dd></div></dl></figure>`;
+}
+function mimRecordVisual() {
+  return `<figure class="story-diagram"><figcaption><strong>로트별 기록에서 확인한 조건 차이</strong><small>부적합률과 공정이동전표를 함께 대조</small></figcaption>${storyMetrics([['10~30℃', '소결 온도 차이'], ['3~4시간', '장입·탈로 시간 차이']])}${storyFlow('검사에서 공정 검토로', [['재측정', '측정 위치와 방법 통일'], ['로트 대조', '부적합률 / 결합제 제거량'], ['조건 전달', '검토할 로트와 조건을 담당자에게']])}</figure>`;
+}
