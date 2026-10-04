@@ -6,7 +6,7 @@ Object.assign(academy, {
   shortDate: '2026.07 — 10',
   summary: '총 402시간의 Ocean Transformation 과정에서 선박·조선공학, 전기전자, AX·DX를 학습하고 현장 실습과 팀 PBL을 진행했습니다. 교과 교육, 기관별 실습, 프로젝트를 세 과정 아래에 나눠 정리했습니다.',
   branches: [
-    ['선박 교과 교육', '선박의 설계와 건조 과정을 이해하다', '07.06–07.23 조선공학 과정에서 배운 기본설계·성능·구조·의장·생산과 시운전입니다. 교재의 원리와 현직자 교육 내용을 과목별로 정리했으며, 조선소 견학과 승선 관찰은 별도 활동에서 볼 수 있습니다.', [
+    ['선박 교과 교육', '선박의 설계와 건조 과정을 이해하다', '조선공학 과정에서 배운 기본설계·성능·구조·의장·생산과 시운전입니다. 교재의 원리와 현직자 교육 내용을 과목별로 정리했으며, 조선소 견학과 승선 관찰은 별도 활동에서 볼 수 있습니다.', [
       ['선박 기본설계와 주요 치수', '선박의 부양·적재·자항 기능을 바탕으로 선종과 운항 목적에 맞는 선형, 주요 치수, 기본 배치를 학습했습니다. 전장 LOA·수선간장 LBP, 형폭 B·형깊이 D·흘수 T를 구분하고, 배치도에서 화물창·기관실·탱크가 차지하는 공간을 살폈습니다.', '설계흘수는 운항 성능의 설계 기준, 하계 만재흘수는 적재량과 관련된 기준, 구조흘수는 선체 강도 계산의 기준으로 구분했습니다. 선속·연료소모량·재화중량·화물용량 등 계약 보증사항이 기본설계와 연결되는 과정도 다뤘습니다.'],
       ['선박계산과 복원성', '배수량을 경하중량과 재화중량으로 나누고, 무게중심 G와 부력중심 B의 위치가 선박의 평형에 미치는 영향을 학습했습니다. 선박이 기울면 부력중심이 이동하며, 무게와 부력의 작용선 사이 거리인 복원정 GZ가 복원 모멘트와 연결되는 원리를 다뤘습니다.', '초기 횡복원성과 종복원성, 메타센터 M과 GM, 적재 상태에 따른 무게중심 변화를 학습했습니다. 손상복원성에서는 구획의 침수와 탱크·화물창 배치가 흘수·트림·횡경사에 미치는 영향을 살폈습니다. 경사시험과 중사시험의 목적도 구분했습니다.'],
       ['선박 저항과 자항 성능', '전저항을 조파·마찰·형상·공기저항으로 나눠 학습했습니다. 구상선수와 선체 체적분포가 파 발생에, 선미 유동과 압력회복이 형상저항에 영향을 주는 원리를 다뤘습니다. Flow Control Fin과 Pre-Swirl Duct는 프로펠러로 들어가는 유동을 개선하는 장치로 살폈습니다.', '저항시험은 선체, 프로펠러 단독시험은 추진기, 자항시험은 선체와 추진기의 상호작용을 평가하는 과정으로 구분했습니다. 모형선과 실선의 차이를 설명하는 Reynolds 수·Froude 수, 마찰 보정과 추진효율을 통해 속도–출력 관계를 추정하는 흐름을 학습했습니다.'],
@@ -103,17 +103,17 @@ function academyMenuMarkup(projectId, selection='', sectionIndex=null) {
   const link=(href,title,className='academy-leaf')=>`<a class="branch-link ${className}${href===route?' active':''}" href="${href}"${href===route?' aria-current="page"':''}>${escapeHTML(title)}</a>`;
   return `<div class="branch-group academy-tree"><h2>아카데미 활동</h2>${academyTracks.map(track=>{
     const activeTrack=track.activities.some(activity=>activity.project===projectId&&(projectId!=='academy'&&!selection||selection==='story-'+activity.story||projectId==='coating'&&selection.startsWith('work-')));
-    return `<details class="academy-track" data-track="${track.id}"${activeTrack||academyDisclosureState.get(track.id)?' open':''}><summary><strong>${track.title}</strong><small>${track.period}</small></summary><div class="academy-activities">${track.activities.map(activity=>{
+    return `<details class="academy-track" data-track="${track.id}"${activeTrack||academyDisclosureState.get(track.id)?' open':''}><summary><strong>${track.title}</strong></summary><div class="academy-activities">${track.activities.map(activity=>{
       const project=experiences.find(item=>item.id===activity.project), story=project.branches[activity.story];
       const active=projectId===activity.project&&(selection==='story-'+activity.story||selection?.startsWith('work-'));
       const href='#'+project.id+'/story-'+activity.story;
-      return `<details class="academy-activity" data-activity="${activity.id}"${active||academyDisclosureState.get(activity.id)?' open':''}><summary><strong>${activity.title}</strong><small>${activity.date}</small></summary><div class="academy-leaves">${link(href,'활동 전체 보기','academy-all')}${story[3].map((section,index)=>link(href+'/section-'+index,section[0])).join('')}${project.id==='coating'?project.works.map(work=>link('#coating/work-'+work.id,work.title,'academy-leaf academy-artifact')).join(''):''}</div></details>`;
+      return `<details class="academy-activity" data-activity="${activity.id}"${active||academyDisclosureState.get(activity.id)?' open':''}><summary><strong>${activity.title}</strong></summary><div class="academy-leaves">${link(href,'활동 전체 보기','academy-all')}${story[3].map((section,index)=>link(href+'/section-'+index,section[0])).join('')}${project.id==='coating'?project.works.map(work=>link('#coating/work-'+work.id,work.title,'academy-leaf academy-artifact')).join(''):''}</div></details>`;
     }).join('')}</div></details>`;
   }).join('')}</div>`;
 }
 
 function academyOverviewMarkup() {
-  return `<section class="academy-overview" aria-label="아카데미 과정"><p class="academy-overview-label">아카데미 활동 · 과정별 살펴보기</p><div class="academy-cards">${academyTracks.map((track,index)=>`<a href="#academy/story-${index}"><span>${track.period}</span><h3>${track.title}</h3><p>${track.description}</p><small>${track.activities.map(activity=>activity.title).join(' · ')}</small><b aria-hidden="true">↗</b></a>`).join('')}</div><p class="academy-schedule-note">한국해양수산연수원 07.30–31 · MASTC 08.18–19 · 팀 PBL 09.07–09</p></section>`;
+  return `<section class="academy-overview" aria-label="아카데미 과정"><p class="academy-overview-label">아카데미 활동 · 과정별 살펴보기</p><div class="academy-cards">${academyTracks.map((track,index)=>`<a href="#academy/story-${index}"><h3>${track.title}</h3><p>${track.description}</p><small>${track.activities.map(activity=>activity.title).join(' · ')}</small><b aria-hidden="true">↗</b></a>`).join('')}</div></section>`;
 }
 
 function academyNavigationMarkup(projectId,selection='') {
@@ -121,8 +121,8 @@ function academyNavigationMarkup(projectId,selection='') {
  const activeActivity=activity=>activity.project===projectId&&(selection==='story-'+activity.story||projectId==='coating'&&selection.startsWith('work-'));
  const open=inAcademy||academyDisclosureState.get('nav-academy');
  const overviewActive=projectId==='academy'&&!selection;
- return `<div class="academy-tree nav-academy-group"><details class="nav-academy" data-activity="nav-academy"${open?' open':''}><summary><a class="nav-academy-title${overviewActive?' active':''}" href="#academy"${overviewActive?' aria-current="page"':''}><span class="nav-academy-number">01</span><span><strong>${escapeHTML(academy.title)}</strong><small>${academy.shortDate}</small></span></a><button type="button" class="nav-academy-toggle" aria-label="아카데미 과정 ${open?'접기':'펼치기'}" aria-expanded="${!!open}" aria-controls="nav-academy-body">${open?'−':'+'}</button></summary><div id="nav-academy-body" class="nav-academy-body">${academyTracks.map(track=>{
+ return `<div class="academy-tree nav-academy-group"><details class="nav-academy" data-activity="nav-academy"${open?' open':''}><summary><a class="nav-academy-title${overviewActive?' active':''}" href="#academy"${overviewActive?' aria-current="page"':''}><span class="nav-academy-number">01</span><span><strong>${escapeHTML(academy.title)}</strong></span></a><button type="button" class="nav-academy-toggle" aria-label="아카데미 과정 ${open?'접기':'펼치기'}" aria-expanded="${!!open}" aria-controls="nav-academy-body">${open?'−':'+'}</button></summary><div id="nav-academy-body" class="nav-academy-body">${academyTracks.map(track=>{
   const selected=track.activities.some(activeActivity);
-  return `<details class="nav-academy-track" data-track="nav-${track.id}"${selected||academyDisclosureState.get('nav-'+track.id)?' open':''}><summary><strong>${track.title}</strong><small>${track.period}</small></summary><div class="nav-academy-activities">${track.activities.map(activity=>`<a class="nav-activity${activeActivity(activity)?' active':''}" href="#${activity.project}/story-${activity.story}"${activeActivity(activity)?' aria-current="page"':''}><strong>${activity.title}</strong><small>${activity.date}</small></a>`).join('')}</div></details>`;
+  return `<details class="nav-academy-track" data-track="nav-${track.id}"${selected||academyDisclosureState.get('nav-'+track.id)?' open':''}><summary><strong>${track.title}</strong></summary><div class="nav-academy-activities">${track.activities.map(activity=>`<a class="nav-activity${activeActivity(activity)?' active':''}" href="#${activity.project}/story-${activity.story}"${activeActivity(activity)?' aria-current="page"':''}><strong>${activity.title}</strong></a>`).join('')}</div></details>`;
  }).join('')}</div></details></div>`;
 }

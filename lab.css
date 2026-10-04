@@ -125,6 +125,7 @@ body[data-project="alloy"] .lab-journal-visual,body[data-project="energy"] .lab-
 }
 
 /* Exhibition edition: a compact identity, a specimen stage and three scenes. */
+html:has(.lab-home){scroll-padding-top:69px}
 .lab-home{--exhibit-orange:#b85432}
 .lab-home .home-about#home-profile{margin:0;padding:40px 6vw 36px;background:var(--portfolio-paper);grid-template-columns:1fr 1.05fr;gap:6vw;border-top:0;border-bottom:1px solid var(--portfolio-line)}
 .lab-home .home-about .home-kicker{margin:0 0 14px;font-size:10px!important;letter-spacing:.12em}
@@ -176,9 +177,15 @@ body[data-project="alloy"] .lab-journal-visual,body[data-project="energy"] .lab-
 .lab-equipment{min-height:550px;height:80svh;max-height:820px;border-radius:0}
 .lab-equipment img{transform:scale(calc(1.04 - var(--chapter-progress,0) * .04));transition:filter .5s}
 .lab-equipment:hover img{transform:scale(calc(1.04 - var(--chapter-progress,0) * .04));filter:saturate(.9)}
-.lab-home .materials-visual{min-height:580px;border-color:#b9a990}
+.lab-home .materials-visual{min-height:0;border-color:#b9a990;padding:18px 0}
+.lab-home .material-compositions{margin:16px 0;gap:20px}
+.lab-home .material-compositions>span{font-size:clamp(38px,3.6vw,56px)}
+.lab-home .materials-spread{min-height:calc(100svh - 69px);padding:24px 6vw 100px;align-items:center;scroll-margin-top:0}
+.lab-home .materials-spread .spread-copy{position:relative;top:auto;padding:0}
+.materials-spread .chapter-word{font-size:clamp(64px,7vw,110px)}
+.lab-home .material-chart .evidence-chart-row{margin:12px 0}
 .metric-controls{display:flex;gap:8px;margin-bottom:25px}.metric-controls button{border-color:#baa88f;color:#79654d}
-.lab-home .material-chart .alloy-chart{min-height:290px}
+.lab-home .material-chart .alloy-chart{min-height:0}
 .lab-home .material-chart[data-active-metric="1"] .alloy-chart:first-child{display:none}
 .lab-home .material-chart[data-active-metric="1"] .alloy-chart:nth-child(2){display:block}
 .lab-home .data-visual{background:#26372e;min-height:570px;border-radius:0;box-shadow:none;border-color:#586b50}
@@ -209,8 +216,8 @@ body[data-project="alloy"] .lab-journal-visual,body[data-project="energy"] .lab-
 .sejong-indicators>span{font-size:12px;padding:13px 0;border-top:1px solid #b6c6b4;display:flex;gap:10px}
 .sejong-indicators b{font-size:10px;font-weight:400;color:#647d5f}.sejong-exhibit footer{margin-top:24px}
 .sejong-exhibit footer p{font-size:12px!important;line-height:1.8;color:#4c6755}
-@media(min-width:901px){.lab-home .work-spread{overflow:visible}.lab-home .work-spread .spread-copy{position:sticky;top:100px}}
-@media(max-width:1100px) and (min-width:901px){.lab-home .home-about h2 span{display:block;margin:8px 0 0}.lab-home .portfolio-hero{min-height:680px}.lab-home .hero-copy h1{font-size:4.8vw!important}.lab-home .hero-object{min-height:450px}.lab-home .material-compositions>span{font-size:70px}.lab-home .data-visual{padding:25px}.lab-home .data-score strong{font-size:70px!important}}
+@media(min-width:901px){.lab-home .work-spread{overflow:visible}.lab-home .work-spread .spread-copy{position:sticky;top:100px}.lab-home .work-spread.materials-spread .spread-copy{position:relative;top:auto}}
+@media(max-width:1100px) and (min-width:901px){.lab-home .home-about h2 span{display:block;margin:8px 0 0}.lab-home .portfolio-hero{min-height:680px}.lab-home .hero-copy h1{font-size:4.8vw!important}.lab-home .hero-object{min-height:450px}.lab-home .data-visual{padding:25px}.lab-home .data-score strong{font-size:70px!important}}
 @media(max-width:900px){
  .lab-home .home-about#home-profile{padding:30px 6vw;grid-template-columns:1fr;gap:24px}
  .lab-home .home-about h2{font-size:32px!important}.lab-home .home-about h2 span{font-size:18px;margin-left:12px}

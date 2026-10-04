@@ -133,8 +133,8 @@ body,body *:not(pre):not(code),button,input,select,textarea{font-family:'IBM Ple
 @media(max-width:600px){.story-content{padding:18px 0 30px!important}.story-grid{grid-template-columns:1fr;gap:13px;margin-top:16px}.story-main{padding:18px}.story-main p{font-size:13px!important;line-height:1.95!important}.story-footer{display:block}.story-footer>span{margin-bottom:9px}.map-expanded .map-frame{height:72dvh!important;min-height:430px!important}}
 
 /* 상세를 열면 개요는 접고, 선택한 성과물·이야기를 첫 화면에서 바로 읽습니다. */
-.project-overview{max-height:980px;overflow:hidden;transition:max-height .48s cubic-bezier(.2,.8,.2,1),margin .42s ease,padding .42s ease,opacity .32s ease,transform .42s cubic-bezier(.2,.8,.2,1)}
-.main-view.has-focus .project-overview{max-height:0!important;min-height:0!important;margin:0!important;padding-top:0!important;padding-bottom:0!important;opacity:0!important;transform:translateY(-20px)!important;pointer-events:none!important}
+.project-overview{max-height:none;overflow:visible;transition:margin .42s ease,padding .42s ease,opacity .32s ease,transform .42s cubic-bezier(.2,.8,.2,1)}
+.main-view.has-focus .project-overview{max-height:0!important;min-height:0!important;overflow:hidden!important;margin:0!important;padding-top:0!important;padding-bottom:0!important;opacity:0!important;transform:translateY(-20px)!important;pointer-events:none!important}
 .focus-toolbar{position:relative;z-index:1}.focus-toolbar b{font-weight:700;color:#465f6b}
 
 /* 확대/축소 때 지도·개요·레이아웃이 같은 리듬으로 전환됩니다. */

@@ -139,7 +139,7 @@ function academyWiringPracticeVisual() {
     <path class="edu-fault-line" d="M315 126v28M335 126v28M315 140l14-18"/>
     <circle class="edu-outline" cx="445" cy="140" r="20"/>${eduText(445,146,'KM','small')}${eduText(445,182,'코일','small')}${eduText(385,275,'KM 자기유지','small')}
     ${eduText(355,301,'접점 개방 → 기동 불가','fault')}${eduNode(228,320,254,62,'단자별 저항·전압','멀티테스터로 이상 구간 비교')}`,
-    '07.30–31 · 연수원 배선·고장 진단 실습 기록',400);
+    '연수원 배선·고장 진단 실습 기록',400);
 }
 function academyGeneratorPracticeVisual() {
   const phases=eduFigure('practice-generator','발전기 조건 조정과 3상 파형','회전속도·계자전류를 바꾸며 파형과 위상차를 확인',key=>
@@ -163,7 +163,7 @@ function academyDrivePracticeVisual() {
     <circle class="edu-outline" cx="95" cy="330" r="25"/>${eduText(95,337,'M')}${eduText(95,379,'전동기')}
     ${eduNode(260,120,210,65,'제어반')}${eduArrow(key,'M365 191V212',true)}${eduNode(260,220,210,65,'Gate Drive','IGBT 구동 신호')}${eduArrow(key,'M252 253H178',true)}
     ${eduNode(260,325,210,55,'제동 초퍼 · 냉각','장치 위치·구조 관찰')}`,
-    '07.30–31 · 연수원 MV AC DRIVE 실습 기록',400);
+    '연수원 MV AC DRIVE 실습 기록',400);
   const protection=eduFigure('practice-protection','고압 배전반에서 확인한 보호 요소','각 요소의 관계를 단선도와 인터록 도면으로 대조',()=>
     `${eduNode(20,20,210,68,'VCB 위치','Test / Service')}${eduNode(270,20,210,68,'접지 스위치','CME')}
     <path class="edu-wire edu-soft" d="M125 90V105H210V118M375 90V105H290V118M210 166V185H125V200M290 166V185H375V200"/>
@@ -178,7 +178,7 @@ function academyPlcPracticeVisual() {
     <rect class="edu-node" x="185" y="70" width="135" height="115" rx="6"/>${eduText(252,106,'PLC')}${eduText(252,136,'작성한 논리','small')}<path class="edu-wire" d="M208 153h87M208 166h54"/>
     ${eduArrow(key,'M328 126H395')}<circle class="edu-node" cx="430" cy="126" r="27"/><path class="edu-outline" d="M411 107l38 38M411 145l38-38"/>${eduText(430,181,'표시등')}${eduText(430,211,'출력 상태','small')}
     ${eduArrow(key,'M430 220V238H290V252',true)}${eduArrow(key,'M210 252V238H70V220',true)}${eduNode(80,260,340,62,'회로도 ↔ 논리 ↔ 출력','입력 조건과 표시등 동작 대조')}`,
-    '08.18–19 · 한국해양대학교 MASTC PLC 실습 기록',340);
+    '한국해양대학교 MASTC PLC 실습 기록',340);
 }
 function academyPracticeVisualMarkup(branch,index) {
   if(branch===2)return academyPlcPracticeVisual();

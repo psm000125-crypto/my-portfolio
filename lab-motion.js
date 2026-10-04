@@ -18,7 +18,7 @@ function bindPortfolioMotion(root){
  const hero=root.querySelector('.portfolio-hero');
  const frame=hero?.querySelector('iframe');
  const chapters=[...root.querySelectorAll('[data-chapter]')];
- let raf=0,previousProgress=-1,manualView=false;
+ let raf=0,previousProgress=-1;
  const update=()=>{
   raf=0;
   if(!hero?.isConnected)return;
@@ -34,7 +34,7 @@ function bindPortfolioMotion(root){
   });
   if(preference.matches){hero.style.setProperty('--hero-progress','0');return;}
   hero.style.setProperty('--hero-progress',String(progress));
-  if(!manualView&&rect.bottom>0&&rect.top<innerHeight&&Math.abs(previousProgress-progress)>.001){
+  if(rect.bottom>0&&rect.top<innerHeight&&Math.abs(previousProgress-progress)>.001){
    frame?.contentWindow?.postMessage({type:'portfolio-specimen-progress',progress},location.origin);
    previousProgress=progress;
   }
@@ -50,16 +50,6 @@ function bindPortfolioMotion(root){
  }
  // Scoped listeners are removed whenever the archive route changes.
  const listen=(button,handler)=>{button.addEventListener('click',handler);disposers.push(()=>button.removeEventListener('click',handler));};
- let specimenView='iso',wire=false;
- const specimenButtons=[...root.querySelectorAll('[data-specimen]')];
- specimenButtons.forEach(button=>listen(button,()=>{
-  if(button.dataset.specimen==='wire')wire=!wire;
-  else specimenView=button.dataset.specimen;
-  manualView=specimenView!=='iso';
-  specimenButtons.forEach(item=>item.setAttribute('aria-pressed',String(item.dataset.specimen==='wire'?wire:item.dataset.specimen===specimenView)));
-  frame?.contentWindow?.postMessage({type:'portfolio-specimen-view',view:specimenView,wire},location.origin);
-  previousProgress=-1;onScroll();
- }));
  const metricButtons=[...root.querySelectorAll('[data-metric]')];
  metricButtons.forEach(button=>listen(button,()=>{
   root.querySelector('.material-chart').dataset.activeMetric=button.dataset.metric;

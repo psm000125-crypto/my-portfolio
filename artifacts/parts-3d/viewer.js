@@ -1,3 +1,8 @@
+/* Apply only the scroll delta, keeping rotations made by the visitor. */
+function applySpecimenScrollRotation(orientation,previousScroll,nextScroll){
+ orientation.multiply(previousScroll.clone().invert()).multiply(nextScroll).normalize();
+ previousScroll.copy(nextScroll);
+}
 (function(){
   'use strict';
   const heroMode=new URLSearchParams(location.search).get('hero')==='1';
@@ -26,19 +31,14 @@
   const models=defs.map((_,i)=>PartsModels.build(i));let current=0,auto=false,wire=false,dirty=true,inView=true,lastTime=0;
   const radii=models.map(model=>{model.updateMatrixWorld(true);let radius=0;const p=new T.Vector3();model.traverse(m=>{if(!m.isMesh)return;const a=m.geometry.attributes.position;for(let i=0;i<a.count;i++){p.fromBufferAttribute(a,i).applyMatrix4(m.matrixWorld);radius=Math.max(radius,p.length());}});return radius;});
   const initialQ=new T.Quaternion().setFromEuler(new T.Euler(.53,-.48,.015,'XYZ'));
+  const previousScrollQ=new T.Quaternion();
   window.addEventListener('message',event=>{
-   if(heroMode&&event.source===parent&&event.origin===location.origin&&event.data?.type==='portfolio-specimen-view'){
-    const {view,wire:wireValue}=event.data;
-    if(!['iso','top'].includes(view)||typeof wireValue!=='boolean')return;
-    wire=wireValue;PartsModels.materials.forEach(material=>{material.wireframe=wire;});
-    preset(view);dirty=true;return;
-   }
    if(!heroMode||motionPreference.matches||event.source!==parent||event.origin!==location.origin||event.data?.type!=='portfolio-specimen-progress')return;
    const progress=event.data.progress;
    if(typeof progress!=='number'||!Number.isFinite(progress))return;
    const value=Math.min(1,Math.max(0,progress));
    setAuto(false);
-   pivot.quaternion.copy(initialQ).multiply(new T.Quaternion().setFromEuler(new T.Euler(value*.45,value*1.9,-value*.12)));
+   applySpecimenScrollRotation(pivot.quaternion,previousScrollQ,new T.Quaternion().setFromEuler(new T.Euler(value*.45,value*1.9,-value*.12)));
    dirty=true;
   });
   const viewQuats={iso:initialQ,front:new T.Quaternion(),top:new T.Quaternion().setFromEuler(new T.Euler(Math.PI/2,0,0)),bottom:new T.Quaternion().setFromEuler(new T.Euler(-Math.PI/2,0,0))};
@@ -51,7 +51,7 @@
   function setAuto(value){auto=value;$('#auto')?.setAttribute('aria-pressed',String(auto));dirty=true;}
   function freeView(){document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed','false'));$('#view-label').textContent='자유 회전';}
   function preset(name){pivot.quaternion.copy(viewQuats[name]);pivot.position.set(0,0,0);setAuto(false);$('#view-label').textContent=viewLabels[name];document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===name)));dirty=true;}
-  function reset(){zoomRatio=1;camera.position.z=fitDistance();$('#zoom-value').textContent='100%';preset('iso');}
+  function reset(){zoomRatio=1;camera.position.z=fitDistance();$('#zoom-value').textContent='100%';previousScrollQ.identity();preset('iso');}
   function select(index){
     current=index;pivot.clear();pivot.add(models[index]);const d=defs[index];
     $('#part-number').textContent=String(index+1).padStart(2,'0');$('#part-english').textContent=d.english;$('#part-title').textContent=d.title;$('#part-description').textContent=d.description;

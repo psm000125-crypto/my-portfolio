@@ -28,8 +28,7 @@ function portfolioHomeMarkup(){
   <div class="hero-object">
    <div class="specimen-guide" aria-hidden="true"><span class="specimen-cross cross-a">+</span><span class="specimen-cross cross-b">+</span><span class="specimen-axis">MIM / SPECIMEN 01</span></div>
    <span class="object-coordinate">01 / WHEEL</span>
-   <iframe src="artifacts/parts-3d/index.html?hero=1&lab=1&v=20261004-exhibition" title="MIM 부품의 사진 기반 3D 재구성" loading="eager"></iframe>
-   <div class="specimen-controls" role="group" aria-label="3D 부품 보기"><button type="button" data-specimen="iso" aria-pressed="true">입체</button><button type="button" data-specimen="top" aria-pressed="false">윗면</button><button type="button" data-specimen="wire" aria-pressed="false">구조</button></div>
+   <iframe src="artifacts/parts-3d/index.html?hero=1&lab=1&v=20261004-refinement" title="MIM 부품의 사진 기반 3D 재구성" loading="eager"></iframe>
    <span class="specimen-note">드래그로 회전</span>
   </div>
   <div class="hero-bottom"><span>OBSERVE → MEASURE → INTERPRET</span><span>SCROLL TO EXPLORE ↓</span><span>SELECTED WORK / 01—03</span></div>
@@ -38,12 +37,12 @@ function portfolioHomeMarkup(){
  <section class="selected-work" id="selected-work" aria-labelledby="selected-title">
   <div class="home-section-heading" data-reveal><h2 id="selected-title">A closer look.<span>관찰에서 이해까지</span></h2><span class="section-count">01 — 03</span></div>
   <article class="work-spread field-spread" id="field-work" data-chapter="field">
-   <div class="spread-copy" data-reveal><span class="spread-index">01 / FIELD</span><h3>작은 부품에서<br>공정 전체를 보다.</h3><p>MIM 공정 품질관리 인턴십</p><div class="spread-description">금속 분말이 제품이 되기까지.<br>공정 흐름과 측정·검사 경험을 함께 기록했습니다.</div><a class="spread-link" href="#mim" data-project-transition>현장 경험 읽기 <span>↗</span></a><small>계림금속 / 2026.01–02</small><ol class="lab-process" aria-label="MIM 공정 흐름"><li>혼합</li><li>사출</li><li>탈지</li><li>소결</li></ol></div>
+   <div class="spread-copy" data-reveal><span class="spread-index">01 / FIELD</span><h3>작은 부품에서<br>공정 전체를 보다.</h3><p>MIM 공정 품질관리 인턴십</p><div class="spread-description">금속 분말이 제품이 되기까지.<br>공정 흐름과 측정·검사 경험을 함께 기록했습니다.</div><a class="spread-link" href="#mim" data-project-transition>현장 경험 읽기 <span>↗</span></a><small>계림금속</small></div>
    <div class="spread-image" style="view-transition-name:project-mim">${labEquipmentVisual()}</div>
    <div class="chapter-word" aria-hidden="true">OBSERVE.</div>
   </article>
   <article class="work-spread materials-spread" id="materials-work" data-chapter="materials">
-   <div class="materials-visual" data-reveal style="view-transition-name:project-alloy"><span class="visual-kicker">Fe–Si / MATERIAL STUDY</span><div class="material-compositions"><span>Fe</span><span>3.5<small>wt% Si</small></span><span>6.5<small>wt% Si</small></span></div><div class="metric-controls" role="group" aria-label="합금 비교 지표"><button type="button" data-metric="0" aria-pressed="true">경도</button><button type="button" data-metric="1" aria-pressed="false">기공률</button></div><div class="material-chart">${alloyMetricCharts()}</div><span class="visual-source">열간 압연 전 → 후</span></div>
+   <div class="materials-visual" data-reveal style="view-transition-name:project-alloy"><span class="visual-kicker">Fe–Si / MATERIAL STUDY</span><div class="material-compositions"><span>Fe</span><span>3.5<small>wt% Si</small></span><span>6.5<small>wt% Si</small></span></div><div class="metric-controls" role="group" aria-label="합금 비교 지표"><button type="button" data-metric="0" aria-pressed="true">경도</button><button type="button" data-metric="1" aria-pressed="false">기공률</button></div><div class="material-chart">${alloyMetricCharts()}</div></div>
    <div class="spread-copy" data-reveal><span class="spread-index">02 / MATERIALS</span><h3>조성을 바꾸고,<br>변화를 확인하다.</h3><p>고규소 Fe–Si 합금 설계</p><div class="spread-description">조성과 공정에 따라 달라지는 소재의 특성.<br>경도와 기공률을 비교하며 그 변화를 살폈습니다.</div><a class="spread-link" href="#alloy" data-project-transition>연구 과정 살펴보기 <span>↗</span></a><a class="spread-secondary" href="#xrd" data-project-transition>함께 보기 · 세라믹 칼 XRD 분석 ↗</a></div>
    <div class="chapter-word" aria-hidden="true">MEASURE.</div>
   </article>
@@ -53,7 +52,7 @@ function portfolioHomeMarkup(){
    <div class="chapter-word" aria-hidden="true">INTERPRET.</div>
   </article>
  </section>
- <section class="home-archive" id="home-archive" aria-labelledby="archive-title"><div class="home-section-heading" data-reveal><h2 id="archive-title">The collection.<span>경험 전체 보기</span></h2><span class="section-count">${String(archive.length).padStart(2,'0')} PROJECTS</span></div><div class="archive-controls" role="group" aria-label="경험 분야 선택">${[['all','전체'],['field','현장'],['materials','소재'],['data','데이터']].map(([id,label])=>`<button type="button" data-filter="${id}" aria-pressed="${id==='all'}">${label}</button>`).join('')}</div><div class="lab-archive-grid">${archive.map((p,i)=>`<a class="lab-project-card" href="#${p.id}" data-project-transition data-reveal data-field="${['alloy','xrd','energy'].includes(p.id)?'materials':['coating','sejong','fitness'].includes(p.id)?'data':'field'}"><div class="lab-card-visual" data-preview="${p.id}">${labArchiveVisual(p.id)}</div><div class="lab-card-meta"><span>${String(i+1).padStart(2,'0')} / ${p.category}</span><span>↗</span></div><h3>${p.title}</h3><small>${p.shortDate}</small></a>`).join('')}</div><p class="archive-status sr-only" aria-live="polite"></p></section>
+ <section class="home-archive" id="home-archive" aria-labelledby="archive-title"><div class="home-section-heading" data-reveal><h2 id="archive-title">The collection.<span>경험 전체 보기</span></h2><span class="section-count">${String(archive.length).padStart(2,'0')} PROJECTS</span></div><div class="archive-controls" role="group" aria-label="경험 분야 선택">${[['all','전체'],['field','현장'],['materials','소재'],['data','데이터']].map(([id,label])=>`<button type="button" data-filter="${id}" aria-pressed="${id==='all'}">${label}</button>`).join('')}</div><div class="lab-archive-grid">${archive.map((p,i)=>`<a class="lab-project-card" href="#${p.id}" data-project-transition data-reveal data-field="${['alloy','xrd','energy'].includes(p.id)?'materials':['coating','sejong','fitness'].includes(p.id)?'data':'field'}"><div class="lab-card-visual" data-preview="${p.id}">${labArchiveVisual(p.id)}</div><div class="lab-card-meta"><span>${String(i+1).padStart(2,'0')} / ${p.category}</span><span>↗</span></div><h3>${p.title}</h3></a>`).join('')}</div><p class="archive-status sr-only" aria-live="polite"></p></section>
  </article>`;
 }
 function portfolioProjectVisual(id){

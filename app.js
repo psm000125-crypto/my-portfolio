@@ -4,7 +4,7 @@ const view = document.querySelector('#main-view');
 const panel = document.querySelector('#detail-panel');
 const number = i => String(i + 1).padStart(2,'0');
 const roots=experiences.filter(p=>!p.parent);
-const navLink=(p,i,child=false)=>`<a class="nav-item${child?' nav-child':''}" href="#${p.id}" data-id="${p.id}"><span class="num">${child?'↳':number(i)}</span><span><strong>${p.title}</strong><small>${p.shortDate}</small></span><span class="arrow">›</span></a>`;
+const navLink=(p,i,child=false)=>`<a class="nav-item${child?' nav-child':''}" href="#${p.id}" data-id="${p.id}"><span class="num">${child?'↳':number(i)}</span><span><strong>${p.title}</strong></span><span class="arrow">›</span></a>`;
 function renderNavigation(projectId,selection){
  rememberAcademyMenu(nav);
  nav.innerHTML=roots.map((p,i)=>p.id==='academy'?academyNavigationMarkup(projectId,selection):navLink(p,i)).join('');
@@ -285,12 +285,11 @@ function equipmentGalleryMarkup(){
 function project(p){
  document.body.dataset.project=p.id;
  const projectFacts=[
-  ['PERIOD',p.date],
   ['CONTEXT',p.subtitle],
   ['ROLE',p.role]
  ].filter(([,value])=>value);
  view.innerHTML=`<div class="project-overview"><div class="eyebrow">${p.category}</div><h1 class="project-title">${p.title}</h1><h2 class="project-lead">${p.lead}</h2><p class="project-description">${p.summary}</p><dl class="project-facts">${projectFacts.map(([label,value])=>`<div class="project-fact"><dt>${label}</dt><dd>${value}</dd></div>`).join('')}</dl><div class="tags" aria-label="프로젝트 키워드">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div></div><div class="focus-content" id="focus-content" hidden></div>`;
- panel.innerHTML=`<div class="detail-label">EXPLORE THIS EXPERIENCE</div>${p.parent?'<a class="parent-link" href="#academy">← Future Builder 아카데미</a>':''}<a class="overview-link" href="#${p.id}">경험 개요 <span>↖</span></a>${p.children?`<div class="branch-group"><h2>아카데미 활동</h2>${p.children.map(id=>{const c=experiences.find(e=>e.id===id);return `<a class="branch-link" href="#${id}"><span class="branch-symbol">↗</span><span><strong>${c.title}</strong><small>${c.shortDate}</small></span></a>`;}).join('')}</div>`:''}${p.works.length?`<div class="branch-group"><h2>성과물</h2>${p.works.map(w=>`<a class="branch-link work-link" href="#${p.id}/work-${w.id}"><span class="branch-symbol">↗</span><span><strong>${w.title}</strong><small>${w.description}</small></span><span class="project-action" aria-hidden="true">VIEW ↗</span></a>`).join('')}</div>`:''}${p.branches.length?`<div class="branch-group"><h2>경험 속 이야기</h2>${p.branches.map((b,j)=>`<a class="branch-link story-link" href="#${p.id}/story-${j}"><span class="branch-symbol">·</span><span><strong>${b[0]}</strong></span><span class="project-action" aria-hidden="true">READ ↗</span></a>`).join('')}</div>`:''}<a class="back-profile" href="#profile">← 프로필</a>`;
+ panel.innerHTML=`<div class="detail-label">EXPLORE THIS EXPERIENCE</div>${p.parent?'<a class="parent-link" href="#academy">← Future Builder 아카데미</a>':''}<a class="overview-link" href="#${p.id}">경험 개요 <span>↖</span></a>${p.children?`<div class="branch-group"><h2>아카데미 활동</h2>${p.children.map(id=>{const c=experiences.find(e=>e.id===id);return `<a class="branch-link" href="#${id}"><span class="branch-symbol">↗</span><span><strong>${c.title}</strong></span></a>`;}).join('')}</div>`:''}${p.works.length?`<div class="branch-group"><h2>성과물</h2>${p.works.map(w=>`<a class="branch-link work-link" href="#${p.id}/work-${w.id}"><span class="branch-symbol">↗</span><span><strong>${w.title}</strong><small>${w.description}</small></span><span class="project-action" aria-hidden="true">VIEW ↗</span></a>`).join('')}</div>`:''}${p.branches.length?`<div class="branch-group"><h2>경험 속 이야기</h2>${p.branches.map((b,j)=>`<a class="branch-link story-link" href="#${p.id}/story-${j}"><span class="branch-symbol">·</span><span><strong>${b[0]}</strong></span><span class="project-action" aria-hidden="true">READ ↗</span></a>`).join('')}</div>`:''}<a class="back-profile" href="#profile">← 프로필</a>`;
  if(p.id==='academy')view.querySelector('.project-overview').insertAdjacentHTML('beforeend',academyOverviewMarkup());
  else view.querySelector('.project-overview').insertAdjacentHTML('beforeend',portfolioProjectVisual(p.id));
 }
