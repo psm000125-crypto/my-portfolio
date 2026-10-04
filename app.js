@@ -412,16 +412,13 @@ window.addEventListener('message',event=>{
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){const workspace=document.querySelector('.workspace');if(workspace.classList.contains('map-expanded')||workspace.classList.contains('work-expanded')){document.querySelector('.expand-work')?.click();}else if(view.classList.contains('has-focus'))location.hash=currentProject;}});
 render();
 const drawer=document.querySelector('.navigation'),trigger=document.querySelector('.drawer-trigger');
-const desktop=()=>matchMedia('(min-width:901px)').matches;
-let drawerTimer;
-function setDrawer(open){clearTimeout(drawerTimer);document.body.classList.toggle('drawer-open',open);trigger.setAttribute('aria-expanded',String(open));trigger.setAttribute('aria-label',open?'경험 목록 닫기':'경험 목록 열기');}
-function closeDrawerSoon(){clearTimeout(drawerTimer);drawerTimer=setTimeout(()=>{if(!drawer.matches(':hover')&&!drawer.contains(document.activeElement)&&!trigger.matches(':hover'))setDrawer(false);},220);}
-trigger.addEventListener('pointerenter',()=>{if(desktop())setDrawer(true);});trigger.addEventListener('click',()=>setDrawer(desktop()?true:!document.body.classList.contains('drawer-open')));
-drawer.addEventListener('pointerenter',()=>{if(desktop())setDrawer(true);});drawer.addEventListener('pointerleave',()=>{if(desktop())closeDrawerSoon();});
-trigger.addEventListener('pointerleave',()=>{if(desktop())closeDrawerSoon();});drawer.addEventListener('focusin',()=>setDrawer(true));drawer.addEventListener('focusout',closeDrawerSoon);
-document.addEventListener('pointermove',e=>{if(desktop()&&e.pointerType==='mouse'&&e.clientX<36)setDrawer(true);});
+function setDrawer(open){document.body.classList.toggle('drawer-open',open);trigger.setAttribute('aria-expanded',String(open));trigger.setAttribute('aria-label',open?'경험 목록 닫기':'경험 목록 열기');}
+trigger.addEventListener('click',()=>setDrawer(!document.body.classList.contains('drawer-open')));
+drawer.addEventListener('focusin',()=>setDrawer(true));
+document.addEventListener('pointerdown',e=>{if(!drawer.contains(e.target)&&!trigger.contains(e.target))setDrawer(false);});
+document.addEventListener('focusin',e=>{if(!drawer.contains(e.target)&&!trigger.contains(e.target))setDrawer(false);});
 drawer.addEventListener('click',e=>{if(e.target.closest('a')){e.target.closest('a').blur();setDrawer(false);}});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')setDrawer(false);});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){const wasOpen=document.body.classList.contains('drawer-open');setDrawer(false);if(wasOpen)trigger.focus({preventScroll:true});}});
 
 
 
