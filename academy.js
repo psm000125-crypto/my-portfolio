@@ -4,7 +4,7 @@ const academy = experiences.find(project => project.id === 'academy');
 Object.assign(academy, {
   date: '2026.07 — 2026.10',
   shortDate: '2026.07 — 10',
-  summary: '402시간의 Ocean Transformation 과정. 선박·전기전자·AX·DX를 배우고 현장 실습과 팀 PBL로 연결했습니다.',
+  summary: '총 402시간의 Ocean Transformation 과정에서 선박·조선공학, 전기전자, AX·DX를 학습하고 현장 실습과 팀 PBL을 진행했습니다.',
   branches: [
     ['선박 교과 교육', '선박의 설계와 건조 과정을 이해하다', '조선공학 과정에서 배운 기본설계·성능·구조·의장·생산과 시운전입니다. 교재의 원리와 현직자 교육 내용을 과목별로 정리했으며, 조선소 견학과 승선 관찰은 별도 활동에서 볼 수 있습니다.', [
       ['선박 기본설계와 주요 치수', '선박의 부양·적재·자항 기능을 바탕으로 선종과 운항 목적에 맞는 선형, 주요 치수, 기본 배치를 학습했습니다. 전장 LOA·수선간장 LBP, 형폭 B·형깊이 D·흘수 T를 구분하고, 배치도에서 화물창·기관실·탱크가 차지하는 공간을 살폈습니다.', '설계흘수는 운항 성능의 설계 기준, 하계 만재흘수는 적재량과 관련된 기준, 구조흘수는 선체 강도 계산의 기준으로 구분했습니다. 선속·연료소모량·재화중량·화물용량 등 계약 보증사항이 기본설계와 연결되는 과정도 다뤘습니다.'],
@@ -39,7 +39,7 @@ Object.assign(academy, {
 
 // Separate the generator exercise from the high-voltage equipment exercise.
 const ocean = experiences.find(project => project.id === 'ocean');
-ocean.summary = '조선소·선박을 견학하고, 한국해양수산연수원과 한국해양대학교 MASTC에서 배선·고장 진단·고전압·PLC를 실습했습니다.';
+ocean.summary = 'HD현대중공업 조선소 견학과 선박 설비 관찰, 한국해양수산연수원 용당캠퍼스의 고전압·전기추진 실습, 한국해양대학교 MASTC의 PLC 실습을 진행했습니다.';
 const maritimeStory = ocean.branches[1];
 const generatorSection = maritimeStory[3][1];
 maritimeStory[3] = [maritimeStory[3][0],
@@ -147,49 +147,4 @@ function academyNavigationMarkup(projectId,selection='') {
   const selected=track.activities.some(activeActivity);
   return `<details class="nav-academy-track" data-track="nav-${track.id}"${selected||academyDisclosureState.get('nav-'+track.id)?' open':''}><summary><strong>${track.title}</strong></summary><div class="nav-academy-activities">${track.activities.map(activity=>`<a class="nav-activity${activeActivity(activity)?' active':''}" href="#${activity.project}/story-${activity.story}"${activeActivity(activity)?' aria-current="page"':''}><strong>${activity.title}</strong></a>`).join('')}</div></details>`;
  }).join('')}</div></details></div>`;
-}
-
-// Presentation-only summaries. The supplied curriculum and experience records above
-// remain intact; the reading view groups them into a few visual topics.
-const academyReadingGroups = {
- 'academy:0': [
-  ['설계의 기준', '선종과 운항 목적에 맞춰 주요 치수와 배치를 정하고, 적재량·흘수·복원성을 함께 검토하는 과정을 학습했습니다.', [0,1], 0, ['주요 치수', '배치·흘수', '복원성']],
-  ['물 위에서의 성능', '저항과 추진 효율, 파랑 중 운동, 조종 성능을 연결해 선박이 실제 운항 조건에서 어떻게 움직이는지 살폈습니다.', [2,3,4], 3, ['저항·자항', '내항 성능', '조종 성능']],
-  ['구조와 시스템', '선체에 작용하는 하중과 강도를 검토하고, 소음·진동 및 배관·전장·기계 의장의 통합을 다뤘습니다.', [5,6,7], 5, ['선체 강도', '소음·진동', '의장 통합']],
-  ['도면에서 건조까지', '블록 제작·탑재·도크 공정에서 시운전까지의 흐름을 학습했습니다. 설계 변경과 생산 일정이 서로 연결되는 점도 살폈습니다.', [8,9,10], 8, ['블록 공법', '시운전', '설계·생산관리']]
- ],
- 'academy:1': [
-  ['전력의 공급과 분배', '전동기·발전기·변압기의 원리를 익히고, 주·비상 배전반을 통해 선박의 전력이 분배되는 구조를 학습했습니다.', [0,2], 2, ['전기기기', '주·비상 배전반', '보호 계통']],
-  ['조건을 동작으로', '접점과 자기유지·인터록 회로에서 PLC 입·출력 논리까지, 조건에 따라 장치를 기동·정지하는 제어 방식을 다뤘습니다.', [1], 1, ['시퀀스', '자기유지·인터록', 'PLC']],
-  ['전기추진과 연결 기술', '전력변환 장치와 전기추진 계통, 선박 통신·네트워크, 친환경 에너지원의 구성과 역할을 학습했습니다.', [3,4], 3, ['전력변환', '전기추진', '통신·에너지원']]
- ],
- 'academy:2': [
-  ['데이터를 읽는 기준', 'Python으로 데이터를 정리·시각화하고, 학습·검증 데이터를 나눠 머신러닝 모델을 평가하는 과정을 학습했습니다.', [0,1], 0, ['Python·EDA', '데이터 분리', '모델 평가']],
-  ['이미지와 시계열', 'CNN 기반 컴퓨터비전과 RNN·LSTM을 다루며 이미지·순차 데이터에 맞는 모델 구조와 자연어처리를 학습했습니다.', [2,3], 2, ['CNN', 'RNN·LSTM', '자연어처리']],
-  ['산업 AI의 적용 조건', '강화학습의 보상·행동 구조와 산업·AI 데이터 보안을 다뤘습니다. 모델 성능뿐 아니라 데이터와 운영 조건도 함께 살폈습니다.', [4,5], 4, ['강화학습', '데이터 보안', '산업 AI']]
- ],
- 'ocean:0': [
-  ['건조 현장', '7월 23일 HD현대중공업 조선소에서 건조 중인 선박, 생산설비와 선내 배관을 관찰했습니다. 설계·생산·의장 공정의 연결을 현장에서 확인했습니다.', [0], 0, ['조선소 견학', '생산설비', '선내 배관']],
-  ['설비와 운전 공간', '3441호선의 발전기·윤활·보일러·컴프레서와 배전반, ECR·CCR·브리지를 둘러봤습니다. 태화호에서는 발전·배전·전기추진 설비의 배치를 살폈습니다.', [1], 1, ['기관실', '배전반·제어 공간', '태화호']]
- ],
- 'ocean:1': [
-  ['직접 배선하고 고장을 찾다', '3상 전원을 MCCB·전자접촉기·과부하계전기를 거쳐 전동기에 연결했습니다. 자기유지·표시등 회로를 배선하고, 단자별 저항·전압을 비교해 이상 구간을 좁혔습니다.', [0], 0, ['기동·정지 회로', '멀티테스터', '고장 진단']],
-  ['부하에 따른 발전기 변화', '회전속도와 계자전류를 조정하며 3상 전압 파형·위상차를 확인했습니다. 저항·유도·용량 부하에 따른 전류 위상과 단자전압을 비교했습니다.', [1], 1, ['동기발전기', '오실로스코프', '부하 비교']],
-  ['고전압 설비의 운전 조건', 'VCB 위치, 접지 스위치·Safety Key·도어 인터록을 확인했습니다. MV AC DRIVE의 전력변환 흐름을 도면으로 읽고 고전압 AC DRIVE 실습교육을 수료했습니다.', [2], 2, ['고압 배전반', 'MV AC DRIVE', '인터록']]
- ],
- 'ocean:2': [
-  ['PLC 논리를 실제 출력으로', '전동기 제어 회로도를 참고해 PLC 입·출력 논리를 작성했습니다. 입력 조건에 따라 표시등이 의도대로 동작하는지 확인했습니다.', [0], 0, ['회로도', '입·출력 논리', '동작 확인']],
-  ['실선에서 확인한 배치', '고전압 실험과 PLC 실습 후 실습선·친환경 전기추진선박을 견학했습니다. 실습에서 다룬 장치가 실제 선박에 배치되는 모습을 살폈습니다.', [1], 1, ['고전압 실험', '실습선', '친환경 전기추진']]
- ],
- 'coating:0': [
-  ['학습 입력을 정리하다', '5개 표면 상태를 분류하도록 손상 이미지를 제외하고 224×224 RGB로 규격을 통일했습니다. 가중치 손실과 Label Smoothing으로 클래스 불균형에 대응했습니다.', [0], 0, ['5개 클래스', '224×224 RGB', '불균형 대응']],
-  ['세 모델의 판단을 결합하다', 'ConvNeXt-Tiny·EfficientNet-B0·ResNet-50을 Stratified K-Fold로 검증했습니다. 4방향 TTA와 검증 F1 기반 가중 소프트보팅을 적용한 제 방식이 팀의 최종 모델로 채택됐습니다.', [1], 1, ['Stratified K-Fold', '4방향 TTA', '가중 소프트보팅']],
-  ['점수 이후, 오분류를 확인하다', '테스트 1,000건의 최종 F1은 0.970905였습니다. 강한 빛의 하이라이트를 결함으로 판단한 이미지를 찾아, 실제 결함과 반사광의 색 차이를 구분하도록 보완했습니다.', [2], 2, ['F1 0.970905', '1,000건 제출', '반사광 오분류']]
- ]
-};
-
-function academyReadingMarkup(project,story) {
- const branch=project.branches.indexOf(story),groups=academyReadingGroups[project.id+':'+branch];
- const activity=academyTracks.flatMap(track=>track.activities).find(item=>item.project===project.id&&item.story===branch);
- return `<article class="story-content story-article enriched-story academy-reading visual-${project.id}"><header class="story-header"><p class="story-kicker">${escapeHTML(activity.title)}</p><h2>${escapeHTML(story[1])}</h2><p class="academy-reading-date">${escapeHTML(activity.date)}</p></header><div class="story-notes">${groups.map(([title,copy,indices,visual,topics],i)=>`<section class="story-note enriched-note academy-reading-topic">${indices.map(index=>`<span class="academy-section-anchor" id="activity-${project.id}-story-${branch}-section-${index}" tabindex="-1"></span>`).join('')}<div class="story-section-heading"><span>${number(i)}</span><h3>${escapeHTML(title)}</h3></div><div class="story-section-body"><div class="story-section-copy"><p>${escapeHTML(copy)}</p><ul class="academy-topic-tags" aria-label="${escapeHTML(title)} 주요 항목">${topics.map(topic=>`<li>${escapeHTML(topic)}</li>`).join('')}</ul></div><div class="story-section-visual">${storySectionVisualMarkup(project,story,visual)}</div></div></section>`).join('')}</div></article>`;
 }

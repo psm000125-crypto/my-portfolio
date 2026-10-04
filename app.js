@@ -78,10 +78,9 @@ function bindMimTabs(content){
 }
 function storyMarkup(project,story,sectionIndex=null){
  if(project.id==='mim')return mimStoryMarkup(story);
- if(project.id==='academy'||project.parent==='academy')return academyReadingMarkup(project,story);
  const sections=story[3]||[[story[0],story[2]]];
  const continuous=project.id==='academy'||project.parent==='academy',branch=project.branches.indexOf(story);
- return `<article class="story-content story-article enriched-story visual-${project.id}"><header class="story-header"><p class="story-kicker">${escapeHTML(story[0])}</p><h2>${escapeHTML(story[1])}</h2>${story[3]?`<p class="story-intro">${escapeHTML(story[2])}</p>`:''}</header><div class="story-notes">${sections.map((section,i)=>({section,i})).filter(item=>continuous||sectionIndex===null||item.i===sectionIndex).map(({section,i})=>`<section class="story-note enriched-note"${continuous?` id="activity-${project.id}-story-${branch}-section-${i}" tabindex="-1"`:''}><div class="story-section-heading"><span>${number(i)}</span><h3>${escapeHTML(section[0])}</h3></div><div class="story-section-body"><div class="story-section-copy">${section.slice(1).map(paragraph=>`<p>${escapeHTML(paragraph)}</p>`).join('')}</div><div class="story-section-visual">${storySectionVisualMarkup(project,story,i)}</div></div></section>`).join('')}</div></article>`;
+ return `<article class="story-content story-article enriched-story visual-${project.id}"><header class="story-header"><p class="story-kicker">${escapeHTML(story[0])}</p><h2>${escapeHTML(story[1])}</h2>${story[3]&&project.id!=='academy'?`<p class="story-intro">${escapeHTML(story[2])}</p>`:''}</header><div class="story-notes">${sections.map((section,i)=>({section,i})).filter(item=>continuous||sectionIndex===null||item.i===sectionIndex).map(({section,i})=>`<section class="story-note enriched-note"${continuous?` id="activity-${project.id}-story-${branch}-section-${i}" tabindex="-1"`:''}><div class="story-section-heading"><span>${number(i)}</span><h3>${escapeHTML(section[0])}</h3></div><div class="story-section-body"><div class="story-section-copy">${section.slice(1).map(paragraph=>`<p>${escapeHTML(paragraph)}</p>`).join('')}</div><div class="story-section-visual">${storySectionVisualMarkup(project,story,i)}</div></div></section>`).join('')}</div></article>`;
 }
 function slideDeckMarkup(p){
  const deck=artifactDecks[p.id];
@@ -94,14 +93,13 @@ function bindSlideDeck(content,p){
  content.querySelector('.slide-viewer').onkeydown=e=>{if(e.target.tagName==='SELECT')return;if(['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();change(selected+(e.key==='ArrowRight'?1:-1));}};change(0);
 }
 function academyPblMarkup(p){
- return `${storyMarkup(p,p.branches[0])}<div class="academy-pbl-artifacts"><details class="academy-evidence"><summary>프로젝트 수치·학습 과정</summary><section class="academy-artifact-section" id="activity-coating-work-presentation-summary" tabindex="-1">${summaryMarkup(p.id)}</section></details><details class="academy-evidence"><summary>결과 발표자료</summary><section class="academy-artifact-section" id="activity-coating-work-slides" tabindex="-1">${slideDeckMarkup(p)}</section></details><details class="academy-evidence"><summary>모델 예측 결과·구현 코드</summary><section class="academy-artifact-section" id="activity-coating-work-implementation" tabindex="-1"><div class="model-implementation"><section class="model-predictions" aria-label="모델 예측 결과">${predictionMarkup()}</section><section class="model-code" aria-label="모델 구현 코드">${notebookMarkup()}</section></div></section></details></div>`;
+ return `${storyMarkup(p,p.branches[0])}<div class="academy-pbl-artifacts"><section class="academy-artifact-section" id="activity-coating-work-presentation-summary" tabindex="-1"><h2>프로젝트 요약</h2>${summaryMarkup(p.id)}</section><section class="academy-artifact-section" id="activity-coating-work-slides" tabindex="-1">${slideDeckMarkup(p)}</section><section class="academy-artifact-section" id="activity-coating-work-implementation" tabindex="-1"><h2>모델 예측 결과 · 구현 코드</h2><div class="model-implementation"><section class="model-predictions" aria-label="모델 예측 결과">${predictionMarkup()}</section><section class="model-code" aria-label="모델 구현 코드">${notebookMarkup()}</section></div></section></div>`;
 }
 let currentActivityRoute='';
 function scrollAcademyActivity(projectId,selection,sectionIndex){
  const anchor=selection?.startsWith('work-')?`activity-${projectId}-${selection}`:sectionIndex!==null?`activity-${projectId}-${selection}-section-${sectionIndex}`:null;
  const target=anchor?document.getElementById(anchor):view.querySelector('.focus-content');
  if(!target)return;
- const disclosure=target.closest('details');if(disclosure)disclosure.open=true;
  target.scrollIntoView({behavior:reducedMotion()?'instant':'smooth',block:'start'});
  if(anchor){
   const active=document.activeElement;
@@ -314,8 +312,7 @@ function focusContent(p,selection,sectionIndex=null){
  const after=overview.getBoundingClientRect();
  if(!wasExpanded&&!reducedMotion())overview.animate([{transform:`translate(${before.left-after.left}px,${before.top-after.top}px) scale(1.12)`,opacity:.65},{transform:'translate(0,0) scale(1)',opacity:1}],{duration:520,easing:'cubic-bezier(.2,.8,.2,1)'});
  const title=work?work.title:sectionIndex!==null?story[3][sectionIndex][0]:story[0];
- const academyFamily=p.id==='academy'||p.parent==='academy';
- content.innerHTML=work?.type==='parts3d'?'':`<div class="focus-toolbar"><span>${academyFamily?'FUTURE BUILDER · ACADEMY':`<b>${p.title}</b> · ${work?'SELECTED WORK':'EXPERIENCE NOTES'}`}</span><a class="close-focus" href="#${academyFamily?'academy':p.id}" aria-label="상세 닫고 경험 개요로 돌아가기">${academyFamily?'아카데미 개요':'개요로 돌아가기'} ↖</a></div>`;
+ content.innerHTML=work?.type==='parts3d'?'':`<div class="focus-toolbar"><span><b>${p.title}</b> · ${work?'SELECTED WORK':p.id==='academy'||p.parent==='academy'?'ACADEMY ACTIVITIES':'EXPERIENCE NOTES'}</span><a class="close-focus" href="#${p.id}" aria-label="상세 닫고 경험 개요로 돌아가기">개요로 돌아가기 ↖</a></div>`;
  if(story){
   content.innerHTML+=p.id==='coating'?academyPblMarkup(p):storyMarkup(p,story,sectionIndex);
   if(p.id==='mim')bindMimTabs(content);
