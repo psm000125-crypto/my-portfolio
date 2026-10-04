@@ -51,11 +51,6 @@
 .equipment-label{position:absolute;top:30px;left:30px;display:flex;flex-direction:column;gap:12px}
 .equipment-label>span{font-size:9px;letter-spacing:.15em;color:#d5ddcb}
 .equipment-label strong{font-size:26px;font-weight:400;letter-spacing:-.04em}
-.equipment-pin{position:absolute;display:flex;align-items:center;gap:10px;font-size:11px;text-shadow:0 1px 10px #000;pointer-events:none}
-.equipment-pin i{width:8px;height:8px;display:block;border:1px solid #edf4dd;border-radius:50%;box-shadow:0 0 0 5px #ecf3d52b}
-.equipment-pin:after{content:'';height:1px;width:55px;background:#edf4dd78;position:absolute;left:3px;top:4px;transform-origin:left;transform:rotate(-45deg)}
-.pin-sensor{top:31%;left:43%}.pin-table{top:75%;left:49%}
-.lab-equipment figcaption{position:absolute;bottom:20px;left:25px;right:25px;font-size:10px;line-height:1.7;color:#dae2cc}
 .lab-home .materials-visual{background:transparent;position:relative;z-index:2;border-top:1px solid #bbab95;border-bottom:1px solid #bbab95;border-radius:0;padding:30px 5px;min-height:500px}
 .lab-home .material-compositions{justify-content:space-between;margin:40px 0}
 .lab-home .material-compositions>span{font-size:clamp(68px,7vw,110px);color:#8b7255}
@@ -114,7 +109,7 @@ body[data-project="alloy"] .lab-journal-visual,body[data-project="energy"] .lab-
  .lab-home .selected-work{padding-top:60px}.lab-home .home-section-heading{margin-bottom:45px}
  .lab-home .work-spread,.lab-home .materials-spread{grid-template-columns:1fr;gap:32px;padding:65px 6vw 95px}
  .lab-home .spread-copy h3{font-size:clamp(32px,8.6vw,45px)!important}
- .lab-equipment{height:480px;min-height:0;max-height:none}.equipment-label{left:22px;top:22px}.equipment-label strong{font-size:24px}.lab-equipment figcaption{left:20px;right:20px;font-size:10px}
+ .lab-equipment{height:480px;min-height:0;max-height:none}.equipment-label{left:22px;top:22px}.equipment-label strong{font-size:24px}
  .lab-home .materials-visual{order:2;min-height:0;padding:25px 0}.lab-home .material-compositions>span{font-size:72px}
  .lab-home .data-visual{padding:25px}.lab-home .data-score strong{font-size:clamp(60px,20vw,95px)!important}
  .chapter-word{font-size:15vw;bottom:12px}.lab-process{margin-top:25px}

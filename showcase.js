@@ -1,12 +1,9 @@
 /* Existing experience data stays the source of every project and measured value. */
 function labEquipmentVisual(compact=false){
  return `<figure class="lab-equipment${compact?' compact':''}" data-reveal>
-  <img src="artifacts/equipment-gallery/images/optical-3d.jpg" alt="비접촉 3D 측정 장비 예시: 광학 센서와 시편 회전 테이블" width="1120" height="1684" loading="lazy" decoding="async">
+  <img src="artifacts/equipment-gallery/images/optical-3d.jpg" alt="비접촉 3D 측정 장비" width="1120" height="1684" loading="lazy" decoding="async">
   <div class="equipment-shade" aria-hidden="true"></div>
   <div class="equipment-label"><span>OBSERVATION / 01</span><strong>형상을 읽는 시선.</strong></div>
-  <span class="equipment-pin pin-sensor"><i aria-hidden="true"></i>광학 센서</span>
-  <span class="equipment-pin pin-table"><i aria-hidden="true"></i>시편 회전 테이블</span>
-  <figcaption>비접촉 3D 측정 장비 예시 · 인턴십 현장 촬영 사진이 아님</figcaption>
  </figure>`;
 }
 function labArchiveVisual(id){
@@ -22,6 +19,7 @@ function labArchiveVisual(id){
 function portfolioHomeMarkup(){
  const archive=experiences.filter(p=>!p.parent);
  return `<article class="portfolio-home lab-home">
+ <section class="home-about" id="home-profile" aria-labelledby="profile-title"><div data-reveal><span class="home-kicker">PROFILE</span><h2 id="profile-title">편성민<span>Seongmin Pyeon</span></h2><p>금오공과대학교 신소재공학과<br>품질관리 · 소재 연구 · 데이터 분석</p></div><div class="about-details" data-reveal><p>현장에서 관찰한 것과 분석으로 확인한 것을<br>하나의 포트폴리오에 연결합니다.</p><dl><div><dt>DATA</dt><dd>Python · NumPy · pandas · scikit-learn</dd></div><div><dt>AI & VISION</dt><dd>PyTorch · torchvision</dd></div><div><dt>QUALITY</dt><dd>치수 측정 · 3차원 측정 · 표면조도 · X-ray · C/S 분석</dd></div></dl><a class="contact-email" href="mailto:psm000125@naver.com">psm000125@naver.com <span>↗</span></a><a class="contact-phone" href="tel:01087548353">010-8754-8353</a></div></section>
  <section class="portfolio-hero" aria-labelledby="home-title">
   <div class="hero-topline"><span>SEONGMIN PYEON / PORTFOLIO</span><span>QUALITY · MATERIALS · DATA</span></div>
   <div class="hero-watermark" aria-hidden="true">MATERIAL</div>
@@ -55,7 +53,6 @@ function portfolioHomeMarkup(){
   </article>
  </section>
  <section class="home-archive" id="home-archive" aria-labelledby="archive-title"><div class="home-section-heading" data-reveal><h2 id="archive-title">Further explorations<span>경험 전체 보기</span></h2><p>연구, 실습, 그리고 직접 만든 결과물.</p></div><div class="lab-archive-grid">${archive.map((p,i)=>`<a class="lab-project-card" href="#${p.id}" data-project-transition data-reveal><div class="lab-card-visual" data-preview="${p.id}">${labArchiveVisual(p.id)}<span class="card-visual-label">${p.id==='mim'?'REFERENCE IMAGE':'PROJECT CONCEPT'}</span></div><div class="lab-card-meta"><span>${String(i+1).padStart(2,'0')} / ${p.category}</span><span>↗</span></div><h3>${p.title}</h3><small>${p.shortDate}</small></a>`).join('')}</div></section>
- <section class="home-about" id="home-contact" aria-labelledby="about-title"><div data-reveal><span class="home-kicker">ABOUT & CONTACT</span><h2 id="about-title">편성민<span>Seongmin Pyeon</span></h2><p>금오공과대학교 신소재공학과<br>품질관리 · 소재 연구 · 데이터 분석</p></div><div class="about-details" data-reveal><p>현장에서 관찰한 것과 분석으로 확인한 것을<br>하나의 포트폴리오에 연결합니다.</p><dl><div><dt>DATA</dt><dd>Python · NumPy · pandas · scikit-learn</dd></div><div><dt>AI & VISION</dt><dd>PyTorch · torchvision</dd></div><div><dt>QUALITY</dt><dd>치수 측정 · 3차원 측정 · 표면조도 · X-ray · C/S 분석</dd></div></dl><a class="contact-email" href="mailto:psm000125@naver.com">psm000125@naver.com <span>↗</span></a><a class="contact-phone" href="tel:01087548353">010-8754-8353</a></div></section>
  </article>`;
 }
 function portfolioProjectVisual(id){

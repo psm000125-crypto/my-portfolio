@@ -159,3 +159,8 @@ body button:focus-visible,body a:focus-visible,body summary:focus-visible { outl
  .about-details dl>div { grid-template-columns:70px 1fr;gap:10px; }
  .contact-email { font-size:20px; }
 }
+
+/* The profile opens the homepage; contact details stay secondary to the profile narrative. */
+.home-about#home-profile{margin-top:0;padding-top:72px;padding-bottom:72px}
+.home-about#home-profile .contact-email{max-width:460px;font-size:14px;line-height:1.6;letter-spacing:0}
+@media(max-width:900px){.home-about#home-profile{margin-top:0;padding-top:50px;padding-bottom:50px}.home-about#home-profile .contact-email{font-size:13px}}
