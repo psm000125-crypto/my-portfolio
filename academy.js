@@ -59,7 +59,7 @@ const academyTracks = [
   ]},
   {id:'axdx', title:'AX·DX', period:'08.26–09.14', description:'데이터 처리 · AI 모델 · 산업 데이터 보안', activities:[
     {id:'axdx-course', title:'AX·DX 교과 교육', date:'08.26–09.03 · 생성형 AI 09.10–09.14', project:'academy', story:2},
-    {id:'coating-pbl', title:'선박 도장 불량 분류 PBL', date:'09.07–09.09', project:'coating', story:0}
+    {id:'coating-pbl', title:'선박 도장 불량 분류 PBL', date:'09.07–09.09', project:'coating', story:0, overview:{href:'#coating', title:'PBL 분석과 결과'}}
   ]}
 ];
 
@@ -107,7 +107,7 @@ function academyMenuMarkup(projectId, selection='') {
   return `<div class="branch-group academy-tree"><h2>아카데미 활동</h2>${academyTracks.map(track=>{
     const activeTrack=track.activities.some(activity=>activity.project===projectId&&(projectId!=='academy'&&!selection||selection==='story-'+activity.story||projectId==='coating'&&selection.startsWith('work-')));
     return `<details class="academy-track" data-track="${track.id}"${activeTrack||academyDisclosureState.get(track.id)?' open':''}><summary><strong>${track.title}</strong></summary><div class="academy-activities">${track.activities.map(activity=>{
-      return link('#'+activity.project+'/story-'+activity.story,activity.title,'academy-activity-link');
+      return link('#'+activity.project+'/story-'+activity.story,activity.title,'academy-activity-link')+(activity.overview?link(activity.overview.href,activity.overview.title,'academy-activity-link'):'');
     }).join('')}</div></details>`;
   }).join('')}</div>`;
 }
@@ -140,11 +140,15 @@ function academyOverviewMarkup() {
 
 function academyNavigationMarkup(projectId,selection='') {
  const inAcademy=projectId==='academy'||experiences.find(p=>p.id===projectId)?.parent==='academy';
+ const route='#'+projectId+(selection?'/'+selection:'');
  const activeActivity=activity=>activity.project===projectId&&(selection==='story-'+activity.story||projectId==='coating'&&selection.startsWith('work-'));
  const open=inAcademy||academyDisclosureState.get('nav-academy');
  const overviewActive=projectId==='academy'&&!selection;
  return `<div class="academy-tree nav-academy-group"><details class="nav-academy" data-activity="nav-academy"${open?' open':''}><summary><a class="nav-academy-title${overviewActive?' active':''}" href="#academy"${overviewActive?' aria-current="page"':''}><span class="nav-academy-number">01</span><span><strong>${escapeHTML(academy.title)}</strong></span></a><button type="button" class="nav-academy-toggle" aria-label="아카데미 과정 ${open?'접기':'펼치기'}" aria-expanded="${!!open}" aria-controls="nav-academy-body">${open?'−':'+'}</button></summary><div id="nav-academy-body" class="nav-academy-body">${academyTracks.map(track=>{
-  const selected=track.activities.some(activeActivity);
-  return `<details class="nav-academy-track" data-track="nav-${track.id}"${selected||academyDisclosureState.get('nav-'+track.id)?' open':''}><summary><strong>${track.title}</strong></summary><div class="nav-academy-activities">${track.activities.map(activity=>`<a class="nav-activity${activeActivity(activity)?' active':''}" href="#${activity.project}/story-${activity.story}"${activeActivity(activity)?' aria-current="page"':''}><strong>${activity.title}</strong></a>`).join('')}</div></details>`;
+  const selected=track.activities.some(activity=>activeActivity(activity)||activity.overview?.href===route);
+  return `<details class="nav-academy-track" data-track="nav-${track.id}"${selected||academyDisclosureState.get('nav-'+track.id)?' open':''}><summary><strong>${track.title}</strong></summary><div class="nav-academy-activities">${track.activities.map(activity=>{
+   const overview=activity.overview,overviewActive=overview?.href===route;
+   return `<a class="nav-activity${activeActivity(activity)?' active':''}" href="#${activity.project}/story-${activity.story}"${activeActivity(activity)?' aria-current="page"':''}><strong>${activity.title}</strong></a>`+(overview?`<a class="nav-activity${overviewActive?' active':''}" href="${overview.href}"${overviewActive?' aria-current="page"':''}><strong>${overview.title}</strong></a>`:'');
+  }).join('')}</div></details>`;
  }).join('')}</div></details></div>`;
 }

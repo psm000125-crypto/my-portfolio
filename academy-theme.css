@@ -191,7 +191,7 @@ body[data-experience-family="academy"]:not(.showcase-home) .workspace .slide-ima
 /* The document scrolls; body must not become an unscrollable sticky ancestor. */
 body[data-experience-family="academy"]:not(.showcase-home) {overflow:visible!important}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel {font-family:'IBM Plex Sans','IBM Plex Sans KR',sans-serif!important;scrollbar-width:thin;scrollbar-color:#557762 transparent;overscroll-behavior:contain}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel .detail-label {position:sticky;top:0;z-index:2;background:#102d25;padding:8px 0 12px;font-size:11px!important;font-weight:500;letter-spacing:.1em!important;line-height:1.5}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel .detail-label {position:sticky;top:0;z-index:2;background:#193c30;width:calc(100% + 24px);margin-left:-24px;padding:12px 24px;box-sizing:border-box;font-size:11px!important;font-weight:500;letter-spacing:.1em!important;line-height:1.5}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel :is(.overview-link,.back-profile,.branch-group>h2) {font-size:12px!important;font-weight:400;line-height:1.6;letter-spacing:0!important}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel .academy-track>summary {padding:14px 24px 14px 0!important}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel .academy-track>summary strong {font-size:15px!important;font-weight:500!important;line-height:1.5;letter-spacing:-.02em}
