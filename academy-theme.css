@@ -68,7 +68,7 @@ body[data-experience-family="academy"]:not(.showcase-home) .workspace .tags>span
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel {border-color:#426053!important;border-top:1px solid #c9ee94!important;padding-top:24px!important}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .overview-link.active {background:transparent!important;border-bottom:1px solid #426053;box-shadow:none!important;color:#c9ee94!important}
 
-/* Reading surfaces remain part of the same world. Technical diagrams use sage. */
+/* Reading surfaces continue the forest cover, with light technical plates. */
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .has-focus .case-stage .project-heading {min-height:0;padding:20px 0!important;border-bottom:1px solid #426053!important}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .has-focus .case-stage .project-title {font-size:25px!important;max-width:none;margin:12px 0!important}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .has-focus .case-stage .project-lead {font-size:18px!important;max-width:none;margin-bottom:12px!important}
@@ -81,21 +81,42 @@ body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.story
 body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.story-section-copy p,.story-intro,.summary-hero p,.summary-callout p) {color:#d1ded2!important}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.story-kicker,.story-section-heading>span,.summary-kicker) {color:#c9ee94!important}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.story-header,.enriched-note,.academy-artifact-section,.reading-tabs,.artifact-heading) {border-color:#426053!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual {background:#dce8d7!important;color:#173d31;border:0!important;border-radius:4px;padding:24px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .enriched-story .story-header {padding:12px 0 32px;max-width:none}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-header h2 {font-size:clamp(28px,2.8vw,42px)!important;line-height:1.35;letter-spacing:-.045em;font-weight:400;max-width:24ch;margin:16px 0 0;text-wrap:balance;word-break:keep-all}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-kicker {font-size:12px!important;letter-spacing:.08em;margin:0!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .enriched-story .story-intro {max-width:70ch;margin-top:20px;font-size:15px!important;line-height:1.9!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .enriched-story .enriched-note {padding:36px 0 40px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .enriched-story .story-section-heading {max-width:none!important;gap:14px;margin-bottom:24px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-heading>span {display:grid;place-items:center;flex:0 0 30px;min-height:30px;background:#234b3c;border:1px solid #426053;border-radius:50%;font-size:11px;letter-spacing:0}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .enriched-story .story-section-heading h3 {font-size:clamp(19px,1.7vw,24px)!important;line-height:1.5;font-weight:500;letter-spacing:-.025em}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-body {grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;align-items:start}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .enriched-story .story-section-copy p {font-size:15px!important;line-height:1.95!important;color:#d7e2d7!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual {background:#f0f4eb!important;color:#173d31;border:1px solid #d0dfc8!important;border-radius:14px;padding:24px;overflow:hidden}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual :is(p,small,dt,dd,figcaption,li,strong,span,h3,h4) {color:#244b3a!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-diagram>figcaption {order:-1;margin:0 0 18px!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-diagram>figcaption>strong {position:static!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-diagram>figcaption {order:-1;margin:0 0 22px!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-diagram>figcaption>strong {position:static!important;font-size:17px;line-height:1.55;letter-spacing:-.02em;font-weight:600}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-diagram>figcaption>small {font-size:12px;line-height:1.75;color:#506651!important;margin-top:6px;word-break:keep-all}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-diagram>svg {order:0!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual :is(.story-process li,.story-layer-stack li,.story-compare-list>div,.story-indicator-grid li) {background:#cadbc4!important;border-color:#aac2aa!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-process li>span {color:#244b3a!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration>svg {background:#dce8d7!important;border:0!important;padding:12px 0}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.edu-label,.edu-number) {fill:#173d31!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-small {fill:#3f6550!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.edu-node,.edu-hull,.edu-feature) {fill:#bdd2b6!important;stroke:#346148!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.edu-outline,.edu-wire,.edu-arrow) {stroke:#346148!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-arrowhead {fill:#346148!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-pixel {fill:#b7cdb0!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-pixel.is-dark {fill:#346148!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual :is(.story-process li,.story-layer-stack li,.story-compare-list>div,.story-indicator-grid li) {background:#e3ecdc!important;border-color:#c3d4b9!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-process li>span {color:#45634c!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration>svg {width:100%;height:auto;max-height:none;background:transparent!important;border:0!important;border-radius:0;padding:0}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.edu-label,.edu-number) {fill:#173d31!important;font-size:18px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-small {fill:#45614c!important;font-size:15px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-node {fill:#e0ebd9!important;stroke:#496d4e!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.edu-hull,.edu-feature) {fill:#c8dcbd!important;stroke:#31543e!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.edu-outline,.edu-wire,.edu-arrow) {stroke:#31543e!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-arrowhead {fill:#31543e!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-pixel {fill:#c8dcbd!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-pixel.is-dark {fill:#31543e!important}
+/* Multiple diagrams own the whole row; each plate uses an equal share of it. */
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-body:has(.academy-practice-visuals>figure:nth-of-type(2)) {grid-template-columns:minmax(0,1fr);gap:24px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-body:has(.academy-practice-visuals>figure:nth-of-type(2))>.story-section-copy:has(>p:nth-child(2)) {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-body:has(.academy-practice-visuals>figure:nth-of-type(2))>.story-section-copy p {margin:0}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-body:has(.academy-practice-visuals>figure:nth-of-type(2))>.story-section-copy>p:last-child:nth-child(odd) {grid-column:1/-1}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual:has(.academy-practice-visuals) {background:transparent!important;border:0!important;padding:0!important;overflow:visible}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-practice-visuals>.academy-illustration {display:flex;flex-direction:column;margin:0;padding:24px;background:#f0f4eb;border:1px solid #d0dfc8;border-radius:14px;min-width:0}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-practice-visuals:has(>figure:nth-of-type(2))>.academy-illustration>figcaption {min-height:66px;margin-bottom:18px!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-practice-visuals:has(>figure:nth-of-type(2))>.academy-illustration>svg {aspect-ratio:500/360;margin-block:auto}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .case-stage .lab-journal-visual {background:#193c30!important;border-color:#426053!important}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .case-stage .journal-concept {background:#193c30!important;color:#c9ee94!important}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.summary-hero,.summary-panel,.summary-stat,.summary-callout,.summary-status,.pipeline-node,.coating-distribution,.notebook-view,.prediction-table-wrap) {background:#193c30!important;color:#d1ded2!important;border-color:#426053!important}
@@ -126,6 +147,9 @@ body[data-experience-family="academy"]:not(.showcase-home) .workspace .slide-ima
  body[data-experience-family="academy"]:not(.showcase-home) .academy-track-visual {height:125px}
 }
 @media(max-width:900px) {
+ body[data-experience-family="academy"]:not(.showcase-home) .masthead {position:sticky!important;top:0;z-index:90;padding-inline:24px!important;padding-right:110px!important}
+ body[data-experience-family="academy"]:not(.showcase-home) .drawer-trigger {top:8px!important;right:24px!important;z-index:100!important}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-body {grid-template-columns:minmax(0,1fr);gap:24px}
  body[data-experience-family="academy"]:not(.showcase-home) .workspace .case-stage .project-heading {padding:30px 0 35px!important;min-height:0}
  body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel {padding-top:18px!important;border-top:0!important;border-bottom:1px solid #426053!important;padding-bottom:20px!important}
  body[data-experience-family="academy"]:not(.showcase-home) .case-stage .case-emblem {position:relative;width:85%;max-width:520px;right:auto;bottom:auto;margin:0 auto;height:auto;opacity:.65}
@@ -134,7 +158,18 @@ body[data-experience-family="academy"]:not(.showcase-home) .workspace .slide-ima
  body[data-experience-family="academy"]:not(.showcase-home) .workspace .case-stage .project-description {max-width:65ch!important}
  body[data-experience-family="academy"]:not(.showcase-home) .workspace .has-focus .case-emblem {display:none}
 }
+@media(max-width:720px) {
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-body:has(.academy-practice-visuals>figure:nth-of-type(2))>.story-section-copy:has(>p:nth-child(2)) {grid-template-columns:minmax(0,1fr);gap:16px}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-practice-visuals {gap:16px}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-practice-visuals>.academy-illustration {padding:20px}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-practice-visuals:has(>figure:nth-of-type(2))>.academy-illustration>figcaption {min-height:0}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .enriched-story .enriched-note {padding:28px 0 32px}
+}
 @media(max-width:600px) {
+ body[data-experience-family="academy"]:not(.showcase-home) .masthead {display:grid;grid-template-columns:minmax(0,1fr) 64px;grid-template-rows:48px 36px;height:92px!important;padding:0 24px!important}
+ body[data-experience-family="academy"]:not(.showcase-home) .masthead .brand {grid-column:1;grid-row:1}
+ body[data-experience-family="academy"]:not(.showcase-home) .portfolio-header-nav {grid-column:1/-1;grid-row:2;justify-content:flex-start;gap:24px}
+ body[data-experience-family="academy"]:not(.showcase-home) .portfolio-header-nav button {padding:0;min-height:36px}
  body[data-experience-family="academy"]:not(.showcase-home) .workspace {padding-inline:24px!important}
  body[data-experience-family="academy"]:not(.showcase-home) .workspace .case-stage .project-title {font-size:42px!important;max-width:none;line-height:1.17!important;word-break:keep-all;overflow-wrap:anywhere}
  body[data-experience-family="academy"]:not(.showcase-home) .workspace .case-stage .project-lead {font-size:24px!important;max-width:none}

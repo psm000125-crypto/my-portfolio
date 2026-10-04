@@ -10,7 +10,8 @@ function eduArrow(key,path,soft=false) {
 }
 function eduFigure(key,title,description,body,source,height=320) {
   const id='edu-'+key;
-  return `<figure class="story-diagram academy-illustration"><figcaption><strong>${escapeHTML(title)}</strong><small>${escapeHTML(description)}</small></figcaption><svg viewBox="0 0 500 ${height}" role="img" aria-labelledby="${id}-title ${id}-desc"><title id="${id}-title">${escapeHTML(title)}</title><desc id="${id}-desc">${escapeHTML(description)} 교육 내용의 관계를 재구성한 개념도입니다.</desc><defs><marker id="${id}-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7Z" class="edu-arrowhead"/></marker></defs>${body(id)}</svg><p class="edu-source">${escapeHTML(source)} · 개념도</p></figure>`;
+  // The source stays with each call for provenance, without a repeated display footer.
+  return `<figure class="story-diagram academy-illustration"><figcaption><strong>${escapeHTML(title)}</strong><small>${escapeHTML(description)}</small></figcaption><svg viewBox="0 0 500 ${height}" role="img" aria-labelledby="${id}-title ${id}-desc"><title id="${id}-title">${escapeHTML(title)}</title><desc id="${id}-desc">${escapeHTML(description)} 교육 내용의 관계를 재구성한 개념도입니다.</desc><defs><marker id="${id}-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7Z" class="edu-arrowhead"/></marker></defs>${body(id)}</svg></figure>`;
 }
 function eduShip(y=115,mastRise=98) {
   return `<path class="edu-hull" d="M40 ${y}H452L420 ${y+60}H103Z"/><path class="edu-outline" d="M92 ${y}V${y-36}H147V${y-70}H204V${y}M166 ${y-70}V${y-mastRise}M60 ${y+72}q25-12 50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0"/><path class="edu-wire" d="M220 ${y+5}v48M287 ${y+5}v48M354 ${y+5}v48"/>`;
@@ -37,7 +38,7 @@ function academyShipVisual(index) {
     ${eduArrow(key,'M255 133H430')}${eduArrow(key,'M250 130V42')}${eduArrow(key,'M247 137L155 197')}${eduText(443,170,'전후','small')}${eduText(289,39,'상하','small')}${eduText(112,215,'좌우','small')}
     ${eduNode(15,244,220,67,'병진 운동','전후 · 좌우 · 상하동요')}${eduNode(265,244,220,67,'회전 운동','횡 · 종 · 선수동요')}`,
     '내항 교재 · Ship Motions in Waves',335);
-  if(index===4) return eduFigure('ship-4','선회·지그재그·정지 궤적','조종 시험마다 확인하는 응답을 구분 · 궤적 개념도',()=>
+  if(index===4) return eduFigure('ship-4','선회·지그재그·정지 궤적','조종 시험마다 확인하는 응답을 구분',()=>
     `<path class="edu-outline" d="M88 127V80C88 23 175 22 175 78S88 137 88 80M218 30C265 52 175 76 230 98S284 137 230 155M356 30V132"/>
     <path class="edu-wire" d="M344 132H368M344 140H368M356 149V164"/>
     ${eduText(132,198,'선회')}${eduText(132,224,'종거 · 선회직경','small')}${eduText(247,198,'지그재그')}${eduText(247,224,'선수각 응답','small')}${eduText(380,198,'급후진')}${eduText(380,224,'정지거리','small')}${eduNode(54,263,392,51,'침로 유지 · 침로 변경 · 속도 변경')}`,
@@ -155,7 +156,7 @@ function academyGeneratorPracticeVisual() {
       return `${eduText(71,y-5,title)}${eduText(71,y+22,detail,'small')}<path class="edu-axis" d="M162 ${y-38}V${y+38}H478M162 ${y}H478"/>${eduWave(172,y,294,28,0,1.25,'v')}${eduWave(172,y,294,18,phase,1.25,'i')}`;
     }).join('')}`,
     '연수원 부하 비교 실습 기록 · 이상적 R·L·C 위상 관계',345);
-  return phases+loads+`<p class="edu-source">위상 관계 참고 · <a href="https://openstax.org/books/university-physics-volume-2/pages/15-2-simple-ac-circuits" target="_blank" rel="noopener noreferrer">교류 회로 원리 ↗</a></p>`;
+  return phases+loads;
 }
 function academyDrivePracticeVisual() {
   const power=eduFigure('practice-drive','MV AC DRIVE의 전력과 제어 경로','전력 공급은 실선, Gate Drive 제어 신호는 점선으로 구분',key=>
