@@ -112,8 +112,30 @@ function academyMenuMarkup(projectId, selection='', sectionIndex=null) {
   }).join('')}</div>`;
 }
 
+// Conceptual line drawings carry the course identity; they are not measured data.
+function academyTrackGraphic(track) {
+  const drawings = {
+    ship: '<path d="M25 97h230l-38 36H61zM73 97V64h99v33M91 64V43h57v21M181 97V74h38v23M119 43V24M25 145q19-9 38 0t38 0t38 0t38 0t38 0t38 0"/><path d="M86 76h16m9 0h16m9 0h16M86 86h16m9 0h16m9 0h16M62 110h157"/>',
+    electrical: '<path d="M32 88h60m96 0h60M92 59v58h96V59zM110 74h60M110 102h60M140 24v35m0 58v35M55 48v40m170 0v40M37 48h36M207 128h36"/><path d="M144 66l-14 24h20l-14 24"/><circle cx="32" cy="88" r="5"/><circle cx="248" cy="88" r="5"/><circle cx="140" cy="24" r="5"/><circle cx="140" cy="152" r="5"/>',
+    axdx: '<path d="M51 44l87 22 91-26M51 44l-8 91 95-25 91 30M138 66v44M43 135l95-69 91 74M51 44l87 66 91-70"/><circle cx="51" cy="44" r="12"/><circle cx="43" cy="135" r="9"/><circle cx="138" cy="66" r="18"/><circle cx="138" cy="110" r="13"/><circle cx="229" cy="40" r="9"/><circle cx="229" cy="140" r="12"/>'
+  };
+  return `<svg viewBox="0 0 280 175" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">${drawings[track]}</g></svg>`;
+}
+
+function academyThemeEmblem(projectId) {
+  if (projectId !== 'academy') return labArchiveVisual(projectId);
+  return `<svg class="academy-vessel" viewBox="0 0 640 480" fill="none" aria-hidden="true">
+    <g class="vessel-orbits" stroke="currentColor" opacity=".3"><circle cx="330" cy="240" r="205"/><circle cx="330" cy="240" r="169" stroke-dasharray="3 9"/><path d="M330 12v456M96 240h468"/><path d="M110 36h30m-15-15v30M530 426h30m-15-15v30"/></g>
+    <g class="vessel-body" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+      <path d="M65 281l45 67h373l84-88-97 21zM110 348l22 14h341l10-14M84 305h452M121 327h391M156 281V174h131v107M167 174l18-24h85l17 24M194 150V117h47v33M213 117V69M216 91h45M224 174v107M156 208h131M156 244h131M300 281V211h144v70M319 211V187h90v24M345 187V162h37v25M457 281v-41h40v36"/>
+      <path d="M170 187h19m14 0h19m14 0h19M170 226h19m14 0h19m14 0h19M313 225h28m12 0h28m12 0h28M313 248h28m12 0h28m12 0h28M302 267h140"/>
+      <circle cx="159" cy="315" r="5"/><circle cx="203" cy="315" r="5"/><circle cx="247" cy="315" r="5"/><path class="vessel-water" d="M63 382q31-14 62 0t62 0t62 0t62 0t62 0t62 0t62 0t62 0M91 400q31-12 62 0t62 0t62 0t62 0t62 0t62 0t62 0"/>
+    </g><g stroke="currentColor" opacity=".5"><path d="M65 438h502M65 432v12M567 432v12M591 260v102M585 260h12M585 362h12"/></g>
+  </svg>`;
+}
+
 function academyOverviewMarkup() {
-  return `<section class="academy-overview" aria-label="아카데미 과정"><p class="academy-overview-label">아카데미 활동 · 과정별 살펴보기</p><div class="academy-cards">${academyTracks.map((track,index)=>`<a href="#academy/story-${index}"><h3>${track.title}</h3><p>${track.description}</p><small>${track.activities.map(activity=>activity.title).join(' · ')}</small><b aria-hidden="true">↗</b></a>`).join('')}</div></section>`;
+  return `<section class="academy-overview" aria-label="아카데미 과정"><p class="academy-overview-label">아카데미 활동 · 과정별 살펴보기</p><div class="academy-cards">${academyTracks.map((track,index)=>`<a href="#academy/story-${index}" data-academy-track="${track.id}"><div class="academy-track-visual" aria-hidden="true"><span class="academy-track-number">0${index+1}</span>${academyTrackGraphic(track.id)}</div><h3>${track.title}</h3><p>${track.description}</p><small>${track.activities.map(activity=>activity.title).join(' · ')}</small><b aria-hidden="true">↗</b></a>`).join('')}</div></section>`;
 }
 
 function academyNavigationMarkup(projectId,selection='') {
