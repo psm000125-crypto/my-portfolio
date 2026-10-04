@@ -190,7 +190,7 @@ function equipmentGalleryMarkup(){
    alt:'접촉식 좌표 측정기 CMM을 사용하는 모습'
   },
   {
-   label:'NON-CONTACT 3D · 장비 예시',
+   label:'NON-CONTACT 3D',
    title:'비접촉식 3차원 측정기',
    description:'광학식으로 부품의 형상과 치수를 확인했습니다.',
    image:'https://www.mitutoyo.co.jp/pim-assets/medias_converted/Highres/Mitutoyo/Media/Image/14_Vision%20Measuring%20Systems/31_0_363-109-30_QV-L202Z1L-D_202505_CG_1.jpg',

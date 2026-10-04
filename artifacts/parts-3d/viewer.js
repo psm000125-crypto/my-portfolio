@@ -27,6 +27,12 @@
   const radii=models.map(model=>{model.updateMatrixWorld(true);let radius=0;const p=new T.Vector3();model.traverse(m=>{if(!m.isMesh)return;const a=m.geometry.attributes.position;for(let i=0;i<a.count;i++){p.fromBufferAttribute(a,i).applyMatrix4(m.matrixWorld);radius=Math.max(radius,p.length());}});return radius;});
   const initialQ=new T.Quaternion().setFromEuler(new T.Euler(.53,-.48,.015,'XYZ'));
   window.addEventListener('message',event=>{
+   if(heroMode&&event.source===parent&&event.origin===location.origin&&event.data?.type==='portfolio-specimen-view'){
+    const {view,wire:wireValue}=event.data;
+    if(!['iso','top'].includes(view)||typeof wireValue!=='boolean')return;
+    wire=wireValue;PartsModels.materials.forEach(material=>{material.wireframe=wire;});
+    preset(view);dirty=true;return;
+   }
    if(!heroMode||motionPreference.matches||event.source!==parent||event.origin!==location.origin||event.data?.type!=='portfolio-specimen-progress')return;
    const progress=event.data.progress;
    if(typeof progress!=='number'||!Number.isFinite(progress))return;

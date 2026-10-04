@@ -31,3 +31,14 @@ assert.equal(messages.at(-1).progress, entering, 'Scrolling back must restore th
 const markup = fs.readFileSync(path.join(base,'showcase.js'),'utf8');
 assert.ok(!markup.includes('<small>사진 기반 형상 재구성 · 실제 CAD 및 치수와 다름</small>'), 'Remove the requested hero caption');
 console.log('Hero entry scroll and caption checks passed.');
+messages.length = 0;
+frames.length = 0;
+const reducedContext = vm.createContext({...context,
+ matchMedia: () => ({matches:true,addEventListener(){},removeEventListener(){}})
+});
+vm.runInContext(fs.readFileSync(path.join(base,'lab-motion.js'),'utf8'), reducedContext);
+reducedContext.bindPortfolioMotion(root);
+frames.shift()();
+assert.equal(messages.length, 0, 'Reduced motion must not send scroll rotation commands');
+assert.equal(properties.get('--hero-progress'), '0', 'Reduced motion must disable hero parallax');
+console.log('Reduced-motion checks passed.');

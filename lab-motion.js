@@ -17,7 +17,8 @@ function bindPortfolioMotion(root){
  }else showAll();
  const hero=root.querySelector('.portfolio-hero');
  const frame=hero?.querySelector('iframe');
- let raf=0,previousProgress=-1;
+ const chapters=[...root.querySelectorAll('[data-chapter]')];
+ let raf=0,previousProgress=-1,manualView=false;
  const update=()=>{
   raf=0;
   if(!hero?.isConnected)return;
@@ -26,9 +27,14 @@ function bindPortfolioMotion(root){
   const progress=Math.min(1,Math.max(0,(innerHeight-rect.top)/Math.max(1,rect.height+innerHeight*.7)));
   const pageProgress=Math.min(1,Math.max(0,scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight)));
   root.style.setProperty('--page-progress',String(pageProgress));
+  chapters.forEach(chapter=>{
+   const bounds=chapter.getBoundingClientRect();
+   const value=preference.matches?0:Math.min(1,Math.max(0,(innerHeight-bounds.top)/(bounds.height+innerHeight)));
+   chapter.style.setProperty('--chapter-progress',String(value));
+  });
   if(preference.matches){hero.style.setProperty('--hero-progress','0');return;}
   hero.style.setProperty('--hero-progress',String(progress));
-  if(rect.bottom>0&&rect.top<innerHeight&&Math.abs(previousProgress-progress)>.001){
+  if(!manualView&&rect.bottom>0&&rect.top<innerHeight&&Math.abs(previousProgress-progress)>.001){
    frame?.contentWindow?.postMessage({type:'portfolio-specimen-progress',progress},location.origin);
    previousProgress=progress;
   }
@@ -37,11 +43,39 @@ function bindPortfolioMotion(root){
  if(hero){
   window.addEventListener('scroll',onScroll,{passive:true});
   window.addEventListener('resize',onScroll,{passive:true});
-  frame?.addEventListener('load',()=>{previousProgress=-1;onScroll();},{once:true});
+  const loaded=()=>{previousProgress=-1;onScroll();};
+  frame?.addEventListener('load',loaded,{once:true});
   onScroll();
-  disposers.push(()=>{cancelAnimationFrame(raf);window.removeEventListener('scroll',onScroll);window.removeEventListener('resize',onScroll);});
+  disposers.push(()=>{cancelAnimationFrame(raf);window.removeEventListener('scroll',onScroll);window.removeEventListener('resize',onScroll);frame?.removeEventListener?.('load',loaded);});
  }
- const chapters=[...root.querySelectorAll('[data-chapter]')];
+ // Scoped listeners are removed whenever the archive route changes.
+ const listen=(button,handler)=>{button.addEventListener('click',handler);disposers.push(()=>button.removeEventListener('click',handler));};
+ let specimenView='iso',wire=false;
+ const specimenButtons=[...root.querySelectorAll('[data-specimen]')];
+ specimenButtons.forEach(button=>listen(button,()=>{
+  if(button.dataset.specimen==='wire')wire=!wire;
+  else specimenView=button.dataset.specimen;
+  manualView=specimenView!=='iso';
+  specimenButtons.forEach(item=>item.setAttribute('aria-pressed',String(item.dataset.specimen==='wire'?wire:item.dataset.specimen===specimenView)));
+  frame?.contentWindow?.postMessage({type:'portfolio-specimen-view',view:specimenView,wire},location.origin);
+  previousProgress=-1;onScroll();
+ }));
+ const metricButtons=[...root.querySelectorAll('[data-metric]')];
+ metricButtons.forEach(button=>listen(button,()=>{
+  root.querySelector('.material-chart').dataset.activeMetric=button.dataset.metric;
+  metricButtons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+ }));
+ const filterButtons=[...root.querySelectorAll('[data-filter]')];
+ filterButtons.forEach(button=>listen(button,()=>{
+  const value=button.dataset.filter;
+  filterButtons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+  let count=0;
+  root.querySelectorAll('.lab-project-card').forEach(card=>{
+   card.hidden=value!=='all'&&card.dataset.field!==value;
+   if(!card.hidden){count++;card.classList.add('is-visible');}
+  });
+  root.querySelector('.archive-status').textContent=`${button.textContent} · ${count}개 경험`;
+ }));
  if(chapters.length&&'IntersectionObserver' in window){
   const chapterObserver=new IntersectionObserver(entries=>{
    for(const entry of entries){if(!entry.isIntersecting)continue;

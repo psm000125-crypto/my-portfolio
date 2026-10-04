@@ -20,40 +20,40 @@ function labArchiveVisual(id){
 function portfolioHomeMarkup(){
  const archive=experiences.filter(p=>!p.parent);
  return `<article class="portfolio-home lab-home">
- <section class="home-about" id="home-profile" aria-labelledby="profile-title"><div data-reveal><span class="home-kicker">PROFILE</span><h2 id="profile-title">편성민<span>Seongmin Pyeon</span></h2><p>금오공과대학교 신소재공학과<br>품질관리 · 소재 연구 · 데이터 분석</p></div><div class="about-details" data-reveal><p>현장에서 관찰한 것과 분석으로 확인한 것을<br>하나의 포트폴리오에 연결합니다.</p><dl><div><dt>DATA</dt><dd>Python · NumPy · pandas · scikit-learn</dd></div><div><dt>AI & VISION</dt><dd>PyTorch · torchvision</dd></div><div><dt>QUALITY</dt><dd>치수 측정 · 3차원 측정 · 표면조도 · X-ray · C/S 분석</dd></div></dl><span class="contact-email">psm000125@naver.com</span><a class="contact-phone" href="tel:01087548353">010-8754-8353</a></div></section>
+ <section class="home-about" id="home-profile" aria-labelledby="profile-title"><div><span class="home-kicker">PROFILE / 01</span><h2 id="profile-title">편성민<span>Seongmin Pyeon</span></h2><p>금오공과대학교 신소재공학과<br>품질관리 · 소재 연구 · 데이터 분석</p></div><div class="about-details"><dl><div><dt>DATA</dt><dd>Python · NumPy · pandas · scikit-learn</dd></div><div><dt>AI & VISION</dt><dd>PyTorch · torchvision</dd></div><div><dt>QUALITY</dt><dd>치수 측정 · 3차원 측정 · 표면조도 · X-ray · C/S 분석</dd></div></dl><div class="profile-contact"><span class="contact-email">psm000125@naver.com</span><span class="contact-phone">010-8754-8353</span></div></div></section>
  <section class="portfolio-hero" aria-labelledby="home-title">
   <div class="hero-topline"><span>SEONGMIN PYEON / PORTFOLIO</span><span>QUALITY · MATERIALS · DATA</span></div>
-  <div class="hero-watermark" aria-hidden="true">MATERIAL</div>
-  <div class="hero-copy"><p class="home-kicker">편성민의 경험과 기록</p><h1 id="home-title">현장에서 시작해,<br><span>데이터로 읽다.</span></h1><p class="hero-intro">소재를 이해하고, 공정을 살피고, 데이터로 확인합니다.<br>품질관리 · 소재 연구 · 데이터 분석을 잇는 경험을 담았습니다.</p><button class="home-text-link" data-home-scroll="selected-work">프로젝트 둘러보기 <span>↘</span></button></div>
+  <div class="hero-watermark" aria-hidden="true">MATTER.</div>
+  <div class="hero-copy"><p class="home-kicker"><i></i> FIELD / MATERIALS / DATA</p><h1 id="home-title">현장에서 시작해,<br><span>데이터로 읽다.</span></h1><button class="home-text-link" data-home-scroll="selected-work">프로젝트 둘러보기 <span>↘</span></button></div>
   <div class="hero-object">
-   <div class="specimen-guide" aria-hidden="true"><span class="specimen-cross cross-a">+</span><span class="specimen-cross cross-b">+</span><span class="specimen-axis">OBSERVE / ROTATE / EXPLORE</span></div>
-   <span class="object-coordinate">FIG. 01 / MIM COMPONENT</span>
-   <iframe src="artifacts/parts-3d/index.html?hero=1&lab=1" title="MIM 부품의 사진 기반 3D 재구성" loading="eager"></iframe>
-   <div class="object-caption"><span>금속의 형태를 관찰하다</span></div>
-   <span class="specimen-note">SCROLL TO CHANGE THE VIEW</span>
+   <div class="specimen-guide" aria-hidden="true"><span class="specimen-cross cross-a">+</span><span class="specimen-cross cross-b">+</span><span class="specimen-axis">MIM / SPECIMEN 01</span></div>
+   <span class="object-coordinate">01 / WHEEL</span>
+   <iframe src="artifacts/parts-3d/index.html?hero=1&lab=1&v=20261004-exhibition" title="MIM 부품의 사진 기반 3D 재구성" loading="eager"></iframe>
+   <div class="specimen-controls" role="group" aria-label="3D 부품 보기"><button type="button" data-specimen="iso" aria-pressed="true">입체</button><button type="button" data-specimen="top" aria-pressed="false">윗면</button><button type="button" data-specimen="wire" aria-pressed="false">구조</button></div>
+   <span class="specimen-note">드래그로 회전</span>
   </div>
-  <div class="hero-bottom"><span>금오공과대학교 · 신소재공학과</span><span>SCROLL TO EXPLORE ↓</span><span>SELECTED WORK / 01—03</span></div>
+  <div class="hero-bottom"><span>OBSERVE → MEASURE → INTERPRET</span><span>SCROLL TO EXPLORE ↓</span><span>SELECTED WORK / 01—03</span></div>
  </section>
- <nav class="lab-chapters" aria-label="대표 경험 구간"><span>THE EXPLORATION</span><button data-home-scroll="field-work">01 · 현장</button><button data-home-scroll="materials-work">02 · 소재</button><button data-home-scroll="data-work">03 · 데이터</button><div class="lab-scroll-track" aria-hidden="true"><i></i></div></nav>
+ <nav class="lab-chapters" aria-label="대표 경험 구간"><span>SELECTED WORK</span><button data-home-scroll="field-work">01 · 현장</button><button data-home-scroll="materials-work">02 · 소재</button><button data-home-scroll="data-work">03 · 데이터</button><div class="lab-scroll-track" aria-hidden="true"><i></i></div></nav>
  <section class="selected-work" id="selected-work" aria-labelledby="selected-title">
-  <div class="home-section-heading" data-reveal><h2 id="selected-title">From observation<br><em>to understanding.</em><span>관찰에서 이해까지</span></h2><p>현장의 질문에서 분석의 결과까지.</p></div>
+  <div class="home-section-heading" data-reveal><h2 id="selected-title">A closer look.<span>관찰에서 이해까지</span></h2><span class="section-count">01 — 03</span></div>
   <article class="work-spread field-spread" id="field-work" data-chapter="field">
    <div class="spread-copy" data-reveal><span class="spread-index">01 / FIELD</span><h3>작은 부품에서<br>공정 전체를 보다.</h3><p>MIM 공정 품질관리 인턴십</p><div class="spread-description">금속 분말이 제품이 되기까지.<br>공정 흐름과 측정·검사 경험을 함께 기록했습니다.</div><a class="spread-link" href="#mim" data-project-transition>현장 경험 읽기 <span>↗</span></a><small>계림금속 / 2026.01–02</small><ol class="lab-process" aria-label="MIM 공정 흐름"><li>혼합</li><li>사출</li><li>탈지</li><li>소결</li></ol></div>
    <div class="spread-image" style="view-transition-name:project-mim">${labEquipmentVisual()}</div>
    <div class="chapter-word" aria-hidden="true">OBSERVE.</div>
   </article>
   <article class="work-spread materials-spread" id="materials-work" data-chapter="materials">
-   <div class="materials-visual" data-reveal style="view-transition-name:project-alloy"><span class="visual-kicker">Fe–Si / MATERIAL STUDY</span><div class="material-compositions"><span>Fe</span><span>3.5<small>wt% Si</small></span><span>6.5<small>wt% Si</small></span></div><div class="material-chart">${alloyMetricCharts()}</div><span class="visual-source">발표자료 기준 · 열간 압연 전후 측정 결과</span></div>
+   <div class="materials-visual" data-reveal style="view-transition-name:project-alloy"><span class="visual-kicker">Fe–Si / MATERIAL STUDY</span><div class="material-compositions"><span>Fe</span><span>3.5<small>wt% Si</small></span><span>6.5<small>wt% Si</small></span></div><div class="metric-controls" role="group" aria-label="합금 비교 지표"><button type="button" data-metric="0" aria-pressed="true">경도</button><button type="button" data-metric="1" aria-pressed="false">기공률</button></div><div class="material-chart">${alloyMetricCharts()}</div><span class="visual-source">열간 압연 전 → 후</span></div>
    <div class="spread-copy" data-reveal><span class="spread-index">02 / MATERIALS</span><h3>조성을 바꾸고,<br>변화를 확인하다.</h3><p>고규소 Fe–Si 합금 설계</p><div class="spread-description">조성과 공정에 따라 달라지는 소재의 특성.<br>경도와 기공률을 비교하며 그 변화를 살폈습니다.</div><a class="spread-link" href="#alloy" data-project-transition>연구 과정 살펴보기 <span>↗</span></a><a class="spread-secondary" href="#xrd" data-project-transition>함께 보기 · 세라믹 칼 XRD 분석 ↗</a></div>
    <div class="chapter-word" aria-hidden="true">MEASURE.</div>
   </article>
   <article class="work-spread data-spread" id="data-work" data-chapter="data">
    <div class="spread-copy" data-reveal><span class="spread-index">03 / DATA</span><h3>표면의 차이를<br>데이터의 언어로.</h3><p>선박 도장 불량 분류 AI</p><div class="spread-description">5개 표면 상태의 이미지 분류.<br>모델 학습부터 예측 결합, 최종 제출까지 이어지는 교육 프로젝트입니다.</div><a class="spread-link" href="#coating" data-project-transition>분석과 결과 보기 <span>↗</span></a><a class="spread-secondary" href="#sejong" data-project-transition>함께 보기 · 세종상권나침반 ↗</a></div>
-   <div class="data-visual" data-reveal style="view-transition-name:project-coating"><div class="data-visual-heading"><span>COATING CLASSIFICATION</span><span>TEST SET / 1,000</span></div><div class="data-score"><span>FINAL SUBMISSION F1</span><strong>0.970<span>905</span></strong><small>발표자료에 기록된 교육 프로젝트 제출 점수</small></div><div class="prediction-bars" aria-label="최종 예측 분포">${[['Scratch',357],['Peeling',310],['Normal',168],['Blister',88],['Inclusion',77]].map(([name,count])=>`<div><span>${name}</span><i style="--prediction:${count/357*100}%"></i><b>${count}</b></div>`).join('')}</div><span class="data-footnote">5 CLASSES / FINAL PREDICTIONS</span></div>
+   <div class="data-visual" data-reveal style="view-transition-name:project-coating"><div class="data-visual-heading"><span>COATING CLASSIFICATION</span><span>TEST SET / 1,000</span></div><div class="data-score"><span>FINAL SUBMISSION F1</span><strong>0.970<span>905</span></strong><small>교육 프로젝트 · 최종 제출 F1</small></div><div class="prediction-bars" aria-label="최종 예측 분포">${[['Scratch',357],['Peeling',310],['Normal',168],['Blister',88],['Inclusion',77]].map(([name,count])=>`<div><span>${name}</span><i style="--prediction:${count/357*100}%"></i><b>${count}</b></div>`).join('')}</div><span class="data-footnote">5 CLASSES / FINAL PREDICTIONS</span></div>
    <div class="chapter-word" aria-hidden="true">INTERPRET.</div>
   </article>
  </section>
- <section class="home-archive" id="home-archive" aria-labelledby="archive-title"><div class="home-section-heading" data-reveal><h2 id="archive-title">Further explorations<span>경험 전체 보기</span></h2><p>연구, 실습, 그리고 직접 만든 결과물.</p></div><div class="lab-archive-grid">${archive.map((p,i)=>`<a class="lab-project-card" href="#${p.id}" data-project-transition data-reveal><div class="lab-card-visual" data-preview="${p.id}">${labArchiveVisual(p.id)}<span class="card-visual-label">PROJECT CONCEPT</span></div><div class="lab-card-meta"><span>${String(i+1).padStart(2,'0')} / ${p.category}</span><span>↗</span></div><h3>${p.title}</h3><small>${p.shortDate}</small></a>`).join('')}</div></section>
+ <section class="home-archive" id="home-archive" aria-labelledby="archive-title"><div class="home-section-heading" data-reveal><h2 id="archive-title">The collection.<span>경험 전체 보기</span></h2><span class="section-count">${String(archive.length).padStart(2,'0')} PROJECTS</span></div><div class="archive-controls" role="group" aria-label="경험 분야 선택">${[['all','전체'],['field','현장'],['materials','소재'],['data','데이터']].map(([id,label])=>`<button type="button" data-filter="${id}" aria-pressed="${id==='all'}">${label}</button>`).join('')}</div><div class="lab-archive-grid">${archive.map((p,i)=>`<a class="lab-project-card" href="#${p.id}" data-project-transition data-reveal data-field="${['alloy','xrd','energy'].includes(p.id)?'materials':['coating','sejong','fitness'].includes(p.id)?'data':'field'}"><div class="lab-card-visual" data-preview="${p.id}">${labArchiveVisual(p.id)}</div><div class="lab-card-meta"><span>${String(i+1).padStart(2,'0')} / ${p.category}</span><span>↗</span></div><h3>${p.title}</h3><small>${p.shortDate}</small></a>`).join('')}</div><p class="archive-status sr-only" aria-live="polite"></p></section>
  </article>`;
 }
 function portfolioProjectVisual(id){
@@ -63,8 +63,16 @@ function portfolioProjectVisual(id){
  else if(id==='xrd')visual=xrdPhaseChart();
  else if(id==='coating')visual=coatingResultVisual();
  else if(id==='energy')visual=energyLayerVisual();
- else visual=`<div class="journal-concept" data-preview="${id}">${labArchiveVisual(id)}<small>프로젝트 주제를 표현한 개념 시각화</small></div>`;
+ else if(id==='fitness')visual=fitnessOverviewVisual();
+ else if(id==='sejong')visual=sejongOverviewVisual();
+ else visual=`<div class="journal-concept" data-preview="${id}">${labArchiveVisual(id)}</div>`;
  return `<div class="journal-visual lab-journal-visual ${['alloy','xrd'].includes(id)?'journal-chart':'journal-result'}" style="view-transition-name:project-${id}" data-reveal>${visual}</div>`;
+}
+function fitnessOverviewVisual(){
+ return `<section class="overview-exhibit fitness-exhibit" aria-label="운동 횟수 측정 흐름"><header><span>MOTION → SIGNAL → COUNT</span><h3>움직임을 한 번의 카운트로.</h3></header><div class="fitness-pipeline"><div class="stack-assembly" aria-label="중량 스택과 휴대전화"><svg viewBox="0 0 180 230" role="img" aria-label="웨이트 머신의 중량 스택에 놓인 휴대전화"><path d="M35 20v190M145 20v190M20 212h140M90 0v56" fill="none" stroke="currentColor" stroke-width="3"/><g class="stack-plates" fill="currentColor"><rect x="24" y="105" width="132" height="18" rx="3"/><rect x="24" y="129" width="132" height="18" rx="3"/><rect x="24" y="153" width="132" height="18" rx="3"/><rect x="24" y="177" width="132" height="18" rx="3"/></g><rect x="73" y="58" width="34" height="44" rx="5" fill="#f5f3ed" stroke="currentColor" stroke-width="2"/><path d="M80 80h4l4-9 6 18 4-9h3" fill="none" stroke="#b85432" stroke-width="2"/></svg><span>중량 스택 · 센서 입력</span></div><div class="count-logic"><ol><li><span>01</span><strong>z축 가속도</strong><small>상하 움직임 읽기</small></li><li><span>02</span><strong>신호 필터</strong><small>작은 진동 정리</small></li><li><span>03</span><strong>봉우리 판정</strong><small>임계값으로 횟수 구분</small></li></ol><a href="#fitness/work-counter-demo" class="exhibit-link">직접 움직임 시험하기 <span>↗</span></a></div></div></section>`;
+}
+function sejongOverviewVisual(){
+ return `<section class="overview-exhibit sejong-exhibit" aria-label="세종상권나침반 분석 흐름"><header><span>SEJONG / LOCATION INTELLIGENCE</span><h3>데이터에서, 선택할 수 있는 입지로.</h3></header><div class="sejong-overview-stats"><div><strong>8,881</strong><span>점포</span></div><span class="overview-arrow" aria-hidden="true">→</span><div><strong>491</strong><span>비교 가능한 상가 건물</span></div></div><div class="sejong-indicators">${['업무시설','정류장 접근성','경쟁 완화','주차 여건','사업체 밀도','생활편의시설'].map((label,i)=>`<span><b>${String(i+1).padStart(2,'0')}</b>${label}</span>`).join('')}</div><footer><p>6개 지표의 가중치 조절 → 후보 5곳 → 건물 2곳 비교</p><a href="#sejong/work-map" class="exhibit-link">지도에서 비교하기 <span>↗</span></a></footer></section>`;
 }
 document.addEventListener('click',event=>{
  const button=event.target.closest('[data-home-scroll]');if(!button)return;

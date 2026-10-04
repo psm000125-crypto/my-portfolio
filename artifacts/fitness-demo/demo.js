@@ -86,7 +86,7 @@ document.querySelectorAll('[data-scenario]').forEach(button=>{
     stop();source='demo';scenario=button.dataset.scenario;reset();
     document.querySelectorAll('[data-scenario]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
     $('source-label').textContent='SIMULATION';$('signal-source').textContent='시뮬레이션 신호';
-    $('machine-caption').textContent='중량 스택의 상하 움직임 · 개념도';
+    $('machine-caption').textContent='중량 스택의 상하 움직임';
     $('sensor-help').textContent='휴대전화에서는 센서 입력으로도 시험할 수 있습니다.';
     start();
   };
@@ -127,7 +127,7 @@ $('sensor').onclick=async()=>{
     source='sensor';reset();
     document.querySelectorAll('[data-scenario]').forEach(b=>b.setAttribute('aria-pressed','false'));
     $('source-label').textContent='SENSOR';$('signal-source').textContent='실시간 휴대전화 입력';
-    $('machine-caption').textContent='센서 연결 모드 · 위 그림은 설치 개념도';
+    $('machine-caption').textContent='휴대전화 센서 입력';
     $('sensor-help').textContent='z축 방향으로 천천히 움직여보세요. 시연 버튼으로 시뮬레이션에 돌아갈 수 있습니다.';
     start();
   }catch{$('sensor-help').textContent='센서 접근이 허용되지 않았습니다. 시연 모드로도 동작을 확인할 수 있습니다.';}
