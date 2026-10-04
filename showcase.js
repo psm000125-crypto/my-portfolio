@@ -7,9 +7,10 @@ function labEquipmentVisual(compact=false){
  </figure>`;
 }
 function labArchiveVisual(id){
- if(id==='mim')return '<img src="artifacts/equipment-gallery/images/optical-3d.jpg" alt="비접촉 3D 측정 장비 예시" loading="lazy" decoding="async">';
+ if(id==='academy')return '<svg viewBox="0 0 240 100" role="img" aria-label="선박과 전기 교육을 표현한 도식"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M28 59h184l-22 23H51zM66 59V34h78v25M85 34V22h38v12M149 59V43h31v16M99 22V12M28 91q15-8 30 0t30 0t30 0t30 0t30 0t30 0"/><path d="M77 43h12m8 0h12m8 0h12M77 51h12m8 0h12m8 0h12"/><path d="M170 14l-9 16h12l-9 15"/></g></svg>';
+ if(id==='mim')return '<svg viewBox="0 0 240 100" role="img" aria-label="환형 부품의 치수 측정을 표현한 도식"><g fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="120" cy="48" rx="49" ry="25"/><ellipse cx="120" cy="48" rx="23" ry="12"/><path d="M71 48v15c0 14 22 25 49 25s49-11 49-25V48M97 48v11c0 7 10 12 23 12s23-5 23-12V48M65 17h110M71 10v13M169 10v13M48 27v61M41 27h14M41 88h14"/><path d="M76 17l6-3m-6 3l6 3m82-3l-6-3m6 3l-6 3"/></g></svg>';
  if(id==='coating')return '<div class="mini-classifier" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>';
- if(id==='alloy')return '<div class="mini-alloy" aria-hidden="true">Fe<span>Si</span></div>';
+ if(id==='alloy')return '<svg viewBox="0 0 240 100" role="img" aria-label="금속 시편의 압연과 조직 변화를 표현한 도식"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><circle cx="100" cy="25" r="17"/><circle cx="100" cy="75" r="17"/><path d="M24 43h66l10 4h112v6H100l-10 4H24zM112 25h22m-5-4l5 4-5 4M88 75H66m5-4l-5 4 5 4"/><path d="M34 43v14M48 43v14M62 43v14M76 43v14M144 47v6M164 47v6M184 47v6"/><circle cx="100" cy="25" r="3"/><circle cx="100" cy="75" r="3"/></g></svg>';
  if(id==='xrd')return '<svg viewBox="0 0 240 100" role="img" aria-label="X선 분석을 표현한 개념도"><path d="M0 80H40L46 24L50 80H90L98 8L102 80H143L150 40L155 80H190L197 58L202 80H240" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
  if(id==='energy')return '<div class="mini-layers" aria-hidden="true"><i></i><i></i><i></i></div>';
  if(id==='sejong')return '<div class="mini-map" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>';
@@ -52,7 +53,7 @@ function portfolioHomeMarkup(){
    <div class="chapter-word" aria-hidden="true">INTERPRET.</div>
   </article>
  </section>
- <section class="home-archive" id="home-archive" aria-labelledby="archive-title"><div class="home-section-heading" data-reveal><h2 id="archive-title">Further explorations<span>경험 전체 보기</span></h2><p>연구, 실습, 그리고 직접 만든 결과물.</p></div><div class="lab-archive-grid">${archive.map((p,i)=>`<a class="lab-project-card" href="#${p.id}" data-project-transition data-reveal><div class="lab-card-visual" data-preview="${p.id}">${labArchiveVisual(p.id)}<span class="card-visual-label">${p.id==='mim'?'REFERENCE IMAGE':'PROJECT CONCEPT'}</span></div><div class="lab-card-meta"><span>${String(i+1).padStart(2,'0')} / ${p.category}</span><span>↗</span></div><h3>${p.title}</h3><small>${p.shortDate}</small></a>`).join('')}</div></section>
+ <section class="home-archive" id="home-archive" aria-labelledby="archive-title"><div class="home-section-heading" data-reveal><h2 id="archive-title">Further explorations<span>경험 전체 보기</span></h2><p>연구, 실습, 그리고 직접 만든 결과물.</p></div><div class="lab-archive-grid">${archive.map((p,i)=>`<a class="lab-project-card" href="#${p.id}" data-project-transition data-reveal><div class="lab-card-visual" data-preview="${p.id}">${labArchiveVisual(p.id)}<span class="card-visual-label">PROJECT CONCEPT</span></div><div class="lab-card-meta"><span>${String(i+1).padStart(2,'0')} / ${p.category}</span><span>↗</span></div><h3>${p.title}</h3><small>${p.shortDate}</small></a>`).join('')}</div></section>
  </article>`;
 }
 function portfolioProjectVisual(id){
