@@ -300,9 +300,7 @@ function project(p){
  if(p.id==='academy'){
   view.querySelector('.project-overview').classList.add('academy-landing');
   view.querySelector('.project-description').remove();
-  view.querySelector('.case-heading-copy').insertAdjacentHTML('beforeend','<a class="academy-primary-link" href="#coating/story-0">도장 불량 분류 PBL <span aria-hidden="true">↗</span></a>');
   view.querySelector('.case-stage').insertAdjacentHTML('beforeend',academyOverviewMarkup());
-  view.querySelector('.project-overview').insertAdjacentHTML('beforeend',academyEvidenceMarkup());
  }
  else view.querySelector('.case-stage').insertAdjacentHTML('beforeend',portfolioProjectVisual(p.id));
 }

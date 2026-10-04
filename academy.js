@@ -138,20 +138,6 @@ function academyOverviewMarkup() {
   return `<section class="academy-overview" aria-label="아카데미 과정"><p class="academy-overview-label">아카데미 활동 · 과정별 살펴보기</p><div class="academy-cards">${academyTracks.map((track,index)=>`<a href="#academy/story-${index}" data-academy-track="${track.id}"><div class="academy-track-visual" aria-hidden="true"><span class="academy-track-number">0${index+1}</span>${academyTrackGraphic(track.id)}</div><h3>${track.title}</h3><p>${track.description}</p><small>${track.activities.map(activity=>activity.title).join(' · ')}</small><b aria-hidden="true">↗</b></a>`).join('')}</div></section>`;
 }
 
-function academyEvidenceMarkup() {
- return `<div class="academy-evidence">
-  <section class="academy-context" aria-labelledby="academy-context-title">
-   <div><span class="academy-section-number">01 / LEARNING TO PRACTICE</span><h2 id="academy-context-title">배운 구조를,<br>현장에서 확인하다.</h2></div>
-   <div><p>${escapeHTML(academy.summary)}</p><div class="academy-practice-links"><a href="#ocean/story-0">조선소·선박 관찰 <span>↗</span></a><a href="#ocean/story-1">배선·고전압 실습 <span>↗</span></a><a href="#ocean/story-2">PLC 입·출력 실습 <span>↗</span></a></div></div>
-  </section>
-  <section class="academy-featured-pbl" aria-labelledby="academy-pbl-title">
-   <div class="academy-pbl-heading"><div><span class="academy-section-number">02 / TEAM PBL</span><h2 id="academy-pbl-title">선박의 표면을 읽는 AI.</h2><p>선박 도장 불량 분류 프로젝트</p></div><div class="academy-pbl-score"><span>최종 제출 F1</span><strong>0.970905</strong><small>교육 프로젝트 · 테스트 이미지 1,000건</small></div></div>
-   <a class="academy-deck-preview" href="#coating/work-slides" aria-label="도장 불량 분류 결과 발표자료 열기"><img src="artifacts/coating/slide-03.png" alt="실제 PBL 발표자료: 데이터 수집부터 세 모델의 학습과 추론·앙상블까지의 파이프라인" width="1600" height="900" loading="lazy"><span>결과 발표자료 <b aria-hidden="true">↗</b></span></a>
-   <div class="academy-pbl-details"><div><h3>전처리에서 최종 예측까지.</h3><p>이미지 전처리와 세 모델의 예측 결합을 구성했습니다. 팀 모델 비교 후 제가 구성한 방식이 최종 모델로 채택됐고, 오분류 이미지를 확인하며 빛 반사와 결함을 구분하는 방향으로 보완했습니다.</p></div><nav aria-label="PBL 결과물"><a href="#coating/story-0">분석 과정과 결과 <span>↗</span></a><a href="#coating/work-implementation">예측 결과 · 구현 코드 <span>↗</span></a></nav></div>
-  </section>
- </div>`;
-}
-
 function academyNavigationMarkup(projectId,selection='') {
  const inAcademy=projectId==='academy'||experiences.find(p=>p.id===projectId)?.parent==='academy';
  const activeActivity=activity=>activity.project===projectId&&(selection==='story-'+activity.story||projectId==='coating'&&selection.startsWith('work-'));

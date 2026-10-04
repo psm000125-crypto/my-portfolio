@@ -220,8 +220,6 @@ body[data-project="academy"] .main-view:not(.has-focus) .academy-landing .case-h
 body[data-project="academy"] .main-view:not(.has-focus) .academy-landing .case-emblem {position:relative;grid-column:2;grid-row:1;inset:auto;width:100%;height:auto;aspect-ratio:4/3;opacity:.9;align-self:center}
 body[data-project="academy"] .workspace .main-view:not(.has-focus) .academy-landing .project-title {font-size:clamp(38px,3.5vw,58px)!important;max-width:15ch;margin:22px 0!important;line-height:1.18!important}
 body[data-project="academy"] .workspace .main-view:not(.has-focus) .academy-landing .project-lead {font-size:clamp(19px,1.7vw,27px)!important;max-width:24ch;margin:0 0 24px!important}
-.academy-primary-link {display:inline-flex;gap:32px;align-items:center;background:#c9ee94;color:#102d25!important;padding:13px 18px;font-size:13px;font-weight:500;text-decoration:none;border:1px solid #c9ee94;transition:background .2s}
-.academy-primary-link:hover {background:#e0f5bf}
 body[data-project="academy"] .workspace .academy-landing .academy-overview-label {display:none}
 body[data-project="academy"] .workspace .academy-landing .academy-cards {grid-template-columns:repeat(3,minmax(0,1fr))}
 body[data-project="academy"] .workspace .academy-landing .academy-cards a {padding:20px 18px 28px;min-width:0}
@@ -230,34 +228,6 @@ body[data-project="academy"] .workspace .academy-landing .academy-cards a h3 {fo
 body[data-project="academy"] .workspace .academy-landing .academy-cards a p {margin-bottom:0;font-size:12px!important}
 body[data-project="academy"] .academy-landing .academy-cards small {display:none}
 body[data-project="academy"] .academy-landing .academy-cards b {bottom:14px!important;right:16px!important}
-.academy-evidence {margin-top:44px;padding:42px 36px 40px;background:#f2f4ed;color:#193d30;color-scheme:light;border-top:3px solid #c9ee94}
-.academy-evidence :is(h2,h3,p,figure) {margin:0}
-.academy-evidence h2 {font-size:clamp(25px,2.4vw,36px);line-height:1.4;letter-spacing:-.045em;font-weight:500;word-break:keep-all}
-.academy-evidence p {font-size:14px;line-height:1.95;color:#486052;word-break:keep-all}
-.academy-section-number {display:block;font-size:10px;letter-spacing:.11em;color:#597060;margin-bottom:18px}
-.academy-context {display:grid;grid-template-columns:1fr 1.25fr;gap:34px;padding-bottom:40px;border-bottom:1px solid #c8d4c6}
-.academy-practice-links {display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:20px}
-.academy-evidence a {color:#245442;text-decoration:none}
-.academy-practice-links a {font-size:12px;border-bottom:1px solid #aebfab;padding:6px 0}
-.academy-practice-links a span {margin-left:8px}
-.academy-featured-pbl {padding-top:36px}
-.academy-pbl-heading {display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:26px}
-.academy-pbl-heading h2 {margin-bottom:8px}
-.academy-pbl-score {padding-left:24px;border-left:1px solid #c8d4c6;flex-shrink:0}
-.academy-pbl-score>span {display:block;font-size:11px;color:#486052}
-.academy-pbl-score strong {display:block;font-size:clamp(30px,3.2vw,48px);letter-spacing:-.04em;line-height:1.4;font-weight:500;font-variant-numeric:tabular-nums}
-.academy-pbl-score small {font-size:10px;color:#597060}
-.academy-deck-preview {display:block;border:1px solid #d4ddd1;background:white;transition:box-shadow .2s}
-.academy-deck-preview:hover {box-shadow:0 10px 28px #173d3118}
-.academy-deck-preview img {display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain}
-.academy-deck-preview>span {display:flex;justify-content:space-between;padding:14px 18px;background:#e4ebdd;font-size:12px}
-.academy-deck-preview b {font-weight:400}
-.academy-pbl-details {display:grid;grid-template-columns:1.3fr 1fr;gap:36px;margin-top:28px}
-.academy-pbl-details h3 {font-size:19px;font-weight:500;margin-bottom:12px;letter-spacing:-.025em}
-.academy-pbl-details nav {align-self:start;display:grid;gap:12px}
-.academy-pbl-details nav a {display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid #bdcdb9;padding:14px 0;font-size:13px}
-body[data-project="academy"] .academy-evidence :is(a,button):focus-visible {outline-color:#245442!important}
-.has-focus .academy-landing :is(.academy-evidence,.academy-primary-link) {display:none}
 @media(min-width:901px) {
  body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel {position:sticky!important;top:24px!important;align-self:start!important;margin-top:0!important;max-height:calc(100dvh - 116px)!important;height:auto!important;overflow-y:auto!important;overflow-x:hidden!important;padding-top:0!important;padding-bottom:12px!important;box-sizing:border-box}
 }
