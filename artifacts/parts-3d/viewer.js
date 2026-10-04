@@ -1,5 +1,9 @@
 (function(){
   'use strict';
+  const heroMode=new URLSearchParams(location.search).get('hero')==='1';
+  const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
+  let heroMotionSeconds=0;
+  if(heroMode)document.body.classList.add('hero-mode');
   const $=s=>document.querySelector(s),load=$('#load-state');
   if(!window.THREE||!window.PartsModels){load.textContent='3D 라이브러리를 불러오지 못했습니다. vendor 폴더와 함께 페이지를 열어 주세요.';return;}
   const T=THREE,defs=PartsModels.definitions,canvas=$('#scene'),stage=$('#stage');
@@ -42,7 +46,7 @@
   }
   // Render real geometry for the selector thumbnails with the same lighting.
   renderer.setPixelRatio(1);renderer.setSize(240,150,false);camera.aspect=240/150;camera.position.z=7.5;camera.updateProjectionMatrix();pivot.quaternion.copy(initialQ);
-  defs.forEach((d,i)=>{
+  if(!heroMode)defs.forEach((d,i)=>{
     pivot.clear();pivot.add(models[i]);renderer.render(scene,camera);
     const button=document.createElement('button');button.type='button';button.className='part-card';button.setAttribute('aria-label',d.title+' 선택');button.setAttribute('aria-pressed','false');
     const number=document.createElement('span');number.className='card-number';number.textContent=String(i+1).padStart(2,'0');
@@ -52,6 +56,8 @@
   });
   renderer.setPixelRatio(Math.min(devicePixelRatio,2));resized();
   const startIndex=defs.findIndex(d=>d.id===location.hash.slice(1));select(startIndex<0?0:startIndex);load.hidden=true;
+  if(heroMode&&!motionPreference.matches)setAuto(true);
+  motionPreference.addEventListener('change',e=>{if(e.matches)setAuto(false);});
   // The thumbnails render through the same canvas. Draw the selected model once
   // before the next animation frame so the final thumbnail never flashes first.
   renderer.render(scene,camera);dirty=false;
@@ -62,14 +68,14 @@
   $('#wire')?.addEventListener('click',()=>{wire=!wire;PartsModels.materials.forEach(m=>{m.wireframe=wire;});$('#wire').setAttribute('aria-pressed',String(wire));dirty=true;});
   function rotate(dx,dy){const length=Math.hypot(dx,dy);if(!length)return;const q=new T.Quaternion().setFromAxisAngle(new T.Vector3(dy,dx,0).normalize(),length*.008);pivot.quaternion.premultiply(q).normalize();freeView();dirty=true;}
   const pointers=new Map();let pinch=0;
-  canvas.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;canvas.focus({preventScroll:true});canvas.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});setAuto(false);pinch=0;});
+  canvas.addEventListener('pointerdown',e=>{if(heroMode&&e.pointerType!=='mouse')return;if(e.pointerType==='mouse'&&e.button!==0)return;canvas.focus({preventScroll:true});canvas.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});setAuto(false);pinch=0;});
   canvas.addEventListener('pointermove',e=>{const last=pointers.get(e.pointerId);if(!last)return;const dx=e.clientX-last.x,dy=e.clientY-last.y;pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===1){rotate(dx,dy);}else if(pointers.size===2){const [a,b]=[...pointers.values()],distance=Math.hypot(a.x-b.x,a.y-b.y);if(pinch>0&&distance>0)zoom(pinch/distance);pinch=distance;}});
   function release(e){pointers.delete(e.pointerId);pinch=0;}
   canvas.addEventListener('pointerup',release);canvas.addEventListener('pointercancel',release);canvas.addEventListener('lostpointercapture',release);
-  canvas.addEventListener('wheel',e=>{e.preventDefault();zoom(Math.exp(T.MathUtils.clamp(e.deltaY,-200,200)*.0018));},{passive:false});
+  if(!heroMode)canvas.addEventListener('wheel',e=>{e.preventDefault();zoom(Math.exp(T.MathUtils.clamp(e.deltaY,-200,200)*.0018));},{passive:false});
   canvas.addEventListener('keydown',e=>{let handled=true;switch(e.key){case 'ArrowLeft':setAuto(false);rotate(-12,0);break;case 'ArrowRight':setAuto(false);rotate(12,0);break;case 'ArrowUp':setAuto(false);rotate(0,-12);break;case 'ArrowDown':setAuto(false);rotate(0,12);break;case '+':case '=':zoom(.86);break;case '-':zoom(1/.86);break;case 'r':case 'R':reset();break;default:handled=false;}if(handled)e.preventDefault();});
   canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();load.hidden=false;load.textContent='3D 화면 연결이 중단되었습니다. 페이지를 새로고침해 주세요.';});
   new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;dirty=true;}).observe(stage);
-  function frame(time){requestAnimationFrame(frame);const delta=Math.min((time-lastTime)/1000,.05);lastTime=time;if(document.hidden||!inView)return;if(auto){pivot.quaternion.premultiply(new T.Quaternion().setFromAxisAngle(new T.Vector3(0,1,0),delta*.20));dirty=true;}if(dirty){renderer.render(scene,camera);dirty=false;}}
+  function frame(time){requestAnimationFrame(frame);const delta=Math.min((time-lastTime)/1000,.05);lastTime=time;if(document.hidden||!inView)return;if(auto){pivot.quaternion.premultiply(new T.Quaternion().setFromAxisAngle(new T.Vector3(0,1,0),delta*(heroMode?.12:.20)));dirty=true;if(heroMode){heroMotionSeconds+=delta;if(heroMotionSeconds>=4)setAuto(false);}}if(dirty){renderer.render(scene,camera);dirty=false;}}
   requestAnimationFrame(frame);
 })();

@@ -12,40 +12,7 @@ function renderNavigation(projectId,selection){
 }
 const crystal = `<div class="crystal-wrap" aria-hidden="true"><svg class="crystal" viewBox="0 0 180 220"><defs><linearGradient id="quartz" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fbe4df"/><stop offset=".55" stop-color="#FAF6F5" stop-opacity=".7"/><stop offset="1" stop-color="#bda2a4" stop-opacity=".35"/></linearGradient></defs><polygon points="90,8 151,66 140,156 77,211 29,145 36,63" fill="url(#quartz)"/><polygon points="90,8 102,86 36,63" fill="#fff8"/><polygon points="90,8 151,66 102,86" fill="#edbcbe88"/><polygon points="36,63 102,86 29,145" fill="#f9d4cb88"/><polygon points="102,86 151,66 140,156" fill="#c49c9e66"/><polygon points="102,86 140,156 77,211" fill="#ead6d344"/><polygon points="29,145 102,86 77,211" fill="#f8e7e280"/><line x1="36" y1="63" x2="140" y2="156"/><line x1="29" y1="145" x2="151" y2="66"/></svg></div>`;
 function profile(){
- view.innerHTML=`
-  <article class="resume-profile">
-   <header class="resume-head">
-    <div class="resume-kicker"><span>PROFILE</span><small>2026</small></div>
-    <div class="resume-title-row"><h1>편성민</h1><p class="resume-name">Pyeon Seongmin</p></div>
-    <p class="resume-role">품질관리 · 소재 연구 · 데이터 분석</p>
-   </header>
-   <div class="profile-content-grid">
-    <section class="resume-facts" aria-labelledby="profile-facts-heading">
-     <h2 id="profile-facts-heading">기본 정보</h2>
-     <div><span>생년월일</span><strong>2002.04.17</strong></div>
-     <div><span>학력</span><strong>금오공과대학교 신소재공학과</strong></div>
-     <div class="active-fact"><span>활동</span><ul class="fact-list"><li>HD 현대중공업 Future Builder Academy</li><li>HD 선박 전기설비 운용 교육</li><li>계림금속 MIM 품질관리 인턴십</li></ul></div>
-     <div><span>연락처</span><strong><a href="tel:01087548353">010-8754-8353</a></strong></div>
-     <div><span>이메일</span><strong><a href="mailto:psm000125@naver.com">psm000125@naver.com</a></strong></div>
-    </section>
-    <section class="profile-aside" aria-labelledby="profile-archive-heading">
-     <h2 id="profile-archive-heading">경험 아카이브</h2>
-     <dl>
-      <div><dt>FIELD</dt><dd><a class="profile-experience-link" href="#mim">MIM 공정 품질관리</a><a class="profile-experience-link" href="#academy">HD현대 Future Builder 아카데미</a></dd></div>
-      <div><dt>MATERIALS</dt><dd><a class="profile-experience-link" href="#alloy">고규소 Fe–Si 합금 설계</a><a class="profile-experience-link" href="#xrd">세라믹 칼 X선 분석</a><a class="profile-experience-link" href="#energy">에너지재료설계</a></dd></div>
-      <div><dt>DATA</dt><dd><a class="profile-experience-link" href="#sejong">세종상권나침반</a><a class="profile-experience-link" href="#coating">선박 도장 불량 분류 AI</a><a class="profile-experience-link" href="#fitness">운동 횟수 측정 앱</a></dd></div>
-     </dl>
-    </section>
-   </div>
-   <section class="resume-tools profile-tools" aria-labelledby="profile-tools-heading">
-    <h2 id="profile-tools-heading">활용 도구</h2>
-    <ul>
-     <li><h3>Data &amp; Analysis</h3><p>Python · NumPy · pandas · scikit-learn</p></li>
-     <li><h3>AI &amp; Vision</h3><p>PyTorch · torchvision</p></li>
-     <li><h3>Materials &amp; Quality</h3><p>디지털 게이지 · 버니어 캘리퍼스<br>형상 측정기 · <span class="tool-term">접촉·비접촉 3차원 측정기</span><br>표면조도계 · X-ray · C/S 분석기</p></li>
-    </ul>
-   </section>
-  </article>`;
+ view.innerHTML=portfolioHomeMarkup();
  panel.replaceChildren();
 }
 const reducedMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -316,6 +283,7 @@ function equipmentGalleryMarkup(){
   </section>`;
 }
 function project(p){
+ document.body.dataset.project=p.id;
  const projectFacts=[
   ['PERIOD',p.date],
   ['CONTEXT',p.subtitle],
@@ -324,6 +292,7 @@ function project(p){
  view.innerHTML=`<div class="project-overview"><div class="eyebrow">${p.category}</div><h1 class="project-title">${p.title}</h1><h2 class="project-lead">${p.lead}</h2><p class="project-description">${p.summary}</p><dl class="project-facts">${projectFacts.map(([label,value])=>`<div class="project-fact"><dt>${label}</dt><dd>${value}</dd></div>`).join('')}</dl><div class="tags" aria-label="프로젝트 키워드">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div></div><div class="focus-content" id="focus-content" hidden></div>`;
  panel.innerHTML=`<div class="detail-label">EXPLORE THIS EXPERIENCE</div>${p.parent?'<a class="parent-link" href="#academy">← Future Builder 아카데미</a>':''}<a class="overview-link" href="#${p.id}">경험 개요 <span>↖</span></a>${p.children?`<div class="branch-group"><h2>아카데미 활동</h2>${p.children.map(id=>{const c=experiences.find(e=>e.id===id);return `<a class="branch-link" href="#${id}"><span class="branch-symbol">↗</span><span><strong>${c.title}</strong><small>${c.shortDate}</small></span></a>`;}).join('')}</div>`:''}${p.works.length?`<div class="branch-group"><h2>성과물</h2>${p.works.map(w=>`<a class="branch-link work-link" href="#${p.id}/work-${w.id}"><span class="branch-symbol">↗</span><span><strong>${w.title}</strong><small>${w.description}</small></span><span class="project-action" aria-hidden="true">VIEW ↗</span></a>`).join('')}</div>`:''}${p.branches.length?`<div class="branch-group"><h2>경험 속 이야기</h2>${p.branches.map((b,j)=>`<a class="branch-link story-link" href="#${p.id}/story-${j}"><span class="branch-symbol">·</span><span><strong>${b[0]}</strong></span><span class="project-action" aria-hidden="true">READ ↗</span></a>`).join('')}</div>`:''}<a class="back-profile" href="#profile">← 프로필</a>`;
  if(p.id==='academy')view.querySelector('.project-overview').insertAdjacentHTML('beforeend',academyOverviewMarkup());
+ else view.querySelector('.project-overview').insertAdjacentHTML('beforeend',portfolioProjectVisual(p.id));
 }
 function focusContent(p,selection,sectionIndex=null){
  const overview=view.querySelector('.project-overview'),content=view.querySelector('.focus-content');
@@ -387,6 +356,7 @@ function render(){
  const selection=requested==='coating'&&['work-submission','work-notebook'].includes(rawSelection)?'work-implementation':oldStory&&Number(oldStory[1])>=(experiences.find(p=>p.id===requested)?.branches.length||0)
   ?`story-${requested==='ocean'&&Number(oldStory[1])===2?1:0}`:rawSelection;
  const i=experiences.findIndex(p=>p.id===requested),id=i<0?'profile':requested;
+ document.body.classList.toggle('showcase-home',id==='profile');
  const requestedStory=selection?.match(/^story-(\d+)$/),sectionMatch=rawSection?.match(/^section-(\d+)$/);
  const requestedSection=sectionMatch?Number(sectionMatch[1]):null;
  const sections=i>=0&&requestedStory?experiences[i].branches[Number(requestedStory[1])]?.[3]:null;
@@ -450,7 +420,7 @@ trigger.addEventListener('pointerenter',()=>{if(desktop())setDrawer(true);});tri
 drawer.addEventListener('pointerenter',()=>{if(desktop())setDrawer(true);});drawer.addEventListener('pointerleave',()=>{if(desktop())closeDrawerSoon();});
 trigger.addEventListener('pointerleave',()=>{if(desktop())closeDrawerSoon();});drawer.addEventListener('focusin',()=>setDrawer(true));drawer.addEventListener('focusout',closeDrawerSoon);
 document.addEventListener('pointermove',e=>{if(desktop()&&e.pointerType==='mouse'&&e.clientX<36)setDrawer(true);});
-drawer.addEventListener('click',e=>{if(e.target.closest('a'))e.target.closest('a').blur();});
+drawer.addEventListener('click',e=>{if(e.target.closest('a')){e.target.closest('a').blur();setDrawer(false);}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')setDrawer(false);});
 
 
