@@ -26,6 +26,7 @@ function profile(){
      <div><span>학력</span><strong>금오공과대학교 신소재공학과</strong></div>
      <div class="active-fact"><span>활동</span><ul class="fact-list"><li>HD 현대중공업 Future Builder Academy</li><li>HD 선박 전기설비 운용 교육</li><li>계림금속 MIM 품질관리 인턴십</li></ul></div>
      <div><span>연락처</span><strong><a href="tel:01087548353">010-8754-8353</a></strong></div>
+     <div><span>이메일</span><strong><a href="mailto:psm000125@naver.com">psm000125@naver.com</a></strong></div>
     </section>
     <section class="profile-aside" aria-labelledby="profile-archive-heading">
      <h2 id="profile-archive-heading">경험 아카이브</h2>
@@ -41,7 +42,7 @@ function profile(){
     <ul>
      <li><h3>Data &amp; Analysis</h3><p>Python · NumPy · pandas · scikit-learn</p></li>
      <li><h3>AI &amp; Vision</h3><p>PyTorch · torchvision</p></li>
-     <li><h3>Materials &amp; Quality</h3><p>디지털 게이지 · 버니어 캘리퍼스<br>형상 측정기 · <span class="tool-term">접촉·비접촉 3차원 측정기</span><br>표면조도계 · X-ray</p></li>
+     <li><h3>Materials &amp; Quality</h3><p>디지털 게이지 · 버니어 캘리퍼스<br>형상 측정기 · <span class="tool-term">접촉·비접촉 3차원 측정기</span><br>표면조도계 · X-ray · C/S 분석기</p></li>
     </ul>
    </section>
   </article>`;
@@ -264,6 +265,13 @@ function equipmentGalleryMarkup(){
    alt:'압력식 누출 검사기'
   },
   {
+   label:'CARBON / SULFUR',
+   title:'C/S 분석기',
+   description:'시료를 조연제와 함께 도가니에 넣어 탄소·황 성분을 직접 측정했습니다.',
+   image:'https://cdn-ilepojg.nitrocdn.com/oYObhCPldkcYRizHsJTIHpfqKnzpwgGd/assets/images/optimized/www.leco.com/wp-content/uploads/2026/03/leco-cs844-carbon-sulfur-determination.webp',
+   alt:'탄소·황 분석기'
+  },
+  {
    label:'ROCKWELL HARDNESS',
    title:'로크웰 경도기',
    description:'로크웰 스케일로 소재와 부품의 경도를 확인했습니다.',
@@ -292,10 +300,10 @@ function equipmentGalleryMarkup(){
    alt:'충격 시험기'
   }
  ];
- const groups=[['치수·형상',equipmentPhotos.slice(0,4)],['품질검사·중량',equipmentPhotos.slice(4,8)],['경도·충격',equipmentPhotos.slice(8)]];
+ const groups=[['치수·형상',equipmentPhotos.slice(0,4)],['품질검사·중량·성분',equipmentPhotos.slice(4,9)],['경도·충격',equipmentPhotos.slice(9)]];
  return `<section class="equipment-gallery" aria-label="MIM 검사 장비">
-   <header class="equipment-gallery-head"><h2>검사 장비 사진 아카이브</h2><p>12개 장비를 용도별로 정리했습니다. 사진을 누르면 크게 볼 수 있습니다.</p></header>
-   ${groups.map(([title,items],i)=>`<section class="equipment-group" aria-labelledby="equipment-group-${i}"><div class="equipment-group-head"><h3 id="equipment-group-${i}">${title}</h3><span>${items.length}개 장비</span></div><div class="equipment-photo-grid">${items.map(item=>`<article class="equipment-photo-card">
+   <header class="equipment-gallery-head"><h2>검사 장비 사진 아카이브</h2><p>13개 장비를 용도별로 정리했습니다. 사진을 누르면 크게 볼 수 있습니다.</p></header>
+   ${groups.map(([title,items],i)=>`<section class="equipment-group" aria-labelledby="equipment-group-${i}"><div class="equipment-group-head"><h3 id="equipment-group-${i}">${title}</h3><span>${items.length}개 장비</span></div><div class="equipment-photo-grid${items.length===5?' equipment-photo-grid-five':''}">${items.map(item=>`<article class="equipment-photo-card">
     <a class="equipment-photo" href="${item.image}" target="_blank" rel="noopener" aria-label="${escapeHTML(item.title)} 사진 크게 보기">
      <img src="${item.image}" alt="${escapeHTML(item.alt)}" loading="eager">
     </a>

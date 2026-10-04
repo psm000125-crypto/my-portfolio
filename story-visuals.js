@@ -54,6 +54,7 @@ function storySectionVisualMarkup(project, story, index) {
     return storyFlow('모델의 판단을 이미지에서 확인', [['오분류 확인', '잘못 분류한 이미지 직접 검토'], ['원인 사례', '강한 빛의 하이라이트를 결함으로 판단'], ['분류 보완', '결함의 색과 반사광의 색 구분']], '점수 비교 이후 실제 입력 이미지까지 되돌아가 검토');
   }
   if (project.id === 'ocean') {
+    if (branch === 2 && index === 1) return storyFlow('실습에서 선박 설비 관찰로', [['전기추진·제어 실습', '장치의 기능과 동작 확인'], ['선박 견학', '실습선 · 친환경 전기추진선박'], ['설비 배치 관찰', '실제 선박 안의 장치 배치 확인']]);
     if (branch === 1 || branch === 2) return `<div class="academy-practice-visuals">${academyPracticeVisualMarkup(branch,index)}</div>`;
     if (branch === 0 && index === 0) return storyFlow('교육에서 현장으로', [['설계·구조', '기본설계 / 선박구조설계'], ['생산·건조', '생산설비 / 선내 배관 관찰'], ['의장·시운전', '선행 공정과 후속 일정의 연결']], '07.23 · HD현대중공업 조선소 견학');
     if (branch === 0) return `<figure class="story-diagram"><figcaption><strong>선박에서 함께 살핀 두 영역</strong><small>설비 배치와 운전 정보를 관리하는 공간</small></figcaption><dl class="story-compare-list"><div><dt>기관·전력 설비</dt><dd>주·보조발전기 / 윤활 시스템 / 보일러 / 컴프레서 / MSBD·ESBD</dd></div><div><dt>제어·운전 공간</dt><dd>ECR / CCR / 브리지 / 통합관제센터</dd></div><div><dt>전기추진선박</dt><dd>태화호의 발전·배전·전기추진 설비 배치</dd></div></dl></figure>`;

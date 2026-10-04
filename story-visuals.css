@@ -319,4 +319,9 @@
   border-color: var(--experience-box-line) !important;
 }
 .fitness-demo-frame { display: block; width: 100%; height: 800px; border: 0; background: var(--paper); }
+.xrd-summary .story-compare-list > div { display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: baseline; gap: 24px; }
+.xrd-summary .story-compare-list dt { margin-bottom: 0; }
+@media (min-width: 901px) {
+  .equipment-gallery .equipment-photo-grid.equipment-photo-grid-five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
 @media (max-width: 680px) { .fitness-demo-frame { height: 1380px; } }
