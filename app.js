@@ -393,6 +393,7 @@ function render(){
  document.querySelector('#location-label').textContent=i<0?'PROFILE / OVERVIEW':`ARCHIVE / ${number(i)}${selectedTitle?' / '+selectedTitle:''}`;
  document.title=i<0?'편성민 — Experience Archive':`${selectedTitle?selectedTitle+' · ':''}${experiences[i].title} — 편성민`;
  document.querySelector('#announcer').textContent=i<0?'프로필':(selectedTitle||experiences[i].title)+' 열림';
+ if(!preserveActivity)bindPortfolioMotion(view);
 }
 window.addEventListener('hashchange',render);
 document.addEventListener('click',event=>{

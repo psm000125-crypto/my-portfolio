@@ -1,0 +1,130 @@
+/* Material lab: a specimen stage, photographic observations and full-width chapters. */
+.lab-home{--hero-progress:0;--page-progress:0;overflow:clip}
+.lab-home .portfolio-hero{min-height:105svh;background:#e9ece3;position:relative;padding-top:32px;overflow:clip}
+.hero-watermark{position:absolute;bottom:80px;left:3vw;font-family:Georgia,serif!important;font-size:clamp(110px,19vw,290px);letter-spacing:-.065em;line-height:.8;color:#d8ddd0;z-index:-1;pointer-events:none;transform:translateX(calc(var(--hero-progress,0) * -70px))}
+.lab-home .hero-copy{align-self:center;padding:0 0 90px;transform:translateY(calc(var(--hero-progress,0) * -35px))}
+.lab-home .hero-copy h1{font-size:clamp(48px,5.5vw,88px)!important;line-height:1.28!important;font-weight:500!important;letter-spacing:-.06em!important}
+.lab-home .hero-copy h1 span{color:#5d7154}
+.lab-home .hero-object{min-height:590px;align-self:center;height:78svh;max-height:820px;margin:0 -6vw 0 -5vw;transform:translate(calc(var(--hero-progress,0) * 22px),calc(var(--hero-progress,0) * 55px));z-index:1}
+.lab-home .hero-object:before{background:radial-gradient(ellipse,#d2dac8,transparent 67%);left:3%;top:4%;width:100%}
+.lab-home .hero-object iframe{mix-blend-mode:normal;min-height:0;height:100%;position:relative;z-index:1}
+.lab-home .object-coordinate{top:15%;left:15%;font-size:10px;z-index:3}
+.lab-home .object-caption{bottom:13%;left:15%;z-index:3}
+.specimen-guide{position:absolute;inset:14% 11% 17%;border:1px solid #aebaa34d;pointer-events:none;z-index:2}
+.specimen-guide:before,.specimen-guide:after{content:'';position:absolute;background:#aebaa34d}
+.specimen-guide:before{height:1px;left:-9%;right:-9%;top:50%}
+.specimen-guide:after{width:1px;top:-10%;bottom:-10%;left:50%}
+.specimen-cross{position:absolute;color:#7a8b6c;font-size:23px;line-height:1}
+.cross-a{top:-12px;left:-8px}.cross-b{right:-8px;bottom:-10px}
+.specimen-axis{position:absolute;right:-25px;top:50%;writing-mode:vertical-rl;font-size:9px;letter-spacing:.11em;color:#6f7d64}
+.specimen-note{position:absolute;bottom:7%;left:15%;font-size:9px;letter-spacing:.13em;color:#65715d;z-index:3;pointer-events:none}
+.lab-home .hero-topline,.lab-home .hero-bottom{position:relative;z-index:3;color:#626f59}
+.lab-home .hero-bottom{border-color:#bcc5b2}
+.lab-chapters{display:flex;align-items:center;gap:24px;position:sticky;top:0;z-index:20;padding:16px 6vw;background:#f5f3edf2;backdrop-filter:blur(12px);border-bottom:1px solid var(--portfolio-line)}
+.lab-chapters>span{font-size:10px;letter-spacing:.08em;margin-right:auto;color:#7b856f}
+.lab-chapters button{border:0;background:transparent;color:#727c67;font:inherit;font-size:12px;min-height:32px;cursor:pointer;padding:5px 8px;border-radius:20px;transition:background .25s,color .25s}
+.lab-chapters button:hover,.lab-chapters button.is-current{background:#dce3d2;color:#31472c}
+.lab-scroll-track{height:2px;position:absolute;bottom:-1px;left:0;right:0;background:transparent}
+.lab-scroll-track i{display:block;height:100%;background:#63775b;transform-origin:left;transform:scaleX(var(--page-progress));width:100%}
+.lab-home .selected-work{padding-top:90px}
+.lab-home .home-section-heading{margin-bottom:65px}
+.lab-home .home-section-heading h2{font-size:clamp(36px,4.5vw,66px)!important;line-height:1.08!important}
+.home-section-heading h2 em{font-style:italic;color:#77896a}
+.lab-home .work-spread{position:relative;border:0;gap:6vw;margin:0 -6vw;padding:105px 6vw 155px;scroll-margin-top:70px;overflow:clip}
+.lab-home .field-spread{background:#e5e9df;grid-template-columns:.85fr 1.15fr}
+.lab-home .materials-spread{background:#eae4db;grid-template-columns:1.15fr .85fr}
+.lab-home .data-spread{background:#1e3532;grid-template-columns:.85fr 1.15fr;color:#edf0e6}
+.chapter-word{position:absolute;bottom:5px;left:6vw;font-family:Georgia,serif!important;letter-spacing:-.04em;font-size:clamp(60px,11vw,170px);line-height:1;color:#cbd3c0;pointer-events:none}
+.materials-spread .chapter-word{color:#d5c9b9}.data-spread .chapter-word{color:#35504a}
+.lab-home .materials-spread:before,.lab-home .data-spread:before{content:'';position:absolute;top:0;left:0;right:0;height:65px;pointer-events:none}
+.lab-home .materials-spread:before{background:linear-gradient(#e5e9df,#eae4db)}
+.lab-home .data-spread:before{background:linear-gradient(#eae4db,#1e3532)}
+.lab-home .spread-copy{z-index:2}.lab-home .spread-copy h3{font-size:clamp(34px,3.8vw,60px)!important}
+.lab-process{list-style:none;display:flex;gap:0;padding:0;margin:38px 0 0;counter-reset:process}
+.lab-process li{position:relative;padding:0 26px 0 0;font-size:12px;color:#54664c;counter-increment:process}
+.lab-process li:before{content:'0' counter(process);display:block;font-size:9px;margin-bottom:8px;color:#849578}
+.lab-process li:not(:last-child):after{content:'→';position:absolute;right:8px;bottom:0;color:#92a186}
+.lab-equipment{position:relative;margin:0;min-height:580px;height:68svh;max-height:740px;background:#30372d;overflow:hidden;border-radius:3px;color:#f5f3ed}
+.lab-equipment img{width:100%;height:100%;object-fit:cover;object-position:50% 43%;display:block;filter:saturate(.65);transition:transform 1.3s cubic-bezier(.2,.8,.2,1)}
+.lab-equipment:hover img{transform:scale(1.035)}
+.equipment-shade{position:absolute;inset:0;background:linear-gradient(180deg,#17231865,transparent 38%,#1520158c);pointer-events:none}
+.equipment-label{position:absolute;top:30px;left:30px;display:flex;flex-direction:column;gap:12px}
+.equipment-label>span{font-size:9px;letter-spacing:.15em;color:#d5ddcb}
+.equipment-label strong{font-size:26px;font-weight:400;letter-spacing:-.04em}
+.equipment-pin{position:absolute;display:flex;align-items:center;gap:10px;font-size:11px;text-shadow:0 1px 10px #000;pointer-events:none}
+.equipment-pin i{width:8px;height:8px;display:block;border:1px solid #edf4dd;border-radius:50%;box-shadow:0 0 0 5px #ecf3d52b}
+.equipment-pin:after{content:'';height:1px;width:55px;background:#edf4dd78;position:absolute;left:3px;top:4px;transform-origin:left;transform:rotate(-45deg)}
+.pin-sensor{top:31%;left:43%}.pin-table{top:75%;left:49%}
+.lab-equipment figcaption{position:absolute;bottom:20px;left:25px;right:25px;font-size:10px;line-height:1.7;color:#dae2cc}
+.lab-home .materials-visual{background:transparent;position:relative;z-index:2;border-top:1px solid #bbab95;border-bottom:1px solid #bbab95;border-radius:0;padding:30px 5px;min-height:500px}
+.lab-home .material-compositions{justify-content:space-between;margin:40px 0}
+.lab-home .material-compositions>span{font-size:clamp(68px,7vw,110px);color:#8b7255}
+.lab-home .material-chart .evidence-chart-row{margin:20px 0}
+.lab-home .material-chart .evidence-bar strong{font-size:12px!important}
+.lab-home .visual-source{font-size:11px;color:#77664f}
+.data-spread .spread-index,.data-spread .spread-description,.data-spread .spread-secondary{color:#b6c4b2!important}
+.data-spread .spread-copy>p{color:#e0e8d7}
+.data-spread .spread-link{border-color:#83967c;color:#e4efdc}
+.lab-home .data-visual{border:1px solid #637860;background:#263f38;z-index:2;padding:35px;box-shadow:0 20px 50px #0e211c3d}
+.lab-home .data-score strong{font-size:clamp(65px,7vw,105px)!important;line-height:1.25}
+.lab-home .data-score{margin:48px 0 40px}.lab-home .prediction-bars>div{margin:20px 0}
+.lab-home .prediction-bars i{height:7px}
+.lab-home .home-archive{padding-top:90px}
+.lab-archive-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:42px 28px}
+.lab-project-card{text-decoration:none;min-width:0;display:block}
+.lab-card-visual{height:200px;background:#e4e8dc;position:relative;overflow:hidden;display:grid;place-items:center;color:#637655;border-radius:2px;transition:background .3s}
+.lab-card-visual img{width:100%;height:100%;object-fit:cover;object-position:center 42%;filter:saturate(.55);transition:transform .6s}
+.lab-project-card:hover .lab-card-visual img{transform:scale(1.055)}
+.lab-card-visual svg{width:75%;height:100px;transition:transform .5s}.lab-project-card:hover svg{transform:scale(1.08)}
+.card-visual-label{position:absolute;bottom:12px;left:15px;font-size:8px;letter-spacing:.12em;color:inherit;background:#f5f3edcf;padding:4px 6px;border-radius:2px}
+.lab-card-meta{display:flex;justify-content:space-between;align-items:center;margin-top:15px;font-size:10px;letter-spacing:.03em;color:#717f66}
+.lab-card-meta>span:last-child{font-size:22px;transition:transform .2s}.lab-project-card:hover .lab-card-meta>span:last-child{transform:translate(3px,-3px)}
+.lab-project-card h3{font-size:19px!important;font-weight:400!important;letter-spacing:-.025em!important;line-height:1.5!important;margin:8px 0!important;word-break:keep-all;overflow-wrap:anywhere}
+.lab-project-card>small{font-size:11px;color:#757e6b}
+.mini-alloy{font-family:Georgia,serif!important;font-size:84px;color:#927552;letter-spacing:-.06em}.mini-alloy span{font-style:italic;color:#b59a78}
+[data-preview="alloy"],[data-preview="energy"]{background:#e9e0d5;color:#927552}
+[data-preview="coating"]{background:#253c36;color:#c4d6b9}
+.mini-classifier{display:flex;width:65%;align-items:flex-end;justify-content:center;gap:12px;height:85px}.mini-classifier span{width:23px;height:90%;background:#9bb88b}.mini-classifier span:nth-child(2){height:78%}.mini-classifier span:nth-child(3){height:42%}.mini-classifier span:nth-child(4){height:22%}.mini-classifier span:nth-child(5){height:19%}
+.mini-layers{transform:rotate(-25deg) skew(20deg);width:110px;display:grid;gap:10px}.mini-layers i{display:block;height:22px;background:#b09b7c;box-shadow:5px 5px 0 #8f795d}.mini-layers i:nth-child(2){background:#c1b094}.mini-layers i:nth-child(3){background:#d5cbb8}
+.mini-map{width:130px;height:100px;position:relative;background:repeating-linear-gradient(25deg,transparent 0 25px,#9aaf8c 25px 26px,transparent 26px 50px),repeating-linear-gradient(115deg,transparent 0 29px,#9aaf8c 29px 30px,transparent 30px 60px);transform:rotate(-8deg)}
+.mini-map i{position:absolute;top:20%;left:25%;width:8px;height:8px;border-radius:50%;background:#657e53;box-shadow:0 0 0 7px #80976f24}.mini-map i:nth-child(2){top:70%;left:45%}.mini-map i:nth-child(3){top:35%;left:75%}.mini-map i:nth-child(4){top:60%;left:15%}.mini-map i:nth-child(5){top:10%;left:60%}
+.mini-academy{font:58px Georgia,serif;color:#6c805f}.mini-academy span{display:block;font:9px 'IBM Plex Sans',sans-serif;letter-spacing:.2em;margin-top:8px}
+.lab-journal-visual{overflow:hidden;padding:32px;background:#e5e9df}
+.lab-journal-visual:has(.lab-equipment){padding:0;background:transparent}
+.lab-equipment.compact{min-height:0;height:400px;max-height:none}.lab-equipment.compact img{object-position:50% 46%}
+.lab-equipment.compact .equipment-label strong{font-size:22px}
+.journal-concept{min-height:220px;position:relative;display:grid;place-items:center}.journal-concept>svg{width:60%;height:120px}.journal-concept small{position:absolute;bottom:5px;font-size:10px;color:#67795b}
+body[data-project="alloy"] .lab-journal-visual,body[data-project="energy"] .lab-journal-visual{background:#e9e0d5}
+.will-reveal{opacity:0;transform:translateY(28px);transition:opacity .75s cubic-bezier(.2,.8,.2,1),transform .75s cubic-bezier(.2,.8,.2,1)}
+.will-reveal.is-visible{opacity:1;transform:none}
+.will-reveal .evidence-bar>span,.will-reveal .prediction-bars i{transform:scaleX(0);transform-origin:left;transition:transform 1s cubic-bezier(.2,.8,.2,1) .15s}
+.will-reveal.is-visible .evidence-bar>span,.will-reveal.is-visible .prediction-bars i{transform:scaleX(1)}
+::view-transition-group(*){animation-duration:.65s;animation-timing-function:cubic-bezier(.2,.8,.2,1)}
+@media(min-width:901px){.lab-home .hero-copy{position:relative;z-index:4}.lab-home .portfolio-hero{grid-template-columns:1fr 1.05fr}}
+@media(max-width:900px){
+ .lab-home .portfolio-hero{min-height:0;padding-top:25px}
+ .lab-home .hero-copy{padding:0;transform:none}
+ .lab-home .hero-copy h1{font-size:clamp(35px,8.8vw,62px)!important;white-space:normal}
+ .lab-home .hero-object{height:440px;min-height:0;max-height:none;transform:none;margin:0 -6vw}
+ .lab-home .hero-object iframe{min-height:0}
+ .hero-watermark{bottom:100px;font-size:24vw;left:0;z-index:0}
+ .lab-home .object-coordinate{top:12%;left:9%}.lab-home .object-caption{bottom:11%;left:9%}
+ .specimen-guide{inset:13% 10% 17%}.specimen-axis{right:-16px;font-size:8px}.specimen-note{bottom:6%;left:9%;font-size:8px}
+ .lab-chapters{gap:6px;padding:10px 5vw}.lab-chapters>span{font-size:8px}.lab-chapters button{font-size:11px;padding:6px}
+ .lab-home .selected-work{padding-top:60px}.lab-home .home-section-heading{margin-bottom:45px}
+ .lab-home .work-spread,.lab-home .materials-spread{grid-template-columns:1fr;gap:32px;padding:65px 6vw 95px}
+ .lab-home .spread-copy h3{font-size:clamp(32px,8.6vw,45px)!important}
+ .lab-equipment{height:480px;min-height:0;max-height:none}.equipment-label{left:22px;top:22px}.equipment-label strong{font-size:24px}.lab-equipment figcaption{left:20px;right:20px;font-size:10px}
+ .lab-home .materials-visual{order:2;min-height:0;padding:25px 0}.lab-home .material-compositions>span{font-size:72px}
+ .lab-home .data-visual{padding:25px}.lab-home .data-score strong{font-size:clamp(60px,20vw,95px)!important}
+ .chapter-word{font-size:15vw;bottom:12px}.lab-process{margin-top:25px}
+ .lab-home .home-archive{padding-top:60px}.lab-archive-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 16px}.lab-card-visual{height:155px}.lab-project-card h3{font-size:16px!important}.lab-card-meta{font-size:9px}.mini-alloy{font-size:64px}.mini-classifier{gap:7px}.mini-classifier span{width:15px}.lab-card-visual svg{width:85%}.mini-layers{width:75px}.mini-map{width:95px}.card-visual-label{font-size:7px;left:8px;bottom:8px}
+ .lab-journal-visual{padding:20px}.lab-equipment.compact{height:340px}
+}
+@media(max-width:380px){.lab-chapters>span{display:none}.lab-chapters{justify-content:space-between}.lab-archive-grid{gap:25px 12px}.lab-card-visual{height:140px}.lab-project-card h3{font-size:15px!important}.lab-equipment{height:430px}.lab-home .data-score strong{font-size:58px!important}}
+@media(prefers-reduced-motion:reduce){
+ .will-reveal,.will-reveal.is-visible{opacity:1!important;transform:none!important;transition:none!important}
+ .will-reveal .evidence-bar>span,.will-reveal .prediction-bars i{transform:none!important;transition:none!important}
+ .lab-home .hero-copy,.lab-home .hero-object,.hero-watermark{transform:none!important}
+ ::view-transition-group(*){animation-duration:0s!important}
+}

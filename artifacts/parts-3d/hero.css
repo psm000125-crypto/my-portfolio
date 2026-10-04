@@ -3,3 +3,5 @@ body.hero-mode .archive{padding:0;grid-template-rows:1fr}
 body.hero-mode .collection,body.hero-mode .zoom-controls{display:none}
 body.hero-mode .stage canvas{touch-action:pan-y}
 body.hero-mode #load-state{background:#f5f3ed;font-size:11px}
+.hero-lab,.hero-lab body.hero-mode,.hero-lab body.hero-mode .archive,.hero-lab body.hero-mode .stage{background:transparent}
+.hero-lab body.hero-mode #load-state{background:#e9ece3}

@@ -4,6 +4,7 @@
   const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
   let heroMotionSeconds=0;
   if(heroMode)document.body.classList.add('hero-mode');
+  if(heroMode&&new URLSearchParams(location.search).get('lab')==='1')document.documentElement.classList.add('hero-lab');
   const $=s=>document.querySelector(s),load=$('#load-state');
   if(!window.THREE||!window.PartsModels){load.textContent='3D 라이브러리를 불러오지 못했습니다. vendor 폴더와 함께 페이지를 열어 주세요.';return;}
   const T=THREE,defs=PartsModels.definitions,canvas=$('#scene'),stage=$('#stage');
@@ -25,6 +26,15 @@
   const models=defs.map((_,i)=>PartsModels.build(i));let current=0,auto=false,wire=false,dirty=true,inView=true,lastTime=0;
   const radii=models.map(model=>{model.updateMatrixWorld(true);let radius=0;const p=new T.Vector3();model.traverse(m=>{if(!m.isMesh)return;const a=m.geometry.attributes.position;for(let i=0;i<a.count;i++){p.fromBufferAttribute(a,i).applyMatrix4(m.matrixWorld);radius=Math.max(radius,p.length());}});return radius;});
   const initialQ=new T.Quaternion().setFromEuler(new T.Euler(.53,-.48,.015,'XYZ'));
+  window.addEventListener('message',event=>{
+   if(!heroMode||motionPreference.matches||event.source!==parent||event.origin!==location.origin||event.data?.type!=='portfolio-specimen-progress')return;
+   const progress=event.data.progress;
+   if(typeof progress!=='number'||!Number.isFinite(progress))return;
+   const value=Math.min(1,Math.max(0,progress));
+   setAuto(false);
+   pivot.quaternion.copy(initialQ).multiply(new T.Quaternion().setFromEuler(new T.Euler(value*.45,value*1.9,-value*.12)));
+   dirty=true;
+  });
   const viewQuats={iso:initialQ,front:new T.Quaternion(),top:new T.Quaternion().setFromEuler(new T.Euler(Math.PI/2,0,0)),bottom:new T.Quaternion().setFromEuler(new T.Euler(-Math.PI/2,0,0))};
   const viewLabels={iso:'기본 시점',front:'정면',top:'윗면',bottom:'아랫면'};
   let zoomRatio=1;
