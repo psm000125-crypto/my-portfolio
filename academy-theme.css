@@ -189,6 +189,20 @@ body[data-experience-family="academy"]:not(.showcase-home) .workspace .slide-ima
 }
 
 /* The document scrolls; body must not become an unscrollable sticky ancestor. */
+.pbl-result-hero {display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;align-items:center;padding:24px 0 40px;border-bottom:1px solid #426053;margin-bottom:12px}
+.pbl-result-copy h2 {font-size:clamp(30px,3vw,44px)!important;font-weight:400;line-height:1.4;letter-spacing:-.045em;margin:24px 0!important;color:#f0f3e5;word-break:keep-all}
+.pbl-result-copy .pbl-result-title {font-size:16px;color:#d4e7ba;margin:0 0 14px}
+.pbl-result-copy .pbl-result-description {font-size:14px;line-height:1.9;color:#b8cdbe;margin:0}
+.pbl-result-hero .data-visual {min-width:0;min-height:0;padding:28px 24px;background:#26372e;border:1px solid #586b50;border-radius:0}
+.pbl-result-hero .data-visual-heading {font-size:9px;gap:12px;flex-wrap:wrap;line-height:1.6}
+.pbl-result-hero .data-score {margin:32px 0 28px}
+.pbl-result-hero .data-score strong {font-family:inherit;font-size:clamp(42px,4.6vw,66px);line-height:1.35;color:#f0f1df;white-space:nowrap}
+.pbl-result-hero .data-score strong span {color:#b4c893}
+.pbl-result-hero .prediction-bars>div {grid-template-columns:58px minmax(0,1fr) 28px;gap:10px;margin:16px 0;font-size:11px}
+.pbl-result-hero .prediction-bars i {height:6px;border-radius:0}
+.pbl-result-hero .data-footnote {display:block;margin-top:24px;color:#a6bcb1;letter-spacing:.08em;font-size:9px}
+@media(max-width:1100px) {.pbl-result-hero {grid-template-columns:minmax(0,1fr)}.pbl-result-hero .data-score strong {font-size:clamp(46px,9vw,76px)}}
+@media(max-width:600px) {.pbl-result-hero {gap:24px;padding:16px 0 28px}.pbl-result-copy h2 {font-size:32px!important;margin:20px 0!important}.pbl-result-hero .data-visual {padding:24px 20px}.pbl-result-hero .data-score strong {font-size:clamp(42px,12vw,60px)}}
 body[data-experience-family="academy"]:not(.showcase-home) {overflow:visible!important}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel {font-family:'IBM Plex Sans','IBM Plex Sans KR',sans-serif!important;scrollbar-width:thin;scrollbar-color:#557762 transparent;overscroll-behavior:contain}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel .detail-label {position:sticky;top:0;z-index:2;background:#193c30;width:calc(100% + 24px);margin-left:-24px;padding:12px 24px;box-sizing:border-box;font-size:11px!important;font-weight:500;letter-spacing:.1em!important;line-height:1.5}

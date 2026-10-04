@@ -80,7 +80,13 @@ function storyMarkup(project,story,sectionIndex=null){
  if(project.id==='mim')return mimStoryMarkup(story);
  const sections=story[3]||[[story[0],story[2]]];
  const continuous=project.id==='academy'||project.parent==='academy',branch=project.branches.indexOf(story);
- return `<article class="story-content story-article enriched-story visual-${project.id}"><header class="story-header"><p class="story-kicker">${escapeHTML(story[0])}</p><h2>${escapeHTML(story[1])}</h2>${story[3]&&project.id!=='academy'?`<p class="story-intro">${escapeHTML(story[2])}</p>`:''}</header><div class="story-notes">${sections.map((section,i)=>({section,i})).filter(item=>continuous||sectionIndex===null||item.i===sectionIndex).map(({section,i})=>`<section class="story-note enriched-note"${continuous?` id="activity-${project.id}-story-${branch}-section-${i}" tabindex="-1"`:''}><div class="story-section-heading"><span>${number(i)}</span><h3>${escapeHTML(section[0])}</h3></div><div class="story-section-body"><div class="story-section-copy">${section.slice(1).map(paragraph=>`<p>${escapeHTML(paragraph)}</p>`).join('')}</div><div class="story-section-visual">${storySectionVisualMarkup(project,story,i)}</div></div></section>`).join('')}</div></article>`;
+ return `<article class="story-content story-article enriched-story visual-${project.id}">${project.id==='coating'?coatingPblHeroMarkup():`<header class="story-header"><p class="story-kicker">${escapeHTML(story[0])}</p><h2>${escapeHTML(story[1])}</h2>${story[3]&&project.id!=='academy'?`<p class="story-intro">${escapeHTML(story[2])}</p>`:''}</header>`}<div class="story-notes">${sections.map((section,i)=>({section,i})).filter(item=>continuous||sectionIndex===null||item.i===sectionIndex).map(({section,i})=>`<section class="story-note enriched-note"${continuous?` id="activity-${project.id}-story-${branch}-section-${i}" tabindex="-1"`:''}><div class="story-section-heading"><span>${number(i)}</span><h3>${escapeHTML(section[0])}</h3></div><div class="story-section-body"><div class="story-section-copy">${section.slice(1).map(paragraph=>`<p>${escapeHTML(paragraph)}</p>`).join('')}</div><div class="story-section-visual">${storySectionVisualMarkup(project,story,i)}</div></div></section>`).join('')}</div></article>`;
+}
+function coatingPredictionCardMarkup(home=false){
+ return `<div class="data-visual"${home?' data-reveal style="view-transition-name:project-coating"':''}><div class="data-visual-heading"><span>COATING CLASSIFICATION</span><span>TEST SET / 1,000</span></div><div class="data-score"><span>FINAL SUBMISSION F1</span><strong>0.970<span>905</span></strong><small>교육 프로젝트 · 최종 제출 F1</small></div><div class="prediction-bars" aria-label="최종 예측 분포">${[['Scratch',357],['Peeling',310],['Normal',168],['Blister',88],['Inclusion',77]].map(([name,count])=>`<div><span>${name}</span><i style="--prediction:${count/357*100}%"></i><b>${count}</b></div>`).join('')}</div><span class="data-footnote">5 CLASSES / FINAL PREDICTIONS</span></div>`;
+}
+function coatingPblHeroMarkup(){
+ return `<header class="pbl-result-hero"><div class="pbl-result-copy"><p class="story-kicker">선박 도장 불량 분류 PBL</p><h2>표면의 차이를<br>데이터의 언어로.</h2><p class="pbl-result-title">선박 도장 불량 분류 AI</p><p class="pbl-result-description">5개 표면 상태의 이미지 분류.<br>모델 학습부터 예측 결합, 최종 제출까지 이어지는 교육 프로젝트입니다.</p></div>${coatingPredictionCardMarkup()}</header>`;
 }
 function slideDeckMarkup(p){
  const deck=artifactDecks[p.id];
@@ -312,7 +318,7 @@ function focusContent(p,selection,sectionIndex=null){
  const after=overview.getBoundingClientRect();
  if(!wasExpanded&&!reducedMotion())overview.animate([{transform:`translate(${before.left-after.left}px,${before.top-after.top}px) scale(1.12)`,opacity:.65},{transform:'translate(0,0) scale(1)',opacity:1}],{duration:520,easing:'cubic-bezier(.2,.8,.2,1)'});
  const title=work?work.title:sectionIndex!==null?story[3][sectionIndex][0]:story[0];
- content.innerHTML=work?.type==='parts3d'?'':`<div class="focus-toolbar"><span><b>${p.title}</b> · ${work?'SELECTED WORK':p.id==='academy'||p.parent==='academy'?'ACADEMY ACTIVITIES':'EXPERIENCE NOTES'}</span><a class="close-focus" href="#${p.id}" aria-label="상세 닫고 경험 개요로 돌아가기">개요로 돌아가기 ↖</a></div>`;
+ content.innerHTML=work?.type==='parts3d'?'':`<div class="focus-toolbar"><span><b>${p.title}</b> · ${work?'SELECTED WORK':p.id==='academy'||p.parent==='academy'?'ACADEMY ACTIVITIES':'EXPERIENCE NOTES'}</span><a class="close-focus" href="#${p.id==='coating'?'academy':p.id}" aria-label="${p.id==='coating'?'아카데미 개요로 돌아가기':'상세 닫고 경험 개요로 돌아가기'}">${p.id==='coating'?'아카데미 개요로':'개요로 돌아가기'} ↖</a></div>`;
  if(story){
   content.innerHTML+=p.id==='coating'?academyPblMarkup(p):storyMarkup(p,story,sectionIndex);
   if(p.id==='mim')bindMimTabs(content);
@@ -353,7 +359,7 @@ function focusContent(p,selection,sectionIndex=null){
 function render(){
  const [requested,rawSelection,rawSection]=location.hash.slice(1).split('/');
  const oldStory=rawSelection?.match(/^story-(\d+)$/);
- const selection=requested==='coating'&&['work-submission','work-notebook'].includes(rawSelection)?'work-implementation':oldStory&&Number(oldStory[1])>=(experiences.find(p=>p.id===requested)?.branches.length||0)
+ const selection=requested==='coating'&&!rawSelection?'story-0':requested==='coating'&&['work-submission','work-notebook'].includes(rawSelection)?'work-implementation':oldStory&&Number(oldStory[1])>=(experiences.find(p=>p.id===requested)?.branches.length||0)
   ?`story-${requested==='ocean'&&Number(oldStory[1])===2?1:0}`:rawSelection;
  const i=experiences.findIndex(p=>p.id===requested),id=i<0?'profile':requested;
  document.body.classList.toggle('showcase-home',id==='profile');

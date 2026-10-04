@@ -47,8 +47,8 @@ function portfolioHomeMarkup(){
    <div class="chapter-word" aria-hidden="true">MEASURE.</div>
   </article>
   <article class="work-spread data-spread" id="data-work" data-chapter="data">
-   <div class="spread-copy" data-reveal><span class="spread-index">03 / DATA</span><h3>표면의 차이를<br>데이터의 언어로.</h3><p>선박 도장 불량 분류 AI</p><div class="spread-description">5개 표면 상태의 이미지 분류.<br>모델 학습부터 예측 결합, 최종 제출까지 이어지는 교육 프로젝트입니다.</div><a class="spread-link" href="#coating" data-project-transition>분석과 결과 보기 <span>↗</span></a><a class="spread-secondary" href="#sejong" data-project-transition>함께 보기 · 세종상권나침반 ↗</a></div>
-   <div class="data-visual" data-reveal style="view-transition-name:project-coating"><div class="data-visual-heading"><span>COATING CLASSIFICATION</span><span>TEST SET / 1,000</span></div><div class="data-score"><span>FINAL SUBMISSION F1</span><strong>0.970<span>905</span></strong><small>교육 프로젝트 · 최종 제출 F1</small></div><div class="prediction-bars" aria-label="최종 예측 분포">${[['Scratch',357],['Peeling',310],['Normal',168],['Blister',88],['Inclusion',77]].map(([name,count])=>`<div><span>${name}</span><i style="--prediction:${count/357*100}%"></i><b>${count}</b></div>`).join('')}</div><span class="data-footnote">5 CLASSES / FINAL PREDICTIONS</span></div>
+   <div class="spread-copy" data-reveal><span class="spread-index">03 / DATA</span><h3>표면의 차이를<br>데이터의 언어로.</h3><p>선박 도장 불량 분류 AI</p><div class="spread-description">5개 표면 상태의 이미지 분류.<br>모델 학습부터 예측 결합, 최종 제출까지 이어지는 교육 프로젝트입니다.</div><a class="spread-link" href="#coating/story-0" data-project-transition>분석과 결과 보기 <span>↗</span></a><a class="spread-secondary" href="#sejong" data-project-transition>함께 보기 · 세종상권나침반 ↗</a></div>
+   ${coatingPredictionCardMarkup(true)}
    <div class="chapter-word" aria-hidden="true">INTERPRET.</div>
   </article>
  </section>
