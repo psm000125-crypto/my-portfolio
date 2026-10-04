@@ -1,9 +1,9 @@
-/* Project colour is a signal. Paper, text and navigation remain neutral. */
+/* Seven case identities. The reading surfaces stay quiet around the exhibits. */
 body[data-project]:where(:not(.showcase-home)) {
  color-scheme:light;
  --portfolio-paper:#f6f7f9;--portfolio-ink:#20252b;
  --portfolio-muted:#626b77;--portfolio-line:#dce0e5;
- --theme-accent:#45647c;--theme-deep:#203545;--theme-soft:#edf2f6;
+ --theme-accent:#505c69;--theme-deep:#252e38;--theme-soft:#edf0f3;
  --theme-surface:#f1f3f6;--theme-raised:#fff;--theme-selected:#e8edf2;
  --theme-text:#414a55;--theme-muted:#626b77;--theme-grid:#20252b08;
  --series-before:#9aa6b2;--series-after:var(--theme-accent);--series-track:#e9edf1;
@@ -21,8 +21,8 @@ body[data-project]:where(:not(.showcase-home)) {
  --series-before:#91aaa0;--series-after:#245442;
 }
 :is(body[data-project="mim"],[data-preview="mim"]) {
- --theme-accent:#45647c;--theme-deep:#203545;--theme-soft:#edf2f6;
- --theme-selected:#e1e9ef;--series-before:#a2b1bc;--series-after:#45647c;
+ --theme-accent:#505c69;--theme-deep:#252e38;--theme-soft:#edf0f3;
+ --theme-selected:#e1e5e9;--series-before:#a2adb8;--series-after:#505c69;
 }
 :is(body[data-project="alloy"],[data-preview="alloy"]) {
  --theme-accent:#99512d;--theme-deep:#5e301d;--theme-soft:#faf0e9;
@@ -41,8 +41,8 @@ body[data-project]:where(:not(.showcase-home)) {
  --theme-selected:#e0e8fb;--series-before:#a1b2d3;--series-after:#315cc6;
 }
 :is(body[data-project="fitness"],[data-preview="fitness"]) {
- --theme-accent:#bb4c45;--theme-deep:#662c29;--theme-soft:#fcefeb;
- --theme-selected:#f6e0da;--series-before:#d6aaa1;--series-after:#bb4c45;
+ --theme-accent:#bf3f57;--theme-deep:#702235;--theme-soft:#fff0f3;
+ --theme-selected:#f6dbe1;--series-before:#d6aab5;--series-after:#bf3f57;
 }
 html:has(body[data-project]:not(.showcase-home)) {background:#f6f7f9!important;overflow-x:clip}
 body[data-project]:not(.showcase-home) :is(.masthead,.footer) {background:#fff!important}
@@ -125,7 +125,11 @@ body[data-project]:not(.showcase-home) .workspace :is(.summary-stat strong,.lite
 body[data-project]:not(.showcase-home) .workspace :is(.story-process li>span,.story-flow li>span) {color:var(--theme-accent)!important}
 body[data-project]:not(.showcase-home) .workspace .lab-journal-visual {padding:28px;background:#fff;border:1px solid #dce0e5;border-radius:6px}
 body[data-project]:not(.showcase-home) .workspace .lab-journal-visual:has(.overview-exhibit) {padding:0!important;background:transparent;border:0;overflow:visible}
-body[data-project]:not(.showcase-home) .workspace .evidence-chart {background:transparent!important;border-color:#dce0e5!important}
+body[data-project]:not(.showcase-home) .workspace .evidence-chart {
+ --series-before:color-mix(in srgb,var(--theme-accent) 35%,#e0e2e5);
+ --series-after:var(--theme-accent);--series-track:#e9edf1;
+ background:transparent!important;border-color:#dce0e5!important;
+}
 body[data-project]:not(.showcase-home) .workspace .evidence-chart figcaption {color:#20252b!important}
 body[data-project]:not(.showcase-home) .workspace :is(.evidence-chart figcaption small,.evidence-legend,.edu-source) {color:#626b77!important}
 body[data-project]:not(.showcase-home) .workspace .evidence-bar>span {background:linear-gradient(to right,var(--series-before) var(--bar-value),var(--series-track) var(--bar-value))!important}
@@ -177,90 +181,6 @@ body[data-project="coating"]:not(.showcase-home) .workspace .coating-distributio
 body[data-project="coating"]:not(.showcase-home) .workspace .distribution-chart i {background:var(--theme-accent)}
 body[data-project="coating"]:not(.showcase-home) .workspace :is(.model-code,.model-predictions) {background:transparent!important;border-color:#dce0e5!important}
 
-/* MIM: the photograph supplies the material; the surrounding UI is steel and white. */
-body[data-project="mim"]:not(.showcase-home) .workspace .lab-journal-visual:has(.lab-equipment) {padding:0!important;border:0;background:transparent}
-body[data-project="mim"]:not(.showcase-home) .workspace .lab-equipment.compact {height:440px;border-radius:6px}
-body[data-project="mim"]:not(.showcase-home) .workspace .equipment-label strong {color:#f5f8fa!important}
-body[data-project="mim"]:not(.showcase-home) .workspace .equipment-label>span {color:#dce5ed!important}
-body[data-project="mim"]:not(.showcase-home) .workspace .mim-material-flow svg {color:var(--theme-accent)}
-body[data-project="mim"]:not(.showcase-home) .workspace .mim-material-flow button[aria-selected="true"] {background:var(--theme-soft)!important;border-color:var(--theme-accent)!important;color:var(--theme-accent)!important}
-body[data-project="mim"]:not(.showcase-home) .workspace :is(.equipment-photo-copy>span,.equipment-photo-copy h3,.equipment-photo-copy>a) {color:var(--theme-accent)!important}
-
-/* Alloy and XRD: measurement sheets, with a different series colour for each. */
-body:is([data-project="alloy"],[data-project="xrd"]):not(.showcase-home) .workspace .lab-journal-visual {
- background:#fff;background-image:linear-gradient(#20252b05 1px,transparent 1px),linear-gradient(90deg,#20252b05 1px,transparent 1px);
- background-size:28px 28px;padding:28px;border-top:3px solid var(--theme-accent);
-}
-body[data-project="alloy"]:not(.showcase-home) .workspace .alloy-chart-grid {gap:24px}
-body[data-project="alloy"]:not(.showcase-home) .workspace .lab-journal-visual .alloy-chart {padding:18px!important;background:#fff!important;border:1px solid #e4e7eb!important}
-body[data-project="xrd"]:not(.showcase-home) .workspace .lab-journal-visual .evidence-chart-row {margin-top:24px}
-
-/* Sejong: two data scales on a cobalt feature sheet, then a neutral indicator list. */
-body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-exhibit {background:#fff;padding:30px;border:1px solid #dce0e5;border-radius:6px}
-body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-exhibit header>span {color:var(--theme-accent)}
-body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-exhibit h3 {color:#20252b!important}
-body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats {
- position:relative;overflow:hidden;gap:16px;padding:30px;
- background:var(--theme-deep);color:#fff;border-radius:4px;margin:0 0 26px;
- background-image:radial-gradient(circle at 90% 25%,#6285e644 0,transparent 40%);
-}
-body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats strong {color:#fff!important;font-size:clamp(44px,4.8vw,70px);font-weight:400;font-variant-numeric:tabular-nums;line-height:1.1}
-body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats div>span {color:#cedaf5;font-size:12px;line-height:1.6}
-body[data-project="sejong"]:not(.showcase-home) .workspace .overview-arrow {color:#95b0f6}
-body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-indicators {gap:0 28px}
-body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-indicators>span {padding:16px 0;color:#414a55;border-color:#e4e7eb;align-items:center}
-body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-indicators b {display:grid;place-items:center;width:28px;height:28px;flex:none;color:var(--theme-accent);background:var(--theme-soft);border-radius:50%;font-size:10px}
-body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-exhibit footer {display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;border-top:1px solid #dce0e5}
-body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-exhibit footer p {color:#626b77!important}
-body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-exhibit .exhibit-link {margin:0;min-width:170px;border-color:var(--theme-accent)}
-
-/* Fitness: sensor illustration in coral, neutral steps and a clear action. */
-body[data-project="fitness"]:not(.showcase-home) .workspace .fitness-exhibit {background:#fff;padding:30px;border:1px solid #dce0e5;border-radius:6px}
-body[data-project="fitness"]:not(.showcase-home) .workspace .fitness-exhibit header>span {color:var(--theme-accent)}
-body[data-project="fitness"]:not(.showcase-home) .workspace .fitness-exhibit h3 {color:#20252b!important}
-body[data-project="fitness"]:not(.showcase-home) .workspace .stack-assembly {color:var(--theme-accent);padding:22px;background:var(--theme-soft);border:0;border-radius:50% 50% 5px 5px}
-body[data-project="fitness"]:not(.showcase-home) .workspace .stack-assembly>span {color:#662c29}
-body[data-project="fitness"]:not(.showcase-home) .workspace .count-logic li {border-color:#dce0e5}
-body[data-project="fitness"]:not(.showcase-home) .workspace .count-logic li>span {color:var(--theme-accent)}
-body[data-project="fitness"]:not(.showcase-home) .workspace .count-logic :is(strong,small) {color:#414a55}
-
-/* Energy: cyan interfaces distinguish the layers without colouring the prose. */
-body[data-project="energy"]:not(.showcase-home) .workspace .lab-journal-visual {border-top:3px solid var(--theme-accent)}
-body[data-project="energy"]:not(.showcase-home) .workspace .story-layer-stack li {border-left:3px solid var(--theme-accent)!important;margin-top:8px}
-body[data-project="energy"]:not(.showcase-home) .workspace .story-layer-stack li:nth-child(2) {background:var(--theme-soft)!important}
-body[data-project="energy"]:not(.showcase-home) .workspace .interface-layer.cnt {background:#f2f4f6!important}
-body[data-project="energy"]:not(.showcase-home) .workspace .interface-layer.zinc {background:#d9eef0!important}
-
-/* Home previews use the same identities, including the whole academy family. */
-.lab-card-visual[data-preview] {background:#fff;color:var(--theme-accent);border:1px solid #dce0e5;border-radius:6px}
-.lab-card-visual[data-preview]:before {border-color:var(--theme-accent);opacity:.12}
-.lab-card-visual[data-preview]:after {content:'';position:absolute;left:0;top:0;width:42px;height:3px;background:var(--theme-accent)}
-.lab-card-visual:is([data-preview="academy"],[data-preview="coating"],[data-preview="ocean"]) {background:#173d31;color:#d4e5c4;border-color:#173d31}
-.lab-card-visual:is([data-preview="academy"],[data-preview="coating"],[data-preview="ocean"]):before {border-color:#c8dfb0}
-.lab-card-visual:is([data-preview="academy"],[data-preview="coating"],[data-preview="ocean"]):after {background:#c8dfb0}
-.lab-card-visual[data-preview] .mini-academy {color:inherit}
-.lab-card-visual[data-preview="coating"] .mini-classifier span {background:#c8dfb0}
-.lab-card-visual[data-preview="sejong"] .mini-map {background:repeating-linear-gradient(25deg,transparent 0 25px,#a5b8e5 25px 26px,transparent 26px 50px),repeating-linear-gradient(115deg,transparent 0 29px,#a5b8e5 29px 30px,transparent 30px 60px)}
-.lab-card-visual[data-preview="sejong"] .mini-map i {background:#315cc6;box-shadow:0 0 0 7px #315cc618}
-.lab-card-visual[data-preview="energy"] .mini-layers i {background:#2392a2;box-shadow:5px 5px 0 #13434a}
-.lab-card-visual[data-preview="energy"] .mini-layers i:nth-child(2) {background:#78bbc5}
-.lab-card-visual[data-preview="energy"] .mini-layers i:nth-child(3) {background:#b9e0e4}
-
-/* On the home too, evidence carries colour while each chapter has room to breathe. */
-.lab-home .work-spread.field-spread {background:#f4f6f8;--chapter-accent:#45647c}
-.lab-home .work-spread.materials-spread {background:#fff;--chapter-accent:#99512d}
-.lab-home .work-spread.data-spread {background:#f4f6f8;color:#20252b;--chapter-accent:#245442}
-.lab-home .work-spread .spread-index {color:var(--chapter-accent)}
-.lab-home .work-spread .spread-index:before {background:var(--chapter-accent)}
-.lab-home .work-spread .spread-link {color:var(--chapter-accent);border-color:var(--chapter-accent)}
-.lab-home .data-spread .spread-copy>p {color:#20252b}
-.lab-home .data-spread :is(.spread-description,.spread-secondary) {color:#626b77!important}
-.lab-home .work-spread .chapter-word {color:#e2e5e9}
-.lab-home .data-visual {background:#173d31;border-color:#173d31;box-shadow:none}
-.lab-home .materials-visual {color:#99512d;border-color:#dce0e5}
-.lab-home .material-compositions>span {color:#99512d}
-.lab-home .material-chart {--series-before:#bbab9b;--series-after:#99512d;--series-track:#edf0f3}
-
 /* Wide pages keep navigation restrained; small screens keep the reading order. */
 @media(min-width:901px) {
  body[data-project]:not(.showcase-home) .workspace .detail-panel {border-color:#dce0e5!important;padding-top:10px!important}
@@ -305,4 +225,269 @@ body[data-project="energy"]:not(.showcase-home) .workspace .interface-layer.zinc
 }
 @media(prefers-reduced-motion:reduce) {
  body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-cards a:hover {transform:none}
+}
+
+/* The stage is an exhibit, followed by a compact record of context and role. */
+body[data-project]:not(.showcase-home) .workspace .case-stage {
+ position:relative;isolation:isolate;border-radius:18px;overflow:hidden;
+ background:#fff;border:1px solid #e0e4e8;
+ box-shadow:0 20px 55px #20252b07;
+}
+body[data-project]:not(.showcase-home) .workspace .case-stage .project-heading {
+ padding:40px;border:0;border-radius:0;min-width:0;overflow:hidden;
+}
+body[data-project]:not(.showcase-home) .case-stage .project-heading:before {display:none}
+body[data-project]:not(.showcase-home) .case-heading-copy {position:relative;z-index:1}
+body[data-project]:not(.showcase-home) .case-stage .case-emblem {
+ position:absolute;right:24px;bottom:20px;width:250px;height:160px;
+ color:var(--theme-accent);pointer-events:none;opacity:.12;
+ display:grid;place-items:center;
+}
+body[data-project]:not(.showcase-home) .case-emblem>svg {width:100%;height:auto}
+body[data-project]:not(.showcase-home) .workspace .case-stage .project-title {
+ font-size:clamp(32px,3.2vw,44px)!important;line-height:1.2!important;
+ margin:20px 0 24px!important;font-weight:500!important;max-width:24ch;
+}
+body[data-project]:not(.showcase-home) .workspace .case-stage .project-lead {
+ font-size:24px!important;line-height:1.5!important;margin-bottom:24px!important;
+}
+body[data-project]:not(.showcase-home) .workspace .case-stage .project-description {
+ max-width:62ch!important;font-size:13px!important;line-height:1.9!important;
+}
+body[data-project]:not(.showcase-home) .workspace .case-stage .lab-journal-visual {
+ margin:0!important;border:0;border-radius:0;padding:30px 40px;background:#fff;
+}
+body[data-project]:not(.showcase-home) .workspace .case-meta {padding:0 8px}
+body[data-project]:not(.showcase-home) .workspace .case-meta .project-facts {
+ padding:22px 0!important;margin:8px 0 0!important;background:transparent!important;
+ border:0!important;border-bottom:1px solid #dce0e5!important;max-width:none;
+}
+body[data-project]:not(.showcase-home) .workspace .case-meta .tags {padding:12px 0}
+body[data-project]:not(.showcase-home) .workspace .detail-panel {border-top:3px solid var(--theme-accent)!important}
+body[data-project]:not(.showcase-home) .workspace .overview-link.active {background:var(--theme-soft)!important;color:var(--theme-accent)!important}
+body[data-project]:not(.showcase-home) .workspace .has-focus .case-emblem {display:none}
+
+/* 01 — Forest / maritime. A ship blueprint and three connected course plates. */
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .case-stage {
+ background:#173d31;border-color:#173d31;border-radius:4px 30px 4px 4px;
+}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .case-stage .project-heading {
+ padding:42px 40px 38px;background:transparent;
+ background-image:linear-gradient(90deg,transparent 55%,#bcd2bb0a 55%),linear-gradient(#c8dfb009 1px,transparent 1px),linear-gradient(90deg,#c8dfb009 1px,transparent 1px);
+ background-size:auto,32px 32px,32px 32px;
+}
+body[data-experience-family="academy"]:not(.showcase-home) .case-heading-copy {max-width:72%}
+body[data-experience-family="academy"]:not(.showcase-home) .case-stage .case-emblem {
+ width:42%;height:180px;right:-20px;bottom:35px;color:#b8dba5;opacity:.32;
+}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-overview {padding:0 24px 24px;margin:0}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-overview-label {color:#c3d4c8!important;font-size:11px;margin:0 16px 16px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-cards {gap:1px;background:#79928366;border-top:1px solid #79928366}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-cards a {
+ background:#214b3d!important;border-radius:0;padding:24px 20px 46px;box-shadow:none;
+}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-cards a:hover {background:#2c5d49!important;transform:none;box-shadow:none}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-cards a h3 {font-size:19px!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-cards a p {font-size:12px!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .case-stage .lab-journal-visual {background:#f5f8f5}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .case-stage .journal-concept {color:#245442;background:#edf3ef}
+body[data-project="coating"]:not(.showcase-home) .workspace .coating-distribution {background:#f7faf8!important;border-color:#dce0e5!important}
+body[data-project="coating"]:not(.showcase-home) .workspace .distribution-chart i {background:var(--theme-accent)}
+body[data-project="coating"]:not(.showcase-home) .workspace :is(.model-code,.model-predictions) {background:transparent!important;border-color:#dce0e5!important}
+
+/* 02 — Copper / materials. Warm composition plate, two independent measurements. */
+body[data-project="alloy"]:not(.showcase-home) .workspace .case-stage {border-radius:3px;border-color:#d7c5b8;background:#f4ebe2}
+body[data-project="alloy"]:not(.showcase-home) .workspace .case-stage .project-heading {
+ background:#f1e3d5;padding:40px 40px 38px;border-bottom:1px solid #cfb39b;
+}
+body[data-project="alloy"]:not(.showcase-home) .workspace .case-stage .project-title {color:#62391f!important}
+body[data-project="alloy"]:not(.showcase-home) .workspace .case-stage .project-lead {color:#76533a!important}
+body[data-project="alloy"]:not(.showcase-home) .workspace .case-stage .project-description {color:#695d52!important;max-width:58ch!important}
+body[data-project="alloy"]:not(.showcase-home) .case-stage .case-emblem {
+ right:-65px;bottom:20px;width:330px;color:#99512d;opacity:.16;transform:rotate(-14deg);
+}
+body[data-project="alloy"]:not(.showcase-home) .case-stage .project-heading:after {
+ content:'Fe–Si';position:absolute;right:28px;top:25px;color:#99512d1c;
+ font-size:100px;line-height:1;font-weight:600;letter-spacing:-.07em;pointer-events:none;
+}
+body[data-project="alloy"]:not(.showcase-home) .workspace .case-stage .lab-journal-visual {
+ padding:24px;background:#f9f4ef;
+ background-image:linear-gradient(#6e442508 1px,transparent 1px),linear-gradient(90deg,#6e442508 1px,transparent 1px);background-size:24px 24px;
+}
+body[data-project="alloy"]:not(.showcase-home) .workspace .alloy-chart-grid {gap:16px}
+body[data-project="alloy"]:not(.showcase-home) .workspace .case-stage .alloy-chart {
+ padding:22px!important;background:#fffdfa!important;border:1px solid #e2d4c8!important;border-radius:3px;
+}
+body[data-project="alloy"]:not(.showcase-home) .workspace .case-stage .evidence-chart figcaption {font-size:18px;color:#62391f!important}
+
+/* 03 — Cobalt / location intelligence. A blue cover and a dashboard of real scales. */
+body[data-project="sejong"]:not(.showcase-home) .workspace .case-stage {border:0;border-radius:20px;background:#eef2fc}
+body[data-project="sejong"]:not(.showcase-home) .workspace .case-stage .project-heading {
+ padding:40px;background:#244cb5;min-height:370px;
+ background-image:radial-gradient(ellipse at 90% 90%,#5b87ed 0,transparent 65%);
+}
+body[data-project="sejong"]:not(.showcase-home) .workspace .case-stage .project-title {color:#fff!important;font-size:46px!important}
+body[data-project="sejong"]:not(.showcase-home) .workspace .case-stage .project-lead {color:#fff!important}
+body[data-project="sejong"]:not(.showcase-home) .workspace .case-stage :is(.project-description,.eyebrow) {color:#e0e9ff!important}
+body[data-project="sejong"]:not(.showcase-home) .case-stage .eyebrow:before {background:#c6d7ff!important}
+body[data-project="sejong"]:not(.showcase-home) .case-stage .case-heading-copy {max-width:82%}
+body[data-project="sejong"]:not(.showcase-home) .case-stage .case-emblem {width:260px;height:260px;right:-60px;bottom:0;opacity:.3;color:#d8e5ff}
+body[data-project="sejong"]:not(.showcase-home) .case-emblem .mini-map {
+ width:100%;height:100%;transform:rotate(-18deg);
+ background:repeating-linear-gradient(25deg,transparent 0 25px,#abc4ff 25px 26px,transparent 26px 50px),repeating-linear-gradient(115deg,transparent 0 29px,#abc4ff 29px 30px,transparent 30px 60px);
+}
+body[data-project="sejong"]:not(.showcase-home) .case-emblem .mini-map i {background:#fff;box-shadow:0 0 0 9px #ffffff24}
+body[data-project="sejong"]:not(.showcase-home) .workspace .case-stage .lab-journal-visual {background:#eef2fc}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-exhibit {background:#eef2fc;padding:28px 32px;border:0}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-exhibit header>span {color:#315cc6}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-exhibit h3 {font-size:22px!important;color:#182e61!important;margin:12px 0 24px!important}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats {display:grid;grid-template-columns:1fr 16px 1fr;background:transparent;padding:0;gap:12px;margin-bottom:24px}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats>div {background:#fff;padding:24px;border-radius:12px;box-shadow:0 6px 20px #315cc609}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats>div:last-child {background:#182e61}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats strong {color:#244cb5!important;font-size:58px;line-height:1.1;letter-spacing:-.06em;font-weight:400}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats div>span {color:#556684;font-size:12px;display:block;margin-top:10px}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats>div:last-child strong {color:#fff!important}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats>div:last-child>span {color:#cddcf9}
+body[data-project="sejong"]:not(.showcase-home) .workspace .overview-arrow {color:#315cc6;font-size:18px}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-indicators {grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-indicators>span {padding:12px 10px;border:1px solid #d8e2fa;background:#f8faff;border-radius:6px;color:#374a74;font-size:11px;align-items:center;gap:7px}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-indicators b {color:#315cc6;font-size:10px}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-exhibit footer {display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-exhibit footer p {color:#556684!important;font-size:11px!important}
+body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-exhibit .exhibit-link {background:#244cb5;color:#fff!important;border:0;border-radius:7px;padding:12px 18px;margin:0;min-width:180px}
+
+/* 04 — Coral / motion. A rounded sensor product with a continuous signal path. */
+body[data-project="fitness"]:not(.showcase-home) .workspace .case-stage {display:grid;grid-template-columns:1.12fr 1fr;background:#fff5f5;border-color:#eed5db;border-radius:28px}
+body[data-project="fitness"]:not(.showcase-home) .workspace .case-stage .project-heading {padding:38px 30px;align-self:center}
+body[data-project="fitness"]:not(.showcase-home) .workspace .case-stage .project-title {color:#702235!important;font-size:38px!important;max-width:9ch}
+body[data-project="fitness"]:not(.showcase-home) .workspace .case-stage .project-lead {font-size:23px!important;color:#913b4e!important}
+body[data-project="fitness"]:not(.showcase-home) .workspace .case-stage .project-description {color:#6c5660!important}
+body[data-project="fitness"]:not(.showcase-home) .case-stage .case-emblem {height:90px;bottom:0;right:0;width:100%;opacity:.1;color:#bf3f57}
+body[data-project="fitness"]:not(.showcase-home) .workspace .case-stage .lab-journal-visual {padding:0!important;align-self:stretch}
+body[data-project="fitness"]:not(.showcase-home) .workspace .fitness-exhibit {height:100%;background:#f6dbe1;padding:30px 24px;box-sizing:border-box}
+body[data-project="fitness"]:not(.showcase-home) .workspace .fitness-exhibit header>span {color:#87283e;font-size:9px}
+body[data-project="fitness"]:not(.showcase-home) .workspace .fitness-exhibit h3 {font-size:19px!important;color:#702235!important;margin:12px 0 20px!important}
+body[data-project="fitness"]:not(.showcase-home) .workspace .fitness-pipeline {grid-template-columns:1fr;gap:18px}
+body[data-project="fitness"]:not(.showcase-home) .workspace .stack-assembly {position:relative;background:#fff7f8;color:#bf3f57;padding:20px;border-radius:100px 100px 18px 18px;max-width:260px;margin:0 auto;width:100%;box-sizing:border-box}
+body[data-project="fitness"]:not(.showcase-home) .workspace .stack-assembly svg {height:150px}
+body[data-project="fitness"]:not(.showcase-home) .workspace .stack-assembly svg>path:last-child {stroke:currentColor}
+body[data-project="fitness"]:not(.showcase-home) .workspace .stack-assembly>span {color:#87283e;font-size:10px;margin-top:8px}
+body[data-project="fitness"]:not(.showcase-home) .workspace .count-logic li {padding:11px 0;border-color:#dcb8c2;grid-template-columns:26px 1fr;gap:2px 8px}
+body[data-project="fitness"]:not(.showcase-home) .workspace .count-logic li>span {color:#fff;background:#9d324c;width:24px;height:24px;display:grid;place-items:center;padding:0;border-radius:50%;align-self:center}
+body[data-project="fitness"]:not(.showcase-home) .workspace .count-logic strong {color:#702235;font-size:12px}
+body[data-project="fitness"]:not(.showcase-home) .workspace .count-logic small {color:#6c5660;font-size:10px}
+body[data-project="fitness"]:not(.showcase-home) .workspace .count-logic .exhibit-link {background:#9d324c;color:#fff!important;border:0;border-radius:25px;padding:8px 18px;margin-top:20px;font-size:11px}
+
+/* 05 — Graphite / inspection. The actual instrument occupies half of the cover. */
+body[data-project="mim"]:not(.showcase-home) .workspace .case-stage {display:grid;grid-template-columns:1.12fr 1fr;background:#252e38;border:0;border-radius:2px}
+body[data-project="mim"]:not(.showcase-home) .workspace .case-stage .project-heading {padding:38px 30px;align-self:center}
+body[data-project="mim"]:not(.showcase-home) .workspace .case-stage .project-title {color:#f7f9fc!important;font-size:38px!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .case-stage .project-lead {color:#dbe5ee!important;font-size:23px!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .case-stage :is(.eyebrow,.project-description) {color:#bdcbd8!important}
+body[data-project="mim"]:not(.showcase-home) .case-stage .eyebrow:before {background:#bdcbd8!important}
+body[data-project="mim"]:not(.showcase-home) .case-stage .case-emblem {color:#c8d9e8;opacity:.08;right:-20px;bottom:0}
+body[data-project="mim"]:not(.showcase-home) .workspace .case-stage .lab-journal-visual {padding:0!important;background:transparent;overflow:visible;position:relative;min-height:590px}
+body[data-project="mim"]:not(.showcase-home) .workspace .lab-equipment.compact {position:absolute;inset:0;height:100%;margin:0;border-radius:0}
+body[data-project="mim"]:not(.showcase-home) .workspace .lab-equipment.compact img {object-position:52% 40%;filter:saturate(.7)}
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-label {left:24px;right:20px;bottom:26px}
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-label strong {color:#f5f8fa!important;font-size:23px}
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-label>span {color:#dce5ed!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-material-flow svg {color:var(--theme-accent)}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-material-flow button[aria-selected="true"] {background:var(--theme-soft)!important;border-color:var(--theme-accent)!important;color:var(--theme-accent)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace :is(.equipment-photo-copy>span,.equipment-photo-copy h3,.equipment-photo-copy>a) {color:var(--theme-accent)!important}
+
+/* 06 — Violet / diffraction. An analytical cover, separated from the measured bars. */
+body[data-project="xrd"]:not(.showcase-home) .workspace .case-stage {border:0;border-radius:18px 18px 3px 3px;background:#f3eef9}
+body[data-project="xrd"]:not(.showcase-home) .workspace .case-stage .project-heading {background:#392454;padding:40px 40px 46px}
+body[data-project="xrd"]:not(.showcase-home) .workspace .case-stage .project-title {color:#fff!important}
+body[data-project="xrd"]:not(.showcase-home) .workspace .case-stage .project-lead {color:#e9dbff!important}
+body[data-project="xrd"]:not(.showcase-home) .workspace .case-stage :is(.eyebrow,.project-description) {color:#d3c1ea!important}
+body[data-project="xrd"]:not(.showcase-home) .case-stage .eyebrow:before {background:#bda0e5!important}
+body[data-project="xrd"]:not(.showcase-home) .case-stage .case-heading-copy {max-width:78%}
+body[data-project="xrd"]:not(.showcase-home) .case-stage .case-emblem {height:260px;width:65%;right:-120px;bottom:0;color:#bba0e0;opacity:.16;transform:rotate(-10deg)}
+body[data-project="xrd"]:not(.showcase-home) .case-stage .project-heading:after {content:'';position:absolute;width:260px;height:260px;border:1px solid #c3a5e344;border-radius:50%;right:-55px;top:25px;box-shadow:0 0 0 36px #c3a5e30a,0 0 0 72px #c3a5e309;pointer-events:none}
+body[data-project="xrd"]:not(.showcase-home) .workspace .case-stage .lab-journal-visual {background:#f3eef9;padding:30px 40px 34px}
+body[data-project="xrd"]:not(.showcase-home) .workspace .case-stage .evidence-chart figcaption {font-size:20px;color:#392454!important}
+body[data-project="xrd"]:not(.showcase-home) .workspace .case-stage .evidence-chart-row {margin-top:12px;grid-template-columns:100px minmax(0,1fr)}
+body[data-project="xrd"]:not(.showcase-home) .workspace .case-stage .evidence-bar>span {border-radius:20px}
+
+/* 07 — Cyan / interfaces. A side-by-side material proposal with a dark layer stack. */
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage {display:grid;grid-template-columns:1.1fr 1fr;background:#f4fafb;border-color:#bddce0;border-radius:4px}
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .project-heading {padding:38px 30px;align-self:center}
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .project-title {color:#13434a!important;font-size:38px!important}
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .project-lead {color:#246773!important;font-size:23px!important}
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .project-description {color:#4c6970!important}
+body[data-project="energy"]:not(.showcase-home) .case-stage .case-emblem {display:none}
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .lab-journal-visual {background:#123f47;padding:32px 24px;display:flex;align-items:center}
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .story-diagram {width:100%;margin:0!important;background:transparent!important;border:0!important;padding:0!important}
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .story-diagram figcaption strong {color:#eefbff!important;font-size:17px}
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .story-diagram figcaption small {color:#b4d7df!important;font-size:10px;line-height:1.8}
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .story-layer-stack {margin-top:24px;gap:10px}
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .story-layer-stack li {display:flex;flex-direction:column;gap:5px;padding:16px 18px;background:#e5f4f5!important;border:0!important;border-radius:3px;min-height:0;box-shadow:5px 5px 0 #4b8c9638}
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .story-layer-stack li:nth-child(2) {background:#b4e1e6!important;margin-left:10px}
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .story-layer-stack li:nth-child(3) {background:#73bbc5!important;margin-left:20px}
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .story-layer-stack li:last-child {background:#255c65!important;border:1px solid #65939b!important;margin-left:30px}
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .story-layer-stack li>span {color:#24535e!important;font-size:9px}
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .story-layer-stack li strong {color:#133d45!important;font-size:14px}
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .story-layer-stack li small {color:#285661!important;font-size:10px}
+body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .story-layer-stack li:last-child :is(span,strong,small) {color:#e6f7fa!important}
+body[data-project="energy"]:not(.showcase-home) .workspace .story-layer-stack li {border-left:3px solid var(--theme-accent)!important;margin-top:8px}
+body[data-project="energy"]:not(.showcase-home) .workspace .interface-layer.cnt {background:#f2f4f6!important}
+body[data-project="energy"]:not(.showcase-home) .workspace .interface-layer.zinc {background:#d9eef0!important}
+
+/* The collection previews each identity. Selected Work keeps its original colours. */
+.lab-card-visual[data-preview] {border-radius:12px;border:0;color:var(--theme-accent)}
+.lab-card-visual[data-preview]:before {border-color:currentColor;opacity:.15}
+.lab-card-visual:is([data-preview="academy"],[data-preview="coating"],[data-preview="ocean"]) {background:#173d31;color:#c8dfb0;border-radius:2px 22px 2px 2px}
+.lab-card-visual[data-preview="alloy"] {background:#eed8c3;color:#88502d;border-radius:2px;background-image:linear-gradient(#99512d08 1px,transparent 1px),linear-gradient(90deg,#99512d08 1px,transparent 1px);background-size:22px 22px}
+.lab-card-visual[data-preview="sejong"] {background:#244cb5;color:#e0eaff}
+.lab-card-visual[data-preview="fitness"] {background:#f6dbe1;color:#9d324c;border-radius:28px}
+.lab-card-visual[data-preview="mim"] {background:linear-gradient(90deg,#252e38dd,#252e38aa),url('artifacts/equipment-gallery/images/optical-3d.jpg') center 40%/cover;color:#dee8f2;border-radius:2px}
+.lab-card-visual[data-preview="xrd"] {background:#392454;color:#c6a9ef;border-radius:14px 14px 2px 2px}
+.lab-card-visual[data-preview="energy"] {background:#123f47;color:#b4e1e6;border-radius:3px}
+.lab-card-visual[data-preview="sejong"] .mini-map {background:repeating-linear-gradient(25deg,transparent 0 25px,#92b0fc66 25px 26px,transparent 26px 50px),repeating-linear-gradient(115deg,transparent 0 29px,#92b0fc66 29px 30px,transparent 30px 60px)}
+.lab-card-visual[data-preview="sejong"] .mini-map i {background:#e1ebff;box-shadow:0 0 0 7px #ffffff18}
+.lab-card-visual[data-preview="energy"] .mini-layers i {background:#c5ebed;box-shadow:5px 5px 0 #386b74}
+.lab-card-visual[data-preview="energy"] .mini-layers i:nth-child(2) {background:#8cced7}
+.lab-card-visual[data-preview="energy"] .mini-layers i:nth-child(3) {background:#4294a4}
+.lab-project-card:hover .lab-card-visual {box-shadow:0 14px 30px #20252b14}
+
+@media(max-width:1100px) {
+ body[data-project]:not(.showcase-home) .workspace .case-stage .project-heading {padding:32px}
+ body:is([data-project="mim"],[data-project="fitness"],[data-project="energy"]):not(.showcase-home) .workspace .case-stage .project-heading {padding:28px 24px}
+ body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-exhibit footer {grid-template-columns:1fr;gap:10px}
+ body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-exhibit .exhibit-link {justify-self:start}
+ body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-indicators {grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px) {
+ body[data-project]:not(.showcase-home) .workspace .case-stage {display:block;border-radius:12px}
+ body[data-project]:not(.showcase-home) .workspace .case-stage .project-heading {padding:28px 24px}
+ body[data-project]:not(.showcase-home) .workspace .case-stage .project-title {font-size:32px!important;max-width:none}
+ body[data-project]:not(.showcase-home) .workspace .case-stage .project-lead {font-size:21px!important}
+ body[data-project]:not(.showcase-home) .workspace .case-stage .project-description {font-size:13px!important}
+ body[data-project]:not(.showcase-home) .workspace .case-stage .case-heading-copy {max-width:none}
+ body[data-project]:not(.showcase-home) .case-stage .case-emblem {opacity:.08}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-overview {padding:0 16px 16px}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-cards {grid-template-columns:1fr}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-cards a {padding:22px 20px}
+ body[data-project]:not(.showcase-home) .workspace .case-stage .lab-journal-visual {padding:24px}
+ body[data-project="mim"]:not(.showcase-home) .workspace .case-stage .lab-journal-visual {min-height:360px}
+ body[data-project="sejong"]:not(.showcase-home) .workspace .case-stage .project-heading {min-height:0}
+ body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-exhibit {padding:24px 18px}
+ body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats {grid-template-columns:1fr 12px 1fr;gap:6px}
+ body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats>div {padding:20px 12px}
+ body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats strong {font-size:38px}
+ body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-overview-stats div>span {font-size:10px}
+ body[data-project="sejong"]:not(.showcase-home) .workspace .sejong-indicators>span {padding:12px 8px;font-size:10px;gap:5px}
+ body[data-project="fitness"]:not(.showcase-home) .workspace .fitness-exhibit {padding:24px}
+ body[data-project="fitness"]:not(.showcase-home) .workspace .fitness-pipeline {grid-template-columns:1fr;gap:14px}
+ body[data-project="fitness"]:not(.showcase-home) .workspace .stack-assembly {display:block;border-radius:100px 100px 18px 18px}
+ body[data-project="fitness"]:not(.showcase-home) .workspace .stack-assembly svg {max-width:150px;height:165px}
+ body[data-project="fitness"]:not(.showcase-home) .workspace .count-logic li {padding:14px 0}
+ body[data-project="fitness"]:not(.showcase-home) .workspace .count-logic strong {font-size:14px}
+ body[data-project="energy"]:not(.showcase-home) .workspace .case-stage .lab-journal-visual {padding:28px 24px}
+ body[data-project]:not(.showcase-home) .workspace .case-meta .project-facts {padding:20px 0!important}
+}
+@media(prefers-reduced-motion:reduce) {
+ .lab-project-card:hover svg {transform:none}
 }
