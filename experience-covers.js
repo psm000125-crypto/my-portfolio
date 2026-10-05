@@ -45,10 +45,7 @@ function experienceCoverGraphic(id) {
   <g class="xrd-instrument"><path d="m220 52 22-10 12 26-22 10ZM495 68l12-26 22 10-12 26"/><path d="m229 53 7 14M513 53l-7 14" opacity=".5"/></g>
   <g class="xrd-measurement xrd-measurement-body"><path class="xrd-beam" d="m242 76 73 105L499 76"/><circle class="xrd-measured-point" cx="315" cy="181" r="12"/></g>
   <g class="xrd-measurement xrd-measurement-edge"><path class="xrd-beam" d="m242 76 226 92 31-92"/><circle class="xrd-measured-point" cx="468" cy="168" r="12"/></g>
-  <g class="cover-diagram-labels"><text x="216" y="30">X선</text><text x="315" y="264" text-anchor="middle">몸통</text><text x="468" y="264" text-anchor="middle">날 끝</text><text x="90" y="311">회절 패턴 · 개념도</text></g>
-  <path class="cover-diagram-guide" d="M90 334v65h436"/>
-  <path class="xrd-pattern-reference" d="M90 384h52l8-13 7 13h29l7-38 8 38h46l10-69 11 69h39l9-22 8 22h35l8-44 9 44h45l8-18 8 18h60"/>
-  <path class="xrd-pattern-scan" d="M90 384h52l8-13 7 13h29l7-38 8 38h46l10-69 11 69h39l9-22 8 22h35l8-44 9 44h45l8-18 8 18h60"/>`;
+  <g class="cover-diagram-labels"><text x="216" y="30">X선</text><text x="315" y="264" text-anchor="middle">몸통</text><text x="468" y="264" text-anchor="middle">날 끝</text></g>`;
  if(id==='energy')diagram=`
   <defs><clipPath id="energy-cover-coating"><rect x="85" y="165" width="340" height="139"/></clipPath></defs>
   <g class="energy-coating">
@@ -76,8 +73,6 @@ function experienceCoverGraphic(id) {
   <g class="fitness-machine-frame"><path d="M105 77v269M221 77v269M78 348h170M140 46h45"/><path class="fitness-cable" d="M162 46v162"/></g>
   <g class="fitness-moving-stack">
    ${[0,1,2,3].map(i=>`<rect class="fitness-weight-plate" x="88" y="${210+i*28}" width="150" height="21" rx="2"/>`).join('')}
-   <rect class="fitness-attached-phone" x="170" y="199" width="39" height="83" rx="6"/>
-   <path d="M184 207h11M181 271h17M177 241h6l5-12 6 24 5-12h3"/>
   </g>
   <g class="fitness-sensor-link"><path d="M243 250h54m-7-6 7 6-7 6"/></g>
   <g class="fitness-waveform">
@@ -86,9 +81,7 @@ function experienceCoverGraphic(id) {
    <path class="fitness-signal-reference" d="M315 252h24q12 0 23-18 7-8 13 9 11 15 24-23 12-65 24-43 17 30 25 75 10 61 27 30 10-17 17-30 10-17 20-8 9 9 15 8h37"/>
    <path class="fitness-signal-read" d="M315 252h24q12 0 23-18 7-8 13 9 11 15 24-23 12-65 24-43 17 30 25 75 10 61 27 30 10-17 17-30 10-17 20-8 9 9 15 8h37"/>
    <circle class="fitness-peak-marker" cx="418" cy="170" r="10"/>
-  </g>
-  <g class="fitness-counter"><text class="fitness-count-idle" x="439" y="117" text-anchor="middle">0</text><text class="fitness-count-on" x="439" y="117" text-anchor="middle">1</text></g>
-  <g class="cover-diagram-labels"><text x="439" y="58" text-anchor="middle">횟수 판정</text><text x="326" y="194">판정 기준</text><text x="315" y="354">가속도 → 봉우리 판정</text><text x="88" y="403">중량 스택 · 센서</text><text x="315" y="403">1회 동작 · 개념도</text></g>`;
+  </g>`;
  return `<svg class="experience-cover-graphic cover-${id}" viewBox="0 0 600 450" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${['xrd','energy','sejong','fitness'].includes(id)?'':guides}<g class="cover-drawing">${diagram}</g></svg>`;
 }
 function experienceResourceIcon(type) {

@@ -45,7 +45,7 @@ body[data-project]:not(.showcase-home) .workspace .experience-landing .project-t
 body[data-project]:not(.showcase-home) .workspace .experience-landing .project-lead {font-size:clamp(23px,2.15vw,34px)!important;line-height:1.5!important;font-weight:400!important;letter-spacing:-.04em!important;max-width:none!important;color:var(--theme-accent)!important;margin:0!important;white-space:pre-line}
 body[data-project]:not(.showcase-home) .workspace .experience-landing .eyebrow {color:var(--theme-accent)!important;font-size:11px!important;letter-spacing:.16em!important}
 body[data-project]:not(.showcase-home) .workspace .experience-landing .eyebrow:before {background:var(--theme-accent)!important}
-body[data-project]:not(.showcase-home) .workspace .experience-landing .cover-description {font-size:15px;line-height:1.95;color:var(--theme-muted);max-width:80ch;margin:38px 0 30px;word-break:keep-all}
+body[data-project]:not(.showcase-home) .workspace .experience-landing .cover-description {font-size:15px;line-height:1.95;color:var(--theme-muted);max-width:none;margin:38px 0 30px;word-break:keep-all;overflow-wrap:break-word;text-wrap:pretty}
 .experience-resources {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-block:1px solid var(--portfolio-line);margin:0}
 .experience-resource {position:relative;display:block;color:var(--theme-deep);padding:20px 24px 44px;transition:background .25s;min-width:0}
 .experience-resource+.experience-resource {border-left:1px solid var(--portfolio-line)}
@@ -113,8 +113,6 @@ body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing
 .xrd-measurement-edge {opacity:0;animation-delay:-3s}
 .xrd-beam {stroke-dasharray:5 7;animation:xrd-beam-travel 1.8s linear infinite}
 .xrd-measured-point {stroke-width:1.2}
-.xrd-pattern-reference {opacity:.2;stroke-width:1.4}
-.xrd-pattern-scan {stroke-width:2.4;stroke-dasharray:800;animation:xrd-pattern-read 3s ease-out infinite}
 .energy-cnt-network {opacity:.5;stroke-width:1.3}
 .energy-zinc-particles>circle {fill:var(--portfolio-paper,#ece4d9);stroke-width:1.4}
 .energy-zinc-particles>.energy-cobalt {fill:currentColor;stroke:none}
@@ -125,7 +123,6 @@ body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing
 .energy-deposition circle {fill:currentColor;stroke:none;transform-box:fill-box;transform-origin:center;animation:energy-nucleation 4.5s ease-out infinite;animation-delay:var(--deposit-delay)}
 @keyframes xrd-measure-position {0%,42%,100%{opacity:1}50%,92%{opacity:0}}
 @keyframes xrd-beam-travel {to{stroke-dashoffset:-48}}
-@keyframes xrd-pattern-read {0%{stroke-dashoffset:800;opacity:.3}72%,90%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:.3}}
 @keyframes energy-ion-arrival {0%{transform:translateY(-24px);opacity:0}12%{opacity:1}88%{transform:translateY(188px);opacity:1}100%{transform:translateY(204px);opacity:0}}
 @keyframes energy-nucleation {0%,12%{transform:scale(.5);opacity:.25}40%,80%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:.25}}
 /* AI covers connect the actual inputs to comparison or counting. */
@@ -144,15 +141,11 @@ body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing
 .fitness-moving-stack {animation:fitness-stack-motion 4.8s ease-in-out infinite}
 .fitness-cable {transform-origin:162px 46px;animation:fitness-cable-length 4.8s ease-in-out infinite}
 .fitness-weight-plate {fill:currentColor;fill-opacity:.12;stroke-width:1.8}
-.fitness-attached-phone {fill:var(--portfolio-paper,#eaeef4);stroke-width:2.2}
 .fitness-sensor-link {stroke-dasharray:3 6;opacity:.65;animation:fitness-data-flow 2.4s linear infinite}
 .fitness-threshold {stroke-dasharray:4 7;opacity:.45}
 .fitness-signal-reference {opacity:.17;stroke-width:1.5}
 .fitness-signal-read {stroke-width:2.5;stroke-dasharray:600;animation:fitness-signal-read 4.8s ease-out infinite}
 .fitness-peak-marker {transform-box:fill-box;transform-origin:center;animation:fitness-peak-detect 4.8s ease-out infinite}
-.fitness-counter {fill:currentColor;stroke:none;font-family:inherit;font-size:58px;font-weight:400}
-.fitness-count-idle {opacity:0;animation:fitness-count-idle 4.8s linear infinite}
-.fitness-count-on {opacity:1;animation:fitness-count-on 4.8s linear infinite}
 @keyframes sejong-site-focus {0%,100%{opacity:.4}50%{opacity:1}}
 @keyframes sejong-weight-adjust {0%,100%{transform:translateX(0)}50%{transform:translateX(var(--weight-shift))}}
 @keyframes sejong-compare-adjust {0%,100%{transform:scaleX(.8)}50%{transform:scaleX(1)}}
@@ -161,8 +154,6 @@ body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing
 @keyframes fitness-data-flow {to{stroke-dashoffset:-36}}
 @keyframes fitness-signal-read {0%,8%{stroke-dashoffset:600}65%,100%{stroke-dashoffset:0}}
 @keyframes fitness-peak-detect {0%,40%,100%{opacity:0;transform:scale(.8)}50%,80%{opacity:1;transform:scale(1)}}
-@keyframes fitness-count-idle {0%,44%{opacity:1}45%,100%{opacity:0}}
-@keyframes fitness-count-on {0%,44%{opacity:0}45%,100%{opacity:1}}
 /* Four navigation entries; braces keep related projects visually together. */
 .nav-collection {border-bottom:1px solid var(--drawer-line,var(--portfolio-line));margin:8px 0}
 .nav-collection>summary {list-style:none;display:flex;align-items:center;gap:12px;cursor:pointer;padding:19px 14px;color:var(--drawer-ink,var(--portfolio-ink));font-size:14px}
@@ -214,7 +205,7 @@ body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[dat
 }
 body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.story-header h2,.story-section-heading h3,.artifact-heading h2,.summary-hero h3,.summary-section-heading h4,.story-diagram figcaption strong,.story-metrics dd) {color:var(--portfolio-ink)!important}
 body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.story-section-copy p,.story-intro,.summary-hero p,.summary-callout p,.story-process strong,.story-layer-stack strong,.story-layer-stack small) {color:var(--theme-text)!important}
-body:is([data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.story-section-visual,.story-diagram,.summary-stat,.pipeline-node,.story-process li,.story-layer-stack li,.interface-layer,.literature-evidence,.phase-comparison article) {background:var(--theme-raised)!important;border-color:var(--portfolio-line)!important}
+body:is([data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.story-section-visual,.story-diagram,.story-bar-chart,.story-visual,.evidence-chart,.summary-hero,.summary-panel,.summary-stat,.summary-callout,.summary-status,.pipeline-node,.story-process li,.story-layer-stack li,.interface-layer,.literature-evidence,.phase-comparison article) {background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important}
 body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.story-header,.enriched-note,.reading-tabs,.artifact-heading,.story-compare-list>div,.story-indicator-grid li) {border-color:var(--portfolio-line)!important}
 body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.evidence-chart,.story-bar-chart) {--series-before:color-mix(in srgb,var(--theme-accent) 40%,var(--portfolio-paper));--series-after:var(--theme-accent);--series-track:color-mix(in srgb,var(--theme-accent) 12%,var(--portfolio-paper))}
 body[data-project="xrd"] .xrd-specimens svg>path:first-of-type {fill:var(--theme-deep)}
