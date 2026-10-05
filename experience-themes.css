@@ -599,6 +599,8 @@ body[data-project="mim"]:not(.showcase-home) .workspace .equipment-photo-grid.eq
 body[data-project="mim"]:not(.showcase-home) .workspace .equipment-gallery .equipment-photo-card {background:transparent!important;border:0!important;box-shadow:none!important}
 body[data-project="mim"]:not(.showcase-home) .workspace .equipment-photo {background:#f5f6f1;aspect-ratio:1.5!important;border:1px solid var(--portfolio-line)}
 body[data-project="mim"]:not(.showcase-home) .workspace .equipment-photo img {object-fit:contain;padding:16px;mix-blend-mode:multiply}
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-photo-card.is-clean-cutout .equipment-photo {background:#fff}
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-photo-card.is-clean-cutout .equipment-photo img {padding:12px;mix-blend-mode:normal}
 body[data-project="mim"]:not(.showcase-home) .workspace .equipment-photo-copy {padding:18px 0 0;min-height:0!important}
 body[data-project="mim"]:not(.showcase-home) .workspace .equipment-photo-copy h3 {font-size:16px;line-height:1.55;color:var(--portfolio-ink)!important;font-weight:500}
 body[data-project="mim"]:not(.showcase-home) .workspace :is(.equipment-photo-copy>span,.equipment-photo-copy>a) {color:var(--theme-accent)!important}
@@ -610,7 +612,8 @@ body[data-project="mim"]:not(.showcase-home) .workspace .enriched-story .mim-pro
 body[data-project="mim"]:not(.showcase-home) .workspace .mim-process-section .story-section-heading {margin-bottom:28px}
 body[data-project="mim"]:not(.showcase-home) .workspace .mim-process-section>.story-diagram {margin-bottom:28px}
 body[data-project="mim"]:not(.showcase-home) .workspace .mim-process-section>.story-diagram>figcaption {position:static;margin-bottom:18px}
-body[data-project="mim"]:not(.showcase-home) .workspace .mim-process-copy {max-width:75ch}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-process-copy {max-width:none}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-process-copy .mim-application {max-width:none;overflow-wrap:normal;word-break:keep-all}
 
 /* Fe–Si follows the warm material spread through the overview and evidence. */
 html:has(body[data-project="alloy"]:not(.showcase-home)) {background:#ece4d9!important}
