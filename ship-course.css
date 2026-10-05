@@ -1,0 +1,114 @@
+/* Each scene owns its title, diagram and controls; no text overlays the drawing. */
+body[data-experience-family="academy"] .workspace .ship-course {--ship-lime:#c9ee94;--ship-paper:#f0f4eb;--ship-dark:#173d31;min-width:0}
+.ship-course-header {padding:42px 0 52px;border-bottom:1px solid #426053}
+.ship-course-header>p {font-size:12px;letter-spacing:.12em;color:#c9ee94;margin:0 0 24px}
+body[data-experience-family="academy"] .workspace .ship-course-header h2 {font-size:clamp(48px,5.8vw,88px)!important;line-height:1.14!important;font-weight:400;letter-spacing:-.065em;margin:0!important;word-break:keep-all;color:#f0f3e5!important}
+.ship-course-header h2 em {font-style:normal;color:#c9ee94}
+.ship-course-contents {display:flex;flex-wrap:wrap;gap:32px;margin-top:32px}
+.ship-course-contents a {font-size:14px;color:#d1ded2;text-decoration:none;padding:10px 0;border-bottom:1px solid #55705e}
+.ship-course-contents a:hover {color:#c9ee94}
+.ship-scene {padding:60px 0 40px;scroll-margin-top:85px;border-bottom:1px solid #426053}
+.ship-scene-header>span {font-size:11px;letter-spacing:.14em;color:#c9ee94}
+body[data-experience-family="academy"] .workspace .ship-scene-header h3 {font-size:clamp(32px,3.6vw,54px);font-weight:400;letter-spacing:-.055em;line-height:1.3;margin:18px 0 16px;color:#f0f3e5;word-break:keep-all}
+.ship-scene-header p {font-size:16px;line-height:1.8;color:#d1ded2;margin:0 0 30px;word-break:keep-all}
+.ship-plate {background:var(--ship-paper);color:var(--ship-dark);padding:26px 32px;border-radius:4px}
+.ship-plate-heading {display:flex;justify-content:space-between;gap:16px;font-size:12px;font-weight:500;letter-spacing:.04em}
+.ship-plate-heading span:last-child {color:#526653}
+.ship-course svg {display:block;width:100%;height:auto;overflow:visible}
+.ship-dimensions svg {margin:16px 0 0}
+.ship-solid {fill:#d8e7ce}
+.ship-fine {stroke:#8ea28b}
+.ship-waterline {stroke:#638c86;stroke-width:1.5;stroke-dasharray:5 6;fill:none}
+.ship-svg-labels {font-size:18px;fill:#173d31;text-anchor:middle}
+.ship-measure {opacity:.12;transition:opacity .35s;stroke:#3e702d;stroke-width:2.5}
+.ship-svg-labels .ship-measure {stroke:none}
+.ship-dimensions[data-dimension="length"] .ship-length,.ship-dimensions[data-dimension="breadth"] .ship-breadth,.ship-dimensions[data-dimension="depth"] .ship-depth,.ship-dimensions[data-dimension="draft"] .ship-draft {opacity:1}
+.ship-controls {display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+body[data-experience-family="academy"] .workspace .ship-controls button {font:inherit;font-size:13px;min-height:44px;padding:10px 18px;background:transparent;color:#244b3a;border:1px solid #9bb393;border-radius:2px;cursor:pointer}
+body[data-experience-family="academy"] .workspace .ship-controls button[aria-pressed="true"] {background:#173d31;color:#f0f4eb;border-color:#173d31}
+body[data-experience-family="academy"] .workspace .ship-controls button:focus-visible {outline-color:#173d31!important}
+.ship-control-caption {font-size:14px;line-height:1.85;margin:16px 0 0;min-height:2em;word-break:keep-all}
+.ship-design-concepts {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding:30px 0}
+.ship-design-concepts>div {border-left:1px solid #55705e;padding-left:18px}
+.ship-design-concepts span {display:block;color:#a8c1b3;font-size:12px;margin-bottom:10px}
+.ship-design-concepts strong {color:#e2eadb;font-size:15px;line-height:1.8;font-weight:400;word-break:keep-all}
+.ship-course-reading {margin-top:28px}
+body[data-experience-family="academy"] .workspace .ship-course details.enriched-note {padding:0;margin:0;border:0;border-top:1px solid #426053;background:transparent;scroll-margin-top:100px}
+.ship-course-reading summary {display:flex;align-items:center;gap:18px;padding:20px 8px;cursor:pointer;list-style:none;color:#e2eadb;min-height:64px}
+.ship-course-reading summary::-webkit-details-marker {display:none}
+.ship-course-reading summary>span:first-child {font-size:11px;color:#a8c1b3;flex:0 0 24px}
+.ship-course-reading summary>strong {font-weight:400;font-size:16px;line-height:1.7;word-break:keep-all}
+.ship-detail-plus {margin-left:auto;color:#c9ee94;font-size:24px;flex-shrink:0;transition:transform .2s}
+details[open] .ship-detail-plus {transform:rotate(45deg)}
+.ship-course-reading summary:hover {background:#234b3c}
+.ship-detail-body {display:grid;grid-template-columns:minmax(0,1fr);gap:24px;padding:12px 8px 32px}
+.ship-detail-body .story-section-copy {max-width:75ch}
+.ship-concept-note {display:block;color:#526653;font-size:11px;line-height:1.8;margin-top:12px}
+.ship-sea-fill {fill:#e0eeea}
+.ship-heeling-hull {transform-origin:350px 148px;transition:transform .7s ease}
+.ship-section-hull {fill:#d8e7ce;stroke:#173d31;stroke-width:2}
+.ship-section-ribs {stroke:#8ea28b;stroke-width:1.5}
+.ship-force {fill:#173d31;stroke:#173d31;stroke-width:2}
+.ship-force text {stroke:none;font-size:18px}
+.ship-force.buoyancy {color:#367770;stroke:#367770;fill:#367770;transition:transform .7s ease}
+.ship-buoyancy-label {fill:#367770;font-size:16px}
+.ship-gz {opacity:0;stroke:#557637;fill:#557637;stroke-width:1.5;transition:opacity .7s;text-anchor:middle;font-size:17px}
+text.ship-gz {stroke:none}
+.ship-stability[data-heel="heeled"] .ship-heeling-hull {transform:rotate(12deg)}
+.ship-stability[data-heel="heeled"] .buoyancy {transform:translateX(70px)}
+.ship-stability[data-heel="heeled"] .ship-gz {opacity:1}
+.ship-motion-exhibit {display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;margin-top:40px;padding:24px 0 8px}
+.ship-motion-graphic {min-width:0;color:#c9ee94;align-self:center}
+.ship-motion-graphic>span {font-size:10px;letter-spacing:.12em;color:#a8c1b3}
+.ship-motion-space {position:relative;perspective:650px;min-height:180px;padding:18px 0 0;overflow:hidden}
+.ship-motion-reference {height:1px;background:#55705e;width:85%;margin:8px auto 0}
+.ship-motion-graphic p {color:#e2eadb;font-size:14px;line-height:1.8;margin:18px 0 8px}
+.ship-motion-graphic small {display:block;color:#a8c1b3;font-size:11px;line-height:1.8}
+.ship-motion-controls {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;min-width:0}
+body[data-experience-family="academy"] .workspace .ship-motion-controls button {display:flex;flex-direction:column;text-align:left;gap:7px;min-width:0;padding:14px 16px;background:transparent;color:#e2eadb;border:1px solid #55705e;font:inherit;cursor:pointer;border-radius:2px}
+.ship-motion-controls button>span {color:#a8c1b3;font-size:10px}
+.ship-motion-controls strong {font-size:15px;font-weight:500}
+.ship-motion-controls small {font-size:11px;line-height:1.7;color:#b8cdbe;word-break:keep-all}
+body[data-experience-family="academy"] .workspace .ship-motion-controls button[aria-pressed="true"] {background:#234b3c;border-color:#c9ee94}
+body[data-experience-family="academy"] .workspace .ship-motion-controls .ship-motion-stop {grid-column:1/-1;align-items:center;font-size:12px;min-height:44px}
+.ship-motion-vessel {transform-origin:50% 55%;transform-box:fill-box}
+.ship-motion-vessel[data-motion] {animation-duration:2.2s;animation-iteration-count:2;animation-timing-function:ease-in-out}
+.ship-motion-vessel[data-motion="surge"] {animation-name:ship-surge}
+.ship-motion-vessel[data-motion="sway"] {animation-name:ship-sway}
+.ship-motion-vessel[data-motion="heave"] {animation-name:ship-heave}
+.ship-motion-vessel[data-motion="roll"] {animation-name:ship-roll}
+.ship-motion-vessel[data-motion="pitch"] {animation-name:ship-pitch}
+.ship-motion-vessel[data-motion="yaw"] {animation-name:ship-yaw}
+@keyframes ship-surge {25%{transform:translateX(24px)}75%{transform:translateX(-24px)}}
+@keyframes ship-sway {25%{transform:translateZ(45px)}75%{transform:translateZ(-45px)}}
+@keyframes ship-heave {25%{transform:translateY(-18px)}75%{transform:translateY(18px)}}
+@keyframes ship-roll {25%{transform:rotateX(30deg)}75%{transform:rotateX(-30deg)}}
+@keyframes ship-pitch {25%{transform:rotate(-7deg)}75%{transform:rotate(7deg)}}
+@keyframes ship-yaw {25%{transform:rotateY(25deg)}75%{transform:rotateY(-25deg)}}
+.ship-build-exhibit {--assembly:0;--outfit:0;--launch:0;--trial:0;--build-progress:0}
+.ship-build-graphic {padding:26px 32px;background:#f0f4eb;color:#173d31;border-radius:4px;overflow:hidden}
+.ship-build-graphic svg {margin-top:16px}
+.ship-build-block {transition:transform .12s linear}
+.block-a {transform:translate(calc((1 - var(--assembly))*-35px),calc((1 - var(--assembly))*-55px))}
+.block-b {transform:translateY(calc((1 - var(--assembly))*40px))}
+.block-c {transform:translate(calc((1 - var(--assembly))*35px),calc((1 - var(--assembly))*-55px))}
+.ship-build-outfit {opacity:var(--outfit);transform:translateY(calc((1 - var(--outfit))*-35px));transition:opacity .15s,transform .15s}
+.ship-build-sea {opacity:var(--launch)}
+.ship-build-trial {opacity:var(--trial);stroke:#367770;stroke-width:2}
+.ship-build-track {height:3px;background:#d0dfc8;margin-top:12px}
+.ship-build-track i {display:block;height:100%;width:calc(var(--build-progress)*100%);background:#367770}
+.ship-build-stages {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:16px}
+body[data-experience-family="academy"] .workspace .ship-build-stages button {font:inherit;color:#e2eadb;font-size:14px;padding:18px 12px;background:transparent;border:1px solid #55705e;cursor:pointer;min-width:0;line-height:1.7;border-radius:2px}
+.ship-build-stages span {display:block;font-size:10px;color:#a8c1b3;margin-bottom:6px}
+body[data-experience-family="academy"] .workspace .ship-build-stages button[aria-pressed="true"] {background:#234b3c;border-color:#c9ee94}
+.ship-build-exhibit>.ship-control-caption {color:#d1ded2}
+@media(max-width:1100px) {
+ .ship-motion-exhibit {grid-template-columns:minmax(0,1fr);gap:24px}
+ .ship-motion-space {max-width:580px;margin:auto}
+ .ship-motion-controls {grid-template-columns:repeat(3,minmax(0,1fr))}
+ .ship-design-concepts {gap:12px}
+ .ship-plate,.ship-build-graphic {padding:24px}
+}
+@media(prefers-reduced-motion:reduce) {
+ .ship-course *, .ship-course *::before {animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}

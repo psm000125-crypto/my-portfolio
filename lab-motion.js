@@ -4,6 +4,7 @@ function bindPortfolioMotion(root){
  disposePortfolioMotion();
  const preference=matchMedia('(prefers-reduced-motion: reduce)');
  const disposers=[];
+ if(typeof bindShipCourse==='function')disposers.push(bindShipCourse(root));
  const reveals=[...root.querySelectorAll('[data-reveal],.story-visual,.story-section')];
  const showAll=()=>reveals.forEach(element=>{element.classList.remove('will-reveal');element.classList.add('is-visible');});
  let observer;

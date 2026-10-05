@@ -78,6 +78,7 @@ function bindMimTabs(content){
 }
 function storyMarkup(project,story,sectionIndex=null){
  if(project.id==='mim')return mimStoryMarkup(story);
+ if(project.id==='academy'&&project.branches.indexOf(story)===0&&typeof shipCourseMarkup==='function')return shipCourseMarkup(story);
  const sections=story[3]||[[story[0],story[2]]];
  const continuous=project.id==='academy'||project.parent==='academy',branch=project.branches.indexOf(story);
  return `<article class="story-content story-article enriched-story visual-${project.id}">${project.id==='coating'?coatingPblHeroMarkup():`<header class="story-header"><p class="story-kicker">${escapeHTML(story[0])}</p><h2>${escapeHTML(story[1])}</h2>${story[3]&&project.id!=='academy'?`<p class="story-intro">${escapeHTML(story[2])}</p>`:''}</header>`}<div class="story-notes">${sections.map((section,i)=>({section,i})).filter(item=>continuous||sectionIndex===null||item.i===sectionIndex).map(({section,i})=>`<section class="story-note enriched-note"${continuous?` id="activity-${project.id}-story-${branch}-section-${i}" tabindex="-1"`:''}><div class="story-section-heading"><span>${number(i)}</span><h3>${escapeHTML(section[0])}</h3></div><div class="story-section-body"><div class="story-section-copy">${section.slice(1).map(paragraph=>`<p>${escapeHTML(paragraph)}</p>`).join('')}</div><div class="story-section-visual">${storySectionVisualMarkup(project,story,i)}</div></div></section>`).join('')}</div></article>`;
@@ -106,6 +107,7 @@ function scrollAcademyActivity(projectId,selection,sectionIndex){
  const anchor=selection?.startsWith('work-')?`activity-${projectId}-${selection}`:sectionIndex!==null?`activity-${projectId}-${selection}-section-${sectionIndex}`:null;
  const target=anchor?document.getElementById(anchor):view.querySelector('.focus-content');
  if(!target)return;
+ if(target.tagName==='DETAILS')target.open=true;
  target.scrollIntoView({behavior:reducedMotion()?'instant':'smooth',block:'start'});
  if(anchor){
   const active=document.activeElement;
