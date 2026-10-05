@@ -2,6 +2,8 @@ const {RepDetector, demoSample} = window.FitnessCounter;
 const $ = id => document.getElementById(id);
 const detector = new RepDetector();
 const canvas = $('signal-chart'), ctx = canvas.getContext('2d');
+const paletteStyles = getComputedStyle(document.documentElement);
+const chartPalette = Object.fromEntries(['muted','line','blue','raw','threshold'].map(name=>[name,paletteStyles.getPropertyValue('--'+name).trim()]));
 let running = false, time = 0, simulationTarget = 0, lastFrame = null, frameId = 0;
 let scenario = 'normal', source = 'demo', samples = [], sensorTimer = 0;
 let baseline = null, sensorStart = 0, sensorOffset = 0;
@@ -18,18 +20,18 @@ function draw() {
   ctx.clearRect(0, 0, width, height);
   const x = t => 28 + (t - Math.max(0, time - 8)) / 8 * (width - 40);
   const y = value => 15 + (5 - Math.max(-1, Math.min(5, value))) / 6 * (height - 36);
-  ctx.font = '10px sans-serif'; ctx.fillStyle = '#66696c'; ctx.strokeStyle = '#d4dde3'; ctx.lineWidth = 1;
+  ctx.font = '10px sans-serif'; ctx.fillStyle = chartPalette.muted; ctx.strokeStyle = chartPalette.line; ctx.lineWidth = 1;
   for (const value of [0, 2, 4]) {
     ctx.beginPath(); ctx.moveTo(27,y(value)); ctx.lineTo(width-10,y(value)); ctx.stroke(); ctx.fillText(String(value),8,y(value)+3);
   }
   ctx.fillText('m/s²', 2, 10); ctx.fillText('최근 8초', width-56,height-2);
-  ctx.strokeStyle='#8d765b'; ctx.setLineDash([4,5]); ctx.beginPath(); ctx.moveTo(28,y(detector.threshold)); ctx.lineTo(width-10,y(detector.threshold)); ctx.stroke(); ctx.setLineDash([]);
-  for (const [key,color,lineWidth] of [['raw','#a6b4bf',1.2],['filtered','#244b70',2]]) {
+  ctx.strokeStyle=chartPalette.threshold; ctx.setLineDash([4,5]); ctx.beginPath(); ctx.moveTo(28,y(detector.threshold)); ctx.lineTo(width-10,y(detector.threshold)); ctx.stroke(); ctx.setLineDash([]);
+  for (const [key,color,lineWidth] of [['raw',chartPalette.raw,1.2],['filtered',chartPalette.blue,2]]) {
     ctx.strokeStyle=color; ctx.lineWidth=lineWidth; ctx.beginPath();
     samples.forEach((sample,i)=> i ? ctx.lineTo(x(sample.time),y(sample[key])) : ctx.moveTo(x(sample.time),y(sample[key])));
     ctx.stroke();
   }
-  ctx.fillStyle='#244b70';
+  ctx.fillStyle=chartPalette.blue;
   samples.filter(s=>s.counted).forEach(s=>{ctx.beginPath();ctx.arc(x(s.time),y(s.filtered),3.5,0,Math.PI*2);ctx.fill();});
 }
 function update() {

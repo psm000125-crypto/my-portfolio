@@ -1,8 +1,37 @@
+/* A collection shares one palette across its covers, evidence and archive cards. */
+:is(body[data-project="alloy"],body[data-project="xrd"],body[data-project="energy"],[data-preview="alloy"],[data-preview="xrd"],[data-preview="energy"]):not(.showcase-home) {
+ --portfolio-paper:#ece4d9;--portfolio-ink:#3c332b;--portfolio-muted:#6b5e50;--portfolio-line:#bfb09e;
+ --theme-accent:#80583a;--theme-deep:#3c332b;--theme-soft:#e2d4c1;--theme-selected:#dbc5ad;
+ --theme-text:#554a3e;--theme-muted:#6b5e50;--theme-raised:#f4ede4;--theme-surface:#f4ede4;
+ --series-before:#b8a18b;--series-after:#80583a;--series-track:#ded3c4;
+ --collection-card:#eed8c3;--collection-card-ink:#80583a;
+}
+:is(body[data-project="sejong"],body[data-project="fitness"],[data-preview="sejong"],[data-preview="fitness"]):not(.showcase-home) {
+ --portfolio-paper:#eaeef4;--portfolio-ink:#182e61;--portfolio-muted:#556684;--portfolio-line:#cbd4e2;
+ --theme-accent:#315cc6;--theme-deep:#182e61;--theme-soft:#eef2fc;--theme-selected:#e0e8fb;
+ --theme-text:#414e68;--theme-muted:#556684;--theme-raised:#f4f6fb;--theme-surface:#f4f6fb;
+ --series-before:#a1b2d3;--series-after:#315cc6;--series-track:#dce3ef;
+ --collection-card:#244cb5;--collection-card-ink:#e0eaff;
+}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) {
+ --paper:var(--portfolio-paper);--ink:var(--portfolio-ink);--muted:var(--theme-muted);--line:var(--portfolio-line);
+ --accent:var(--theme-accent);--case-accent:var(--theme-accent);--summary-ink:var(--portfolio-ink);
+ --summary-muted:var(--theme-muted);--summary-line:var(--portfolio-line);--summary-accent:var(--theme-accent);--summary-pale:var(--theme-soft);
+ --experience-box:var(--theme-raised);--experience-box-line:var(--portfolio-line);--experience-box-accent:var(--theme-accent);
+}
+html:has(body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home)) {background:#ece4d9!important}
+html:has(body:is([data-project="sejong"],[data-project="fitness"]):not(.showcase-home)) {background:#eaeef4!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .navigation {
+ --drawer-background:var(--theme-raised);--drawer-ink:var(--portfolio-ink);--drawer-muted:var(--theme-muted);--drawer-line:var(--portfolio-line);
+ background:var(--theme-raised)!important;border-color:var(--portfolio-line)!important;scrollbar-color:var(--theme-accent) var(--theme-raised)!important;
+}
+html:has(body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home)) {background:#ece4d9!important}
+html:has(body:is([data-project="sejong"],[data-project="fitness"]):not(.showcase-home)) {background:#eaeef4!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .navigation {
+ --drawer-background:var(--theme-raised);--drawer-ink:var(--portfolio-ink);--drawer-muted:var(--theme-muted);--drawer-line:var(--portfolio-line);
+ background:var(--theme-raised)!important;border-color:var(--portfolio-line)!important;scrollbar-color:var(--theme-accent) var(--theme-raised)!important;
+}
 /* Open technical covers follow the academy's title / drawing / exploration rhythm. */
-body[data-project="xrd"] {--portfolio-paper:#f1edf3;--portfolio-line:#d8cddf}
-body[data-project="energy"] {--portfolio-paper:#eaf1ef;--portfolio-line:#c5d9d5}
-body[data-project="sejong"] {--portfolio-paper:#eaeef4;--portfolio-line:#cbd4e2}
-body[data-project="fitness"] {--portfolio-paper:#f3eae8;--portfolio-line:#dfc8c9}
 body:has(.experience-landing) {background:var(--portfolio-paper)!important;background-image:none!important}
 body[data-project]:not(.showcase-home):has(.experience-landing) :is(.masthead,.footer) {background:var(--portfolio-paper)!important;border-color:var(--portfolio-line)!important}
 body[data-project]:not(.showcase-home):has(.experience-landing) .workspace .detail-panel {background:transparent!important;border-color:var(--portfolio-line)!important;border-top:1px solid var(--theme-accent)!important;padding-top:24px!important}
@@ -102,6 +131,45 @@ body .workspace .navigation .nav-collection-link.active {box-shadow:none!importa
 .archive-collection-body>.collection-brace {width:22px;color:#7b896c;top:0;height:100%;opacity:.65}
 .archive-collection .lab-archive-grid {grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
 .archive-collection .lab-project-card {min-width:0}
+/* Preview artwork uses the same group palette while retaining its own silhouette. */
+.lab-card-visual:is([data-preview="alloy"],[data-preview="xrd"],[data-preview="energy"],[data-preview="sejong"],[data-preview="fitness"]) {background:var(--collection-card);color:var(--collection-card-ink);border-radius:2px;background-image:none}
+.lab-card-visual:is([data-preview="alloy"],[data-preview="xrd"],[data-preview="energy"]) {background-image:linear-gradient(#80583a08 1px,transparent 1px),linear-gradient(90deg,#80583a08 1px,transparent 1px);background-size:22px 22px}
+.lab-card-visual[data-preview="energy"] .mini-layers i {background:#e2c5a6;box-shadow:5px 5px 0 #80583a35}
+.lab-card-visual[data-preview="energy"] .mini-layers i:nth-child(2) {background:#bc9976}
+.lab-card-visual[data-preview="energy"] .mini-layers i:nth-child(3) {background:#80583a}
+.archive-collection[data-collection="campus"]>.archive-collection-heading h3 {color:#80583a}
+.archive-collection[data-collection="ai"]>.archive-collection-heading h3 {color:#315cc6}
+.archive-collection[data-collection="campus"] .collection-brace {color:#80583a}
+.archive-collection[data-collection="ai"] .collection-brace {color:#315cc6}
+.nav-collection[data-collection="campus"]>summary strong,.nav-collection[data-collection="campus"] .collection-brace {color:#80583a}
+.nav-collection[data-collection="ai"]>summary strong,.nav-collection[data-collection="ai"] .collection-brace {color:#315cc6}
+body[data-experience-family="academy"]:not(.showcase-home) .nav-collection[data-collection="campus"] :is(summary strong,.collection-brace) {color:#dbc5ad}
+body[data-experience-family="academy"]:not(.showcase-home) .nav-collection[data-collection="ai"] :is(summary strong,.collection-brace) {color:#b3c6f3}
+body[data-experience-family="academy"]:not(.showcase-home) .nav-collection[data-collection="campus"] :is(summary strong,.collection-brace) {color:#dbc5ad}
+body[data-experience-family="academy"]:not(.showcase-home) .nav-collection[data-collection="ai"] :is(summary strong,.collection-brace) {color:#b3c6f3}
+/* Reading diagrams and controls inherit the collection colours. */
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content {
+ --series-before:color-mix(in srgb,var(--theme-accent) 40%,var(--portfolio-paper));--series-after:var(--theme-accent);--series-track:color-mix(in srgb,var(--theme-accent) 12%,var(--portfolio-paper));
+}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.story-header h2,.story-section-heading h3,.artifact-heading h2,.summary-hero h3,.summary-section-heading h4,.story-diagram figcaption strong,.story-metrics dd) {color:var(--portfolio-ink)!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.story-section-copy p,.story-intro,.summary-hero p,.summary-callout p,.story-process strong,.story-layer-stack strong,.story-layer-stack small) {color:var(--theme-text)!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.story-section-visual,.story-diagram,.summary-stat,.pipeline-node,.story-process li,.story-layer-stack li,.interface-layer,.literature-evidence,.phase-comparison article) {background:var(--theme-raised)!important;border-color:var(--portfolio-line)!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.story-header,.enriched-note,.reading-tabs,.artifact-heading,.story-compare-list>div,.story-indicator-grid li) {border-color:var(--portfolio-line)!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.evidence-chart,.story-bar-chart) {--series-before:color-mix(in srgb,var(--theme-accent) 40%,var(--portfolio-paper));--series-after:var(--theme-accent);--series-track:color-mix(in srgb,var(--theme-accent) 12%,var(--portfolio-paper))}
+body[data-project="xrd"] .xrd-specimens svg>path:first-of-type {fill:var(--theme-deep)}
+body[data-project="xrd"] .xrd-specimens svg>path:nth-of-type(2) {fill:var(--theme-soft);stroke:var(--theme-accent)}
+body[data-project="xrd"] .xrd-specimens svg>path:nth-of-type(3) {stroke:var(--series-before)}
+body[data-project="xrd"] .xrd-specimens svg>circle:first-of-type {fill:var(--theme-accent)}
+body[data-project="xrd"] .xrd-specimens svg>circle:last-of-type {fill:var(--theme-muted)}
+body[data-project="xrd"] .specimen-body {color:var(--theme-accent)}
+body[data-project="xrd"] .specimen-edge {color:var(--theme-muted)}
+body[data-project="energy"]:not(.showcase-home) .workspace .focus-content :is(.interface-layer.zinc,.interface-layer.transition,.story-layer-stack li:nth-child(2),.energy-layer-reading) {background:var(--theme-soft)!important;border-color:var(--theme-accent)!important}
+body[data-project="energy"] .energy-layer-reading :is(span,strong) {color:var(--theme-text)}
+body[data-project="energy"] .energy-layer-button[aria-pressed="true"] {box-shadow:inset 3px 0 var(--theme-accent)}
+body[data-project="fitness"] .story-signal path:nth-of-type(2) {stroke:var(--theme-accent)}
+body[data-project="fitness"] .story-signal path:nth-of-type(3) {stroke:var(--series-before)}
+body[data-project="fitness"] .story-signal circle:first-of-type {fill:var(--theme-accent)}
+body[data-project="fitness"] .story-signal circle:last-of-type {fill:var(--series-before)}
 @media(prefers-reduced-motion:reduce) {
  .experience-cover-graphic,.experience-cover-graphic * {animation:none!important;stroke-dashoffset:0!important}
  .experience-resource :is(svg,b) {transition:none!important;transform:none!important}
