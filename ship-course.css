@@ -154,3 +154,40 @@ body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-cour
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-course .academy-practice-visuals>.academy-illustration {padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-course .academy-practice-visuals>.academy-illustration>figcaption {min-height:0;margin:0 0 12px!important;order:0}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-course .academy-practice-visuals>.academy-illustration>svg {aspect-ratio:auto;margin:0;order:1}
+
+/* Start the visual at the topic title, rather than below it. */
+.ship-topic {display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:clamp(28px,3vw,56px);row-gap:24px}
+body[data-experience-family="academy"] .workspace .ship-topic h4 {grid-column:1;grid-row:1;margin:0}
+.ship-topic-body {display:contents}
+.ship-topic .story-section-copy {grid-column:1;grid-row:2}
+.ship-topic-visual {grid-column:2;grid-row:1 / span 2}
+.ship-topic-motion {display:block}
+body[data-experience-family="academy"] .workspace .ship-topic-motion h4 {margin-bottom:24px}
+.ship-topic-motion .ship-topic-body {display:grid}
+.ship-topic-motion .story-section-copy,.ship-topic-motion .ship-topic-visual {grid-column:auto;grid-row:auto}
+.ship-course [data-dimension-caption] {min-height:3.7em}
+.ship-figure-tabs {display:flex;gap:20px;border-bottom:1px solid #426053;margin-bottom:18px}
+body[data-experience-family="academy"] .workspace .ship-figure-tabs button {background:transparent;border:0;border-bottom:2px solid transparent;color:#b8cdbe;font:inherit;font-size:14px;line-height:1.7;padding:8px 0 12px;cursor:pointer}
+body[data-experience-family="academy"] .workspace .ship-figure-tabs button[aria-selected="true"] {color:#c9ee94;border-bottom-color:#c9ee94}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-course .academy-practice-visuals:has(.ship-figure-tabs) {gap:0}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-course .academy-illustration[hidden] {display:none}
+.ship-track-marker {fill:#c9ee94;stroke:#173d31;stroke-width:1.5;animation:ship-track-travel 8s linear infinite;animation-play-state:paused}
+.ship-track-turn {offset-path:path('M88 127V80C88 23 175 22 175 78S88 137 88 80')}
+.ship-track-zigzag {offset-path:path('M218 30C265 52 175 76 230 98S284 137 230 155')}
+.ship-track-stop {offset-path:path('M356 30V132');animation-timing-function:cubic-bezier(.12,.5,.2,1)}
+.ship-steering-tracks[data-running]:not([data-paused]) .ship-track-marker {animation-play-state:running}
+@keyframes ship-track-travel {0%,8%{offset-distance:0%}85%,100%{offset-distance:100%}}
+body[data-experience-family="academy"] .workspace .ship-track-toggle {display:block;margin:12px 0 0;padding:8px 0;background:transparent;border:0;border-bottom:1px solid #55705e;color:#b8cdbe;font:inherit;font-size:12px;cursor:pointer}
+@media(prefers-reduced-motion:reduce) {.ship-track-marker {offset-distance:35%}}
+
+/* The drawing itself, not its caption, aligns with the first paragraph. */
+.ship-topic-visual {grid-row:2;align-self:start;position:relative}
+.ship-topic-visual .academy-practice-visuals {position:relative}
+.ship-topic-visual .academy-illustration {position:relative}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-course .academy-illustration>figcaption {position:absolute;top:-57px;left:0;right:0;margin:0!important}
+.ship-topic-visual .ship-plate-heading {position:absolute;top:-57px;left:0;right:0;line-height:1.7}
+.ship-topic-visual .ship-dimensions svg,.ship-topic-visual .ship-build-graphic svg {margin-top:0}
+.ship-figure-tabs {position:absolute;top:-57px;left:0;right:0;margin:0}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-course .academy-practice-visuals:has(.ship-figure-tabs)>.academy-illustration>figcaption {position:static;order:2;margin:14px 0 0!important}
+.ship-topic-motion .ship-topic-visual {position:static;grid-row:auto}
+.ship-topic-visual .academy-illustration>.ship-track-toggle {order:3;align-self:flex-start}

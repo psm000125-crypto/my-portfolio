@@ -39,7 +39,7 @@ function academyShipVisual(index) {
     ${eduNode(15,244,220,67,'병진 운동','전후 · 좌우 · 상하동요')}${eduNode(265,244,220,67,'회전 운동','횡 · 종 · 선수동요')}`,
     '내항 교재 · Ship Motions in Waves',335);
   if(index===4) return eduFigure('ship-4','선회·지그재그·정지 궤적','조종 시험마다 확인하는 응답을 구분',()=>
-    `<path class="edu-outline" d="M88 127V80C88 23 175 22 175 78S88 137 88 80M218 30C265 52 175 76 230 98S284 137 230 155M356 30V132"/>
+    `<g class="ship-steering-tracks"><path class="edu-outline" d="M88 127V80C88 23 175 22 175 78S88 137 88 80M218 30C265 52 175 76 230 98S284 137 230 155M356 30V132"/><circle class="ship-track-marker ship-track-turn" r="5"/><circle class="ship-track-marker ship-track-zigzag" r="5"/><circle class="ship-track-marker ship-track-stop" r="5"/></g>
     <path class="edu-wire" d="M344 132H368M344 140H368M356 149V164"/>
     ${eduText(132,198,'선회')}${eduText(132,224,'종거 · 선회직경','small')}${eduText(247,198,'지그재그')}${eduText(247,224,'선수각 응답','small')}${eduText(380,198,'급후진')}${eduText(380,224,'정지거리','small')}${eduNode(54,263,392,51,'침로 유지 · 침로 변경 · 속도 변경')}`,
     '조종운동 교재 · 조종 시험 / 현직자 실무 교육',335);
