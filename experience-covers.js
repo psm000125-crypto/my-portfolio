@@ -30,6 +30,12 @@ function collectionArchiveMarkup() {
 }
 function experienceCoverGraphic(id, compact=false) {
  const guides='<g class="cover-guides"><circle cx="300" cy="220" r="174"/><circle cx="300" cy="220" r="145" stroke-dasharray="2 9"/><path d="M92 400h416M92 393v14M508 393v14M300 28v18M290 37h20M300 394v18M290 403h20"/></g>';
+ // These are conceptual background guides for the overview covers, not measurement data.
+ const atmosphere=!compact?{
+  xrd:`<g class="cover-atmosphere xrd-cover-atmosphere"><path d="M92 372H508M92 365v14M508 365v14M300 82v28M286 96h28"/><path d="M116 286Q300 70 484 286"/><path d="M142 310Q300 122 458 310" stroke-dasharray="3 9"/><path d="M108 164L492 300M156 108L420 364"/></g>`,
+  energy:`<g class="cover-atmosphere energy-cover-atmosphere"><path d="M86 352H514M86 345v14M514 345v14"/><path d="M102 106C196 48 396 48 498 106"/><path d="M80 134C190 194 410 194 520 134" stroke-dasharray="4 9"/><path d="M110 328C208 270 386 270 490 328M126 352C220 304 376 304 474 352"/><path d="M122 78L478 376"/></g>`,
+  fitness:`<g class="cover-atmosphere fitness-cover-atmosphere"><path d="M78 352H522M78 345v14M522 345v14"/><path d="M116 294q34-22 68 0t68 0t68 0t68 0t68 0t68 0"/><path d="M132 104a174 174 0 0 1 336 0M156 130a148 148 0 0 1 288 0" stroke-dasharray="3 9"/><path d="M300 64V382M106 232H494"/></g>`
+ }[id]||'':'';
  let diagram='';
  if(id==='mim')diagram=`<g class="cover-specimen"><ellipse cx="300" cy="185" rx="118" ry="65"/><ellipse cx="300" cy="185" rx="55" ry="31"/><path d="M182 185v70c0 36 53 65 118 65s118-29 118-65v-70M245 185v45c0 17 25 31 55 31s55-14 55-31v-45"/><path d="M208 208v69M392 208v69" opacity=".35"/></g><g class="cover-probe"><path d="M470 112H356v34M346 146h20M470 102v20"/><circle cx="356" cy="149" r="3"/></g><g class="cover-measure"><path d="M172 92h256M182 78v29M418 78v29M147 185v135M138 185h18M138 320h18"/><path d="m182 92 9-5m-9 5 9 5m227-5-9-5m9 5-9 5"/></g>`;
  if(id==='alloy')diagram=`<g class="cover-roll cover-roll-top"><circle cx="286" cy="139" r="61"/><circle cx="286" cy="139" r="9"/><path d="M286 90v20M335 139h-20M286 188v-20M237 139h20"/></g><g class="cover-roll cover-roll-bottom"><circle cx="286" cy="279" r="61"/><circle cx="286" cy="279" r="9"/><path d="M286 230v20M335 279h-20M286 328v-20M237 279h20"/></g><path class="cover-draw" d="M96 195h140l50 9h230v10H286l-50 9H96z"/><g class="cover-grains"><path d="M116 195v28M144 195v28M172 195v28M200 195v28M352 204v10M394 204v10M436 204v10M478 204v10"/></g><path d="M394 168h84m-8-6 8 6-8 6M220 254h-84m8-6-8 6 8 6" opacity=".55"/>`;
@@ -77,8 +83,9 @@ function experienceCoverGraphic(id, compact=false) {
    <circle class="fitness-peak-marker" cx="418" cy="170" r="10"/>
   </g>`;
  const archiveViewBoxes={alloy:'70 55 470 310',xrd:'35 5 515 275',energy:'75 65 445 310',sejong:'45 65 330 270',fitness:'60 30 535 335'};
- const viewBox=compact?archiveViewBoxes[id]:(id==='sejong'?'20 50 380 285':'0 0 600 450');
- return `<svg class="experience-cover-graphic cover-${id}" viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${compact||['xrd','energy','sejong','fitness'].includes(id)?'':guides}<g class="cover-drawing">${diagram}</g></svg>`;
+ const overviewViewBoxes={xrd:'55 20 490 368',energy:'75 40 450 340',fitness:'52 20 520 390'};
+ const viewBox=compact?archiveViewBoxes[id]:(overviewViewBoxes[id]||(id==='sejong'?'20 50 380 285':'0 0 600 450'));
+ return `<svg class="experience-cover-graphic cover-${id}" viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${compact||['xrd','energy','sejong','fitness'].includes(id)?'':guides}${atmosphere}<g class="cover-drawing">${diagram}</g></svg>`;
 }
 function experienceResourceIcon(type) {
  const paths=type==='story'?'<path d="M28 20h32l20 9 20-9h32v64h-32L80 93 60 84H28zM80 29v64M40 36h18M40 47h18M102 36h18M102 47h18"/>':type==='parts3d'?'<path d="m80 14 39 23v45L80 105 41 82V37zM41 37l39 23 39-23M80 60v45"/>':type==='map'?'<path d="m28 32 35-12 34 12 35-12v66l-35 12-34-12-35 12zM63 20v66M97 32v66"/><circle cx="81" cy="57" r="10"/>':type==='demo'?'<rect x="60" y="13" width="42" height="87" rx="6"/><path d="M67 58h8l5-19 8 34 5-15h5M73 90h16"/>':type==='equipment'?'<circle cx="79" cy="57" r="30"/><circle cx="79" cy="57" r="14"/><path d="M42 15h74M49 10v12M109 10v12M31 29v56M25 29h12M25 85h12"/>':type==='slides'?'<rect x="39" y="20" width="82" height="58"/><path d="M47 86h82V28M55 94h82V36M51 37h31M51 48h53M51 59h40"/>':'<path d="M31 83h100M39 76V50h17v26M72 76V34h17v42M105 76V19h17v57"/>';

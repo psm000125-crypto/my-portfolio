@@ -80,8 +80,8 @@ function xrdAnalysisVisual() {
   return storyFlow('측정에서 상분율 계산까지', [['초기 XRD', '가격대 3종 · 6개 위치'], ['열화 시험', '110℃ 수증기 · 100시간'], ['XRD 재측정', '동일 위치의 전후 비교'], ['FullProf', 'CIF 기반 리트벨트 정련']], '실험 패턴과 이론 패턴을 비교한 분석 절차');
 }
 function energyContactGraphic(graded) {
-  return `<svg class="energy-contact-graphic" viewBox="0 0 260 225" role="img" aria-label="${graded?'CNT 상부층과 전이층, ZnO/CNT 하부층이 리튬 금속 위에 연결된 구조':'CNT층과 리튬 금속 사이에 접촉 틈이 생길 수 있는 구조'}"><g class="energy-cross-band band-growth"><rect x="14" y="18" width="232" height="48"/><g class="energy-network-lines">${energyNetworkLines(18,48,230)}</g></g>
-    ${graded?`<g class="energy-cross-band band-transition"><rect x="14" y="66" width="232" height="46"/><g class="energy-network-lines">${energyNetworkLines(66,46,230)}</g></g><g class="energy-cross-band band-nucleation"><rect x="14" y="112" width="232" height="46"/>${[0,1,2,3,4,5,6].map(i=>`<circle cx="${30+i*33}" cy="135" r="7"/>`).join('')}</g>`:`<path class="energy-contact-gap" d="M14 75H246M14 149H246"/><text x="130" y="104" class="energy-gap-label">석출·박리 후</text><text x="130" y="127" class="energy-gap-label">접촉 틈 발생 가능</text>`}
+  return `<svg class="energy-contact-graphic" viewBox="0 0 260 225" role="img" aria-label="${graded?'CNT 상부층과 전이층, ZnO/CNT 하부층이 리튬 금속 위에 연결된 구조':'CNT층과 리튬 금속 사이에 접촉 틈이 생길 수 있는 구조'}"><g class="energy-cross-band band-growth"><rect x="14" y="18" width="232" height="48"/></g>
+    ${graded?`<g class="energy-cross-band band-transition"><rect x="14" y="66" width="232" height="46"/></g><g class="energy-cross-band band-nucleation"><rect x="14" y="112" width="232" height="46"/></g>`:`<path class="energy-contact-gap" d="M14 75H246M14 149H246"/><text x="130" y="104" class="energy-gap-label">석출·박리 후</text><text x="130" y="127" class="energy-gap-label">접촉 틈 발생 가능</text>`}
     <g class="energy-cross-band band-electrode"><rect x="14" y="158" width="232" height="44"/></g><g class="energy-band-labels"><text x="130" y="47">${graded?'CNT 상부층':'다공성 CNT'}</text>${graded?'<text x="130" y="94">전이층</text><text x="130" y="141">ZnO/CNT 하부층</text>':''}<text x="130" y="184">Li metal</text></g></svg>`;
 }
 function energyContactVisual() {
