@@ -33,16 +33,6 @@ body[data-experience-family="academy"] .workspace .ship-controls button:focus-vi
 .ship-design-concepts span {display:block;color:#a8c1b3;font-size:12px;margin-bottom:10px}
 .ship-design-concepts strong {color:#e2eadb;font-size:15px;line-height:1.8;font-weight:400;word-break:keep-all}
 .ship-course-reading {margin-top:28px}
-body[data-experience-family="academy"] .workspace .ship-course details.enriched-note {padding:0;margin:0;border:0;border-top:1px solid #426053;background:transparent;scroll-margin-top:100px}
-.ship-course-reading summary {display:flex;align-items:center;gap:18px;padding:20px 8px;cursor:pointer;list-style:none;color:#e2eadb;min-height:64px}
-.ship-course-reading summary::-webkit-details-marker {display:none}
-.ship-course-reading summary>span:first-child {font-size:11px;color:#a8c1b3;flex:0 0 24px}
-.ship-course-reading summary>strong {font-weight:400;font-size:16px;line-height:1.7;word-break:keep-all}
-.ship-detail-plus {margin-left:auto;color:#c9ee94;font-size:24px;flex-shrink:0;transition:transform .2s}
-details[open] .ship-detail-plus {transform:rotate(45deg)}
-.ship-course-reading summary:hover {background:#234b3c}
-.ship-detail-body {display:grid;grid-template-columns:minmax(0,1fr);gap:24px;padding:12px 8px 32px}
-.ship-detail-body .story-section-copy {max-width:75ch}
 .ship-concept-note {display:block;color:#526653;font-size:11px;line-height:1.8;margin-top:12px}
 .ship-sea-fill {fill:#e0eeea}
 .ship-heeling-hull {transform-origin:350px 148px;transition:transform .7s ease}
@@ -112,3 +102,55 @@ body[data-experience-family="academy"] .workspace .ship-build-stages button[aria
 @media(prefers-reduced-motion:reduce) {
  .ship-course *, .ship-course *::before {animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+/* Teaching figures share the page surface and sit beside their source text. */
+.ship-topic {padding:36px 0;border-top:1px solid #426053;scroll-margin-top:100px}
+body[data-experience-family="academy"] .workspace .ship-topic h4 {margin:0 0 24px;color:#f0f3e5;font-size:22px;font-weight:500;line-height:1.5;letter-spacing:-.025em}
+.ship-topic-body {display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(28px,3vw,56px);align-items:start}
+.ship-topic .story-section-copy {min-width:0;max-width:none}
+body[data-experience-family="academy"] .workspace .ship-topic .story-section-copy p {max-width:none;margin:0 0 18px;text-wrap:wrap;word-break:keep-all;overflow-wrap:break-word}
+.ship-topic-visual {min-width:0;color:#c9ee94}
+.ship-topic-visual .academy-practice-visuals {display:grid;grid-template-columns:minmax(0,1fr);gap:30px}
+.ship-topic-visual .story-diagram {margin:0;padding:0;background:transparent;border:0;box-shadow:none;display:flex;flex-direction:column}
+.ship-topic-visual .story-diagram>figcaption {order:0;margin:0 0 12px;display:block}
+.ship-topic-visual figcaption strong {position:static!important;display:block;color:#e2eadb;font-size:14px;line-height:1.7;font-weight:500}
+.ship-topic-visual figcaption small {display:block;color:#a8c1b3;font-size:12px;line-height:1.7;margin-top:4px}
+.ship-topic-visual .story-diagram>svg {order:1;width:100%;height:auto;max-height:none;background:transparent;border:0;padding:0}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-course :is(.edu-label,.edu-number) {fill:#e2eadb!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-course .edu-small {fill:#b8cdbe!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-course .edu-node {fill:transparent!important;stroke:#55705e!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-course :is(.edu-hull,.edu-feature) {fill:#d8e7ce!important;stroke:#c9ee94!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-course :is(.edu-outline,.edu-wire,.edu-arrow) {stroke:#a8c1b3!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-course .edu-arrowhead {fill:#c9ee94!important}
+.ship-course .ship-plate,.ship-course .ship-build-graphic {padding:0;background:transparent;border-radius:0;color:#c9ee94}
+.ship-course .ship-plate-heading span:last-child,.ship-course .ship-concept-note {color:#a8c1b3}
+.ship-course .ship-svg-labels {fill:#e2eadb}
+.ship-course .ship-measure {stroke:#c9ee94}
+.ship-course .ship-svg-labels .ship-measure {stroke:none}
+.ship-course .ship-control-caption {color:#d1ded2}
+body[data-experience-family="academy"] .workspace .ship-course .ship-controls button {color:#e2eadb;border-color:#55705e}
+body[data-experience-family="academy"] .workspace .ship-course .ship-controls button[aria-pressed="true"] {background:#234b3c;border-color:#c9ee94}
+body[data-experience-family="academy"] .workspace .ship-course .ship-controls button:focus-visible {outline-color:#c9ee94!important}
+.ship-course .ship-sea-fill {fill:#204b42}
+.ship-course .ship-section-hull {stroke:#c9ee94}
+.ship-course .ship-force {color:#e2eadb;fill:#e2eadb;stroke:#e2eadb}
+.ship-course .ship-force.buoyancy {color:#9fd7c7;fill:#9fd7c7;stroke:#9fd7c7}
+.ship-course .ship-buoyancy-label {fill:#9fd7c7}
+.ship-course .ship-gz {fill:#c9ee94;stroke:#c9ee94}
+.ship-course text.ship-gz {stroke:none}
+.ship-course .ship-build-trial {stroke:#9fd7c7}
+.ship-course .ship-build-track {background:#426053}
+.ship-course .ship-build-track i {background:#c9ee94}
+.ship-course .ship-build-stages {grid-template-columns:repeat(2,minmax(0,1fr))}
+.ship-topic-motion .ship-topic-body {grid-template-columns:minmax(0,1fr)}
+.ship-topic-motion .story-section-copy {columns:2;column-gap:40px}
+.ship-topic-motion .story-section-copy p {break-inside:avoid}
+.ship-topic-motion .ship-motion-exhibit {margin-top:0}
+
+body[data-experience-family="academy"] .workspace .ship-topic:focus-visible {outline:none}
+.ship-topic:focus-visible>h4 {text-decoration:underline;text-decoration-color:#c9ee94;text-underline-offset:8px}
+
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-course .academy-practice-visuals {display:grid;grid-template-columns:minmax(0,1fr);gap:32px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-course .academy-practice-visuals>.academy-illustration {padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-course .academy-practice-visuals>.academy-illustration>figcaption {min-height:0;margin:0 0 12px!important;order:0}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-course .academy-practice-visuals>.academy-illustration>svg {aspect-ratio:auto;margin:0;order:1}
