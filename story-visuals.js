@@ -11,7 +11,28 @@ function storyComparisonChart(title, unit, rows, caption) {
   return `<figure class="story-bar-chart"><figcaption><strong>${escapeHTML(title)}</strong><small>${escapeHTML(caption)}</small></figcaption><div class="story-bar-rows">${rows.map(([label, value]) => `<div><span>${escapeHTML(label)}</span><i style="--value:${value / max * 100}%" aria-hidden="true"></i><strong>${value} <small>${escapeHTML(unit)}</small></strong></div>`).join('')}</div></figure>`;
 }
 function energyLayerVisual() {
-  return `<figure class="story-diagram"><figcaption><strong>제안한 3층 경사 계면층</strong><small>문헌 기반 설계안 · 위에서 아래로 전극과 가까워지는 구조</small></figcaption><ol class="story-layer-stack"><li><span>상부층</span><strong>다공성 CNT</strong><small>전도 경로 유지 · 표면 성장 억제</small></li><li><span>전이층</span><strong>ZnO/CNT ↔ CNT</strong><small>하부층에서 상부층으로 점진적인 연결</small></li><li><span>하부층</span><strong>Co-doped ZnO/CNT</strong><small>리튬 친화성 · 초기 핵 생성 유도</small></li><li class="story-substrate"><span>전극</span><strong>Li metal</strong><small>리튬 금속 음극</small></li></ol></figure>`;
+  const layers = [
+    ['growth', '상부층', '다공성 CNT', '전도 경로 유지 · 표면 성장 억제'],
+    ['transition', '전이층', 'ZnO/CNT ↔ CNT', '하부층에서 상부층으로 점진적인 연결'],
+    ['nucleation', '하부층', 'Co-doped ZnO/CNT', '리튬 친화성 · 초기 핵 생성 유도']
+  ];
+  return `<figure class="story-diagram energy-layer-exhibit" data-energy-layer="nucleation"><figcaption><strong>제안한 3층 경사 계면층</strong><small>문헌 기반 설계안 · 전극 가까이에서 위로 이어지는 구조</small></figcaption><div class="energy-layer-sequence" aria-hidden="true"><span>초기 핵 생성</span><i>↑</i><span>점진적 연결</span><i>↑</i><span>표면 성장 억제</span></div><ol class="story-layer-stack energy-layer-stack" aria-label="3층 경사 계면층의 역할 선택">${layers.map(([id, level, material, role]) => `<li><button class="energy-layer-button" type="button" data-energy-layer="${id}" data-energy-level="${level}" data-energy-material="${material}" data-energy-role="${role}" aria-pressed="${id === 'nucleation'}"><span>${level}</span><strong>${material}</strong><small>${role}</small></button></li>`).join('')}<li class="story-substrate"><span>전극</span><strong>Li metal</strong><small>리튬 금속 음극</small></li></ol><p class="energy-layer-reading" aria-live="polite"><span>하부층 · Co-doped ZnO/CNT</span><strong>리튬 친화성 · 초기 핵 생성 유도</strong></p></figure>`;
+}
+function bindEnergyLayers(scope = document) {
+  scope.querySelectorAll('.energy-layer-exhibit').forEach(exhibit => {
+    if (exhibit.dataset.energyBound) return;
+    const buttons = [...exhibit.querySelectorAll('.energy-layer-button')];
+    const reading = exhibit.querySelector('.energy-layer-reading');
+    if (!buttons.length || !reading) return;
+    exhibit.dataset.energyBound = 'true';
+    const select = button => {
+      buttons.forEach(candidate => candidate.setAttribute('aria-pressed', String(candidate === button)));
+      exhibit.dataset.energyLayer = button.dataset.energyLayer;
+      reading.innerHTML = `<span>${escapeHTML(button.dataset.energyLevel)} · ${escapeHTML(button.dataset.energyMaterial)}</span><strong>${escapeHTML(button.dataset.energyRole)}</strong>`;
+      if (!reducedMotion()) reading.animate([{ opacity: .35, transform: 'translateY(4px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 180, easing: 'ease-out' });
+    };
+    buttons.forEach(button => button.addEventListener('click', () => select(button)));
+  });
 }
 function energyLiteratureVisual() {
   const rows = [['Co/ZnO', 8], ['ZnO', 13], ['무코팅 Cu', 62]];

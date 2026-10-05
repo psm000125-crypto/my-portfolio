@@ -304,7 +304,10 @@ function project(p){
   view.querySelector('.project-description').remove();
   view.querySelector('.case-stage').insertAdjacentHTML('beforeend',academyOverviewMarkup());
  }
- else view.querySelector('.case-stage').insertAdjacentHTML('beforeend',portfolioProjectVisual(p.id));
+ else {
+  view.querySelector('.case-stage').insertAdjacentHTML('beforeend',portfolioProjectVisual(p.id));
+  if(p.id==='energy')bindEnergyLayers(view);
+ }
 }
 function focusContent(p,selection,sectionIndex=null){
  const overview=view.querySelector('.project-overview'),content=view.querySelector('.focus-content');
@@ -358,7 +361,7 @@ function focusContent(p,selection,sectionIndex=null){
  const workspace=document.querySelector('.workspace'),expand=content.querySelector('.expand-work');
  if(work?.type==='map'&&expand){expand.onclick=()=>{const wide=!workspace.classList.contains('map-expanded');const update=()=>{workspace.classList.toggle('map-expanded',wide);view.classList.toggle('map-expanded',wide);expand.textContent=wide?'지도 작게 보기 ↙':'지도 크게 보기 ⤢';expand.setAttribute('aria-pressed',String(wide));};if(!reducedMotion()&&typeof document.startViewTransition==='function'){document.startViewTransition(update);}else update();window.scrollTo(0,0);};}
  else if(expand)expand.onclick=()=>{const wide=workspace.classList.toggle('work-expanded');expand.textContent=wide?'원래 크기 ↙':'크게 보기 ⤢';expand.setAttribute('aria-pressed',String(wide));};
- bindReadingView(content,p);bindArtifactPages(content);
+ bindReadingView(content,p);bindEnergyLayers(content);bindArtifactPages(content);
  animateIn(content,wasExpanded?0:100);
  return title;
 }

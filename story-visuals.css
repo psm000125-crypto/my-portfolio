@@ -56,6 +56,19 @@
 .story-layer-stack li > span { grid-row: span 2; color: #626262; font-size: .75rem; }
 .story-layer-stack strong { font-size: .875rem; font-weight: 500; overflow-wrap: anywhere; }
 .story-layer-stack small { color: #626262; font-size: .75rem; line-height: 1.7; word-break: keep-all; }
+.energy-layer-sequence { display: flex; align-items: center; gap: 7px; margin: 0 0 14px; color: #737373; font-size: .6875rem; line-height: 1.5; }
+.energy-layer-sequence span { min-width: 0; }
+.energy-layer-sequence i { color: #404040; font-size: .875rem; font-style: normal; }
+.energy-layer-stack li:has(.energy-layer-button) { display: block; padding: 0; }
+.energy-layer-button { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 4px 14px; width: 100%; padding: 15px 16px; border: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.energy-layer-button > span { grid-row: span 2; color: #626262; font-size: .75rem; }
+.energy-layer-button strong { font-size: .875rem; font-weight: 500; overflow-wrap: anywhere; }
+.energy-layer-button small { color: #626262; font-size: .75rem; line-height: 1.7; word-break: keep-all; }
+.energy-layer-button:hover { background: color-mix(in srgb, currentColor 6%, transparent); }
+.energy-layer-button:focus-visible { outline: 2px solid currentColor; outline-offset: -4px; }
+.energy-layer-reading { display: grid; gap: 5px; margin: 14px 0 0; padding: 13px 16px; border-left: 2px solid #171717; background: #f3f3f3; }
+.energy-layer-reading span { color: #626262; font-size: .75rem; }
+.energy-layer-reading strong { color: #262626; font-size: .8125rem; font-weight: 500; line-height: 1.65; }
 .story-compare-list { margin: 0; }
 .story-compare-list > div { padding: 14px 0; border-top: 1px solid #e5e5e5; }
 .story-compare-list dt { margin-bottom: 7px; color: #404040; font-size: .8125rem; font-weight: 500; }
