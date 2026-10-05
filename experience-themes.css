@@ -21,8 +21,8 @@ body[data-project]:where(:not(.showcase-home)) {
  --series-before:#91aaa0;--series-after:#245442;
 }
 :is(body[data-project="mim"],[data-preview="mim"]) {
- --theme-accent:#505c69;--theme-deep:#252e38;--theme-soft:#edf0f3;
- --theme-selected:#e1e5e9;--series-before:#a2adb8;--series-after:#505c69;
+ --theme-accent:#56684c;--theme-deep:#252b28;--theme-soft:#d8dfd0;
+ --theme-selected:#d1dbc7;--series-before:#a1ae95;--series-after:#56684c;
 }
 :is(body[data-project="alloy"],[data-preview="alloy"]) {
  --theme-accent:#99512d;--theme-deep:#5e301d;--theme-soft:#faf0e9;
@@ -378,23 +378,21 @@ body[data-project="fitness"]:not(.showcase-home) .workspace .count-logic strong 
 body[data-project="fitness"]:not(.showcase-home) .workspace .count-logic small {color:#6c5660;font-size:10px}
 body[data-project="fitness"]:not(.showcase-home) .workspace .count-logic .exhibit-link {background:#9d324c;color:#fff!important;border:0;border-radius:25px;padding:8px 18px;margin-top:20px;font-size:11px}
 
-/* 05 — Graphite / inspection. The actual instrument occupies half of the cover. */
-body[data-project="mim"]:not(.showcase-home) .workspace .case-stage {display:grid;grid-template-columns:1.12fr 1fr;background:#252e38;border:0;border-radius:2px}
-body[data-project="mim"]:not(.showcase-home) .workspace .case-stage .project-heading {padding:38px 30px;align-self:center}
-body[data-project="mim"]:not(.showcase-home) .workspace .case-stage .project-title {color:#f7f9fc!important;font-size:38px!important}
-body[data-project="mim"]:not(.showcase-home) .workspace .case-stage .project-lead {color:#dbe5ee!important;font-size:23px!important}
-body[data-project="mim"]:not(.showcase-home) .workspace .case-stage :is(.eyebrow,.project-description) {color:#bdcbd8!important}
-body[data-project="mim"]:not(.showcase-home) .case-stage .eyebrow:before {background:#bdcbd8!important}
-body[data-project="mim"]:not(.showcase-home) .case-stage .case-emblem {color:#c8d9e8;opacity:.08;right:-20px;bottom:0}
+/* 05 — The profile's sage field continues through the internship archive. */
+body[data-project="mim"]:not(.showcase-home) .workspace .case-stage {display:grid;grid-template-columns:1.05fr 1fr;background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible}
+body[data-project="mim"]:not(.showcase-home) .workspace .case-stage .project-heading {padding:48px 36px 48px 0;align-self:center;background:transparent;border:0}
+body[data-project="mim"]:not(.showcase-home) .workspace .case-stage .project-title {color:var(--portfolio-ink)!important;font-size:clamp(40px,3.5vw,60px)!important;font-weight:400!important;letter-spacing:-.04em!important;line-height:1.2!important;max-width:12ch;margin:28px 0 32px!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .case-stage .project-lead {color:var(--theme-text)!important;font-size:clamp(23px,2vw,32px)!important;letter-spacing:-.03em!important;font-weight:400!important;line-height:1.5!important;margin-bottom:28px!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .case-stage .project-description {color:var(--theme-muted)!important;font-size:15px!important;line-height:1.95!important;max-width:53ch!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .case-stage .eyebrow {color:var(--theme-accent)!important}
+body[data-project="mim"]:not(.showcase-home) .case-stage .eyebrow:before {background:#c74f32!important}
+body[data-project="mim"]:not(.showcase-home) .case-stage .case-emblem {display:none}
 body[data-project="mim"]:not(.showcase-home) .workspace .case-stage .lab-journal-visual {padding:0!important;background:transparent;overflow:visible;position:relative;min-height:590px}
 body[data-project="mim"]:not(.showcase-home) .workspace .lab-equipment.compact {position:absolute;inset:0;height:100%;margin:0;border-radius:0}
 body[data-project="mim"]:not(.showcase-home) .workspace .lab-equipment.compact img {object-position:52% 40%;filter:saturate(.7)}
 body[data-project="mim"]:not(.showcase-home) .workspace .equipment-label {left:24px;right:20px;bottom:26px}
 body[data-project="mim"]:not(.showcase-home) .workspace .equipment-label strong {color:#f5f8fa!important;font-size:23px}
 body[data-project="mim"]:not(.showcase-home) .workspace .equipment-label>span {color:#dce5ed!important}
-body[data-project="mim"]:not(.showcase-home) .workspace .mim-material-flow svg {color:var(--theme-accent)}
-body[data-project="mim"]:not(.showcase-home) .workspace .mim-material-flow button[aria-selected="true"] {background:var(--theme-soft)!important;border-color:var(--theme-accent)!important;color:var(--theme-accent)!important}
-body[data-project="mim"]:not(.showcase-home) .workspace :is(.equipment-photo-copy>span,.equipment-photo-copy h3,.equipment-photo-copy>a) {color:var(--theme-accent)!important}
 
 /* 06 — Violet / diffraction. An analytical cover, separated from the measured bars. */
 body[data-project="xrd"]:not(.showcase-home) .workspace .case-stage {border:0;border-radius:18px 18px 3px 3px;background:#f3eef9}
@@ -450,7 +448,7 @@ body[data-project="energy"]:not(.showcase-home) .workspace .interface-layer.zinc
 .lab-card-visual[data-preview="alloy"] {background:#eed8c3;color:#88502d;border-radius:2px;background-image:linear-gradient(#99512d08 1px,transparent 1px),linear-gradient(90deg,#99512d08 1px,transparent 1px);background-size:22px 22px}
 .lab-card-visual[data-preview="sejong"] {background:#244cb5;color:#e0eaff}
 .lab-card-visual[data-preview="fitness"] {background:#f6dbe1;color:#9d324c;border-radius:28px}
-.lab-card-visual[data-preview="mim"] {background:linear-gradient(90deg,#252e38dd,#252e38aa),url('artifacts/equipment-gallery/images/optical-3d.jpg') center 40%/cover;color:#dee8f2;border-radius:2px}
+.lab-card-visual[data-preview="mim"] {background:linear-gradient(90deg,#252b28dd,#252b2899),url('artifacts/equipment-gallery/images/optical-3d.jpg') center 40%/cover;color:#e4e8de;border-radius:2px}
 .lab-card-visual[data-preview="xrd"] {background:#392454;color:#c6a9ef;border-radius:14px 14px 2px 2px}
 .lab-card-visual[data-preview="energy"] {background:#123f47;color:#b4e1e6;border-radius:3px}
 .lab-card-visual[data-preview="sejong"] .mini-map {background:repeating-linear-gradient(25deg,transparent 0 25px,#92b0fc66 25px 26px,transparent 26px 50px),repeating-linear-gradient(115deg,transparent 0 29px,#92b0fc66 29px 30px,transparent 30px 60px)}
@@ -528,4 +526,110 @@ body[data-project]:not(.showcase-home) .workspace .detail-panel .project-action 
 body[data-project]:not(.showcase-home) .workspace .detail-panel .branch-link:hover,
 body[data-project]:not(.showcase-home) .workspace .detail-panel .branch-link:focus-visible {
  background:var(--theme-soft)!important;
+}
+
+/* Internship: one sage canvas, using the academy's open reading composition. */
+html:has(body[data-project="mim"]:not(.showcase-home)) {background:#e4e8de!important}
+body[data-project="mim"]:not(.showcase-home) {
+ --portfolio-paper:#e4e8de;--portfolio-ink:#252b28;--portfolio-muted:#626b60;--portfolio-line:#b6bfb0;
+ --theme-text:#3f493d;--theme-muted:#626b60;--theme-raised:#edf0e8;--theme-surface:#edf0e8;
+ --paper:var(--portfolio-paper);--ink:var(--portfolio-ink);--muted:var(--theme-muted);--line:var(--portfolio-line);
+ --accent:var(--theme-accent);--case-accent:var(--theme-accent);
+ background:var(--portfolio-paper)!important;color:var(--portfolio-ink)!important;
+ scrollbar-color:#8a9981 #e4e8de;
+}
+body[data-project="mim"]:not(.showcase-home) :is(.masthead,.footer) {background:var(--portfolio-paper)!important;border-color:var(--portfolio-line)!important}
+body[data-project="mim"]:not(.showcase-home) ::selection {background:#cbd8bf;color:#252b28}
+body[data-project="mim"]:not(.showcase-home) :is(a,button,summary,canvas):focus-visible {outline:2px solid var(--theme-accent)!important;outline-offset:5px}
+body[data-project="mim"]:not(.showcase-home) .drawer-trigger {background:#e4e8de!important;border-color:#b6bfb0!important;color:#3f493d!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .navigation {
+ --drawer-background:#edf0e8;--drawer-ink:#252b28;--drawer-muted:#626b60;--drawer-line:#b6bfb0;
+ background:#edf0e8!important;border-color:#b6bfb0!important;scrollbar-color:#8a9981 #edf0e8!important;
+}
+body[data-project="mim"]:not(.showcase-home) .workspace :is(.nav-item,.profile-link,.overview-link,.branch-link,.back-profile) {color:var(--theme-text)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace :is(.nav-item.active,.overview-link.active,.branch-link.active) {background:var(--theme-soft)!important;color:var(--theme-deep)!important;box-shadow:inset 2px 0 var(--theme-accent)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace :is(.detail-label,.section-label,.nav-divider,.branch-group>h2,.num,.project-fact dt,.focus-toolbar) {color:var(--theme-muted)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace :is(.nav-item:hover,.branch-link:hover) {background:var(--theme-soft)!important;color:var(--theme-deep)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .detail-panel {border-color:var(--portfolio-line)!important;border-top:1px solid var(--theme-accent)!important;padding-top:24px!important}
+body[data-project="mim"]:not(.showcase-home) .workspace :is(.detail-panel .branch-group,.overview-link,.branch-link,.back-profile,.focus-toolbar,.story-header,.enriched-note,.equipment-group-head) {border-color:var(--portfolio-line)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .overview-link.active {background:transparent!important;border-bottom:1px solid var(--portfolio-line);box-shadow:none!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .case-meta .project-facts {background:transparent!important;border:0!important;padding:24px 0!important;margin:0!important;gap:28px!important}
+body[data-project="mim"]:not(.showcase-home) .workspace :is(.project-fact dd,.story-content,.focus-toolbar b,.equipment-gallery) {color:var(--theme-text)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace :is(.tags>span,.close-focus,.branch-symbol,.project-action) {color:var(--theme-accent)!important;border-color:var(--portfolio-line)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .has-focus .case-stage .project-heading {padding:20px 0!important;min-height:0}
+body[data-project="mim"]:not(.showcase-home) .workspace .has-focus .case-stage .project-title {font-size:25px!important;max-width:none;margin:12px 0!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .has-focus .case-stage .project-lead {font-size:18px!important;margin:0 0 12px!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .has-focus .case-stage .project-description {font-size:13px!important}
+
+/* The headings and diagrams share a row; text and geometry share a scale. */
+body[data-project="mim"]:not(.showcase-home) .workspace .enriched-story .story-header {padding:12px 0 32px;max-width:none}
+body[data-project="mim"]:not(.showcase-home) .workspace :is(.story-header h2,.equipment-gallery-head h2) {font-size:clamp(28px,2.8vw,42px)!important;line-height:1.35!important;letter-spacing:-.035em!important;font-weight:400!important;color:var(--portfolio-ink)!important;max-width:24ch;text-wrap:balance;word-break:keep-all}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-header h2 {margin:16px 0 0}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-kicker {color:var(--theme-accent)!important;font-size:12px!important;letter-spacing:.08em}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-intro {max-width:70ch;margin-top:20px;font-size:15px!important;line-height:1.9!important;color:var(--theme-text)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .enriched-story .enriched-note {padding:36px 0 40px;display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:clamp(28px,3vw,56px);row-gap:24px;align-items:start}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-section-heading {grid-column:1;grid-row:1;max-width:none!important;gap:14px;margin:0}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-section-heading h3 {font-size:22px!important;line-height:1.5;font-weight:500;letter-spacing:-.025em;color:var(--portfolio-ink)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-section-heading>span {display:grid;place-items:center;flex:0 0 30px;min-height:30px;background:var(--theme-soft);border:1px solid var(--portfolio-line);border-radius:50%;font-size:11px;color:var(--theme-accent)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-section-body {display:contents}
+body[data-project="mim"]:not(.showcase-home) .workspace :is(.story-section-copy,.mim-process-copy) {grid-column:1;grid-row:2;min-width:0}
+body[data-project="mim"]:not(.showcase-home) .workspace :is(.story-section-copy p,.mim-definition,.mim-application) {font-size:15px!important;line-height:1.95!important;color:var(--theme-text)!important;word-break:keep-all;max-width:70ch}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-definition {font-size:18px!important;line-height:1.7!important;margin:0 0 18px}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-application {margin:0}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-section-visual {display:block!important;grid-column:2!important;grid-row:2!important;align-self:start;background:transparent!important;border:0!important;border-radius:0;padding:0!important;position:relative;overflow:visible}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-section-visual>.story-diagram {display:block!important;position:relative;margin:0}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-section-visual>.story-diagram>figcaption {position:absolute;bottom:calc(100% + 24px);left:0;right:0;margin:0!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-diagram .story-diagram>figcaption {position:static;margin-bottom:8px}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-diagram>figcaption strong {font-size:14px;font-weight:500;color:var(--theme-text)!important;line-height:1.7}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-diagram>figcaption small {font-size:12px;line-height:1.7;color:var(--theme-muted)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-process-section {row-gap:52px!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-material-flow {gap:12px;margin:0}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-material-flow button {padding:12px 0 16px;background:transparent!important;border-color:var(--portfolio-line);color:var(--theme-text)!important;transition:border-color .2s,background .2s}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-material-flow button:is(:hover,[aria-selected="true"]) {background:var(--theme-soft)!important;border-color:var(--theme-accent)!important;color:var(--theme-deep)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-material-flow svg {color:var(--theme-accent)!important;max-width:150px}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-material-flow .mim-cutout {fill:var(--portfolio-paper)}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-material-flow span {color:var(--theme-muted)!important;font-size:11px}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-material-flow strong {font-size:15px;font-weight:500}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-dimension {margin:0 0 20px;overflow:visible}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-dimension text {fill:var(--theme-text);font-size:18px;font-family:inherit}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-part-shell {fill:#d0d9c6;stroke:var(--theme-accent);stroke-width:1.5}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-part-face {fill:#edf0e8;stroke:var(--theme-accent);stroke-width:1.5}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-part-bore {fill:#b5c3a8;stroke:var(--theme-accent);stroke-width:1.5}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-measure {stroke:var(--theme-accent);fill:none;stroke-width:1.5}
+body[data-project="mim"]:not(.showcase-home) .workspace .mim-guide {stroke:#8a9981;fill:none}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-compare-list {display:block!important;margin:0}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-compare-list>div {padding:14px 0;border-color:var(--portfolio-line)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-compare-list dt {font-size:14px;color:var(--theme-text)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-compare-list dd {font-size:12px;line-height:1.8;color:var(--theme-muted)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-metrics {border-block:1px solid var(--portfolio-line);padding:20px 0;margin:0 0 24px;gap:24px}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-metrics :is(dt,dd) {color:var(--theme-text)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-metrics dt {font-size:12px;color:var(--theme-muted)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-metrics dd {font-size:clamp(22px,2.1vw,32px);font-weight:400;letter-spacing:-.025em}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-metrics div {border:0;padding:0}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-process {grid-template-columns:1fr;gap:0}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-process li {display:grid;grid-template-columns:28px 90px minmax(0,1fr);gap:12px;align-items:baseline;background:transparent!important;border:0!important;border-bottom:1px solid var(--portfolio-line)!important;padding:16px 0}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-process li>span {margin:0;color:var(--theme-accent)!important;font-size:11px}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-process li strong {font-size:14px;color:var(--theme-text)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .story-process li small {font-size:12px;line-height:1.8;color:var(--theme-muted)!important}
+
+/* Evidence remains on the canvas, with neutral photo mounts for the instruments. */
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-gallery-head {max-width:none;margin:12px 0 36px!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-gallery-head h2 {max-width:none;margin:0 0 16px!important}
+body[data-project="mim"]:not(.showcase-home) .workspace :is(.equipment-gallery-head>p,.equipment-photo-copy p) {color:var(--theme-muted)!important;font-size:13px!important;line-height:1.85!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-group {margin-top:36px}
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-group-head h3 {font-size:22px;font-weight:500;color:var(--theme-text);letter-spacing:-.025em}
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-group-head>span {color:var(--theme-muted);font-size:12px}
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-photo-grid {grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px}
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-gallery .equipment-photo-card {background:transparent!important;border:0!important;box-shadow:none!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-photo {background:#f5f6f1;aspect-ratio:1.5!important;border:1px solid var(--portfolio-line)}
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-photo img {object-fit:contain;padding:16px;mix-blend-mode:multiply}
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-photo-copy {padding:18px 0 0;min-height:0!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-photo-copy h3 {font-size:18px;line-height:1.55;color:var(--portfolio-ink)!important;font-weight:500}
+body[data-project="mim"]:not(.showcase-home) .workspace :is(.equipment-photo-copy>span,.equipment-photo-copy>a) {color:var(--theme-accent)!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .equipment-photo-copy>span {font-size:10px;letter-spacing:.08em;font-weight:400}
+body[data-project="mim"]:not(.showcase-home) .workspace .parts-3d-frame {background:var(--portfolio-paper)}
+@media(min-width:1201px) {
+ body[data-project="mim"]:not(.showcase-home) .workspace {padding-left:7vw!important;grid-template-columns:minmax(0,1fr) 240px;gap:4vw}
+ body[data-project="mim"]:not(.showcase-home).drawer-open .workspace {padding-left:330px!important}
+ body[data-project="mim"]:not(.showcase-home) .workspace .detail-panel {margin-top:48px}
 }
