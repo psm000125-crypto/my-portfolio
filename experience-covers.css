@@ -239,11 +239,11 @@ body[data-project="fitness"] .story-signal circle:last-of-type {fill:var(--serie
 /* The homepage and MIM overview use the same introduction and softly blended photograph. */
 .mim-introduction {
  --mim-paper:#e4e8de;--mim-ink:#252b28;--mim-muted:#626b60;
- --mim-title-size:clamp(36px,3.15vw,56px);--mim-circle-size:clamp(100px,8.2vw,136px);
+ --mim-title-size:clamp(34px,3.8vw,60px);
  position:relative;isolation:isolate;background:var(--mim-paper);color:var(--mim-ink);
 }
 .lab-home .work-spread.field-spread.mim-introduction {
- display:block;overflow:hidden;min-height:0;padding:76px 6vw 92px;gap:0;
+ display:block;overflow:hidden;min-height:clamp(550px,80svh,820px);padding:76px 6vw 92px;gap:0;
  background:var(--mim-paper);scroll-margin-top:70px;
 }
 .lab-home .work-spread.field-spread .mim-introduction-copy,
@@ -251,7 +251,7 @@ body[data-project="mim"]:not(.showcase-home) .workspace .experience-landing .pro
  position:relative;top:auto;z-index:1;width:48%;max-width:none!important;padding:0;
 }
 body[data-project="mim"]:not(.showcase-home) .workspace .experience-landing .project-heading.mim-introduction {
- --mim-title-size:clamp(29px,2.6vw,48px);--mim-circle-size:clamp(82px,6.9vw,118px);
+ --mim-title-size:clamp(29px,2.6vw,48px);
  display:block!important;min-height:0;padding:46px 0 50px!important;overflow:hidden;
 }
 .mim-introduction-kicker {
@@ -262,31 +262,22 @@ body[data-project="mim"]:not(.showcase-home) .workspace .experience-landing .pro
 .lab-home .field-spread.mim-introduction .mim-introduction-title,
 body[data-project="mim"]:not(.showcase-home) .workspace .experience-landing .project-heading.mim-introduction .mim-introduction-title {
  margin:0 0 20px!important;max-width:none!important;color:var(--mim-ink)!important;
- font-size:var(--mim-title-size)!important;font-weight:400!important;line-height:1.3!important;
+ font-size:var(--mim-title-size)!important;font-weight:400!important;line-height:1.35!important;
  letter-spacing:-.055em!important;text-wrap:initial;word-break:keep-all;
 }
 .lab-home .field-spread.mim-introduction .mim-introduction-lead,
 body[data-project="mim"]:not(.showcase-home) .workspace .experience-landing .project-heading.mim-introduction .mim-introduction-lead {
- margin:0!important;color:#3f493d!important;font-size:15px!important;font-weight:400!important;
+ margin:0!important;color:#3f493d!important;font-size:16px!important;font-weight:400!important;
  line-height:1.7!important;letter-spacing:-.025em!important;white-space:normal;
 }
-.mim-introduction-elements {display:flex;list-style:none;padding:0;margin:30px 0 28px}
-.mim-introduction-elements li {
- display:grid;place-items:center;flex:0 0 var(--mim-circle-size);
- width:var(--mim-circle-size);height:var(--mim-circle-size);border:1px solid currentColor;
- border-radius:50%;color:#3f493d;font-size:14px;font-weight:400;letter-spacing:-.035em;
-}
-.mim-introduction-elements li+li {margin-left:-14px}
-.mim-introduction-elements li:nth-child(2) {border-color:#596e50}
-.mim-introduction-elements li:nth-child(3) {border-color:#839477}
 .lab-home .field-spread.mim-introduction .mim-introduction-description,
 body[data-project="mim"]:not(.showcase-home) .workspace .experience-landing .project-heading.mim-introduction .mim-introduction-description {
- margin:0!important;max-width:38ch;color:var(--mim-muted)!important;
+ margin:18px 0 0!important;max-width:none;color:var(--mim-muted)!important;
  font-size:14px!important;font-weight:400;line-height:1.95!important;word-break:keep-all;
 }
 .mim-introduction-link {
  display:flex;align-items:center;justify-content:space-between;gap:24px;
- width:240px;max-width:100%;min-height:48px;padding:10px 0;margin-top:23px;
+ width:280px;max-width:100%;min-height:48px;padding:10px 0;margin-top:32px;
  border-bottom:1px solid #a8b39f;color:var(--mim-ink);font-size:14px;text-decoration:none;
 }
 .mim-introduction-link span {font-size:24px;transition:transform .2s}
@@ -301,7 +292,7 @@ body[data-project="mim"] .mim-introduction-company {display:block;margin-top:18p
 .mim-introduction-photo img {display:block;width:100%;height:100%;object-fit:cover;object-position:52% 39%;filter:saturate(.65);opacity:.88}
 body[data-project="mim"]:not(.showcase-home) .workspace .has-focus .experience-landing .project-heading.mim-introduction {padding:20px 0!important}
 body[data-project="mim"]:not(.showcase-home) .workspace .has-focus .project-heading.mim-introduction .mim-introduction-copy {width:100%}
-body[data-project="mim"]:not(.showcase-home) .workspace .has-focus .project-heading.mim-introduction :is(.mim-introduction-elements,.mim-introduction-description,.mim-introduction-link,.mim-introduction-company,.mim-introduction-photo) {display:none}
+body[data-project="mim"]:not(.showcase-home) .workspace .has-focus .project-heading.mim-introduction :is(.mim-introduction-description,.mim-introduction-link,.mim-introduction-company,.mim-introduction-photo) {display:none}
 body[data-project="mim"]:not(.showcase-home) .workspace .has-focus .experience-landing .project-heading.mim-introduction .mim-introduction-title {font-size:25px!important;margin:12px 0!important}
 body[data-project="mim"]:not(.showcase-home) .workspace .has-focus .project-heading.mim-introduction .mim-introduction-title br {display:none}
 

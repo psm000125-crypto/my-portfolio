@@ -14,7 +14,6 @@ function mimIntroductionMarkup(overview=false){
   <span class="mim-introduction-kicker">01 / FIELD</span>
   <${titleTag} class="project-title mim-introduction-title">작은 부품에서<br> 공정 전체를 보다.</${titleTag}>
   <${leadTag} class="project-lead mim-introduction-lead">${escapeHTML(project.title)} 인턴십</${leadTag}>
-  <ol class="mim-introduction-elements" aria-label="MIM 현장 경험의 세 가지 요소"><li>공정 이해</li><li>측정·검사</li><li>기록 검토</li></ol>
   <p class="mim-introduction-description">금속 분말이 제품이 되기까지.<br>공정 흐름과 측정·검사 경험을 함께 기록했습니다.</p>
   <a class="mim-introduction-link" href="#mim${overview?'/story-0':''}"${overview?'':' data-project-transition'}>현장 경험 읽기 <span aria-hidden="true">↗</span></a>
   <small class="mim-introduction-company">계림금속</small>
