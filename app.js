@@ -309,8 +309,14 @@ function project(p){
  else if(!p.parent) {
   const overview=view.querySelector('.project-overview');
   overview.classList.add('experience-landing');
-  view.querySelector('.case-emblem').innerHTML=experienceCoverGraphic(p.id);
-  view.querySelector('.project-description').remove();
+  if(p.id==='mim'){
+   const heading=view.querySelector('.project-heading');
+   heading.classList.add('mim-introduction');
+   heading.innerHTML=mimIntroductionMarkup(true);
+  }else{
+   view.querySelector('.case-emblem').innerHTML=experienceCoverGraphic(p.id);
+   view.querySelector('.project-description').remove();
+  }
   view.querySelector('.case-stage').insertAdjacentHTML('beforeend',experienceResourcesMarkup(p));
   view.querySelector('.case-meta').insertAdjacentHTML('afterbegin',`<p class="cover-description">${escapeHTML(p.summary)}</p>`);
  }

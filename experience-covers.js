@@ -33,11 +33,63 @@ function experienceCoverGraphic(id) {
  let diagram='';
  if(id==='mim')diagram=`<g class="cover-specimen"><ellipse cx="300" cy="185" rx="118" ry="65"/><ellipse cx="300" cy="185" rx="55" ry="31"/><path d="M182 185v70c0 36 53 65 118 65s118-29 118-65v-70M245 185v45c0 17 25 31 55 31s55-14 55-31v-45"/><path d="M208 208v69M392 208v69" opacity=".35"/></g><g class="cover-probe"><path d="M470 112H356v34M346 146h20M470 102v20"/><circle cx="356" cy="149" r="3"/></g><g class="cover-measure"><path d="M172 92h256M182 78v29M418 78v29M147 185v135M138 185h18M138 320h18"/><path d="m182 92 9-5m-9 5 9 5m227-5-9-5m9 5-9 5"/></g>`;
  if(id==='alloy')diagram=`<g class="cover-roll cover-roll-top"><circle cx="286" cy="139" r="61"/><circle cx="286" cy="139" r="9"/><path d="M286 90v20M335 139h-20M286 188v-20M237 139h20"/></g><g class="cover-roll cover-roll-bottom"><circle cx="286" cy="279" r="61"/><circle cx="286" cy="279" r="9"/><path d="M286 230v20M335 279h-20M286 328v-20M237 279h20"/></g><path class="cover-draw" d="M96 195h140l50 9h230v10H286l-50 9H96z"/><g class="cover-grains"><path d="M116 195v28M144 195v28M172 195v28M200 195v28M352 204v10M394 204v10M436 204v10M478 204v10"/></g><path d="M394 168h84m-8-6 8 6-8 6M220 254h-84m8-6-8 6 8 6" opacity=".55"/>`;
- if(id==='xrd')diagram=`<g class="cover-crystal"><path d="m300 120 84 48v97l-84 48-84-48v-97zM216 168l84 48 84-48M300 216v97M300 120v96M216 265l84-49 84 49"/>${[[300,120],[384,168],[384,265],[300,313],[216,265],[216,168],[300,216]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="6"/>`).join('')}</g><g class="cover-ray"><path d="m108 97 150 95M258 192l170-99M248 206l197 25"/><circle cx="258" cy="192" r="11"/></g><path class="cover-trace" d="M96 360h64l10-36 8 36h50l9-76 9 76h72l10-49 9 49h52l7-23 7 23h91"/>`;
- if(id==='energy')diagram=`<g class="cover-layer cover-layer-top"><path d="m150 136 150-67 150 67-150 67zM150 136v22l150 67 150-67v-22M300 203v22"/>${[0,1,2,3,4].map(i=>`<path d="m${183+i*27} ${121-i*12} 125 56" opacity=".5"/>`).join('')}</g><g class="cover-layer cover-layer-middle"><path d="m150 219 150-67 150 67-150 67zM150 219v22l150 67 150-67v-22M300 286v22"/></g><g class="cover-layer cover-layer-base"><path d="m150 302 150-67 150 67-150 67zM150 302v22l150 67 150-67v-22M300 369v22"/></g><g class="cover-ion"><circle cx="270" cy="30" r="5"/><circle cx="330" cy="60" r="5"/><circle cx="386" cy="35" r="5"/><path d="M270 45v25M330 75v25M386 50v25"/></g>`;
- if(id==='sejong')diagram=`<g class="cover-map"><path d="m114 114 128-38 126 41 123-34v235l-123 41-126-42-128 38zM242 76v241M368 117v242"/><path d="m114 210 377-46M153 343l19-222M292 333l33-230M404 347l29-248M114 282l377-43" opacity=".45"/><path class="cover-route" d="m172 220 109-39 44 82 103-23" stroke-dasharray="5 7"/></g>${[[172,220],[281,181],[325,263],[428,240]].map(([x,y],i)=>`<g class="cover-pin" style="--pin-delay:${i*.7}s"><circle cx="${x}" cy="${y}" r="18"/><circle cx="${x}" cy="${y}" r="5"/><circle class="cover-pulse" cx="${x}" cy="${y}" r="18"/></g>`).join('')}`;
- if(id==='fitness')diagram=`<path d="M158 82v282M322 82v282M134 365h212M240 53v72" opacity=".6"/><g class="cover-stack"><rect x="162" y="205" width="156" height="23" rx="2"/><rect x="162" y="237" width="156" height="23" rx="2"/><rect x="162" y="269" width="156" height="23" rx="2"/><rect x="162" y="301" width="156" height="23" rx="2"/><rect x="220" y="132" width="40" height="63" rx="6"/><path d="M228 164h5l5-12 7 24 5-12h4"/></g><path d="M372 106v246M365 106h14M365 352h14" opacity=".4"/><path class="cover-signal" d="M399 345v-55l20-12 12-90 12 87 20 15 10-56 12 56 19 7v48"/><g class="cover-pulse-dot"><circle cx="431" cy="188" r="7"/><circle cx="473" cy="234" r="5"/></g>`;
- return `<svg class="experience-cover-graphic cover-${id}" viewBox="0 0 600 450" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${guides}<g class="cover-drawing">${diagram}</g></svg>`;
+ if(id==='xrd')diagram=`
+  <g class="xrd-knife">
+   <path class="cover-material-solid" d="M72 141h130v70H72q-17 0-17-17v-36q0-17 17-17Z"/>
+   <path class="cover-material-soft" d="M202 141h321q-24 43-98 59t-223 19Z"/>
+   <path d="M202 211q191 2 274-35" opacity=".4"/>
+   <circle cx="86" cy="176" r="5" opacity=".5"/>
+   <circle cx="315" cy="181" r="5"/><circle cx="468" cy="168" r="5"/>
+   <path d="M315 200v37M468 187v50" opacity=".4"/>
+  </g>
+  <g class="xrd-instrument"><path d="m220 52 22-10 12 26-22 10ZM495 68l12-26 22 10-12 26"/><path d="m229 53 7 14M513 53l-7 14" opacity=".5"/></g>
+  <g class="xrd-measurement xrd-measurement-body"><path class="xrd-beam" d="m242 76 73 105L499 76"/><circle class="xrd-measured-point" cx="315" cy="181" r="12"/></g>
+  <g class="xrd-measurement xrd-measurement-edge"><path class="xrd-beam" d="m242 76 226 92 31-92"/><circle class="xrd-measured-point" cx="468" cy="168" r="12"/></g>
+  <g class="cover-diagram-labels"><text x="216" y="30">X선</text><text x="315" y="264" text-anchor="middle">몸통</text><text x="468" y="264" text-anchor="middle">날 끝</text><text x="90" y="311">회절 패턴 · 개념도</text></g>
+  <path class="cover-diagram-guide" d="M90 334v65h436"/>
+  <path class="xrd-pattern-reference" d="M90 384h52l8-13 7 13h29l7-38 8 38h46l10-69 11 69h39l9-22 8 22h35l8-44 9 44h45l8-18 8 18h60"/>
+  <path class="xrd-pattern-scan" d="M90 384h52l8-13 7 13h29l7-38 8 38h46l10-69 11 69h39l9-22 8 22h35l8-44 9 44h45l8-18 8 18h60"/>`;
+ if(id==='energy')diagram=`
+  <defs><clipPath id="energy-cover-coating"><rect x="85" y="165" width="340" height="139"/></clipPath></defs>
+  <g class="energy-coating">
+   <path class="cover-material-soft" d="M85 165h340v139H85Z"/>
+   <path class="cover-diagram-guide" d="M85 216h340M85 261h340"/>
+   <g class="energy-cnt-network" clip-path="url(#energy-cover-coating)">${[0,1,2,3,4,5,6].map(i=>`<path d="M${64+i*57} 158c45 18-26 38 12 56s-20 32 8 51 30 29 4 43"/><path d="M${92+i*55} 158c-24 22 44 32 12 56s27 37-1 54" opacity=".45"/>`).join('')}</g>
+   <g class="energy-zinc-particles">${[[104,279],[148,289],[196,276],[241,292],[288,278],[337,291],[385,278]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="9"/><circle class="energy-cobalt" cx="${x+3}" cy="${y-2}" r="2"/>`).join('')}</g>
+   <path class="energy-lithium" d="M85 313h340v43H85Z"/>
+   <g class="energy-deposition">${[0,1,2,3,4,5,6,7,8].map(i=>`<circle cx="${103+i*38}" cy="309" r="4" style="--deposit-delay:${i*.16}s"/>`).join('')}</g>
+  </g>
+  <g class="energy-ion-flow">${[0,1,2,3,4].map(i=>`<g class="energy-mobile-ion" style="--ion-delay:${-i*.9}s"><circle cx="${119+i*67}" cy="96" r="13"/><text x="${119+i*67}" y="101" text-anchor="middle">Li⁺</text></g>`).join('')}</g>
+  <g class="cover-diagram-guide"><path d="M425 190h27M425 238h27M425 282h27M425 335h27"/></g>
+  <g class="cover-diagram-labels"><text x="463" y="196">다공성 CNT</text><text x="463" y="244">전이층</text><text x="463" y="288">Co–ZnO/CNT</text><text x="463" y="341">Li metal</text><text x="85" y="404">3층 경사 계면층 · 문헌 기반 설계</text></g>`;
+ if(id==='sejong')diagram=`
+  <g class="sejong-street-map">
+   <path class="sejong-waterway" d="M96 87c107 36-36 115 44 148s40 48 12 80"/>
+   <path class="cover-diagram-guide" d="M60 115h296M64 192h292M65 278h290M88 82v225M216 82v227M304 82v229"/>
+   <g class="sejong-buildings">${[[110,94,32,34],[171,96,27,31],[239,92,41,43],[323,91,29,45],[108,151,38,26],[159,149,34,28],[237,153,44,23],[323,149,27,26],[170,212,26,45],[234,211,46,36],[321,216,30,38],[86,290,38,18],[241,290,38,18]].map(([x,y,w,h])=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2"/>`).join('')}</g>
+   <g class="sejong-candidates">${[[123,143],[243,115],[329,180],[174,249],[273,271]].map(([x,y],i)=>i===0||i===4?`<g class="sejong-selected-site"><circle class="sejong-site-halo" cx="${x}" cy="${y}" r="20" style="--site-delay:${i===0?'0':'-2.8'}s"/><circle class="sejong-site-point" cx="${x}" cy="${y}" r="12"/><text x="${x}" y="${y+5}" text-anchor="middle">${i===0?'A':'B'}</text></g>`:`<circle cx="${x}" cy="${y}" r="5"/>`).join('')}</g>
+  </g>
+  <g class="sejong-weights">${[0,1,2,3,4,5].map(i=>`<g><path d="M415 ${121+i*29}h123"/><circle class="sejong-weight-knob" cx="${[455,494,470,510,448,480][i]}" cy="${121+i*29}" r="6" style="--weight-delay:${-i*.45}s;--weight-shift:${i%2===0?'12':'-12'}px"/></g>`).join('')}</g>
+  <g class="sejong-comparison">${[[350,[30,20,37,25,33,22]],[387,[20,35,26,34,22,32]]].map(([y,values],row)=>`<g><text x="65" y="${y+5}">후보 ${row===0?'A':'B'}</text>${values.map((width,i)=>`<path class="sejong-comparison-track" d="M${174+i*60} ${y}h40"/><path class="sejong-comparison-value" d="M${174+i*60} ${y}h${width}" style="--compare-delay:${-i*.3-row*2.8}s"/>`).join('')}</g>`).join('')}</g>
+  <g class="cover-diagram-labels"><text x="65" y="63">입지 후보</text><text x="415" y="86">6개 지표</text><text x="65" y="436">가중치 조절 · 후보지 비교 개념도</text></g>`;
+ if(id==='fitness')diagram=`
+  <g class="fitness-machine-frame"><path d="M105 77v269M221 77v269M78 348h170M140 46h45"/><path class="fitness-cable" d="M162 46v162"/></g>
+  <g class="fitness-moving-stack">
+   ${[0,1,2,3].map(i=>`<rect class="fitness-weight-plate" x="88" y="${210+i*28}" width="150" height="21" rx="2"/>`).join('')}
+   <rect class="fitness-attached-phone" x="170" y="199" width="39" height="83" rx="6"/>
+   <path d="M184 207h11M181 271h17M177 241h6l5-12 6 24 5-12h3"/>
+  </g>
+  <g class="fitness-sensor-link"><path d="M243 250h54m-7-6 7 6-7 6"/></g>
+  <g class="fitness-waveform">
+   <path class="cover-diagram-guide" d="M315 145v171h249M315 252h249"/>
+   <path class="fitness-threshold" d="M315 204h249"/>
+   <path class="fitness-signal-reference" d="M315 252h24q12 0 23-18 7-8 13 9 11 15 24-23 12-65 24-43 17 30 25 75 10 61 27 30 10-17 17-30 10-17 20-8 9 9 15 8h37"/>
+   <path class="fitness-signal-read" d="M315 252h24q12 0 23-18 7-8 13 9 11 15 24-23 12-65 24-43 17 30 25 75 10 61 27 30 10-17 17-30 10-17 20-8 9 9 15 8h37"/>
+   <circle class="fitness-peak-marker" cx="418" cy="170" r="10"/>
+  </g>
+  <g class="fitness-counter"><text class="fitness-count-idle" x="439" y="117" text-anchor="middle">0</text><text class="fitness-count-on" x="439" y="117" text-anchor="middle">1</text></g>
+  <g class="cover-diagram-labels"><text x="439" y="58" text-anchor="middle">횟수 판정</text><text x="326" y="194">판정 기준</text><text x="315" y="354">가속도 → 봉우리 판정</text><text x="88" y="403">중량 스택 · 센서</text><text x="315" y="403">1회 동작 · 개념도</text></g>`;
+ return `<svg class="experience-cover-graphic cover-${id}" viewBox="0 0 600 450" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${['xrd','energy','sejong','fitness'].includes(id)?'':guides}<g class="cover-drawing">${diagram}</g></svg>`;
 }
 function experienceResourceIcon(type) {
  const paths=type==='story'?'<path d="M28 20h32l20 9 20-9h32v64h-32L80 93 60 84H28zM80 29v64M40 36h18M40 47h18M102 36h18M102 47h18"/>':type==='parts3d'?'<path d="m80 14 39 23v45L80 105 41 82V37zM41 37l39 23 39-23M80 60v45"/>':type==='map'?'<path d="m28 32 35-12 34 12 35-12v66l-35 12-34-12-35 12zM63 20v66M97 32v66"/><circle cx="81" cy="57" r="10"/>':type==='demo'?'<rect x="60" y="13" width="42" height="87" rx="6"/><path d="M67 58h8l5-19 8 34 5-15h5M73 90h16"/>':type==='equipment'?'<circle cx="79" cy="57" r="30"/><circle cx="79" cy="57" r="14"/><path d="M42 15h74M49 10v12M109 10v12M31 29v56M25 29h12M25 85h12"/>':type==='slides'?'<rect x="39" y="20" width="82" height="58"/><path d="M47 86h82V28M55 94h82V36M51 37h31M51 48h53M51 59h40"/>':'<path d="M31 83h100M39 76V50h17v26M72 76V34h17v42M105 76V19h17v57"/>';

@@ -102,6 +102,67 @@ body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing
 @keyframes cover-pulse {0%{transform:scale(.7);opacity:.7}100%{transform:scale(2.2);opacity:0}}
 @keyframes cover-stack {0%,100%{transform:translateY(12px)}50%{transform:translateY(-18px)}}
 @keyframes cover-glow {0%,100%{opacity:.3}50%{opacity:1}}
+/* Subject-specific covers: specimen measurement and a continuous electrode coating. */
+:is(.cover-xrd,.cover-energy,.cover-sejong,.cover-fitness) .cover-drawing {animation:none}
+:is(.cover-xrd,.cover-energy,.cover-sejong,.cover-fitness) .cover-material-soft {fill:currentColor;fill-opacity:.07}
+:is(.cover-xrd,.cover-energy,.cover-sejong,.cover-fitness) .cover-material-solid {fill:currentColor;fill-opacity:.2}
+:is(.cover-xrd,.cover-energy,.cover-sejong,.cover-fitness) .cover-diagram-guide {opacity:.3;stroke-width:1}
+:is(.cover-xrd,.cover-energy,.cover-sejong,.cover-fitness) .cover-diagram-labels {fill:currentColor;stroke:none;font-family:inherit;font-size:18px;letter-spacing:.025em}
+.xrd-instrument {opacity:.65}
+.xrd-measurement {animation:xrd-measure-position 6s ease-in-out infinite}
+.xrd-measurement-edge {opacity:0;animation-delay:-3s}
+.xrd-beam {stroke-dasharray:5 7;animation:xrd-beam-travel 1.8s linear infinite}
+.xrd-measured-point {stroke-width:1.2}
+.xrd-pattern-reference {opacity:.2;stroke-width:1.4}
+.xrd-pattern-scan {stroke-width:2.4;stroke-dasharray:800;animation:xrd-pattern-read 3s ease-out infinite}
+.energy-cnt-network {opacity:.5;stroke-width:1.3}
+.energy-zinc-particles>circle {fill:var(--portfolio-paper,#ece4d9);stroke-width:1.4}
+.energy-zinc-particles>.energy-cobalt {fill:currentColor;stroke:none}
+.energy-lithium {fill:currentColor;fill-opacity:.16;stroke-width:1.6}
+.energy-mobile-ion {animation:energy-ion-arrival 4.5s linear infinite;animation-delay:var(--ion-delay)}
+.energy-mobile-ion circle {fill:var(--portfolio-paper,#ece4d9);stroke-width:1.2}
+.energy-mobile-ion text {fill:currentColor;stroke:none;font-family:inherit;font-size:13px}
+.energy-deposition circle {fill:currentColor;stroke:none;transform-box:fill-box;transform-origin:center;animation:energy-nucleation 4.5s ease-out infinite;animation-delay:var(--deposit-delay)}
+@keyframes xrd-measure-position {0%,42%,100%{opacity:1}50%,92%{opacity:0}}
+@keyframes xrd-beam-travel {to{stroke-dashoffset:-48}}
+@keyframes xrd-pattern-read {0%{stroke-dashoffset:800;opacity:.3}72%,90%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:.3}}
+@keyframes energy-ion-arrival {0%{transform:translateY(-24px);opacity:0}12%{opacity:1}88%{transform:translateY(188px);opacity:1}100%{transform:translateY(204px);opacity:0}}
+@keyframes energy-nucleation {0%,12%{transform:scale(.5);opacity:.25}40%,80%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:.25}}
+/* AI covers connect the actual inputs to comparison or counting. */
+.sejong-waterway {stroke-width:18;opacity:.08}
+.sejong-buildings rect {fill:currentColor;fill-opacity:.09;stroke-opacity:.35;stroke-width:1.2}
+.sejong-candidates>circle {fill:currentColor;fill-opacity:.6;stroke:none}
+.sejong-site-point,.sejong-weight-knob {fill:var(--portfolio-paper,#eaeef4);stroke-width:2}
+.sejong-selected-site text,.sejong-comparison text {fill:currentColor;stroke:none;font-family:inherit;font-size:18px}
+.sejong-selected-site text {font-size:16px;font-weight:500}
+.sejong-site-halo {fill:currentColor;fill-opacity:.07;stroke-width:1;animation:sejong-site-focus 5.6s ease-in-out infinite;animation-delay:var(--site-delay)}
+.sejong-weights path {opacity:.3;stroke-width:1.3}
+.sejong-weight-knob {animation:sejong-weight-adjust 5.6s ease-in-out infinite;animation-delay:var(--weight-delay)}
+.sejong-comparison-track {stroke-width:5;opacity:.1}
+.sejong-comparison-value {stroke-width:5;transform-box:fill-box;transform-origin:left center;animation:sejong-compare-adjust 5.6s ease-in-out infinite;animation-delay:var(--compare-delay)}
+.fitness-machine-frame {stroke-width:2;opacity:.65}
+.fitness-moving-stack {animation:fitness-stack-motion 4.8s ease-in-out infinite}
+.fitness-cable {transform-origin:162px 46px;animation:fitness-cable-length 4.8s ease-in-out infinite}
+.fitness-weight-plate {fill:currentColor;fill-opacity:.12;stroke-width:1.8}
+.fitness-attached-phone {fill:var(--portfolio-paper,#eaeef4);stroke-width:2.2}
+.fitness-sensor-link {stroke-dasharray:3 6;opacity:.65;animation:fitness-data-flow 2.4s linear infinite}
+.fitness-threshold {stroke-dasharray:4 7;opacity:.45}
+.fitness-signal-reference {opacity:.17;stroke-width:1.5}
+.fitness-signal-read {stroke-width:2.5;stroke-dasharray:600;animation:fitness-signal-read 4.8s ease-out infinite}
+.fitness-peak-marker {transform-box:fill-box;transform-origin:center;animation:fitness-peak-detect 4.8s ease-out infinite}
+.fitness-counter {fill:currentColor;stroke:none;font-family:inherit;font-size:58px;font-weight:400}
+.fitness-count-idle {opacity:0;animation:fitness-count-idle 4.8s linear infinite}
+.fitness-count-on {opacity:1;animation:fitness-count-on 4.8s linear infinite}
+@keyframes sejong-site-focus {0%,100%{opacity:.4}50%{opacity:1}}
+@keyframes sejong-weight-adjust {0%,100%{transform:translateX(0)}50%{transform:translateX(var(--weight-shift))}}
+@keyframes sejong-compare-adjust {0%,100%{transform:scaleX(.8)}50%{transform:scaleX(1)}}
+@keyframes fitness-stack-motion {0%,15%,75%,100%{transform:translateY(0)}45%{transform:translateY(-36px)}}
+@keyframes fitness-cable-length {0%,15%,75%,100%{transform:scaleY(1)}45%{transform:scaleY(.778)}}
+@keyframes fitness-data-flow {to{stroke-dashoffset:-36}}
+@keyframes fitness-signal-read {0%,8%{stroke-dashoffset:600}65%,100%{stroke-dashoffset:0}}
+@keyframes fitness-peak-detect {0%,40%,100%{opacity:0;transform:scale(.8)}50%,80%{opacity:1;transform:scale(1)}}
+@keyframes fitness-count-idle {0%,44%{opacity:1}45%,100%{opacity:0}}
+@keyframes fitness-count-on {0%,44%{opacity:0}45%,100%{opacity:1}}
 /* Four navigation entries; braces keep related projects visually together. */
 .nav-collection {border-bottom:1px solid var(--drawer-line,var(--portfolio-line));margin:8px 0}
 .nav-collection>summary {list-style:none;display:flex;align-items:center;gap:12px;cursor:pointer;padding:19px 14px;color:var(--drawer-ink,var(--portfolio-ink));font-size:14px}
@@ -153,7 +214,7 @@ body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[dat
 }
 body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.story-header h2,.story-section-heading h3,.artifact-heading h2,.summary-hero h3,.summary-section-heading h4,.story-diagram figcaption strong,.story-metrics dd) {color:var(--portfolio-ink)!important}
 body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.story-section-copy p,.story-intro,.summary-hero p,.summary-callout p,.story-process strong,.story-layer-stack strong,.story-layer-stack small) {color:var(--theme-text)!important}
-body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.story-section-visual,.story-diagram,.summary-stat,.pipeline-node,.story-process li,.story-layer-stack li,.interface-layer,.literature-evidence,.phase-comparison article) {background:var(--theme-raised)!important;border-color:var(--portfolio-line)!important}
+body:is([data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.story-section-visual,.story-diagram,.summary-stat,.pipeline-node,.story-process li,.story-layer-stack li,.interface-layer,.literature-evidence,.phase-comparison article) {background:var(--theme-raised)!important;border-color:var(--portfolio-line)!important}
 body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.story-header,.enriched-note,.reading-tabs,.artifact-heading,.story-compare-list>div,.story-indicator-grid li) {border-color:var(--portfolio-line)!important}
 body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.evidence-chart,.story-bar-chart) {--series-before:color-mix(in srgb,var(--theme-accent) 40%,var(--portfolio-paper));--series-after:var(--theme-accent);--series-track:color-mix(in srgb,var(--theme-accent) 12%,var(--portfolio-paper))}
 body[data-project="xrd"] .xrd-specimens svg>path:first-of-type {fill:var(--theme-deep)}
@@ -163,7 +224,7 @@ body[data-project="xrd"] .xrd-specimens svg>circle:first-of-type {fill:var(--the
 body[data-project="xrd"] .xrd-specimens svg>circle:last-of-type {fill:var(--theme-muted)}
 body[data-project="xrd"] .specimen-body {color:var(--theme-accent)}
 body[data-project="xrd"] .specimen-edge {color:var(--theme-muted)}
-body[data-project="energy"]:not(.showcase-home) .workspace .focus-content :is(.interface-layer.zinc,.interface-layer.transition,.story-layer-stack li:nth-child(2),.energy-layer-reading) {background:var(--theme-soft)!important;border-color:var(--theme-accent)!important}
+body[data-project="energy"]:not(.showcase-home) .workspace .focus-content :is(.interface-layer.zinc,.interface-layer.transition,.story-layer-stack li:nth-child(2),.energy-layer-reading) {background:transparent!important;border-color:var(--theme-accent)!important}
 body[data-project="energy"] .energy-layer-reading :is(span,strong) {color:var(--theme-text)}
 body[data-project="energy"] .energy-layer-button[aria-pressed="true"] {box-shadow:inset 3px 0 var(--theme-accent)}
 body[data-project="fitness"] .story-signal path:nth-of-type(2) {stroke:var(--theme-accent)}
@@ -174,3 +235,187 @@ body[data-project="fitness"] .story-signal circle:last-of-type {fill:var(--serie
  .experience-cover-graphic,.experience-cover-graphic * {animation:none!important;stroke-dashoffset:0!important}
  .experience-resource :is(svg,b) {transition:none!important;transform:none!important}
 }
+
+/* The homepage and MIM overview use the same introduction and softly blended photograph. */
+.mim-introduction {
+ --mim-paper:#e4e8de;--mim-ink:#252b28;--mim-muted:#626b60;
+ --mim-title-size:clamp(36px,3.15vw,56px);--mim-circle-size:clamp(100px,8.2vw,136px);
+ position:relative;isolation:isolate;background:var(--mim-paper);color:var(--mim-ink);
+}
+.lab-home .work-spread.field-spread.mim-introduction {
+ display:block;overflow:hidden;min-height:0;padding:76px 6vw 92px;gap:0;
+ background:var(--mim-paper);scroll-margin-top:70px;
+}
+.lab-home .work-spread.field-spread .mim-introduction-copy,
+body[data-project="mim"]:not(.showcase-home) .workspace .experience-landing .project-heading.mim-introduction .mim-introduction-copy {
+ position:relative;top:auto;z-index:1;width:48%;max-width:none!important;padding:0;
+}
+body[data-project="mim"]:not(.showcase-home) .workspace .experience-landing .project-heading.mim-introduction {
+ --mim-title-size:clamp(29px,2.6vw,48px);--mim-circle-size:clamp(82px,6.9vw,118px);
+ display:block!important;min-height:0;padding:46px 0 50px!important;overflow:hidden;
+}
+.mim-introduction-kicker {
+ display:flex;align-items:center;gap:15px;margin-bottom:28px;
+ color:var(--mim-muted);font-size:11px;line-height:1.5;letter-spacing:.13em;
+}
+.mim-introduction-kicker:before {content:'';width:26px;height:2px;background:#c74f32}
+.lab-home .field-spread.mim-introduction .mim-introduction-title,
+body[data-project="mim"]:not(.showcase-home) .workspace .experience-landing .project-heading.mim-introduction .mim-introduction-title {
+ margin:0 0 20px!important;max-width:none!important;color:var(--mim-ink)!important;
+ font-size:var(--mim-title-size)!important;font-weight:400!important;line-height:1.3!important;
+ letter-spacing:-.055em!important;text-wrap:initial;word-break:keep-all;
+}
+.lab-home .field-spread.mim-introduction .mim-introduction-lead,
+body[data-project="mim"]:not(.showcase-home) .workspace .experience-landing .project-heading.mim-introduction .mim-introduction-lead {
+ margin:0!important;color:#3f493d!important;font-size:15px!important;font-weight:400!important;
+ line-height:1.7!important;letter-spacing:-.025em!important;white-space:normal;
+}
+.mim-introduction-elements {display:flex;list-style:none;padding:0;margin:30px 0 28px}
+.mim-introduction-elements li {
+ display:grid;place-items:center;flex:0 0 var(--mim-circle-size);
+ width:var(--mim-circle-size);height:var(--mim-circle-size);border:1px solid currentColor;
+ border-radius:50%;color:#3f493d;font-size:14px;font-weight:400;letter-spacing:-.035em;
+}
+.mim-introduction-elements li+li {margin-left:-14px}
+.mim-introduction-elements li:nth-child(2) {border-color:#596e50}
+.mim-introduction-elements li:nth-child(3) {border-color:#839477}
+.lab-home .field-spread.mim-introduction .mim-introduction-description,
+body[data-project="mim"]:not(.showcase-home) .workspace .experience-landing .project-heading.mim-introduction .mim-introduction-description {
+ margin:0!important;max-width:38ch;color:var(--mim-muted)!important;
+ font-size:14px!important;font-weight:400;line-height:1.95!important;word-break:keep-all;
+}
+.mim-introduction-link {
+ display:flex;align-items:center;justify-content:space-between;gap:24px;
+ width:240px;max-width:100%;min-height:48px;padding:10px 0;margin-top:23px;
+ border-bottom:1px solid #a8b39f;color:var(--mim-ink);font-size:14px;text-decoration:none;
+}
+.mim-introduction-link span {font-size:24px;transition:transform .2s}
+.mim-introduction-link:hover span {transform:translate(3px,-3px)}
+.mim-introduction-link:focus-visible {outline:2px solid #596e50;outline-offset:5px}
+.lab-home .field-spread .mim-introduction-company,
+body[data-project="mim"] .mim-introduction-company {display:block;margin-top:18px!important;font-size:12px!important;color:var(--mim-muted)!important}
+.mim-introduction-photo {
+ position:absolute;inset:0 0 0 auto;z-index:0;width:64%;height:100%;margin:0;overflow:hidden;
+ pointer-events:none;mask-image:linear-gradient(90deg,transparent 0%,#000 44%);
+}
+.mim-introduction-photo img {display:block;width:100%;height:100%;object-fit:cover;object-position:52% 39%;filter:saturate(.65);opacity:.88}
+body[data-project="mim"]:not(.showcase-home) .workspace .has-focus .experience-landing .project-heading.mim-introduction {padding:20px 0!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .has-focus .project-heading.mim-introduction .mim-introduction-copy {width:100%}
+body[data-project="mim"]:not(.showcase-home) .workspace .has-focus .project-heading.mim-introduction :is(.mim-introduction-elements,.mim-introduction-description,.mim-introduction-link,.mim-introduction-company,.mim-introduction-photo) {display:none}
+body[data-project="mim"]:not(.showcase-home) .workspace .has-focus .experience-landing .project-heading.mim-introduction .mim-introduction-title {font-size:25px!important;margin:12px 0!important}
+body[data-project="mim"]:not(.showcase-home) .workspace .has-focus .project-heading.mim-introduction .mim-introduction-title br {display:none}
+
+/* Campus narratives and summaries sit directly on the page, without tinted cards. */
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) {
+ --experience-box:transparent;
+}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content :is(.story-section-visual,.story-diagram,.story-bar-chart,.story-visual,.evidence-chart,.summary-hero,.summary-panel,.summary-stat,.summary-callout,.summary-status,.pipeline-node,:where(.story-process li,.story-layer-stack li),.interface-layer,.interface-gap,.literature-evidence,:where(.phase-comparison article,.alloy-evidence-grid article),.alloy-metric,.alloy-process-note,:where(.research-flow span,.xrd-flow span),.sample-stage,.energy-layer-reading) {
+ background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-article.enriched-story .story-header {
+ padding:12px 0 32px;max-width:none;border-bottom:1px solid var(--portfolio-line)!important;
+}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-header h2 {
+ font-size:clamp(28px,2.8vw,42px)!important;font-weight:400!important;line-height:1.35!important;letter-spacing:-.04em!important;max-width:25ch;text-wrap:balance;
+}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-intro {
+ font-size:15px!important;line-height:1.9!important;max-width:72ch;margin-top:18px;word-break:keep-all;overflow-wrap:break-word;
+}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-article.enriched-story .enriched-note {
+ display:grid!important;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);
+ column-gap:clamp(32px,3.4vw,60px);row-gap:24px;grid-template-rows:min-content minmax(0,1fr);align-items:start;padding:40px 0 48px;
+ border-bottom:1px solid var(--portfolio-line)!important;
+}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-section-heading {
+ grid-column:1;grid-row:1;gap:13px;margin:0;max-width:none!important;align-items:baseline;
+}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-section-heading>span {
+ flex:0 0 20px;width:auto;height:auto;padding:0;border:0;border-radius:0;background:transparent!important;
+ color:var(--theme-accent)!important;font-size:11px;line-height:1.5;
+}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-article .story-section-heading h3 {
+ font-size:22px!important;font-weight:400!important;line-height:1.5!important;letter-spacing:-.035em!important;
+}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-section-body {display:contents}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-section-copy {grid-column:1;grid-row:2;columns:auto}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-section-copy p {
+ font-size:15px!important;line-height:1.95!important;max-width:none!important;word-break:keep-all;overflow-wrap:break-word;
+}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-section-copy p+p {margin-top:20px!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-article .story-section-visual {
+ grid-column:2!important;grid-row:1 / span 2!important;align-self:start;padding:0!important;overflow:visible;
+}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content :is(.story-diagram,.story-bar-chart,.evidence-chart) {display:block!important;margin:0;padding:0!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content :is(.story-diagram,.story-bar-chart,.evidence-chart)>figcaption {
+ position:static!important;margin:0 0 22px!important;min-height:0;order:0;
+}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content :is(.story-diagram,.story-bar-chart)>figcaption strong {
+ position:static!important;display:block;font-size:15px!important;font-weight:500!important;line-height:1.7!important;letter-spacing:-.02em;
+}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content :is(.story-diagram,.story-bar-chart)>figcaption small {font-size:12px;line-height:1.75;margin-top:5px}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-diagram>svg {order:0;display:block;width:100%;height:auto;max-height:230px;margin:24px 0}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-sample-table {font-size:13px}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-sample-table :is(th,td) {
+ padding:18px 0;border-bottom:1px solid var(--portfolio-line)!important;background:transparent!important;color:var(--theme-text);vertical-align:middle;
+}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-sample-table thead th {padding-top:0;font-size:11px;color:var(--theme-muted);font-weight:400}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-sample-table :is(th,td):not(:first-child) {padding-left:16px}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .sample-stage {padding:0;color:var(--theme-muted)}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .sample-stage.rolled {color:var(--theme-accent)}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-metrics {gap:24px;margin:26px 0 0;padding:0;border:0}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-metrics div {padding:16px 0 0;border:0;border-top:1px solid var(--portfolio-line)!important;gap:8px}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-metrics dd {font-size:28px;font-weight:400;line-height:1.3;letter-spacing:-.035em}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-metrics dt {font-size:11px;line-height:1.75}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-process {display:block!important;margin:0;padding:0}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-process li {
+ display:grid;grid-template-columns:22px minmax(76px,.8fr) minmax(0,1.5fr);gap:12px;align-items:baseline;
+ padding:16px 0;border-bottom:1px solid var(--portfolio-line)!important;
+}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-process li :is(span,strong,small) {margin:0;line-height:1.75}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-process li strong {font-size:13px}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-process li small {font-size:12px}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .specimen-matrix {margin:20px 0 28px;border-top:1px solid var(--portfolio-line);border-bottom:1px solid var(--portfolio-line)}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .specimen-matrix :is(span,strong) {padding:11px 0;font-size:12px;background:transparent;border-color:var(--portfolio-line)}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .interface-comparison {gap:28px}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .interface-comparison>section {display:grid;grid-template-rows:auto repeat(4,52px) auto;align-content:start;padding:0;border:0;background:transparent}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .interface-comparison h4 {font-size:14px;font-weight:500;margin:0 0 20px;color:var(--theme-accent)}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .interface-layer {padding:16px 0;border-bottom:1px solid var(--portfolio-line)!important;font-size:12px}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .interface-layer.lithium {border-bottom:2px solid var(--theme-accent)!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .interface-gap {padding:14px 0;line-height:1.7;font-size:11px}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .interface-comparison p {font-size:12px;line-height:1.85;color:var(--theme-muted);margin-top:16px}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-layer-stack li {margin:0;padding:16px 0;border-bottom:1px solid var(--portfolio-line)!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-layer-stack li:has(.energy-layer-button) {padding:0}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .energy-layer-button {padding:16px 0;gap:6px 14px;background:transparent!important;box-shadow:none!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .energy-layer-button[aria-pressed="true"] strong {color:var(--theme-accent)!important;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .energy-layer-reading {margin:22px 0 0;padding:0 0 0 14px;border-left:1px solid var(--theme-accent)!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-bar-rows i {height:8px}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-bar-rows>div {grid-template-columns:88px minmax(0,1fr) 64px;gap:14px}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .story-result-charts .alloy-chart-grid {gap:34px}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .project-summary {grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px 40px!important;max-width:none}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .summary-hero {display:block;padding:0!important;border:0!important;align-self:center}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .summary-hero h3 {font-size:28px!important;font-weight:400!important;line-height:1.4!important;letter-spacing:-.04em}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .summary-hero p {display:block!important;font-size:14px!important;line-height:1.9!important;margin-top:14px}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .summary-stats {gap:24px!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .summary-stat {padding:16px 0!important;border-top:1px solid var(--portfolio-line)!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .summary-stat strong {font-size:28px!important;font-weight:400!important;line-height:1.4!important;margin:8px 0!important;white-space:normal}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .summary-stat :is(span,small) {font-size:11px!important;line-height:1.75!important;color:var(--theme-muted)!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .project-summary>.summary-panel {grid-column:1 / -1;padding:28px 0 0!important;border-top:1px solid var(--portfolio-line)!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .summary-section-heading h4 {font-size:22px!important;font-weight:400!important;line-height:1.5!important;letter-spacing:-.035em}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .summary-section-heading p {font-size:14px!important;line-height:1.9!important;margin-top:8px!important;color:var(--theme-text)!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .reading-tabs {gap:28px;padding:16px 0;border-color:var(--portfolio-line)!important;background:transparent!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .reading-tabs button {font-size:13px!important;color:var(--theme-muted)!important;background:transparent!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .reading-tabs button[aria-selected="true"] {color:var(--theme-accent)!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content :is(.alloy-evidence-grid article,.literature-evidence,.phase-comparison article) {padding:20px 0;border-top:1px solid var(--portfolio-line)!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content :is(.summary-callout,.alloy-process-note) {padding:0 0 0 14px!important;border-left:1px solid var(--portfolio-line)!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content :is(.research-flow,.xrd-flow) {display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content :is(.research-flow,.xrd-flow) span {padding:12px 0;border-bottom:1px solid var(--portfolio-line)!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .interface-comparison h4 {grid-row:1}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .interface-layer.cnt {grid-row:2}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .interface-layer.transition {grid-row:3}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .interface-layer.zinc {grid-row:4}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .interface-layer.lithium {grid-row:5}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .interface-gap {grid-row:3 / span 2;align-self:center}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .interface-comparison p {grid-row:6}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .project-summary>.summary-panel.reading-panel {border-top:0!important;padding-top:8px!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content :is(.slide-viewer,.slide-image) {background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .focus-content .slide-controls :is(button,select) {background:transparent!important;border:0!important;color:var(--theme-text)!important}

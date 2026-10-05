@@ -6,6 +6,21 @@ function labEquipmentVisual(compact=false){
   <div class="equipment-label"><span>OBSERVATION / 01</span><strong>형상을 읽는 시선.</strong></div>
  </figure>`;
 }
+function mimIntroductionMarkup(overview=false){
+ const project=experiences.find(item=>item.id==='mim');
+ const titleTag=overview?'h1':'h3';
+ const leadTag=overview?'h2':'p';
+ return `<div class="mim-introduction-copy${overview?' case-heading-copy':' spread-copy'}">
+  <span class="mim-introduction-kicker">01 / FIELD</span>
+  <${titleTag} class="project-title mim-introduction-title">작은 부품에서<br> 공정 전체를 보다.</${titleTag}>
+  <${leadTag} class="project-lead mim-introduction-lead">${escapeHTML(project.title)} 인턴십</${leadTag}>
+  <ol class="mim-introduction-elements" aria-label="MIM 현장 경험의 세 가지 요소"><li>공정 이해</li><li>측정·검사</li><li>기록 검토</li></ol>
+  <p class="mim-introduction-description">금속 분말이 제품이 되기까지.<br>공정 흐름과 측정·검사 경험을 함께 기록했습니다.</p>
+  <a class="mim-introduction-link" href="#mim${overview?'/story-0':''}"${overview?'':' data-project-transition'}>현장 경험 읽기 <span aria-hidden="true">↗</span></a>
+  <small class="mim-introduction-company">계림금속</small>
+ </div>
+ <figure class="mim-introduction-photo"><img src="artifacts/equipment-gallery/images/optical-3d.jpg" alt="비접촉 3D 측정 장비" width="1120" height="1684" loading="${overview?'eager':'lazy'}" decoding="async"></figure>`;
+}
 function labArchiveVisual(id){
  if(id==='academy')return '<svg viewBox="0 0 240 100" role="img" aria-label="선박과 전기 교육을 표현한 도식"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M28 59h184l-22 23H51zM66 59V34h78v25M85 34V22h38v12M149 59V43h31v16M99 22V12M28 91q15-8 30 0t30 0t30 0t30 0t30 0t30 0"/><path d="M77 43h12m8 0h12m8 0h12M77 51h12m8 0h12m8 0h12"/><path d="M170 14l-9 16h12l-9 15"/></g></svg>';
  if(id==='mim')return '<svg viewBox="0 0 240 100" role="img" aria-label="환형 부품의 치수 측정을 표현한 도식"><g fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="120" cy="48" rx="49" ry="25"/><ellipse cx="120" cy="48" rx="23" ry="12"/><path d="M71 48v15c0 14 22 25 49 25s49-11 49-25V48M97 48v11c0 7 10 12 23 12s23-5 23-12V48M65 17h110M71 10v13M169 10v13M48 27v61M41 27h14M41 88h14"/><path d="M76 17l6-3m-6 3l6 3m82-3l-6-3m6 3l-6 3"/></g></svg>';
@@ -36,10 +51,8 @@ function portfolioHomeMarkup(){
  <nav class="lab-chapters" aria-label="대표 경험 구간"><span>SELECTED WORK</span><button data-home-scroll="field-work">01 · 현장</button><button data-home-scroll="materials-work">02 · 소재</button><button data-home-scroll="data-work">03 · 데이터</button><div class="lab-scroll-track" aria-hidden="true"><i></i></div></nav>
  <section class="selected-work" id="selected-work" aria-labelledby="selected-title">
   <div class="home-section-heading" data-reveal><h2 id="selected-title">A closer look.<span>관찰에서 이해까지</span></h2><span class="section-count">01 — 03</span></div>
-  <article class="work-spread field-spread" id="field-work" data-chapter="field">
-   <div class="spread-copy" data-reveal><span class="spread-index">01 / FIELD</span><h3>작은 부품에서<br>공정 전체를 보다.</h3><p>MIM 공정 품질관리 인턴십</p><div class="spread-description">금속 분말이 제품이 되기까지.<br>공정 흐름과 측정·검사 경험을 함께 기록했습니다.</div><a class="spread-link" href="#mim" data-project-transition>현장 경험 읽기 <span>↗</span></a><small>계림금속</small></div>
-   <div class="spread-image" style="view-transition-name:project-mim">${labEquipmentVisual()}</div>
-   <div class="chapter-word" aria-hidden="true">OBSERVE.</div>
+  <article class="work-spread field-spread mim-introduction" id="field-work" data-chapter="field">
+   ${mimIntroductionMarkup()}
   </article>
   <article class="work-spread materials-spread" id="materials-work" data-chapter="materials">
    <div class="materials-visual" data-reveal style="view-transition-name:project-alloy"><span class="visual-kicker">Fe–Si / MATERIAL STUDY</span><div class="material-compositions"><span>Fe</span><span>3.5<small>wt% Si</small></span><span>6.5<small>wt% Si</small></span></div><div class="metric-controls" role="group" aria-label="합금 비교 지표"><button type="button" data-metric="0" aria-pressed="true">경도</button><button type="button" data-metric="1" aria-pressed="false">기공률</button></div><div class="material-chart">${alloyMetricCharts()}</div></div>
