@@ -21,7 +21,7 @@ function animateIn(element,delay=0){if(!reducedMotion())element.animate([{opacit
 function stat(label,value,detail){return `<article class="summary-stat"><span>${label}</span><strong>${value}</strong><small>${detail}</small></article>`;}
 function xrdPhaseChart(){
  const rows=[['저가',76,30],['중가',78,42],['고가',84,65]];
- return `<figure class="evidence-chart xrd-phase-chart"><figcaption>정방정상 분율 <small>110℃ 수증기 100시간 전후 · 발표자료 기준</small></figcaption><div class="evidence-legend"><span>열화 전</span><span>열화 후</span></div><div class="evidence-chart-rows">${rows.map(([label,before,after])=>`<div class="evidence-chart-row"><b>${label}</b><div class="evidence-bar-pair"><div class="evidence-bar"><span style="--bar-value:${before}%"></span><strong>${before}%</strong></div><div class="evidence-bar after"><span style="--bar-value:${after}%"></span><strong>${after}%</strong></div></div></div>`).join('')}</div></figure>`;
+ return `<figure class="evidence-chart xrd-phase-chart"><figcaption>정방정상 분율 <small>110℃ 수증기 100시간 전후 · 발표자료 기준</small></figcaption><div class="xrd-phase-chart-body"><div class="evidence-legend"><span>열화 전</span><span>열화 후</span></div><div class="evidence-chart-rows">${rows.map(([label,before,after])=>`<div class="evidence-chart-row"><b>${label}</b><div class="evidence-bar-pair"><div class="evidence-bar"><span style="--bar-value:${before}%"></span><strong>${before}%</strong></div><div class="evidence-bar after"><span style="--bar-value:${after}%"></span><strong>${after}%</strong></div></div></div>`).join('')}</div></div></figure>`;
 }
 function alloyMetricCharts(){
  const metrics=[

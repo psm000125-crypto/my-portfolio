@@ -47,18 +47,18 @@ function experienceCoverGraphic(id, compact=false) {
   <g class="xrd-measurement xrd-measurement-edge"><path class="xrd-beam" d="m242 76 226 92 31-92"/><circle class="xrd-measured-point" cx="468" cy="168" r="12"/></g>
   <g class="cover-diagram-labels"><text x="216" y="30">X선</text><text x="315" y="264" text-anchor="middle">몸통</text><text x="468" y="264" text-anchor="middle">날 끝</text></g>`;
  if(id==='energy')diagram=`
-  <defs><clipPath id="energy-cover-coating"><rect x="85" y="165" width="340" height="139"/></clipPath></defs>
-  <g class="energy-coating">
-   <path class="cover-material-soft" d="M85 165h340v139H85Z"/>
-   <path class="cover-diagram-guide" d="M85 216h340M85 261h340"/>
-   <g class="energy-cnt-network" clip-path="url(#energy-cover-coating)">${[0,1,2,3,4,5,6].map(i=>`<path d="M${64+i*57} 158c45 18-26 38 12 56s-20 32 8 51 30 29 4 43"/><path d="M${92+i*55} 158c-24 22 44 32 12 56s27 37-1 54" opacity=".45"/>`).join('')}</g>
-   <g class="energy-zinc-particles">${[[104,279],[148,289],[196,276],[241,292],[288,278],[337,291],[385,278]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="9"/><circle class="energy-cobalt" cx="${x+3}" cy="${y-2}" r="2"/>`).join('')}</g>
-   <path class="energy-lithium" d="M85 313h340v43H85Z"/>
-   <g class="energy-deposition">${[0,1,2,3,4,5,6,7,8].map(i=>`<circle cx="${103+i*38}" cy="309" r="4" style="--deposit-delay:${i*.16}s"/>`).join('')}</g>
+  <g class="energy-battery">
+   <path class="cover-material-soft" d="M104 162h328v166H104Z"/>
+   <path class="cover-material-soft" d="m104 162 36-28h328l-36 28Z"/>
+   <path class="cover-material-solid" d="m432 162 36-28v166l-36 28Z"/>
+   <path class="energy-battery-terminal" d="m451 212 17-13h22v52l-17 13h-22Z"/>
+   <path class="cover-diagram-guide" d="M451 212h22v52M473 212l17-13"/>
+   <rect x="126" y="184" width="284" height="122" rx="5"/>
+   <g class="energy-battery-cells">${[0,1,2,3].map(i=>`<rect x="${141+i*65}" y="198" width="58" height="94" rx="3"/>`).join('')}</g>
+   <path class="energy-battery-charge" d="m287 187-49 67h37l-17 49 61-76h-39Z"/>
+   <path class="cover-diagram-guide" d="M126 174h56M350 316h60"/>
   </g>
-  <g class="energy-ion-flow">${[0,1,2,3,4].map(i=>`<g class="energy-mobile-ion" style="--ion-delay:${-i*.9}s"><circle cx="${119+i*67}" cy="96" r="13"/><text x="${119+i*67}" y="101" text-anchor="middle">Li⁺</text></g>`).join('')}</g>
-  <g class="cover-diagram-guide"><path d="M425 190h27M425 238h27M425 282h27M425 335h27"/></g>
-  <g class="cover-diagram-labels"><text x="463" y="196">다공성 CNT</text><text x="463" y="244">전이층</text><text x="463" y="288">Co–ZnO/CNT</text><text x="463" y="341">Li metal</text><text x="85" y="404">3층 경사 계면층 · 문헌 기반 설계</text></g>`;
+  `;
  if(id==='sejong')diagram=`
   <g class="sejong-street-map">
    <path class="sejong-waterway" d="M96 87c107 36-36 115 44 148s40 48 12 80"/>
@@ -79,7 +79,7 @@ function experienceCoverGraphic(id, compact=false) {
    <path class="fitness-signal-read" d="M315 252h24q12 0 23-18 7-8 13 9 11 15 24-23 12-65 24-43 17 30 25 75 10 61 27 30 10-17 17-30 10-17 20-8 9 9 15 8h37"/>
    <circle class="fitness-peak-marker" cx="418" cy="170" r="10"/>
   </g>`;
- const archiveViewBoxes={alloy:'70 55 470 310',xrd:'35 5 515 275',energy:'65 65 525 360',sejong:'45 65 330 270',fitness:'60 30 535 335'};
+ const archiveViewBoxes={alloy:'70 55 470 310',xrd:'35 5 515 275',energy:'80 106 435 250',sejong:'45 65 330 270',fitness:'60 30 535 335'};
  const viewBox=compact?archiveViewBoxes[id]:(id==='sejong'?'20 50 380 285':'0 0 600 450');
  return `<svg class="experience-cover-graphic cover-${id}" viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${compact||['xrd','energy','sejong','fitness'].includes(id)?'':guides}<g class="cover-drawing">${diagram}</g></svg>`;
 }

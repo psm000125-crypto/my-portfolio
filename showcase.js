@@ -15,8 +15,10 @@ function mimIntroductionMarkup(overview=false){
   <${titleTag} class="project-title mim-introduction-title">작은 부품에서<br> 공정 전체를 보다.</${titleTag}>
   <${leadTag} class="project-lead mim-introduction-lead">${escapeHTML(project.title)} 인턴십</${leadTag}>
   <p class="mim-introduction-description">금속 분말이 제품이 되기까지.<br>공정 흐름과 측정·검사 경험을 함께 기록했습니다.</p>
+  ${overview?'':`<a class="spread-link" href="#mim" data-project-transition>공정 경험 살펴보기 <span>↗</span></a><a class="spread-secondary" href="#mim/work-equipment-gallery" data-project-transition>함께 보기 · 측정·검사 장비 ↗</a>`}
  </div>
- <figure class="mim-introduction-photo"><img src="artifacts/equipment-gallery/images/optical-3d.jpg" alt="비접촉 3D 측정 장비" width="1120" height="1684" loading="${overview?'eager':'lazy'}" decoding="async"></figure>`;
+ <figure class="mim-introduction-photo"><img src="artifacts/equipment-gallery/images/optical-3d.jpg" alt="비접촉 3D 측정 장비" width="1120" height="1684" loading="${overview?'eager':'lazy'}" decoding="async"></figure>
+ ${overview?'':'<div class="chapter-word" aria-hidden="true">OBSERVE.</div>'}`;
 }
 function labArchiveVisual(id){
  if(['alloy','xrd','energy','sejong','fitness'].includes(id))return experienceCoverGraphic(id,true);
