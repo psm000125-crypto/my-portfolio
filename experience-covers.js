@@ -63,8 +63,8 @@ function experienceCoverGraphic(id) {
   <g class="sejong-street-map">
    <path class="sejong-waterway" d="M96 87c107 36-36 115 44 148s40 48 12 80"/>
    <path class="cover-diagram-guide" d="M60 115h296M64 192h292M65 278h290M88 82v225M216 82v227M304 82v229"/>
-   <g class="sejong-buildings">${[[110,94,32,34],[171,96,27,31],[239,92,41,43],[323,91,29,45],[108,151,38,26],[159,149,34,28],[237,153,44,23],[323,149,27,26],[170,212,26,45],[234,211,46,36],[321,216,30,38],[86,290,38,18],[241,290,38,18]].map(([x,y,w,h])=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2"/>`).join('')}</g>
-   <g class="sejong-candidates">${[[123,143],[243,115],[329,180],[174,249],[273,271]].map(([x,y],i)=>i===0||i===4?`<g class="sejong-selected-site"><circle class="sejong-site-halo" cx="${x}" cy="${y}" r="20" style="--site-delay:${i===0?'0':'-2.8'}s"/><circle class="sejong-site-point" cx="${x}" cy="${y}" r="12"/></g>`:`<circle cx="${x}" cy="${y}" r="5"/>`).join('')}</g>
+   <g class="sejong-buildings">${[[110,94,32,34],[171,96,27,31],[239,92,41,43],[323,91,29,45],[108,151,38,26],[159,149,34,28],[237,153,44,23],[323,149,27,26],[170,212,26,45],[234,211,46,36],[321,216,30,38],[86,290,38,18],[241,290,38,18]].map(([x,y,w,h],i)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" style="--building-delay:${.3+i*.06}s"/>`).join('')}</g>
+   <g class="sejong-candidates">${[[123,143],[243,115],[329,180],[174,249],[273,271]].map(([x,y],i)=>i===0||i===4?`<g class="sejong-selected-site" style="--site-delay:${i===0?'0':'-2.8'}s"><circle class="sejong-site-halo" cx="${x}" cy="${y}" r="20"/><circle class="sejong-site-point" cx="${x}" cy="${y}" r="12"/></g>`:`<circle cx="${x}" cy="${y}" r="5" style="--point-delay:${-i*.85}s"/>`).join('')}</g>
   </g>`;
  if(id==='fitness')diagram=`
   <g class="fitness-machine-frame"><path d="M105 77v269M221 77v269M78 348h170M140 46h45"/><path class="fitness-cable" d="M162 46v162"/></g>
