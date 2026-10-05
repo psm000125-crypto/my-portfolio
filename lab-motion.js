@@ -66,6 +66,9 @@ function bindPortfolioMotion(root){
    card.hidden=value!=='all'&&card.dataset.field!==value;
    if(!card.hidden){count++;card.classList.add('is-visible');}
   });
+  root.querySelectorAll('.archive-collection').forEach(group=>{
+   group.hidden=![...group.querySelectorAll('.lab-project-card')].some(card=>!card.hidden);
+  });
   root.querySelector('.archive-status').textContent=`${button.textContent} · ${count}개 경험`;
  }));
  if(chapters.length&&'IntersectionObserver' in window){

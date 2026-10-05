@@ -1,0 +1,108 @@
+/* Open technical covers follow the academy's title / drawing / exploration rhythm. */
+body[data-project="xrd"] {--portfolio-paper:#f1edf3;--portfolio-line:#d8cddf}
+body[data-project="energy"] {--portfolio-paper:#eaf1ef;--portfolio-line:#c5d9d5}
+body[data-project="sejong"] {--portfolio-paper:#eaeef4;--portfolio-line:#cbd4e2}
+body[data-project="fitness"] {--portfolio-paper:#f3eae8;--portfolio-line:#dfc8c9}
+body:has(.experience-landing) {background:var(--portfolio-paper)!important;background-image:none!important}
+body[data-project]:not(.showcase-home):has(.experience-landing) :is(.masthead,.footer) {background:var(--portfolio-paper)!important;border-color:var(--portfolio-line)!important}
+body[data-project]:not(.showcase-home):has(.experience-landing) .workspace .detail-panel {background:transparent!important;border-color:var(--portfolio-line)!important;border-top:1px solid var(--theme-accent)!important;padding-top:24px!important}
+body[data-project]:not(.showcase-home):has(.experience-landing) .workspace .detail-panel .overview-link.active {background:transparent!important;color:var(--theme-accent)!important;box-shadow:none!important;border-bottom:1px solid var(--portfolio-line)}
+body[data-project]:not(.showcase-home) .workspace .experience-landing .case-stage {display:block!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible}
+body[data-project]:not(.showcase-home) .workspace .experience-landing .project-heading {display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:center;gap:24px;padding:42px 0 48px!important;min-height:440px;background:transparent!important;overflow:visible;border:0!important}
+body[data-project]:not(.showcase-home) .workspace .experience-landing .project-heading:after {display:none}
+body[data-project]:not(.showcase-home) .workspace .experience-landing .case-heading-copy {grid-column:1;grid-row:1;max-width:none!important;z-index:1}
+body[data-project]:not(.showcase-home) .workspace .experience-landing .case-emblem {display:block!important;position:relative!important;grid-column:2;grid-row:1;width:100%!important;height:auto!important;inset:auto!important;aspect-ratio:4/3;opacity:.8!important;transform:none!important;z-index:0;color:var(--theme-accent)}
+body[data-project]:not(.showcase-home) .workspace .experience-landing .project-title {font-size:clamp(42px,4.1vw,68px)!important;font-weight:400!important;line-height:1.18!important;letter-spacing:-.055em!important;max-width:16ch!important;margin:28px 0 32px!important;color:var(--theme-deep)!important;text-wrap:balance;word-break:keep-all}
+body[data-project]:not(.showcase-home) .workspace .experience-landing .project-lead {font-size:clamp(23px,2.15vw,34px)!important;line-height:1.5!important;font-weight:400!important;letter-spacing:-.04em!important;max-width:none!important;color:var(--theme-accent)!important;margin:0!important;white-space:pre-line}
+body[data-project]:not(.showcase-home) .workspace .experience-landing .eyebrow {color:var(--theme-accent)!important;font-size:11px!important;letter-spacing:.16em!important}
+body[data-project]:not(.showcase-home) .workspace .experience-landing .eyebrow:before {background:var(--theme-accent)!important}
+body[data-project]:not(.showcase-home) .workspace .experience-landing .cover-description {font-size:15px;line-height:1.95;color:var(--theme-muted);max-width:80ch;margin:38px 0 30px;word-break:keep-all}
+.experience-resources {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-block:1px solid var(--portfolio-line);margin:0}
+.experience-resource {position:relative;display:block;color:var(--theme-deep);padding:20px 24px 44px;transition:background .25s;min-width:0}
+.experience-resource+.experience-resource {border-left:1px solid var(--portfolio-line)}
+.experience-resource:hover {background:var(--theme-soft)}
+.experience-resource:focus-visible {outline:2px solid var(--theme-accent);outline-offset:-3px}
+.resource-visual {height:118px;position:relative;margin-bottom:12px;color:var(--theme-accent)}
+.resource-visual>span {position:absolute;top:6px;left:0;font-size:11px;letter-spacing:.12em;color:var(--theme-muted)}
+.resource-visual svg {width:100%;height:100%;opacity:.75;transition:transform .4s,opacity .4s}
+.experience-resource:hover svg {transform:translateY(-5px);opacity:1}
+body[data-project]:not(.showcase-home) .workspace .experience-resource h3 {font-size:22px!important;font-weight:400!important;line-height:1.4;letter-spacing:-.035em;margin:0 0 10px!important;color:var(--theme-deep)!important;word-break:keep-all}
+.experience-resource p {font-size:12px;line-height:1.85;color:var(--theme-text);margin:0;word-break:keep-all}
+.experience-resource b {position:absolute;right:24px;bottom:16px;color:var(--theme-accent);font-size:25px;font-weight:400;transition:transform .25s}
+.experience-resource:hover b {transform:translate(3px,-3px)}
+.experience-resources:has(>a:last-child:nth-child(2)) {grid-template-columns:repeat(2,minmax(0,1fr))}
+body[data-project]:not(.showcase-home) .workspace .experience-landing .case-meta {padding:0!important}
+body[data-project]:not(.showcase-home) .workspace .experience-landing .case-meta .project-facts {background:transparent!important;border:0!important;padding:0 0 24px!important}
+body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing .project-heading {display:block;min-height:0!important;padding:20px 0!important;border-bottom:1px solid var(--portfolio-line)!important}
+body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing .case-emblem,
+body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing :is(.experience-resources,.cover-description,.case-meta) {display:none!important}
+body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing .project-title {font-size:25px!important;max-width:none!important;margin:12px 0!important}
+body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing .project-lead {font-size:18px!important;white-space:normal}
+/* Drawings describe each subject without presenting invented measurements. */
+.cover-guides {opacity:.24;transform-origin:300px 220px}
+.cover-drawing {stroke-width:1.8}
+.experience-cover-graphic {width:100%;height:100%;overflow:visible}
+.experience-cover-graphic .cover-drawing {animation:cover-appear 1.6s ease-out both}
+.cover-guides {animation:cover-orbit 100s linear infinite}
+.cover-probe {animation:cover-probe 6s ease-in-out infinite}
+.cover-roll {transform-box:fill-box;transform-origin:center;animation:cover-turn 16s linear infinite}
+.cover-roll-bottom {animation-direction:reverse}
+.cover-grains {animation:cover-feed 5s ease-in-out infinite}
+.cover-ray {stroke-dasharray:7 10;animation:cover-ray 4s linear infinite}
+.cover-crystal {transform-origin:300px 216px;animation:cover-crystal 12s ease-in-out infinite}
+.cover-trace {stroke-dasharray:1000;animation:cover-trace 6s ease-in-out infinite}
+.cover-layer {animation:cover-layer 7s ease-in-out infinite}
+.cover-layer-middle {animation-delay:-1s}
+.cover-layer-base {animation-delay:-2s}
+.cover-ion {animation:cover-ion 4s ease-in-out infinite}
+.cover-route {animation:cover-ray 6s linear infinite}
+.cover-pulse {transform-box:fill-box;transform-origin:center;animation:cover-pulse 4s ease-out infinite;animation-delay:var(--pin-delay)}
+.cover-stack {animation:cover-stack 4s ease-in-out infinite}
+.cover-signal {stroke-dasharray:500;animation:cover-trace 4s ease-in-out infinite}
+.cover-pulse-dot {animation:cover-glow 4s ease-in-out infinite}
+@keyframes cover-appear {from{opacity:0;stroke-dasharray:1200;stroke-dashoffset:1200}to{opacity:1;stroke-dasharray:1200;stroke-dashoffset:0}}
+@keyframes cover-orbit {to{transform:rotate(360deg)}}
+@keyframes cover-probe {0%,100%{transform:translateY(-12px)}50%{transform:translateY(12px)}}
+@keyframes cover-turn {to{transform:rotate(360deg)}}
+@keyframes cover-feed {0%,100%{transform:translateX(-8px)}50%{transform:translateX(8px)}}
+@keyframes cover-ray {to{stroke-dashoffset:-68}}
+@keyframes cover-crystal {0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes cover-trace {0%{stroke-dashoffset:1000;opacity:.2}35%,75%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:-1000;opacity:.2}}
+@keyframes cover-layer {0%,100%{transform:translateY(-5px)}50%{transform:translateY(5px)}}
+@keyframes cover-ion {0%{transform:translateY(-12px);opacity:0}35%{opacity:1}100%{transform:translateY(35px);opacity:0}}
+@keyframes cover-pulse {0%{transform:scale(.7);opacity:.7}100%{transform:scale(2.2);opacity:0}}
+@keyframes cover-stack {0%,100%{transform:translateY(12px)}50%{transform:translateY(-18px)}}
+@keyframes cover-glow {0%,100%{opacity:.3}50%{opacity:1}}
+/* Four navigation entries; braces keep related projects visually together. */
+.nav-collection {border-bottom:1px solid var(--drawer-line,var(--portfolio-line));margin:8px 0}
+.nav-collection>summary {list-style:none;display:flex;align-items:center;gap:12px;cursor:pointer;padding:19px 14px;color:var(--drawer-ink,var(--portfolio-ink));font-size:14px}
+.nav-collection>summary::-webkit-details-marker {display:none}
+.nav-collection>summary .num {font-size:11px;color:var(--drawer-muted,var(--portfolio-muted));min-width:20px}
+.nav-collection>summary strong {font-weight:500;flex:1}
+.collection-toggle:after {content:'+';font-size:20px;font-weight:300}
+.nav-collection[open]>summary .collection-toggle:after {content:'−'}
+.nav-collection-body {position:relative;margin:0 8px 16px 25px;padding-left:22px}
+.collection-brace {position:absolute;left:0;top:4px;width:16px;height:calc(100% - 8px);color:var(--drawer-muted,var(--theme-accent,#7b896c));opacity:.55}
+body .workspace .navigation .nav-collection-link {display:flex!important;padding:13px 10px!important;gap:8px!important;min-height:0!important;align-items:center}
+body .workspace .navigation .nav-collection-link>span:first-child {flex:1;min-width:0;width:auto!important}
+body .workspace .navigation .nav-collection-link strong {font-size:12px!important;font-weight:400!important;line-height:1.65;word-break:keep-all}
+body .workspace .navigation .nav-collection-link.active {box-shadow:none!important}
+/* The home archive uses the same membership, with a full-height brace. */
+.archive-collections {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px}
+.archive-collection {margin:38px 0 50px}
+.archive-collection:is([data-collection="campus"],[data-collection="ai"]) {grid-column:1/-1}
+.archive-collection:is([data-collection="academy"],[data-collection="internship"]) .lab-archive-grid {grid-template-columns:minmax(0,1fr)}
+.archive-collection[data-collection="ai"] .lab-archive-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+.archive-collection[hidden] {display:none!important}
+.archive-collection-heading {display:flex;gap:16px;align-items:baseline;margin-bottom:24px;border-top:1px solid var(--portfolio-line);padding-top:22px}
+.archive-collection-heading h3 {font-size:22px;font-weight:400;letter-spacing:-.035em;margin:0;color:var(--portfolio-ink)}
+.archive-collection-heading>span {font-size:11px;letter-spacing:.1em;color:var(--portfolio-muted)}
+.archive-collection-body {position:relative}
+.archive-collection-body:has(>.collection-brace) {padding-left:36px}
+.archive-collection-body>.collection-brace {width:22px;color:#7b896c;top:0;height:100%;opacity:.65}
+.archive-collection .lab-archive-grid {grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.archive-collection .lab-project-card {min-width:0}
+@media(prefers-reduced-motion:reduce) {
+ .experience-cover-graphic,.experience-cover-graphic * {animation:none!important;stroke-dashoffset:0!important}
+ .experience-resource :is(svg,b) {transition:none!important;transform:none!important}
+}

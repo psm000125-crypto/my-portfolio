@@ -3,11 +3,10 @@ const fontLink=document.createElement('link');fontLink.rel='stylesheet';fontLink
 const view = document.querySelector('#main-view');
 const panel = document.querySelector('#detail-panel');
 const number = i => String(i + 1).padStart(2,'0');
-const roots=experiences.filter(p=>!p.parent);
 const navLink=(p,i,child=false)=>`<a class="nav-item${child?' nav-child':''}" href="#${p.id}" data-id="${p.id}"><span class="num">${child?'↳':number(i)}</span><span><strong>${p.title}</strong></span><span class="arrow">›</span></a>`;
 function renderNavigation(projectId,selection){
  rememberAcademyMenu(nav);
- nav.innerHTML=roots.map((p,i)=>p.id==='academy'?academyNavigationMarkup(projectId,selection):navLink(p,i)).join('');
+ nav.innerHTML=collectionNavigationMarkup(projectId,selection);
  bindAcademyMenu(nav);
 }
 const crystal = `<div class="crystal-wrap" aria-hidden="true"><svg class="crystal" viewBox="0 0 180 220"><defs><linearGradient id="quartz" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fbe4df"/><stop offset=".55" stop-color="#FAF6F5" stop-opacity=".7"/><stop offset="1" stop-color="#bda2a4" stop-opacity=".35"/></linearGradient></defs><polygon points="90,8 151,66 140,156 77,211 29,145 36,63" fill="url(#quartz)"/><polygon points="90,8 102,86 36,63" fill="#fff8"/><polygon points="90,8 151,66 102,86" fill="#edbcbe88"/><polygon points="36,63 102,86 29,145" fill="#f9d4cb88"/><polygon points="102,86 151,66 140,156" fill="#c49c9e66"/><polygon points="102,86 140,156 77,211" fill="#ead6d344"/><polygon points="29,145 102,86 77,211" fill="#f8e7e280"/><line x1="36" y1="63" x2="140" y2="156"/><line x1="29" y1="145" x2="151" y2="66"/></svg></div>`;
@@ -307,9 +306,16 @@ function project(p){
   view.querySelector('.project-description').remove();
   view.querySelector('.case-stage').insertAdjacentHTML('beforeend',academyOverviewMarkup());
  }
+ else if(!p.parent) {
+  const overview=view.querySelector('.project-overview');
+  overview.classList.add('experience-landing');
+  view.querySelector('.case-emblem').innerHTML=experienceCoverGraphic(p.id);
+  view.querySelector('.project-description').remove();
+  view.querySelector('.case-stage').insertAdjacentHTML('beforeend',experienceResourcesMarkup(p));
+  view.querySelector('.case-meta').insertAdjacentHTML('afterbegin',`<p class="cover-description">${escapeHTML(p.summary)}</p>`);
+ }
  else {
   view.querySelector('.case-stage').insertAdjacentHTML('beforeend',portfolioProjectVisual(p.id));
-  if(p.id==='energy')bindEnergyLayers(view);
  }
 }
 function focusContent(p,selection,sectionIndex=null){
