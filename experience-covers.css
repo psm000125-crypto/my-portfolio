@@ -180,12 +180,10 @@ body .workspace .navigation .nav-collection-link.active {box-shadow:none!importa
 .archive-collection-body>.collection-brace {width:22px;color:#7b896c;top:0;height:100%;opacity:.65}
 .archive-collection .lab-archive-grid {grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
 .archive-collection .lab-project-card {min-width:0}
-/* Preview artwork uses the same group palette while retaining its own silhouette. */
+/* Archive cards share the overview artwork and animations at a smaller size. */
 .lab-card-visual:is([data-preview="alloy"],[data-preview="xrd"],[data-preview="energy"],[data-preview="sejong"],[data-preview="fitness"]) {background:var(--collection-card);color:var(--collection-card-ink);border-radius:2px;background-image:none}
 .lab-card-visual:is([data-preview="alloy"],[data-preview="xrd"],[data-preview="energy"]) {background-image:linear-gradient(#80583a08 1px,transparent 1px),linear-gradient(90deg,#80583a08 1px,transparent 1px);background-size:22px 22px}
-.lab-card-visual[data-preview="energy"] .mini-layers i {background:#e2c5a6;box-shadow:5px 5px 0 #80583a35}
-.lab-card-visual[data-preview="energy"] .mini-layers i:nth-child(2) {background:#bc9976}
-.lab-card-visual[data-preview="energy"] .mini-layers i:nth-child(3) {background:#80583a}
+.lab-card-visual .experience-cover-graphic {position:absolute;inset:16px 24px;width:calc(100% - 48px);height:calc(100% - 32px);overflow:visible}
 .archive-collection[data-collection="campus"]>.archive-collection-heading h3 {color:#80583a}
 .archive-collection[data-collection="ai"]>.archive-collection-heading h3 {color:#315cc6}
 .archive-collection[data-collection="campus"] .collection-brace {color:#80583a}
