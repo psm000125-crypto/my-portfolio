@@ -17,7 +17,7 @@ function shipMotionMarkup() {
 }
 function shipBuildMarkup() {
  const stages=['블록 제작','조립·탑재','의장·진수','시운전'];
- return `<div class="ship-build-exhibit"><div class="ship-build-graphic"><div class="ship-plate-heading"><span>블록에서 선박으로</span><span data-build-label>블록 제작</span></div><svg viewBox="0 0 800 365" role="img" aria-labelledby="ship-build-title"><title id="ship-build-title">세 개의 선체 블록이 합쳐지고 의장, 진수, 시운전으로 이어지는 건조 개념도</title><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><g class="ship-build-block block-a"><path class="ship-solid" d="M80 210H265V280H146Z"/><path d="M104 239H265M167 210V280M224 210V280"/></g><g class="ship-build-block block-b"><path class="ship-solid" d="M265 210H480V280H265Z"/><path d="M265 239H480M324 210V280M394 210V280M454 210V280"/></g><g class="ship-build-block block-c"><path class="ship-solid" d="M480 210H680L624 280H480Z"/><path d="M480 239H654M525 210V280M587 210V280"/></g><g class="ship-build-outfit"><path d="M170 210V133H283V210M193 133V92H260V133M227 92V53M305 210V155H569V210M330 155V126H540V155"/><path class="ship-fine" d="M185 153H268M185 177H268M325 175H548M325 192H548"/></g><path class="ship-build-sea ship-waterline" d="M45 307q30-10 60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0"/><path class="ship-build-trial" d="M90 347H680M666 338L680 347L666 356"/></g></svg><div class="ship-build-track" aria-hidden="true"><i></i></div></div><div class="ship-build-stages" role="group" aria-label="건조 단계 선택">${stages.map((label,i)=>`<button type="button" data-ship-build="${i}" aria-pressed="${!i}"><span>0${i+1}</span>${label}</button>`).join('')}</div><p class="ship-control-caption">블록 단계의 선행의장·선행도장 → 탑재 → 진수 → 안벽의장 → 시운전</p></div>`;
+ return `<div class="ship-build-exhibit"><div class="ship-build-graphic"><div class="ship-plate-heading"><span>블록에서 선박으로</span><span data-build-label>블록 제작</span></div><svg viewBox="0 0 800 365" role="img" aria-labelledby="ship-build-title"><title id="ship-build-title">세 개의 선체 블록이 합쳐지고 의장, 진수, 시운전으로 이어지는 건조 개념도</title><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><g class="ship-build-block block-a"><path class="ship-solid" d="M80 210H265V280H146Z"/><path d="M104 239H265M167 210V280M224 210V280"/></g><g class="ship-build-block block-b"><path class="ship-solid" d="M265 210H480V280H265Z"/><path d="M265 239H480M324 210V280M394 210V280M454 210V280"/></g><g class="ship-build-block block-c"><path class="ship-solid" d="M480 210H680L624 280H480Z"/><path d="M480 239H654M525 210V280M587 210V280"/></g><g class="ship-build-outfit"><path d="M170 210V133H283V210M193 133V92H260V133M227 92V53M305 210V155H569V210M330 155V126H540V155"/><path class="ship-fine" d="M185 153H268M185 177H268M325 175H548M325 192H548"/></g><path class="ship-build-sea ship-waterline" d="M45 307q30-10 60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0"/><path class="ship-build-trial" d="M90 347H680M666 338L680 347L666 356"/></g></svg><div class="ship-build-track" aria-hidden="true"><i></i></div></div><div class="ship-build-stages" role="group" aria-label="건조 단계 선택">${stages.map((label,i)=>`<button type="button" data-ship-build="${i}" aria-pressed="${!i}"><span>0${i+1}</span>${label}</button>`).join('')}</div></div>`;
 }
 function shipCourseMarkup(story) {
  const sections=story[3];
@@ -45,7 +45,7 @@ function bindShipCourse(root) {
   pressed('[data-ship-build]',buttons[stage]);
   course.querySelector('[data-build-label]').textContent=['블록 제작','조립·탑재','의장·진수','시운전'][stage];
  };
- const buildDuration=16000;
+ const buildDuration=8000;
  const tick=now=>{
   raf=0;
   if(!buildVisible||manualBuild||document.hidden||preference.matches)return;
@@ -78,16 +78,16 @@ function bindShipCourse(root) {
   group.prepend(tabs);figureSets.push({group,figures,tabs});
  });
  const selectFigure=(set,index)=>{
-  set.figures.forEach((figure,i)=>{figure.hidden=i!==index;const button=set.tabs.children[i];button.setAttribute('aria-selected',String(i===index));button.tabIndex=i===index?0:-1;});
+  set.figures.forEach((figure,i)=>{const active=i===index;figure.hidden=!active;const button=set.tabs.children[i];button.setAttribute('aria-selected',String(active));button.tabIndex=active?0:-1;if(active){figure.setAttribute('data-academy-visible','');figure.removeAttribute('data-academy-swap');void figure.offsetWidth;figure.setAttribute('data-academy-swap','');}});
  };
  const replay=document.createElement('button');replay.type='button';replay.className='ship-track-toggle';replay.dataset.shipBuildReplay='';replay.textContent='건조 과정 다시 보기';build.append(replay);
  const tracks=course.querySelector('.ship-steering-tracks');
- if(tracks){const button=document.createElement('button');button.type='button';button.className='ship-track-toggle';button.dataset.shipTracks='';button.textContent='조종 궤적 멈추기';button.setAttribute('aria-pressed','false');tracks.closest('figure').append(button);}
  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
   if(entry.target===build){buildVisible=entry.isIntersecting&&entry.intersectionRatio>=.55;if(buildVisible)resumeBuild();else{cancelAnimationFrame(raf);raf=0;buildLast=0;}}
-  else{tracksVisible=entry.isIntersecting&&entry.intersectionRatio>=.55;entry.target.toggleAttribute('data-running',tracksVisible&&!document.hidden&&!preference.matches);}
+  else if(entry.target===tracks){tracksVisible=entry.isIntersecting&&entry.intersectionRatio>=.55;entry.target.toggleAttribute('data-running',tracksVisible&&!document.hidden&&!preference.matches);}
+  else if(entry.isIntersecting&&entry.intersectionRatio>=.45){entry.target.setAttribute('data-academy-visible','');observer.unobserve(entry.target);}
  }),{threshold:.55});
- observer.observe(build);if(tracks)observer.observe(tracks);
+ observer.observe(build);if(tracks)observer.observe(tracks);course.querySelectorAll('.academy-illustration:not([hidden])').forEach(figure=>observer.observe(figure));
  const onKey=event=>{
   const tab=event.target.closest('[data-ship-figure]');if(!tab)return;
   const set=figureSets.find(set=>set.tabs.contains(tab));const count=set.figures.length;let index=Number(tab.dataset.shipFigure);
@@ -101,7 +101,6 @@ function bindShipCourse(root) {
   if(!button)return;
   if(button.hasAttribute('data-ship-build-replay')){manualBuild=false;buildElapsed=0;buildLast=0;setBuild(preference.matches?1:0);resumeBuild();}
   if(button.hasAttribute('data-ship-figure')){const set=figureSets.find(set=>set.tabs.contains(button));selectFigure(set,Number(button.dataset.shipFigure));}
-  if(button.hasAttribute('data-ship-tracks')){const paused=tracks.toggleAttribute('data-paused');button.setAttribute('aria-pressed',String(paused));button.textContent=paused?'조종 궤적 재생':'조종 궤적 멈추기';}
   if(button.dataset.shipDimension){course.querySelector('.ship-dimensions').dataset.dimension=button.dataset.shipDimension;pressed('[data-ship-dimension]',button);course.querySelector('[data-dimension-caption]').textContent=dimensions[button.dataset.shipDimension];}
   if(button.dataset.shipHeel){course.querySelector('.ship-stability').dataset.heel=button.dataset.shipHeel;pressed('[data-ship-heel]',button);course.querySelector('[data-heel-caption]').textContent=button.dataset.shipHeel==='upright'?'직립 상태에서는 무게와 부력의 작용선이 같은 선 위에 놓입니다.':'선체가 기울면 부력중심이 이동하고, 작용선 사이의 거리 GZ가 복원 모멘트와 연결됩니다.';}
   if(button.dataset.shipMotion){stop();const mode=shipMotionModes.find(m=>m[0]===button.dataset.shipMotion);course.querySelector('[data-motion-caption]').textContent=`${mode[1]} · ${mode[2]}`;pressed('[data-ship-motion]',button);if(!preference.matches){void motion.getBoundingClientRect();motion.dataset.motion=mode[0];motionTimer=setTimeout(()=>motion.removeAttribute('data-motion'),4400);}}

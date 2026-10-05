@@ -185,3 +185,91 @@ function academyPracticeVisualMarkup(branch,index) {
   if(branch===2)return academyPlcPracticeVisual();
   return index===0?academyWiringPracticeVisual():index===1?academyGeneratorPracticeVisual():academyDrivePracticeVisual();
 }
+
+function bindAcademyVisuals(root) {
+  const course=root.querySelector('.visual-academy:not(.ship-course),.visual-ocean');
+  if(!course)return ()=>{};
+  const preference=matchMedia('(prefers-reduced-motion: reduce)');
+  const figures=[...course.querySelectorAll('.academy-illustration')].filter(figure=>!figure.closest('.ship-course'));
+  const figureSets=[];
+  let observer;
+  const reveal=(figure,swapped=false)=>{
+    if(!figure||figure.hidden)return;
+    figure.setAttribute('data-academy-visible','');
+    if(swapped&&!preference.matches){
+      figure.removeAttribute('data-academy-swap');
+      void figure.offsetWidth;
+      figure.setAttribute('data-academy-swap','');
+    }
+  };
+  course.querySelectorAll('.academy-practice-visuals').forEach((group,groupIndex)=>{
+    if(group.closest('.ship-course'))return;
+    const groupFigures=[...group.querySelectorAll(':scope > .academy-illustration')];
+    if(groupFigures.length<2)return;
+    const tabs=document.createElement('div');
+    tabs.className='academy-figure-tabs';
+    tabs.setAttribute('role','tablist');
+    tabs.setAttribute('aria-label','학습 도식 선택');
+    const buttons=groupFigures.map((figure,figureIndex)=>{
+      const button=document.createElement('button');
+      const label=figure.querySelector('strong')?.textContent?.trim()||('도식 '+(figureIndex+1));
+      const panelId='academy-diagram-'+groupIndex+'-'+figureIndex;
+      button.type='button';
+      button.className='academy-figure-tab';
+      button.dataset.academyFigure=figureSets.length+':'+figureIndex;
+      button.setAttribute('role','tab');
+      button.setAttribute('aria-controls',panelId);
+      button.setAttribute('aria-selected',String(figureIndex===0));
+      button.tabIndex=figureIndex===0?0:-1;
+      button.textContent=label;
+      figure.id=panelId;
+      figure.setAttribute('role','tabpanel');
+      figure.hidden=figureIndex!==0;
+      tabs.append(button);
+      return button;
+    });
+    group.before(tabs);
+    figureSets.push({figures:groupFigures,buttons});
+  });
+  const selectFigure=(set,index)=>{
+    set.figures.forEach((figure,figureIndex)=>{
+      const active=figureIndex===index;
+      figure.hidden=!active;
+      set.buttons[figureIndex].setAttribute('aria-selected',String(active));
+      set.buttons[figureIndex].tabIndex=active?0:-1;
+      if(active)reveal(figure,true);
+    });
+  };
+  const onClick=event=>{
+    const button=event.target.closest('[data-academy-figure]');
+    if(!button||!course.contains(button))return;
+    const [setIndex,figureIndex]=button.dataset.academyFigure.split(':').map(Number);
+    selectFigure(figureSets[setIndex],figureIndex);
+  };
+  const onKey=event=>{
+    const button=event.target.closest('[data-academy-figure]');
+    if(!button||!course.contains(button)||!['ArrowLeft','ArrowRight'].includes(event.key))return;
+    event.preventDefault();
+    const [setIndex,figureIndex]=button.dataset.academyFigure.split(':').map(Number);
+    const set=figureSets[setIndex];
+    const next=(figureIndex+(event.key==='ArrowRight'?1:-1)+set.buttons.length)%set.buttons.length;
+    selectFigure(set,next);
+    set.buttons[next].focus();
+  };
+  if(preference.matches)figures.forEach(figure=>reveal(figure));
+  else if('IntersectionObserver'in window){
+    observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+      if(!entry.isIntersecting||entry.target.hidden)return;
+      reveal(entry.target);
+      observer.unobserve(entry.target);
+    }),{threshold:.45});
+    figures.filter(figure=>!figure.hidden).forEach(figure=>observer.observe(figure));
+  }else figures.forEach(figure=>reveal(figure));
+  course.addEventListener('click',onClick);
+  course.addEventListener('keydown',onKey);
+  return ()=>{
+    observer?.disconnect();
+    course.removeEventListener('click',onClick);
+    course.removeEventListener('keydown',onKey);
+  };
+}

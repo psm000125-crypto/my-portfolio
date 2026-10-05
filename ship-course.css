@@ -175,7 +175,7 @@ body[data-experience-family="academy"]:not(.showcase-home) .workspace .ship-cour
 .ship-track-turn {offset-path:path('M88 127V80C88 23 175 22 175 78S88 137 88 80')}
 .ship-track-zigzag {offset-path:path('M218 30C265 52 175 76 230 98S284 137 230 155')}
 .ship-track-stop {offset-path:path('M356 30V132');animation-timing-function:cubic-bezier(.12,.5,.2,1)}
-.ship-steering-tracks[data-running]:not([data-paused]) .ship-track-marker {animation-play-state:running}
+.ship-steering-tracks[data-running] .ship-track-marker {animation-play-state:running}
 @keyframes ship-track-travel {0%,8%{offset-distance:0%}85%,100%{offset-distance:100%}}
 body[data-experience-family="academy"] .workspace .ship-track-toggle {display:block;margin:12px 0 0;padding:8px 0;background:transparent;border:0;border-bottom:1px solid #55705e;color:#b8cdbe;font:inherit;font-size:12px;cursor:pointer}
 @media(prefers-reduced-motion:reduce) {.ship-track-marker {offset-distance:35%}}
