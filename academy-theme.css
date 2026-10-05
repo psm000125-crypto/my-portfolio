@@ -91,32 +91,37 @@ body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-sec
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .enriched-story .story-section-heading h3 {font-size:clamp(19px,1.7vw,24px)!important;line-height:1.5;font-weight:500;letter-spacing:-.025em}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-body {grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;align-items:start}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .enriched-story .story-section-copy p {font-size:15px!important;line-height:1.95!important;color:#d7e2d7!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual {background:#f0f4eb!important;color:#173d31;border:1px solid #d0dfc8!important;border-radius:14px;padding:24px;overflow:hidden}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual :is(p,small,dt,dd,figcaption,li,strong,span,h3,h4) {color:#244b3a!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-diagram>figcaption {order:-1;margin:0 0 22px!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-diagram>figcaption>strong {position:static!important;font-size:17px;line-height:1.55;letter-spacing:-.02em;font-weight:600}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-diagram>figcaption>small {font-size:12px;line-height:1.75;color:#506651!important;margin-top:6px;word-break:keep-all}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-diagram>svg {order:0!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual :is(.story-process li,.story-layer-stack li,.story-compare-list>div,.story-indicator-grid li) {background:#e3ecdc!important;border-color:#c3d4b9!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-process li>span {color:#45634c!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration>svg {width:100%;height:auto;max-height:none;background:transparent!important;border:0!important;border-radius:0;padding:0}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.edu-label,.edu-number) {fill:#173d31!important;font-size:18px}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-small {fill:#45614c!important;font-size:15px}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-node {fill:#e0ebd9!important;stroke:#496d4e!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.edu-hull,.edu-feature) {fill:#c8dcbd!important;stroke:#31543e!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.edu-outline,.edu-wire,.edu-arrow) {stroke:#31543e!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-arrowhead {fill:#31543e!important}
+/* All academy activities share the ship course's reading and drawing scale. */
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual {background:transparent!important;color:#e2eadb;border:0!important;border-radius:0;padding:0!important;overflow:visible;position:relative}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual :is(p,dt,dd,figcaption,li,strong,span,h3,h4) {color:#e2eadb!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual small {color:#b8cdbe!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-diagram {display:flex;flex-direction:column;position:relative;margin:0;padding:0;background:transparent;border:0;box-shadow:none}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-diagram>figcaption {position:absolute;bottom:calc(100% + 24px);left:0;right:0;margin:0!important;min-height:0;order:2}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-diagram>figcaption>strong {position:static!important;display:block;font-size:14px;line-height:1.7;letter-spacing:0;font-weight:500;color:#e2eadb!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-diagram>figcaption>small {display:block;font-size:12px;line-height:1.7;color:#b8cdbe!important;margin-top:4px;word-break:keep-all}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration>svg {display:block;width:100%;height:auto;aspect-ratio:auto!important;margin:0!important;max-height:none;background:transparent!important;border:0!important;border-radius:0;padding:0;order:0!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration :is(.edu-label,.edu-number) {fill:#e2eadb!important;font-size:18px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-small {fill:#b8cdbe!important;font-size:15px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-hull-label {fill:#173d31!important;font:500 18px 'IBM Plex Sans KR',sans-serif}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-node {fill:transparent!important;stroke:#55705e!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.edu-hull,.edu-feature) {fill:#d8e7ce!important;stroke:#c9ee94!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.edu-outline,.edu-wire,.edu-arrow) {stroke:#a8c1b3!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-arrowhead {fill:#c9ee94!important}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-pixel {fill:#c8dcbd!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-pixel.is-dark {fill:#31543e!important}
-/* Multiple diagrams own the whole row; each plate uses an equal share of it. */
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-body:has(.academy-practice-visuals>figure:nth-of-type(2)) {grid-template-columns:minmax(0,1fr);gap:24px}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-body:has(.academy-practice-visuals>figure:nth-of-type(2))>.story-section-copy:has(>p:nth-child(2)) {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-body:has(.academy-practice-visuals>figure:nth-of-type(2))>.story-section-copy p {margin:0}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-body:has(.academy-practice-visuals>figure:nth-of-type(2))>.story-section-copy>p:last-child:nth-child(odd) {grid-column:1/-1}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual:has(.academy-practice-visuals) {background:transparent!important;border:0!important;padding:0!important;overflow:visible}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-practice-visuals>.academy-illustration {display:flex;flex-direction:column;margin:0;padding:24px;background:#f0f4eb;border:1px solid #d0dfc8;border-radius:14px;min-width:0}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-practice-visuals:has(>figure:nth-of-type(2))>.academy-illustration>figcaption {min-height:66px;margin-bottom:18px!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-practice-visuals:has(>figure:nth-of-type(2))>.academy-illustration>svg {aspect-ratio:500/360;margin-block:auto}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-pixel.is-dark {fill:#55705e!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-axis {stroke:#55705e!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.edu-wave-r,.edu-wave-v) {stroke:#c9ee94}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-wave-s {stroke:#9fd7c7}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.edu-wave-t,.edu-wave-i,.edu-fault-line) {stroke:#e6bc8d}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-phase-r {fill:#c9ee94}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .edu-phase-s {fill:#9fd7c7}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.edu-phase-t,.edu-fault,.edu-muted) {fill:#e6bc8d}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-practice-visuals {display:grid;grid-template-columns:minmax(0,1fr);gap:0;position:relative}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-practice-visuals>.academy-illustration {display:flex;flex-direction:column;margin:0;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none;min-width:0}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration[hidden] {display:none!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual :is(.story-process li,.story-layer-stack li,.story-compare-list>div,.story-indicator-grid li) {background:transparent!important;border-color:#426053!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual :is(.prediction-distribution li,.story-metrics div) {border-color:#426053!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-section-visual .story-metrics dd {font-size:22px}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .case-stage .lab-journal-visual {background:#193c30!important;border-color:#426053!important}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .case-stage .journal-concept {background:#193c30!important;color:#c9ee94!important}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.summary-hero,.summary-panel,.summary-stat,.summary-callout,.summary-status,.pipeline-node,.coating-distribution,.notebook-view,.prediction-table-wrap) {background:#193c30!important;color:#d1ded2!important;border-color:#426053!important}
@@ -235,39 +240,35 @@ body[data-project="academy"] .academy-landing .academy-cards b {bottom:14px!impo
  body[data-experience-family="academy"]:not(.showcase-home) .workspace .detail-panel {position:static!important;max-height:none!important;overflow:visible!important}
 }
 
-/* Teaching diagrams use the course's dark canvas instead of isolated pale cards. */
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.visual-academy:not(.ship-course),.visual-ocean) .story-section-visual {background:transparent!important;border:0!important;padding:0!important;overflow:visible}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.visual-academy:not(.ship-course),.visual-ocean) .academy-practice-visuals {display:grid;grid-template-columns:minmax(0,1fr);gap:0!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.visual-academy:not(.ship-course),.visual-ocean) .academy-practice-visuals>.academy-illustration,
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.visual-academy:not(.ship-course),.visual-ocean) .story-section-visual>.academy-illustration {display:flex;flex-direction:column;margin:0;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;min-width:0}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.visual-academy:not(.ship-course),.visual-ocean) .academy-illustration[hidden] {display:none!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.visual-academy:not(.ship-course),.visual-ocean) .academy-illustration>figcaption {order:2;min-height:0!important;margin:16px 0 0!important;color:#b8cdbe!important;font-size:13px;line-height:1.75}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.visual-academy:not(.ship-course),.visual-ocean) .academy-illustration>figcaption strong {color:#f0f3e5!important;font-weight:500}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.visual-academy:not(.ship-course),.visual-ocean) :is(.edu-label,.edu-number) {fill:#f0f3e5!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.visual-academy:not(.ship-course),.visual-ocean) .edu-small {fill:#b8cdbe!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.visual-academy:not(.ship-course),.visual-ocean) .edu-node {fill:rgba(25,60,48,.42)!important;stroke:#789a7c!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.visual-academy:not(.ship-course),.visual-ocean) .edu-wire {stroke:#c9ee94!important}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.visual-academy:not(.ship-course),.visual-ocean) .edu-outline {stroke:#b8cdbe!important}
-
-.academy-figure-tabs {display:flex;gap:28px;margin:0 0 18px;border-bottom:1px solid #426053}
-.academy-figure-tabs button {margin:0;padding:0 0 12px;background:transparent;border:0;border-bottom:2px solid transparent;color:#b8cdbe;font:inherit;font-size:15px;line-height:1.5;cursor:pointer}
-.academy-figure-tabs button[aria-selected="true"] {color:#c9ee94;border-bottom-color:#c9ee94}
+/* Diagram selectors stay scoped to academy; shared titles sit above the drawing. */
+.academy-figure-tabs {position:absolute;bottom:calc(100% + 24px);left:0;right:0;display:flex;gap:20px;margin:0;border-bottom:1px solid #426053}
+body[data-experience-family="academy"] .workspace .academy-figure-tabs button {margin:0;padding:8px 0 12px;background:transparent;border:0;border-bottom:2px solid transparent;color:#b8cdbe;font:inherit;font-size:14px;line-height:1.7;cursor:pointer}
+body[data-experience-family="academy"] .workspace .academy-figure-tabs button[aria-selected="true"] {color:#c9ee94;border-bottom-color:#c9ee94}
 .academy-figure-tabs button:focus-visible {outline:1px solid #c9ee94;outline-offset:5px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-practice-visuals:has(.academy-figure-tabs)>.academy-illustration>figcaption {position:static;order:2;margin:14px 0 0!important}
 
 @keyframes academy-schematic-reveal {from {opacity:.2;clip-path:inset(0 100% 0 0);transform:translateX(-14px)}to {opacity:1;clip-path:inset(0 0 0 0);transform:none}}
 @keyframes academy-schematic-swap {from {opacity:0;clip-path:inset(0 0 100% 0);transform:translateY(10px)}to {opacity:1;clip-path:inset(0 0 0 0);transform:none}}
 @keyframes academy-schematic-draw {from {stroke-dasharray:1000;stroke-dashoffset:1000;opacity:.2}to {stroke-dasharray:1000;stroke-dashoffset:0;opacity:1}}
+@keyframes academy-stage-reveal {from {opacity:0;transform:translateY(8px)}to {opacity:1;transform:none}}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration[data-academy-visible] .academy-flow-stage {animation:academy-stage-reveal .4s calc(var(--stage)*.18s) both}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-diagram[data-academy-visible] .prediction-strip {transform-origin:left;animation:academy-schematic-reveal .75s ease-out both}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration[data-academy-visible]>svg {animation:academy-schematic-reveal .75s cubic-bezier(.2,.75,.25,1) both}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration[data-academy-swap]>svg {animation:academy-schematic-swap .48s cubic-bezier(.2,.75,.25,1) both}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration[data-academy-visible] :is(.edu-arrow,.edu-wire) {animation:academy-schematic-draw .72s .12s cubic-bezier(.2,.75,.25,1) both}
 
 @media(min-width:901px) {
- body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.visual-academy:not(.ship-course),.visual-ocean) .story-section-body:has(.academy-figure-tabs) {grid-template-columns:minmax(0,.88fr) minmax(360px,1.12fr);gap:56px;align-items:start}
- body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.visual-academy:not(.ship-course),.visual-ocean) .story-section-body:has(.academy-figure-tabs)>.story-section-copy {display:block}
- body[data-experience-family="academy"]:not(.showcase-home) .workspace :is(.visual-academy:not(.ship-course),.visual-ocean) .story-section-body:has(.academy-figure-tabs)>.story-section-copy p {margin:0 0 22px}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-article:not(.ship-course) .enriched-note {display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:clamp(28px,3vw,56px);row-gap:24px;align-items:start}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-article:not(.ship-course) .story-section-heading {grid-column:1;grid-row:1;margin:0}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-article:not(.ship-course) .story-section-heading h3 {font-size:22px!important}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-article:not(.ship-course) .story-section-body {display:contents}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-article:not(.ship-course) .story-section-copy {grid-column:1;grid-row:2;display:block;columns:auto}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-article:not(.ship-course) .story-section-copy p {max-width:none;margin:0 0 18px;text-wrap:wrap;word-break:keep-all;overflow-wrap:break-word}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-article:not(.ship-course) .story-section-visual {grid-column:2;grid-row:2;align-self:start}
 }
 @media(prefers-reduced-motion:reduce) {
  body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration[data-academy-visible]>svg,
  body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration[data-academy-swap]>svg,
- body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration[data-academy-visible] :is(.edu-arrow,.edu-wire) {animation:none!important}
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration[data-academy-visible] :is(.edu-arrow,.edu-wire,.academy-flow-stage),
+ body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-diagram[data-academy-visible] .prediction-strip {animation:none!important}
 }

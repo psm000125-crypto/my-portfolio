@@ -70,15 +70,14 @@ function storySectionVisualMarkup(project, story, index) {
     return `<div class="story-result-charts">${alloyMetricCharts()}</div>`;
   }
   if (project.id === 'coating') {
-    if (index === 0) return storyFlow('학습 입력을 정리한 순서', [['5개 클래스', '양품 + 4개 불량 유형'], ['이미지 정리', '손상 이미지 제외 / 224×224 RGB'], ['불균형 대응', '가중치 손실 / Label Smoothing']]);
+    if (index === 0) return academyFlowVisual('pbl-input','학습 입력을 정리한 순서', [['5개 클래스', '양품 + 4개 불량'], ['이미지 정리', '224×224 RGB'], ['불균형 대응', '가중치 손실 · Label Smoothing']]);
     if (index === 1) return coatingResultVisual();
-    return storyFlow('모델의 판단을 이미지에서 확인', [['오분류 확인', '잘못 분류한 이미지 직접 검토'], ['원인 사례', '강한 빛의 하이라이트를 결함으로 판단'], ['분류 보완', '결함의 색과 반사광의 색 구분']], '점수 비교 이후 실제 입력 이미지까지 되돌아가 검토');
+    return academyFlowVisual('pbl-review','모델의 판단을 이미지에서 확인', [['오분류 확인', '분류한 이미지 검토'], ['원인 사례', '반사광을 결함으로 판단'], ['분류 보완', '결함과 반사광 색 구분']]);
   }
   if (project.id === 'ocean') {
-    if (branch === 2 && index === 1) return storyFlow('실습에서 선박 설비 관찰로', [['전기추진·제어 실습', '장치의 기능과 동작 확인'], ['선박 견학', '실습선 · 친환경 전기추진선박'], ['설비 배치 관찰', '실제 선박 안의 장치 배치 확인']]);
+    if (branch === 2 && index === 1) return academyFlowVisual('field-mastc','실습에서 선박 설비 관찰로', [['전기추진·제어', '장치 기능과 동작 확인'], ['선박 견학', '실습선 · 전기추진선박'], ['설비 배치', '선박 안의 장치 연결']]);
     if (branch === 1 || branch === 2) return `<div class="academy-practice-visuals">${academyPracticeVisualMarkup(branch,index)}</div>`;
-    if (branch === 0 && index === 0) return storyFlow('교육에서 현장으로', [['설계·구조', '기본설계 / 선박구조설계'], ['생산·건조', '생산설비 / 선내 배관 관찰'], ['의장·시운전', '선행 공정과 후속 일정의 연결']], 'HD현대중공업 조선소 견학');
-    if (branch === 0) return `<figure class="story-diagram"><figcaption><strong>선박에서 함께 살핀 두 영역</strong><small>설비 배치와 운전 정보를 관리하는 공간</small></figcaption><dl class="story-compare-list"><div><dt>기관·전력 설비</dt><dd>주·보조발전기 / 윤활 시스템 / 보일러 / 컴프레서 / MSBD·ESBD</dd></div><div><dt>제어·운전 공간</dt><dd>ECR / CCR / 브리지 / 통합관제센터</dd></div><div><dt>전기추진선박</dt><dd>태화호의 발전·배전·전기추진 설비 배치</dd></div></dl></figure>`;
+    if (branch === 0) return academyFieldVisual(index);
   }
   if (project.id === 'sejong') {
     if (index === 0) return `<figure class="story-diagram"><figcaption><strong>수집 데이터와 지도 표시 단위를 구분</strong><small>원자료 수집량과 현재 공개 지도의 표시 수</small></figcaption><dl class="story-compare-list"><div><dt>API 수집 단계</dt><dd>첫 페이지 1,000건 → 전체 페이지 상가 15,816건 / 주차장 690건</dd></div><div><dt>현재 지도</dt><dd>실제 점포 8,881개 / 비교 가능한 상가 건물 491개</dd></div><div><dt>분류 검토</dt><dd>업소명·인허가 업태·상권업종 → 공통 음식군 → 원자료 표본 대조</dd></div></dl></figure>`;

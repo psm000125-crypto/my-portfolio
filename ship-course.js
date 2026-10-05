@@ -45,11 +45,11 @@ function bindShipCourse(root) {
   pressed('[data-ship-build]',buttons[stage]);
   course.querySelector('[data-build-label]').textContent=['블록 제작','조립·탑재','의장·진수','시운전'][stage];
  };
- const buildDuration=8000;
+ const buildDuration=5000;
  const tick=now=>{
   raf=0;
   if(!buildVisible||manualBuild||document.hidden||preference.matches)return;
-  if(buildLast)buildElapsed+=Math.min(now-buildLast,100);
+  if(buildLast)buildElapsed+=now-buildLast;
   buildLast=now;
   setBuild(Math.min(1,buildElapsed/buildDuration));
   if(buildElapsed<buildDuration)raf=requestAnimationFrame(tick);

@@ -186,11 +186,53 @@ function academyPracticeVisualMarkup(branch,index) {
   return index===0?academyWiringPracticeVisual():index===1?academyGeneratorPracticeVisual():academyDrivePracticeVisual();
 }
 
+function academyFlowVisual(key,title,steps,caption='') {
+  const wrap=(text,x,y)=>{
+    const lines=String(text).split(' ').reduce((lines,word)=>{const last=lines.length-1;if(last>=0&&(lines[last]+' '+word).length<=13)lines[last]+=' '+word;else lines.push(word);return lines;},[]);
+    return lines.map((line,i)=>`<text class="edu-small" x="${x}" y="${y+i*21}" text-anchor="middle">${escapeHTML(line)}</text>`).join('');
+  };
+  return eduFigure(key,title,caption,arrow=>steps.map(([name,detail],i)=>{
+    const x=83+i*167;
+    return `<g class="academy-flow-stage" style="--stage:${i}"><circle class="edu-outline" cx="${x}" cy="26" r="21"/>${eduText(x,32,'0'+(i+1),'number')}${eduText(x,86,name)}${wrap(detail,x,120)}${i<steps.length-1?eduArrow(arrow,'M'+(x+28)+' 26H'+(x+139)):''}</g>`;
+  }).join(''),'학습·관찰 원자료',185);
+}
+
+function academyFieldVisual(index) {
+  if(index===0)return eduFigure('field-yard','교육에서 현장으로','HD현대중공업 조선소 견학',key=>
+    `${eduShip(94,82)}<path class="edu-outline" d="M30 97V17H105M36 17L91 39H30M105 17V45"/>${eduText(105,12,'생산설비','small')}
+    <path class="edu-wire edu-soft" d="M120 181H380"/>
+    <g class="academy-flow-stage" style="--stage:0"><circle class="edu-node" cx="83" cy="184" r="6"/>${eduText(83,222,'설계·구조')}${eduText(83,246,'기본설계 · 구조설계','small')}</g>
+    <g class="academy-flow-stage" style="--stage:1"><circle class="edu-node" cx="250" cy="184" r="6"/>${eduText(250,222,'생산·건조')}${eduText(250,246,'생산설비 · 배관','small')}</g>
+    <g class="academy-flow-stage" style="--stage:2"><circle class="edu-node" cx="417" cy="184" r="6"/>${eduText(417,222,'의장·시운전')}${eduText(417,246,'선행 공정 · 후속 일정','small')}</g>`,
+    'HD현대중공업 조선소 견학 기록',260);
+  return eduFigure('field-equipment','선박에서 함께 살핀 두 영역','기관·전력 설비와 제어·운전 공간',key=>
+    `${eduText(90,22,'브리지')}${eduText(250,22,'ECR · CCR')}${eduText(415,22,'통합관제센터')}
+    <path class="edu-wire edu-soft" d="M90 37V61H415V37M250 37V61M250 61V90"/>
+    <path class="edu-hull" d="M25 98H475L427 163H77Z"/>
+    <path class="edu-wire" d="M180 98V163M327 98V163"/>
+    ${eduText(112,137,'기관','hull-label')}${eduText(250,137,'전력','hull-label')}${eduText(395,137,'추진','hull-label')}
+    <path class="edu-wire" d="M112 170V184M250 170V184M395 170V184"/>
+    ${eduText(112,209,'윤활 · 보일러','small')}${eduText(112,232,'컴프레서','small')}
+    ${eduText(250,209,'주·보조발전기','small')}${eduText(250,232,'MSBD · ESBD','small')}
+    ${eduText(395,209,'태화호','small')}${eduText(395,232,'전기추진 설비','small')}`,
+    '3441호선 · 태화호 관찰 기록',250);
+}
+
 function bindAcademyVisuals(root) {
-  const course=root.querySelector('.visual-academy:not(.ship-course),.visual-ocean');
+  const course=root.querySelector('.visual-academy:not(.ship-course),.visual-ocean,.visual-coating');
   if(!course)return ()=>{};
   const preference=matchMedia('(prefers-reduced-motion: reduce)');
-  const figures=[...course.querySelectorAll('.academy-illustration')].filter(figure=>!figure.closest('.ship-course'));
+  const figures=[...course.querySelectorAll('.story-section-visual .story-diagram')];
+  figures.forEach(figure=>{
+    const svg=figure.querySelector(':scope > svg');
+    if(!svg)return;
+    const boxes=[...svg.querySelectorAll('path,rect,text,circle,ellipse,line,polyline')].filter(element=>!element.closest('defs')).map(element=>element.getBBox()).filter(box=>box.width||box.height);
+    if(!boxes.length)return;
+    const top=Math.max(0,Math.min(...boxes.map(box=>box.y))-4);
+    const bottom=Math.max(...boxes.map(box=>box.y+box.height))+8;
+    const view=svg.viewBox.baseVal;
+    svg.setAttribute('viewBox',[view.x,top,view.width,Math.max(1,bottom-top)].join(' '));
+  });
   const figureSets=[];
   let observer;
   const reveal=(figure,swapped=false)=>{
@@ -212,9 +254,11 @@ function bindAcademyVisuals(root) {
     tabs.setAttribute('aria-label','학습 도식 선택');
     const buttons=groupFigures.map((figure,figureIndex)=>{
       const button=document.createElement('button');
-      const label=figure.querySelector('strong')?.textContent?.trim()||('도식 '+(figureIndex+1));
+      const labels=groupFigures[0].querySelector('svg')?.getAttribute('aria-labelledby')?.includes('practice-generator')?['3상 파형','부하별 위상']:['전력·제어','보호·인터록'];
+      const label=labels[figureIndex]||('도식 '+(figureIndex+1));
       const panelId='academy-diagram-'+groupIndex+'-'+figureIndex;
       button.type='button';
+      button.id=panelId+'-tab';
       button.className='academy-figure-tab';
       button.dataset.academyFigure=figureSets.length+':'+figureIndex;
       button.setAttribute('role','tab');
@@ -224,11 +268,12 @@ function bindAcademyVisuals(root) {
       button.textContent=label;
       figure.id=panelId;
       figure.setAttribute('role','tabpanel');
+      figure.setAttribute('aria-labelledby',button.id);
       figure.hidden=figureIndex!==0;
       tabs.append(button);
       return button;
     });
-    group.before(tabs);
+    group.prepend(tabs);
     figureSets.push({figures:groupFigures,buttons});
   });
   const selectFigure=(set,index)=>{
