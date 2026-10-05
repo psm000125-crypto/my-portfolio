@@ -249,13 +249,53 @@ body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-p
 
 @keyframes academy-schematic-reveal {from {opacity:.2;clip-path:inset(0 100% 0 0);transform:translateX(-14px)}to {opacity:1;clip-path:inset(0 0 0 0);transform:none}}
 @keyframes academy-schematic-swap {from {opacity:0;clip-path:inset(0 0 100% 0);transform:translateY(10px)}to {opacity:1;clip-path:inset(0 0 0 0);transform:none}}
-@keyframes academy-schematic-draw {from {stroke-dasharray:1000;stroke-dashoffset:1000;opacity:.2}to {stroke-dasharray:1000;stroke-dashoffset:0;opacity:1}}
-@keyframes academy-stage-reveal {from {opacity:0;transform:translateY(8px)}to {opacity:1;transform:none}}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration[data-academy-visible] .academy-flow-stage {animation:academy-stage-reveal .4s calc(var(--stage)*.18s) both}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-diagram[data-academy-visible] .prediction-strip {transform-origin:left;animation:academy-schematic-reveal .75s ease-out both}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration[data-academy-visible]>svg {animation:academy-schematic-reveal .75s cubic-bezier(.2,.75,.25,1) both}
 body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration[data-academy-swap]>svg {animation:academy-schematic-swap .48s cubic-bezier(.2,.75,.25,1) both}
-body[data-experience-family="academy"]:not(.showcase-home) .workspace .academy-illustration[data-academy-visible] :is(.edu-arrow,.edu-wire) {animation:academy-schematic-draw .72s .12s cubic-bezier(.2,.75,.25,1) both}
+
+/* A whole period loops within each plot; phase differences stay constant. */
+@keyframes academy-wave-travel {to {transform:translateX(var(--wave-period))}}
+.edu-wave-motion {animation:academy-wave-travel 4s linear infinite}
+.academy-wave-exhibit[data-wave-paused] .edu-wave-motion {animation-play-state:paused}
+body[data-experience-family="academy"] .workspace .academy-figure-tabs .academy-wave-toggle {margin-left:auto;align-self:center;padding:4px 0;border:0;font-size:11px;line-height:1.6;color:#a8c1b3;white-space:nowrap}
+.academy-wave-toggle:hover {text-decoration:underline;text-underline-offset:4px}
+@media(prefers-reduced-motion:reduce) {.edu-wave-motion {animation:none!important}.academy-wave-toggle {display:none}}
+
+/* Keep the distribution and its evidence readable in one compact view. */
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-result .prediction-strip {height:22px;margin-bottom:12px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-result .prediction-distribution li {padding:9px 0;gap:10px;font-size:13px}
+.coating-result .prediction-distribution li>span:nth-child(2) {display:flex;align-items:baseline;gap:9px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-result .prediction-distribution li small {display:inline;margin:0;font-size:10px}
+.coating-result .prediction-distribution li strong {display:flex;align-items:baseline;gap:12px}
+.coating-result .prediction-distribution li strong small {width:42px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-result .story-metrics {gap:24px;margin-top:16px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-result .story-metrics div {padding-top:12px;gap:4px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-result .story-metrics dd {font-size:22px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-result .story-metrics dt {font-size:11px}
+
+/* Scope summary spacing so the global reading view cannot remove its gutters. */
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary {grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px 40px!important;max-width:none}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .project-summary.coating-summary :is(.summary-hero,.summary-panel,.summary-stat,.pipeline-node,.summary-callout) {background:transparent!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .summary-hero {display:block;padding:0!important;border:0!important;align-self:center}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .summary-hero h3 {font-size:28px!important;line-height:1.4!important;letter-spacing:-.03em}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .summary-hero p {display:block;margin:10px 0 0;font-size:13px;line-height:1.8;word-break:keep-all}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .summary-stats {gap:24px!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .summary-stat {padding:16px 0!important;border:0!important;border-top:1px solid #426053!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .summary-stat strong {font-size:28px!important;margin:7px 0!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .summary-stat small {font-size:11px!important;line-height:1.7!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary>.summary-panel {grid-column:auto;padding:24px 0 0!important;border:0!important;border-top:1px solid #426053!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .summary-section-heading {gap:12px;margin:0 0 20px!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .summary-section-heading h4 {font-size:18px!important;line-height:1.5}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .summary-section-heading p {font-size:12px!important;line-height:1.8!important;margin-top:6px!important;word-break:keep-all}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .summary-pipeline {display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .summary-pipeline>i {display:none}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .pipeline-node {display:grid;grid-template-columns:90px minmax(0,1fr);gap:16px;align-items:baseline;padding:13px 0;border:0!important;border-bottom:1px solid #426053!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .pipeline-node span {font-size:14px;font-weight:500;margin:0;line-height:1.7}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .summary-callout {margin-top:20px;padding:0 0 0 14px!important;border:0!important;border-left:1px solid #55705e!important}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .summary-callout p {font-size:12px;line-height:1.85;word-break:keep-all}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .distribution-chart {gap:16px;padding-top:3px}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .distribution-chart>div {grid-template-columns:124px minmax(0,1fr);gap:20px;min-height:30px}
+.coating-summary .distribution-chart label {display:flex;justify-content:space-between;gap:8px;font-variant-numeric:tabular-nums}
+body[data-experience-family="academy"]:not(.showcase-home) .workspace .coating-summary .distribution-chart>div>span {height:8px;border-radius:0;background:#426053}
 
 @media(min-width:901px) {
  body[data-experience-family="academy"]:not(.showcase-home) .workspace .story-article:not(.ship-course) .enriched-note {display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:clamp(28px,3vw,56px);row-gap:24px;align-items:start}

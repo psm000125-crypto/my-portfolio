@@ -133,15 +133,26 @@ body[data-experience-family="academy"] .workspace .ship-course .ship-controls bu
 body[data-experience-family="academy"] .workspace .ship-course .ship-controls button:focus-visible {outline-color:#c9ee94!important}
 .ship-course .ship-sea-fill {fill:#204b42}
 .ship-course .ship-section-hull {stroke:#c9ee94}
-.ship-course .ship-force {color:#e2eadb;fill:#e2eadb;stroke:#e2eadb}
-.ship-course .ship-force.buoyancy {color:#9fd7c7;fill:#9fd7c7;stroke:#9fd7c7}
+.ship-course .ship-force {color:#173d31;fill:#173d31;stroke:#173d31;stroke-width:2.5}
+.ship-course .ship-force.buoyancy {color:#285776;fill:#285776;stroke:#285776}
+.ship-course .ship-force .ship-weight-label {fill:#e2eadb}
 .ship-course .ship-buoyancy-label {fill:#9fd7c7}
 .ship-course .ship-gz {fill:#c9ee94;stroke:#c9ee94}
 .ship-course text.ship-gz {stroke:none}
 .ship-course .ship-build-trial {stroke:#9fd7c7}
 .ship-course .ship-build-track {background:#426053}
 .ship-course .ship-build-track i {background:#c9ee94}
-.ship-course .ship-build-stages {grid-template-columns:repeat(2,minmax(0,1fr))}
+.ship-course .ship-build-stages {grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:14px}
+body[data-experience-family="academy"] .workspace .ship-course .ship-build-stages button {padding:10px 6px;font-size:12px;line-height:1.6;min-height:44px;white-space:nowrap}
+.ship-course .ship-build-stages span {display:inline;margin:0 6px 0 0;font-size:9px}
+body[data-experience-family="academy"] .workspace .ship-course [data-heel-caption] {font-size:13px;line-height:1.9;text-wrap:pretty;word-break:normal;min-height:0}
+@keyframes ship-sea-travel {to {transform:translateX(var(--sea-period))}}
+.ship-sea-drift {animation:ship-sea-travel 6s linear infinite}
+.ship-sea-return {animation-duration:9s;animation-direction:reverse}
+.ship-wave-surface {fill:none;stroke:#8fc5b7;stroke-width:1.6}
+.ship-course .ship-wave-surface.ship-sea-fill {fill:#204b42}
+.ship-wave-ripple {fill:none;stroke:#74aa9e;stroke-width:1;opacity:.5}
+.ship-motion-space .ship-motion-waves {position:absolute;inset:18px 0 auto;width:100%;height:auto;pointer-events:none}
 .ship-topic-motion .ship-topic-body {grid-template-columns:minmax(0,1fr)}
 .ship-topic-motion .story-section-copy {columns:2;column-gap:40px}
 .ship-topic-motion .story-section-copy p {break-inside:avoid}

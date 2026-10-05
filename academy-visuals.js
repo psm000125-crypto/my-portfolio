@@ -123,11 +123,13 @@ function academyCourseVisualMarkup(branch,index) {
 
 // These practice illustrations use confirmed records; waveforms show ideal phase relationships.
 function eduWave(x,y,width,amplitude,phase=0,cycles=1.5,kind='r') {
-  const points=Array.from({length:121},(_,i)=>{
-    const t=i/120;
+  const period=width/cycles;
+  const clip='edu-wave-'+kind+'-'+x+'-'+y;
+  const points=Array.from({length:181},(_,i)=>{
+    const t=i/180*(1+1/cycles);
     return `${i?'L':'M'}${(x+t*width).toFixed(2)} ${(y-amplitude*Math.sin(t*cycles*2*Math.PI+phase)).toFixed(2)}`;
   }).join('');
-  return `<path class="edu-wave edu-wave-${kind}" d="${points}"/>`;
+  return `<defs><clipPath id="${clip}"><rect x="${x}" y="${y-amplitude-3}" width="${width}" height="${amplitude*2+6}"/></clipPath></defs><g clip-path="url(#${clip})"><path class="edu-wave edu-wave-${kind} edu-wave-motion" style="--wave-period:-${period}px" d="${points}"/></g>`;
 }
 function academyWiringPracticeVisual() {
   return eduFigure('practice-wiring','주회로와 보조회로의 연결','전동기 전력 공급과 자기유지·고장 모사를 나눠 표시',()=>
@@ -274,6 +276,14 @@ function bindAcademyVisuals(root) {
       return button;
     });
     group.prepend(tabs);
+    if(group.querySelector('.edu-wave-motion')){
+      group.classList.add('academy-wave-exhibit');
+      const toggle=document.createElement('button');
+      toggle.type='button';toggle.className='academy-wave-toggle';
+      toggle.setAttribute('data-wave-toggle','');toggle.setAttribute('aria-pressed','false');
+      toggle.setAttribute('aria-label','전기 파형 애니메이션 멈추기');toggle.textContent='파형 멈춤';
+      tabs.append(toggle);
+    }
     figureSets.push({figures:groupFigures,buttons});
   });
   const selectFigure=(set,index)=>{
@@ -286,6 +296,15 @@ function bindAcademyVisuals(root) {
     });
   };
   const onClick=event=>{
+    const waveToggle=event.target.closest('[data-wave-toggle]');
+    if(waveToggle&&course.contains(waveToggle)){
+      const group=waveToggle.closest('.academy-wave-exhibit');
+      const paused=waveToggle.getAttribute('aria-pressed')!=='true';
+      group.toggleAttribute('data-wave-paused',paused);
+      waveToggle.setAttribute('aria-pressed',String(paused));
+      waveToggle.setAttribute('aria-label',paused?'전기 파형 애니메이션 재생하기':'전기 파형 애니메이션 멈추기');
+      waveToggle.textContent=paused?'파형 재생':'파형 멈춤';return;
+    }
     const button=event.target.closest('[data-academy-figure]');
     if(!button||!course.contains(button))return;
     const [setIndex,figureIndex]=button.dataset.academyFigure.split(':').map(Number);
