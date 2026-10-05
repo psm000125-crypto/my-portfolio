@@ -314,7 +314,7 @@ function project(p){
    view.querySelector('.project-description').remove();
   }
   view.querySelector('.case-stage').insertAdjacentHTML('beforeend',experienceResourcesMarkup(p));
-  view.querySelector('.case-meta').insertAdjacentHTML('afterbegin',`<p class="cover-description">${escapeHTML(p.summary)}</p>`);
+  view.querySelector('.case-meta').remove();
  }
  else {
   view.querySelector('.case-stage').insertAdjacentHTML('beforeend',portfolioProjectVisual(p.id));

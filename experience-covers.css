@@ -45,7 +45,6 @@ body[data-project]:not(.showcase-home) .workspace .experience-landing .project-t
 body[data-project]:not(.showcase-home) .workspace .experience-landing .project-lead {font-size:clamp(23px,2.15vw,34px)!important;line-height:1.5!important;font-weight:400!important;letter-spacing:-.04em!important;max-width:none!important;color:var(--theme-accent)!important;margin:0!important;white-space:pre-line}
 body[data-project]:not(.showcase-home) .workspace .experience-landing .eyebrow {color:var(--theme-accent)!important;font-size:11px!important;letter-spacing:.16em!important}
 body[data-project]:not(.showcase-home) .workspace .experience-landing .eyebrow:before {background:var(--theme-accent)!important}
-body[data-project]:not(.showcase-home) .workspace .experience-landing .cover-description {font-size:15px;line-height:1.95;color:var(--theme-muted);max-width:none;margin:38px 0 30px;word-break:keep-all;overflow-wrap:break-word;text-wrap:pretty}
 .experience-resources {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-block:1px solid var(--portfolio-line);margin:0}
 .experience-resource {position:relative;display:block;color:var(--theme-deep);padding:20px 24px 44px;transition:background .25s;min-width:0}
 .experience-resource+.experience-resource {border-left:1px solid var(--portfolio-line)}
@@ -60,11 +59,9 @@ body[data-project]:not(.showcase-home) .workspace .experience-resource h3 {font-
 .experience-resource b {position:absolute;right:24px;bottom:16px;color:var(--theme-accent);font-size:25px;font-weight:400;transition:transform .25s}
 .experience-resource:hover b {transform:translate(3px,-3px)}
 .experience-resources:has(>a:last-child:nth-child(2)) {grid-template-columns:repeat(2,minmax(0,1fr))}
-body[data-project]:not(.showcase-home) .workspace .experience-landing .case-meta {padding:0!important}
-body[data-project]:not(.showcase-home) .workspace .experience-landing .case-meta .project-facts {background:transparent!important;border:0!important;padding:0 0 24px!important}
 body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing .project-heading {display:block;min-height:0!important;padding:20px 0!important;border-bottom:1px solid var(--portfolio-line)!important}
 body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing .case-emblem,
-body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing :is(.experience-resources,.cover-description,.case-meta) {display:none!important}
+body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing .experience-resources {display:none!important}
 body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing .project-title {font-size:25px!important;max-width:none!important;margin:12px 0!important}
 body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing .project-lead {font-size:18px!important;white-space:normal}
 /* Drawings describe each subject without presenting invented measurements. */
@@ -154,19 +151,19 @@ body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing
 @keyframes fitness-data-flow {to{stroke-dashoffset:-36}}
 @keyframes fitness-signal-read {0%,8%{stroke-dashoffset:600}65%,100%{stroke-dashoffset:0}}
 @keyframes fitness-peak-detect {0%,40%,100%{opacity:0;transform:scale(.8)}50%,80%{opacity:1;transform:scale(1)}}
-/* Four navigation entries; braces keep related projects visually together. */
+/* Collection navigation follows the academy's typography and tree lines. */
 .nav-collection {border-bottom:1px solid var(--drawer-line,var(--portfolio-line));margin:8px 0}
-.nav-collection>summary {list-style:none;display:flex;align-items:center;gap:12px;cursor:pointer;padding:19px 14px;color:var(--drawer-ink,var(--portfolio-ink));font-size:14px}
+.nav-collection>summary {list-style:none;display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 8px;color:var(--drawer-ink,var(--portfolio-ink));font-size:14px}
 .nav-collection>summary::-webkit-details-marker {display:none}
-.nav-collection>summary .num {font-size:11px;color:var(--drawer-muted,var(--portfolio-muted));min-width:20px}
-.nav-collection>summary strong {font-weight:500;flex:1}
-.collection-toggle:after {content:'+';font-size:20px;font-weight:300}
+.nav-collection>summary .num {font-size:11px;color:var(--drawer-muted,var(--portfolio-muted));min-width:12px}
+body .workspace .navigation .nav-collection>summary strong {font-family:inherit;font-size:13px!important;font-weight:600;line-height:1.7!important;word-break:keep-all;overflow-wrap:anywhere;color:var(--drawer-ink,var(--portfolio-ink))!important;flex:1}
+.collection-toggle:after {content:'+';font-size:17px;font-weight:400}
 .nav-collection[open]>summary .collection-toggle:after {content:'−'}
-.nav-collection-body {position:relative;margin:0 8px 16px 25px;padding-left:22px}
+.nav-collection-body {position:relative;margin:0 0 16px 14px;padding-left:12px;border-left:1px solid var(--drawer-line,var(--portfolio-line))}
 .collection-brace {position:absolute;left:0;top:4px;width:16px;height:calc(100% - 8px);color:var(--drawer-muted,var(--theme-accent,#7b896c));opacity:.55}
 body .workspace .navigation .nav-collection-link {display:flex!important;padding:13px 10px!important;gap:8px!important;min-height:0!important;align-items:center}
 body .workspace .navigation .nav-collection-link>span:first-child {flex:1;min-width:0;width:auto!important}
-body .workspace .navigation .nav-collection-link strong {font-size:12px!important;font-weight:400!important;line-height:1.65;word-break:keep-all}
+body .workspace .navigation .nav-collection-link strong {font-size:12px!important;font-weight:400!important;line-height:1.7;word-break:keep-all}
 body .workspace .navigation .nav-collection-link.active {box-shadow:none!important}
 /* The home archive uses the same membership, with a full-height brace. */
 .archive-collections {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px}
@@ -193,12 +190,6 @@ body .workspace .navigation .nav-collection-link.active {box-shadow:none!importa
 .archive-collection[data-collection="ai"]>.archive-collection-heading h3 {color:#315cc6}
 .archive-collection[data-collection="campus"] .collection-brace {color:#80583a}
 .archive-collection[data-collection="ai"] .collection-brace {color:#315cc6}
-.nav-collection[data-collection="campus"]>summary strong,.nav-collection[data-collection="campus"] .collection-brace {color:#80583a}
-.nav-collection[data-collection="ai"]>summary strong,.nav-collection[data-collection="ai"] .collection-brace {color:#315cc6}
-body[data-experience-family="academy"]:not(.showcase-home) .nav-collection[data-collection="campus"] :is(summary strong,.collection-brace) {color:#dbc5ad}
-body[data-experience-family="academy"]:not(.showcase-home) .nav-collection[data-collection="ai"] :is(summary strong,.collection-brace) {color:#b3c6f3}
-body[data-experience-family="academy"]:not(.showcase-home) .nav-collection[data-collection="campus"] :is(summary strong,.collection-brace) {color:#dbc5ad}
-body[data-experience-family="academy"]:not(.showcase-home) .nav-collection[data-collection="ai"] :is(summary strong,.collection-brace) {color:#b3c6f3}
 /* Reading diagrams and controls inherit the collection colours. */
 body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content {
  --series-before:color-mix(in srgb,var(--theme-accent) 40%,var(--portfolio-paper));--series-after:var(--theme-accent);--series-track:color-mix(in srgb,var(--theme-accent) 12%,var(--portfolio-paper));

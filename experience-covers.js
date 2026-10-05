@@ -16,7 +16,7 @@ function collectionNavigationMarkup(projectId, selection) {
   if(collection.id==='internship')return navLink(experiences.find(p=>p.id==='mim'),index);
   const active=collection.projects.includes(projectId);
   const open=active||collectionDisclosure.get(collection.id)===true;
-  return `<details class="nav-collection" data-collection="${collection.id}"${open?' open':''}><summary><span class="num">${number(index)}</span><strong>${collection.title}</strong><span class="collection-toggle" aria-hidden="true"></span></summary><div class="nav-collection-body">${collectionBrace}${collection.projects.map(id=>{
+  return `<details class="nav-collection" data-collection="${collection.id}"${open?' open':''}><summary><span class="num">${number(index)}</span><strong>${collection.title}</strong><span class="collection-toggle" aria-hidden="true"></span></summary><div class="nav-collection-body">${collection.projects.map(id=>{
    const project=experiences.find(p=>p.id===id);
    return `<a class="nav-item nav-collection-link" href="#${id}" data-id="${id}"><span><strong>${escapeHTML(collectionProjectTitle(project))}</strong></span><span class="arrow">↗</span></a>`;
   }).join('')}</div></details>`;
