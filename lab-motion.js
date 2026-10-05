@@ -6,7 +6,7 @@ function bindPortfolioMotion(root){
  const disposers=[];
  if(typeof bindAcademyVisuals==='function')disposers.push(bindAcademyVisuals(root));
  if(typeof bindShipCourse==='function')disposers.push(bindShipCourse(root));
- const reveals=[...root.querySelectorAll('[data-reveal],.story-visual,.story-section')];
+ const reveals=[...root.querySelectorAll('[data-reveal],.story-visual,.story-section,.evidence-chart,.story-bar-chart,.distribution-chart,.prediction-bars,.story-diagram:has(.story-signal)')];
  const showAll=()=>reveals.forEach(element=>{element.classList.remove('will-reveal');element.classList.add('is-visible');});
  let observer;
  if(!preference.matches&&'IntersectionObserver' in window){

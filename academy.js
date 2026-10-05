@@ -71,8 +71,10 @@ function rememberAcademyMenu(panel) {
 }
 
 function bindAcademyMenu(panel) {
- panel.querySelectorAll('.academy-tree details').forEach(details=>{
+ panel.querySelectorAll('.academy-tree details,.nav-collection').forEach(details=>{
   const summary=details.querySelector(':scope > summary'),body=summary.nextElementSibling;
+  const disclosureState=details.dataset.collection?collectionDisclosure:academyDisclosureState;
+  const disclosureKey=details.dataset.collection||details.dataset.track||details.dataset.activity;
   const toggle=summary.querySelector('.nav-academy-toggle');
   const syncToggle=()=>{if(toggle){toggle.setAttribute('aria-expanded',String(details.open));toggle.setAttribute('aria-label',details.open?'아카데미 과정 접기':'아카데미 과정 펼치기');toggle.textContent=details.open?'−':'+';}};
   details.addEventListener('toggle',syncToggle);
@@ -94,7 +96,7 @@ function bindAcademyMenu(panel) {
    running.finished.then(()=>{
     if(animation!==running)return;
     details.open=opening;closing=false;details.style.overflow='';animation=null;
-    academyDisclosureState.set(details.dataset.track||details.dataset.activity,opening);
+    disclosureState.set(disclosureKey,opening);
    }).catch(()=>{});
   });
  });

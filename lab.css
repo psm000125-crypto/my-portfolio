@@ -92,8 +92,10 @@
 body[data-project="alloy"] .lab-journal-visual,body[data-project="energy"] .lab-journal-visual{background:#e9e0d5}
 .will-reveal{opacity:0;transform:translateY(28px);transition:opacity .75s cubic-bezier(.2,.8,.2,1),transform .75s cubic-bezier(.2,.8,.2,1)}
 .will-reveal.is-visible{opacity:1;transform:none}
-.will-reveal .evidence-bar>span,.will-reveal .prediction-bars i{transform:scaleX(0);transform-origin:left;transition:transform 1s cubic-bezier(.2,.8,.2,1) .15s}
-.will-reveal.is-visible .evidence-bar>span,.will-reveal.is-visible .prediction-bars i{transform:scaleX(1)}
+.will-reveal :is(.evidence-bar>span,.prediction-bars i,.distribution-chart i,.story-bar-rows i),.will-reveal:is(.prediction-bars,.distribution-chart) i{transform:scaleX(0);transform-origin:left;transition:transform 1s cubic-bezier(.2,.8,.2,1) .15s}
+.will-reveal.is-visible :is(.evidence-bar>span,.prediction-bars i,.distribution-chart i,.story-bar-rows i),.will-reveal.is-visible:is(.prediction-bars,.distribution-chart) i{transform:scaleX(1)}
+.will-reveal .story-signal{clip-path:inset(0 100% 0 0);transition:clip-path 1s cubic-bezier(.2,.8,.2,1) .15s}
+.will-reveal.is-visible .story-signal{clip-path:inset(0)}
 ::view-transition-group(*){animation-duration:.65s;animation-timing-function:cubic-bezier(.2,.8,.2,1)}
 @media(min-width:901px){.lab-home .hero-copy{position:relative;z-index:4}.lab-home .portfolio-hero{grid-template-columns:1fr 1.05fr}}
 @media(max-width:900px){
@@ -119,7 +121,8 @@ body[data-project="alloy"] .lab-journal-visual,body[data-project="energy"] .lab-
 @media(max-width:380px){.lab-chapters>span{display:none}.lab-chapters{justify-content:space-between}.lab-archive-grid{gap:25px 12px}.lab-card-visual{height:140px}.lab-project-card h3{font-size:15px!important}.lab-equipment{height:430px}.lab-home .data-score strong{font-size:58px!important}}
 @media(prefers-reduced-motion:reduce){
  .will-reveal,.will-reveal.is-visible{opacity:1!important;transform:none!important;transition:none!important}
- .will-reveal .evidence-bar>span,.will-reveal .prediction-bars i{transform:none!important;transition:none!important}
+ .will-reveal :is(.evidence-bar>span,.prediction-bars i,.distribution-chart i,.story-bar-rows i),.will-reveal:is(.prediction-bars,.distribution-chart) i{transform:none!important;transition:none!important}
+ .will-reveal .story-signal{clip-path:none!important;transition:none!important}
  .lab-home .hero-copy,.lab-home .hero-object,.hero-watermark{transform:none!important}
  ::view-transition-group(*){animation-duration:0s!important}
 }

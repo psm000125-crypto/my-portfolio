@@ -64,11 +64,8 @@ function experienceCoverGraphic(id) {
    <path class="sejong-waterway" d="M96 87c107 36-36 115 44 148s40 48 12 80"/>
    <path class="cover-diagram-guide" d="M60 115h296M64 192h292M65 278h290M88 82v225M216 82v227M304 82v229"/>
    <g class="sejong-buildings">${[[110,94,32,34],[171,96,27,31],[239,92,41,43],[323,91,29,45],[108,151,38,26],[159,149,34,28],[237,153,44,23],[323,149,27,26],[170,212,26,45],[234,211,46,36],[321,216,30,38],[86,290,38,18],[241,290,38,18]].map(([x,y,w,h])=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2"/>`).join('')}</g>
-   <g class="sejong-candidates">${[[123,143],[243,115],[329,180],[174,249],[273,271]].map(([x,y],i)=>i===0||i===4?`<g class="sejong-selected-site"><circle class="sejong-site-halo" cx="${x}" cy="${y}" r="20" style="--site-delay:${i===0?'0':'-2.8'}s"/><circle class="sejong-site-point" cx="${x}" cy="${y}" r="12"/><text x="${x}" y="${y+5}" text-anchor="middle">${i===0?'A':'B'}</text></g>`:`<circle cx="${x}" cy="${y}" r="5"/>`).join('')}</g>
-  </g>
-  <g class="sejong-weights">${[0,1,2,3,4,5].map(i=>`<g><path d="M415 ${121+i*29}h123"/><circle class="sejong-weight-knob" cx="${[455,494,470,510,448,480][i]}" cy="${121+i*29}" r="6" style="--weight-delay:${-i*.45}s;--weight-shift:${i%2===0?'12':'-12'}px"/></g>`).join('')}</g>
-  <g class="sejong-comparison">${[[350,[30,20,37,25,33,22]],[387,[20,35,26,34,22,32]]].map(([y,values],row)=>`<g><text x="65" y="${y+5}">후보 ${row===0?'A':'B'}</text>${values.map((width,i)=>`<path class="sejong-comparison-track" d="M${174+i*60} ${y}h40"/><path class="sejong-comparison-value" d="M${174+i*60} ${y}h${width}" style="--compare-delay:${-i*.3-row*2.8}s"/>`).join('')}</g>`).join('')}</g>
-  <g class="cover-diagram-labels"><text x="65" y="63">입지 후보</text><text x="415" y="86">6개 지표</text><text x="65" y="436">가중치 조절 · 후보지 비교 개념도</text></g>`;
+   <g class="sejong-candidates">${[[123,143],[243,115],[329,180],[174,249],[273,271]].map(([x,y],i)=>i===0||i===4?`<g class="sejong-selected-site"><circle class="sejong-site-halo" cx="${x}" cy="${y}" r="20" style="--site-delay:${i===0?'0':'-2.8'}s"/><circle class="sejong-site-point" cx="${x}" cy="${y}" r="12"/></g>`:`<circle cx="${x}" cy="${y}" r="5"/>`).join('')}</g>
+  </g>`;
  if(id==='fitness')diagram=`
   <g class="fitness-machine-frame"><path d="M105 77v269M221 77v269M78 348h170M140 46h45"/><path class="fitness-cable" d="M162 46v162"/></g>
   <g class="fitness-moving-stack">
@@ -82,7 +79,8 @@ function experienceCoverGraphic(id) {
    <path class="fitness-signal-read" d="M315 252h24q12 0 23-18 7-8 13 9 11 15 24-23 12-65 24-43 17 30 25 75 10 61 27 30 10-17 17-30 10-17 20-8 9 9 15 8h37"/>
    <circle class="fitness-peak-marker" cx="418" cy="170" r="10"/>
   </g>`;
- return `<svg class="experience-cover-graphic cover-${id}" viewBox="0 0 600 450" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${['xrd','energy','sejong','fitness'].includes(id)?'':guides}<g class="cover-drawing">${diagram}</g></svg>`;
+ const viewBox=id==='sejong'?'20 50 380 285':'0 0 600 450';
+ return `<svg class="experience-cover-graphic cover-${id}" viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${['xrd','energy','sejong','fitness'].includes(id)?'':guides}<g class="cover-drawing">${diagram}</g></svg>`;
 }
 function experienceResourceIcon(type) {
  const paths=type==='story'?'<path d="M28 20h32l20 9 20-9h32v64h-32L80 93 60 84H28zM80 29v64M40 36h18M40 47h18M102 36h18M102 47h18"/>':type==='parts3d'?'<path d="m80 14 39 23v45L80 105 41 82V37zM41 37l39 23 39-23M80 60v45"/>':type==='map'?'<path d="m28 32 35-12 34 12 35-12v66l-35 12-34-12-35 12zM63 20v66M97 32v66"/><circle cx="81" cy="57" r="10"/>':type==='demo'?'<rect x="60" y="13" width="42" height="87" rx="6"/><path d="M67 58h8l5-19 8 34 5-15h5M73 90h16"/>':type==='equipment'?'<circle cx="79" cy="57" r="30"/><circle cx="79" cy="57" r="14"/><path d="M42 15h74M49 10v12M109 10v12M31 29v56M25 29h12M25 85h12"/>':type==='slides'?'<rect x="39" y="20" width="82" height="58"/><path d="M47 86h82V28M55 94h82V36M51 37h31M51 48h53M51 59h40"/>':'<path d="M31 83h100M39 76V50h17v26M72 76V34h17v42M105 76V19h17v57"/>';
