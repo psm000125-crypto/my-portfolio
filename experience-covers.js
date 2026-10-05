@@ -28,7 +28,7 @@ function collectionArchiveMarkup() {
   return `<a class="lab-project-card" href="#${id}" data-project-transition data-reveal data-field="${collection.id}"><div class="lab-card-visual" data-preview="${id}">${labArchiveVisual(id)}</div><div class="lab-card-meta"><span>${project.category}</span><span>↗</span></div><h3>${collectionProjectTitle(project)}</h3></a>`;
  }).join('')}</div></div></section>`).join('');
 }
-function experienceCoverGraphic(id) {
+function experienceCoverGraphic(id, compact=false) {
  const guides='<g class="cover-guides"><circle cx="300" cy="220" r="174"/><circle cx="300" cy="220" r="145" stroke-dasharray="2 9"/><path d="M92 400h416M92 393v14M508 393v14M300 28v18M290 37h20M300 394v18M290 403h20"/></g>';
  let diagram='';
  if(id==='mim')diagram=`<g class="cover-specimen"><ellipse cx="300" cy="185" rx="118" ry="65"/><ellipse cx="300" cy="185" rx="55" ry="31"/><path d="M182 185v70c0 36 53 65 118 65s118-29 118-65v-70M245 185v45c0 17 25 31 55 31s55-14 55-31v-45"/><path d="M208 208v69M392 208v69" opacity=".35"/></g><g class="cover-probe"><path d="M470 112H356v34M346 146h20M470 102v20"/><circle cx="356" cy="149" r="3"/></g><g class="cover-measure"><path d="M172 92h256M182 78v29M418 78v29M147 185v135M138 185h18M138 320h18"/><path d="m182 92 9-5m-9 5 9 5m227-5-9-5m9 5-9 5"/></g>`;
@@ -79,8 +79,9 @@ function experienceCoverGraphic(id) {
    <path class="fitness-signal-read" d="M315 252h24q12 0 23-18 7-8 13 9 11 15 24-23 12-65 24-43 17 30 25 75 10 61 27 30 10-17 17-30 10-17 20-8 9 9 15 8h37"/>
    <circle class="fitness-peak-marker" cx="418" cy="170" r="10"/>
   </g>`;
- const viewBox=id==='sejong'?'20 50 380 285':'0 0 600 450';
- return `<svg class="experience-cover-graphic cover-${id}" viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${['xrd','energy','sejong','fitness'].includes(id)?'':guides}<g class="cover-drawing">${diagram}</g></svg>`;
+ const archiveViewBoxes={alloy:'70 55 470 310',xrd:'35 5 515 275',energy:'65 65 525 360',sejong:'45 65 330 270',fitness:'60 30 535 335'};
+ const viewBox=compact?archiveViewBoxes[id]:(id==='sejong'?'20 50 380 285':'0 0 600 450');
+ return `<svg class="experience-cover-graphic cover-${id}" viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${compact||['xrd','energy','sejong','fitness'].includes(id)?'':guides}<g class="cover-drawing">${diagram}</g></svg>`;
 }
 function experienceResourceIcon(type) {
  const paths=type==='story'?'<path d="M28 20h32l20 9 20-9h32v64h-32L80 93 60 84H28zM80 29v64M40 36h18M40 47h18M102 36h18M102 47h18"/>':type==='parts3d'?'<path d="m80 14 39 23v45L80 105 41 82V37zM41 37l39 23 39-23M80 60v45"/>':type==='map'?'<path d="m28 32 35-12 34 12 35-12v66l-35 12-34-12-35 12zM63 20v66M97 32v66"/><circle cx="81" cy="57" r="10"/>':type==='demo'?'<rect x="60" y="13" width="42" height="87" rx="6"/><path d="M67 58h8l5-19 8 34 5-15h5M73 90h16"/>':type==='equipment'?'<circle cx="79" cy="57" r="30"/><circle cx="79" cy="57" r="14"/><path d="M42 15h74M49 10v12M109 10v12M31 29v56M25 29h12M25 85h12"/>':type==='slides'?'<rect x="39" y="20" width="82" height="58"/><path d="M47 86h82V28M55 94h82V36M51 37h31M51 48h53M51 59h40"/>':'<path d="M31 83h100M39 76V50h17v26M72 76V34h17v42M105 76V19h17v57"/>';

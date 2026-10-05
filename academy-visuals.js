@@ -73,7 +73,7 @@ function academyShipVisual(index) {
 }
 function academyElectricalVisual(index) {
   if(index===0) return eduFigure('electric-0','발전기와 전동기의 에너지 변환','회전 운동과 전기에너지의 변환 방향을 비교',key=>
-    `<circle class="edu-outline" cx="250" cy="144" r="61"/><circle class="edu-node" cx="250" cy="144" r="34"/><path class="edu-wire" d="M245 129l23 15-23 15zM189 144H152M311 144h38"/>${eduText(250,63,'회전형 전기기기')}${eduText(65,137,'기계')}${eduText(65,160,'에너지')}${eduText(435,137,'전기')}${eduText(435,160,'에너지')}${eduArrow(key,'M109 109H178')}${eduArrow(key,'M322 109H391')}${eduText(250,23,'발전기: 회전 → 전기')}${eduArrow(key,'M391 185H322',true)}${eduArrow(key,'M178 185H109',true)}${eduText(250,236,'전동기: 전기 → 회전')}${eduNode(102,260,296,44,'구조 · 특성 · 손실 · 효율 · 정격')}`,
+    `<circle class="edu-outline" cx="250" cy="144" r="61"/><circle class="edu-node" cx="250" cy="144" r="34"/><path class="edu-wire" d="M189 144H152M311 144h38"/><g class="edu-machine-rotor"><path class="edu-wire" d="M245 129l23 15-23 15z"/><circle class="edu-arrowhead" cx="250" cy="83" r="3"/></g>${eduText(250,63,'회전형 전기기기')}${eduText(65,137,'기계')}${eduText(65,160,'에너지')}${eduText(435,137,'전기')}${eduText(435,160,'에너지')}<g class="edu-conversion-flow is-generator">${eduArrow(key,'M109 109H178')}${eduArrow(key,'M322 109H391')}</g>${eduText(250,23,'발전기: 회전 → 전기')}<g class="edu-conversion-flow is-motor">${eduArrow(key,'M391 185H322',true)}${eduArrow(key,'M178 185H109',true)}</g>${eduText(250,236,'전동기: 전기 → 회전')}${eduNode(102,260,296,44,'구조 · 특성 · 손실 · 효율 · 정격')}`,
     '전기기기 교재 · 직류기의 원리와 구조');
   if(index===1) return eduFigure('electric-1','자기유지회로의 접점과 코일','시작 버튼과 자기유지 접점을 병렬로 구성한 예',()=>
     `<path class="edu-wire" d="M38 55v195M462 55v195M38 97h62M120 97h94M236 97h146M427 97h35M168 97v96h46M236 193h112V97"/>
@@ -140,6 +140,7 @@ function academyWiringPracticeVisual() {
     <path class="edu-wire" d="M230 120v160M480 120v160M230 140h25M275 140h40M335 140h40M395 140h30M465 140h15M350 140v100h25M395 240h10V140"/>
     <path class="edu-outline" d="M255 126v28M275 126v28M250 153l30-26M375 126v28M395 126v28M375 226v28M395 226v28"/>
     <path class="edu-fault-line" d="M315 126v28M335 126v28M315 140l14-18"/>
+    <path class="wiring-current-probe" d="M230 140H315" pathLength="100"/><circle class="wiring-open-contact" cx="325" cy="140" r="19"/>
     <circle class="edu-outline" cx="445" cy="140" r="20"/>${eduText(445,146,'KM','small')}${eduText(445,182,'코일','small')}${eduText(385,275,'KM 자기유지','small')}
     ${eduText(355,301,'접점 개방 → 기동 불가','fault')}${eduNode(228,320,254,62,'단자별 저항·전압','멀티테스터로 이상 구간 비교')}`,
     '연수원 배선·고장 진단 실습 기록',400);
