@@ -47,18 +47,15 @@ function experienceCoverGraphic(id, compact=false) {
   <g class="xrd-measurement xrd-measurement-edge"><path class="xrd-beam" d="m242 76 226 92 31-92"/><circle class="xrd-measured-point" cx="468" cy="168" r="12"/></g>
   <g class="cover-diagram-labels"><text x="216" y="30">X선</text><text x="315" y="264" text-anchor="middle">몸통</text><text x="468" y="264" text-anchor="middle">날 끝</text></g>`;
  if(id==='energy')diagram=`
-  <g class="energy-battery">
-   <path class="cover-material-soft" d="M104 162h328v166H104Z"/>
-   <path class="cover-material-soft" d="m104 162 36-28h328l-36 28Z"/>
-   <path class="cover-material-solid" d="m432 162 36-28v166l-36 28Z"/>
-   <path class="energy-battery-terminal" d="m451 212 17-13h22v52l-17 13h-22Z"/>
-   <path class="cover-diagram-guide" d="M451 212h22v52M473 212l17-13"/>
-   <rect x="126" y="184" width="284" height="122" rx="5"/>
-   <g class="energy-battery-cells">${[0,1,2,3].map(i=>`<rect x="${141+i*65}" y="198" width="58" height="94" rx="3"/>`).join('')}</g>
-   <path class="energy-battery-charge" d="m287 187-49 67h37l-17 49 61-76h-39Z"/>
-   <path class="cover-diagram-guide" d="M126 174h56M350 316h60"/>
-  </g>
-  `;
+  <g class="energy-coating-cutaway">
+   <g class="energy-cover-electrode"><path d="M104 322h312l74-44H178Z"/><path d="M104 322h312v34H104Z"/><path d="m416 322 74-44v34l-74 44Z"/></g>
+   <g class="energy-cover-nucleation"><path d="M104 266h312l74-44H178Z"/><path d="M104 266h312v56H104Z"/><path d="m416 266 74-44v56l-74 44Z"/>${Array.from({length:12},(_,i)=>`<g class="energy-cover-zinc"><circle cx="${125+(i%6)*54}" cy="${282+Math.floor(i/6)*24}" r="7"/><circle cx="${127+(i%6)*54}" cy="${280+Math.floor(i/6)*24}" r="1.5"/></g>`).join('')}</g>
+   <g class="energy-cover-transition"><path d="M104 220h312l74-44H178Z"/><path d="M104 220h312v46H104Z"/><path d="m416 220 74-44v46l-74 44Z"/>${Array.from({length:8},(_,i)=>`<circle cx="${122+i*39}" cy="${238+(i%2)*12}" r="${2+i%3}"/>`).join('')}</g>
+   <g class="energy-cover-growth"><path d="M104 164h312l74-44H178Z"/><path d="M104 164h312v56H104Z"/><path d="m416 164 74-44v56l-74 44Z"/></g>
+   <g class="energy-cover-network">${Array.from({length:10},(_,i)=>`<path d="M${113+i*31} 165q18 14 3 28t3 27"/><path d="M${113+i*31} 221q18 11 3 22t3 23"/>`).join('')}${Array.from({length:7},(_,i)=>`<path d="M${120+i*44} 155q14-16 29-18t28-16"/>`).join('')}</g>
+   <g class="energy-cover-deposition">${Array.from({length:14},(_,i)=>`<circle cx="${116+i*22}" cy="316" r="5" style="--deposit-delay:${-i*.18}s"/>`).join('')}</g>
+   <g class="energy-cover-ions">${Array.from({length:7},(_,i)=>`<circle cx="${130+i*44}" cy="98" r="4" style="--ion-delay:${-i*.65}s"/>`).join('')}</g>
+  </g>`;
  if(id==='sejong')diagram=`
   <g class="sejong-street-map">
    <path class="sejong-waterway" d="M96 87c107 36-36 115 44 148s40 48 12 80"/>
@@ -79,7 +76,7 @@ function experienceCoverGraphic(id, compact=false) {
    <path class="fitness-signal-read" d="M315 252h24q12 0 23-18 7-8 13 9 11 15 24-23 12-65 24-43 17 30 25 75 10 61 27 30 10-17 17-30 10-17 20-8 9 9 15 8h37"/>
    <circle class="fitness-peak-marker" cx="418" cy="170" r="10"/>
   </g>`;
- const archiveViewBoxes={alloy:'70 55 470 310',xrd:'35 5 515 275',energy:'80 106 435 250',sejong:'45 65 330 270',fitness:'60 30 535 335'};
+ const archiveViewBoxes={alloy:'70 55 470 310',xrd:'35 5 515 275',energy:'75 65 445 310',sejong:'45 65 330 270',fitness:'60 30 535 335'};
  const viewBox=compact?archiveViewBoxes[id]:(id==='sejong'?'20 50 380 285':'0 0 600 450');
  return `<svg class="experience-cover-graphic cover-${id}" viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${compact||['xrd','energy','sejong','fitness'].includes(id)?'':guides}<g class="cover-drawing">${diagram}</g></svg>`;
 }

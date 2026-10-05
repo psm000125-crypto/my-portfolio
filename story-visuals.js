@@ -14,20 +14,31 @@ function energyNetworkLines(y,height,width=212) {
   return Array.from({length:8},(_,i)=>`<path d="M${14+i*width/8} ${y}q28 ${height/4} 4 ${height/2}t4 ${height/2}"/>`).join('');
 }
 function energyStackGraphic() {
-  return `<svg class="energy-stack-graphic" viewBox="0 0 240 332" preserveAspectRatio="xMidYMid meet" role="img" aria-label="다공성 CNT 상부층, 전이층, Co 도핑 ZnO/CNT 하부층이 리튬 금속 위에 연속적으로 연결된 단면 개념도">
-    <g class="energy-cross-band band-growth"><rect x="8" y="1" width="224" height="91"/><g class="energy-network-lines">${energyNetworkLines(2,89)}</g></g>
-    <g class="energy-cross-band band-transition"><rect x="8" y="92" width="224" height="92"/><g class="energy-network-lines">${energyNetworkLines(92,92)}</g>${[0,1,2,3,4,5].map(i=>`<circle cx="${30+i*36}" cy="${138+(i%2)*20}" r="${4+i%3}"/>`).join('')}</g>
-    <g class="energy-cross-band band-nucleation"><rect x="8" y="184" width="224" height="92"/><g class="energy-network-lines">${energyNetworkLines(184,92)}</g>${[0,1,2,3,4,5,6,7,8,9,10,11].map(i=>`<g class="energy-cross-particle"><circle cx="${28+(i%6)*36}" cy="${210+Math.floor(i/6)*38}" r="9"/><circle cx="${31+(i%6)*36}" cy="${207+Math.floor(i/6)*38}" r="2"/></g>`).join('')}</g>
-    <g class="energy-cross-band band-electrode"><rect x="8" y="276" width="224" height="55"/></g>
+  return `<svg class="energy-stack-graphic" viewBox="0 0 240 540" preserveAspectRatio="xMidYMid meet" role="img" aria-label="다공성 CNT 상부층, 전이층, Co 도핑 ZnO/CNT 하부층이 리튬 금속 위에 연속적으로 연결된 단면 개념도">
+    <g class="energy-cross-band band-growth"><rect x="8" y="1" width="224" height="148"/><g class="energy-network-lines">${energyNetworkLines(2,147)}</g></g>
+    <g class="energy-cross-band band-transition"><rect x="8" y="149" width="224" height="150"/><g class="energy-network-lines">${energyNetworkLines(149,150)}</g>${[0,1,2,3,4,5].map(i=>`<circle cx="${30+i*36}" cy="${212+(i%2)*35}" r="${4+i%3}"/>`).join('')}</g>
+    <g class="energy-cross-band band-nucleation"><rect x="8" y="299" width="224" height="150"/><g class="energy-network-lines">${energyNetworkLines(299,150)}</g>${[0,1,2,3,4,5,6,7,8,9,10,11].map(i=>`<g class="energy-cross-particle"><circle cx="${28+(i%6)*36}" cy="${340+Math.floor(i/6)*66}" r="9"/><circle cx="${31+(i%6)*36}" cy="${337+Math.floor(i/6)*66}" r="2"/></g>`).join('')}</g>
+    <g class="energy-cross-band band-electrode"><rect x="8" y="449" width="224" height="90"/></g>
   </svg>`;
 }
-function energyLayerVisual() {
+function energyHorizontalStackGraphic() {
+  const network = (x, width) => `<g class="energy-network-lines">${Array.from({length:8}, (_, i) => `<path d="M${x} ${16+i*20}q${width/4} 28 ${width/2} 4t${width/2} 4"/>`).join('')}</g>`;
+  return `<svg class="energy-stack-graphic" viewBox="0 0 882 184" preserveAspectRatio="xMidYMid meet" role="img" aria-label="왼쪽의 리튬 금속 전극부터 Co 도핑 ZnO/CNT 하부층, 전이층, 다공성 CNT 상부층으로 이어지는 단면 개념도">
+    <g class="energy-cross-band band-electrode"><rect x="2" y="8" width="110" height="168"/></g>
+    <g class="energy-cross-band band-nucleation"><rect x="112" y="8" width="256" height="168"/>${network(112,256)}${Array.from({length:12}, (_, i) => `<g class="energy-cross-particle"><circle cx="${142+(i%6)*39}" cy="${58+Math.floor(i/6)*68}" r="10"/><circle cx="${145+(i%6)*39}" cy="${55+Math.floor(i/6)*68}" r="2"/></g>`).join('')}</g>
+    <g class="energy-cross-band band-transition"><rect x="368" y="8" width="256" height="168"/>${network(368,256)}${Array.from({length:6}, (_, i) => `<circle cx="${394+i*39}" cy="${72+(i%2)*40}" r="${4+i%3}"/>`).join('')}</g>
+    <g class="energy-cross-band band-growth"><rect x="624" y="8" width="256" height="168"/>${network(624,256)}</g>
+  </svg>`;
+}
+function energyLayerVisual({ horizontal = false } = {}) {
   const layers = [
     ['growth', '상부층', '다공성 CNT', '전도 경로 유지 · 표면 성장 억제'],
     ['transition', '전이층', 'ZnO/CNT ↔ CNT', '하부층에서 상부층으로 점진적인 연결'],
     ['nucleation', '하부층', 'Co-doped ZnO/CNT', '리튬 친화성 · 초기 핵 생성 유도']
   ];
-  return `<figure class="story-diagram energy-layer-exhibit" data-energy-layer="nucleation"><figcaption><strong>제안한 3층 경사 계면층</strong><small>문헌 기반 설계안 · 전극 가까이에서 위로 이어지는 구조</small></figcaption><div class="energy-layer-layout"><div class="energy-layer-diagram">${energyStackGraphic()}</div><ol class="story-layer-stack energy-layer-stack" aria-label="3층 경사 계면층의 역할 선택">${layers.map(([id, level, material, role]) => `<li><button class="energy-layer-button" type="button" data-energy-layer="${id}" data-energy-level="${level}" data-energy-material="${material}" data-energy-role="${role}" aria-pressed="${id === 'nucleation'}"><span>${level}</span><strong>${material}</strong><small>${role}</small></button></li>`).join('')}<li class="story-substrate"><span>전극</span><strong>Li metal</strong><small>리튬 금속 음극</small></li></ol></div><p class="energy-layer-reading" aria-live="polite"><span>하부층 · Co-doped ZnO/CNT</span><strong>리튬 친화성 · 초기 핵 생성 유도</strong></p></figure>`;
+  const substrate = '<li class="story-substrate"><span>전극</span><strong>Li metal</strong><small>리튬 금속 음극</small></li>';
+  const layerButtons = (horizontal ? [...layers].reverse() : layers).map(([id, level, material, role]) => `<li><button class="energy-layer-button" type="button" data-energy-layer="${id}" data-energy-level="${level}" data-energy-material="${material}" data-energy-role="${role}" aria-pressed="${id === 'nucleation'}"><span>${level}</span><strong>${material}</strong><small>${role}</small></button></li>`).join('');
+  return `<figure class="story-diagram energy-layer-exhibit${horizontal ? ' energy-layer-horizontal' : ''}" data-energy-layer="nucleation"><figcaption><strong>제안한 3층 경사 계면층</strong><small>문헌 기반 설계안 · ${horizontal ? '전극에서 상부층까지 왼쪽에서 오른쪽으로 이어지는 구조' : '전극 가까이에서 위로 이어지는 구조'}</small></figcaption><div class="energy-layer-layout"><div class="energy-layer-diagram">${horizontal ? energyHorizontalStackGraphic() : energyStackGraphic()}</div><ol class="story-layer-stack energy-layer-stack" aria-label="3층 경사 계면층의 역할 선택">${horizontal ? substrate + layerButtons : layerButtons + substrate}</ol></div><p class="energy-layer-reading" aria-live="polite"><span>하부층 · Co-doped ZnO/CNT</span><strong>리튬 친화성 · 초기 핵 생성 유도</strong></p></figure>`;
 }
 function bindEnergyLayers(scope = document) {
   scope.querySelectorAll('.energy-layer-exhibit').forEach(exhibit => {
@@ -71,7 +82,7 @@ function xrdAnalysisVisual() {
 function energyContactGraphic(graded) {
   return `<svg class="energy-contact-graphic" viewBox="0 0 260 225" role="img" aria-label="${graded?'CNT 상부층과 전이층, ZnO/CNT 하부층이 리튬 금속 위에 연결된 구조':'CNT층과 리튬 금속 사이에 접촉 틈이 생길 수 있는 구조'}"><g class="energy-cross-band band-growth"><rect x="14" y="18" width="232" height="48"/><g class="energy-network-lines">${energyNetworkLines(18,48,230)}</g></g>
     ${graded?`<g class="energy-cross-band band-transition"><rect x="14" y="66" width="232" height="46"/><g class="energy-network-lines">${energyNetworkLines(66,46,230)}</g></g><g class="energy-cross-band band-nucleation"><rect x="14" y="112" width="232" height="46"/>${[0,1,2,3,4,5,6].map(i=>`<circle cx="${30+i*33}" cy="135" r="7"/>`).join('')}</g>`:`<path class="energy-contact-gap" d="M14 75H246M14 149H246"/><text x="130" y="104" class="energy-gap-label">석출·박리 후</text><text x="130" y="127" class="energy-gap-label">접촉 틈 발생 가능</text>`}
-    <g class="energy-cross-band band-electrode"><rect x="14" y="158" width="232" height="44"/></g><g class="energy-label-backplates"><rect x="69" y="27" width="122" height="27" rx="3"/>${graded?'<rect x="95" y="74" width="70" height="27" rx="3"/><rect x="48" y="121" width="164" height="27" rx="3"/>':''}</g><g class="energy-band-labels"><text x="130" y="47">${graded?'CNT 상부층':'다공성 CNT'}</text>${graded?'<text x="130" y="94">전이층</text><text x="130" y="141">ZnO/CNT 하부층</text>':''}<text x="130" y="184">Li metal</text></g></svg>`;
+    <g class="energy-cross-band band-electrode"><rect x="14" y="158" width="232" height="44"/></g><g class="energy-band-labels"><text x="130" y="47">${graded?'CNT 상부층':'다공성 CNT'}</text>${graded?'<text x="130" y="94">전이층</text><text x="130" y="141">ZnO/CNT 하부층</text>':''}<text x="130" y="184">Li metal</text></g></svg>`;
 }
 function energyContactVisual() {
   return `<figure class="story-diagram energy-contact"><figcaption><strong>CNT 단독층에서 경사 구조로</strong><small>GZCNT 선행연구의 계면 접촉과 층별 역할</small></figcaption><div class="interface-comparison"><section><h4>CNT 단독층</h4>${energyContactGraphic(false)}<p>전도 경로를 제공하지만 장기 계면 접촉을 함께 검토해야 합니다.</p></section><section><h4>GZCNT 경사층</h4>${energyContactGraphic(true)}<p>하부의 리튬 친화성과 상부의 성장 억제 기능을 연결합니다.</p></section></div></figure>`;

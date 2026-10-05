@@ -99,7 +99,7 @@ body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing
 @keyframes cover-pulse {0%{transform:scale(.7);opacity:.7}100%{transform:scale(2.2);opacity:0}}
 @keyframes cover-stack {0%,100%{transform:translateY(12px)}50%{transform:translateY(-18px)}}
 @keyframes cover-glow {0%,100%{opacity:.3}50%{opacity:1}}
-/* Subject-specific covers: specimen measurement and a rechargeable battery. */
+/* Subject-specific covers: specimen measurement and a graded coating cutaway. */
 :is(.cover-xrd,.cover-energy,.cover-sejong,.cover-fitness) .cover-drawing {animation:none}
 :is(.cover-xrd,.cover-energy,.cover-sejong,.cover-fitness) .cover-material-soft {fill:currentColor;fill-opacity:.07}
 :is(.cover-xrd,.cover-energy,.cover-sejong,.cover-fitness) .cover-material-solid {fill:currentColor;fill-opacity:.2}
@@ -110,10 +110,19 @@ body[data-project]:not(.showcase-home) .workspace .has-focus .experience-landing
 .xrd-measurement-edge {opacity:0;animation-delay:-3s}
 .xrd-beam {stroke-dasharray:5 7;animation:xrd-beam-travel 1.8s linear infinite}
 .xrd-measured-point {stroke-width:1.2}
-.energy-battery {stroke-width:2}
-.energy-battery-terminal {fill:currentColor;fill-opacity:.12}
-.energy-battery-cells {fill:currentColor;fill-opacity:.08;stroke-opacity:.35;stroke-width:1.2}
-.energy-battery-charge {fill:var(--portfolio-paper,#ece4d9);stroke-width:2.2}
+.energy-coating-cutaway {stroke-width:1.6}
+.energy-cover-electrode {fill:currentColor;fill-opacity:.3}
+.energy-cover-nucleation {fill:currentColor;fill-opacity:.17}
+.energy-cover-transition {fill:currentColor;fill-opacity:.1}
+.energy-cover-growth {fill:currentColor;fill-opacity:.05}
+.energy-cover-network {opacity:.4;stroke-width:1.2}
+.energy-cover-transition>circle {fill:currentColor;fill-opacity:.45;stroke:none}
+.energy-cover-zinc>circle:first-child {fill:var(--portfolio-paper,#ece4d9);fill-opacity:.9;stroke-width:2}
+.energy-cover-zinc>circle:last-child {fill:currentColor;fill-opacity:1;stroke:none}
+.energy-cover-ions circle {fill:currentColor;stroke:none;animation:energy-ion-migrate 4.8s linear infinite;animation-delay:var(--ion-delay)}
+.energy-cover-deposition circle {fill:currentColor;stroke:none;transform-box:fill-box;transform-origin:center;animation:energy-even-deposition 4.8s ease-in-out infinite;animation-delay:var(--deposit-delay)}
+@keyframes energy-ion-migrate {0%{transform:translateY(-16px);opacity:0}12%{opacity:.8}82%{opacity:.8}100%{transform:translateY(215px);opacity:0}}
+@keyframes energy-even-deposition {0%,100%{transform:scale(.5);opacity:.25}40%,70%{transform:scale(1);opacity:.8}}
 @keyframes xrd-measure-position {0%,42%,100%{opacity:1}50%,92%{opacity:0}}
 @keyframes xrd-beam-travel {to{stroke-dashoffset:-48}}
 /* AI covers connect the actual inputs to comparison or counting. */
@@ -174,11 +183,11 @@ body .workspace .navigation .nav-collection-link.active {box-shadow:none!importa
 .archive-collection-body>.collection-brace {width:22px;color:#7b896c;top:0;height:100%;opacity:.65}
 .archive-collection .lab-archive-grid {grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
 .archive-collection .lab-project-card {min-width:0}
-/* Archive cards use static, centered overview artwork at the reference card scale. */
+/* Center archive artwork at the card scale; the coating keeps its mechanism in motion. */
 .lab-card-visual:is([data-preview="alloy"],[data-preview="xrd"],[data-preview="energy"],[data-preview="sejong"],[data-preview="fitness"]) {background:var(--collection-card);color:var(--collection-card-ink);border-radius:2px;background-image:none}
 .lab-card-visual:is([data-preview="alloy"],[data-preview="xrd"],[data-preview="energy"]) {background-image:linear-gradient(#80583a08 1px,transparent 1px),linear-gradient(90deg,#80583a08 1px,transparent 1px);background-size:22px 22px}
 .lab-card-visual .experience-cover-graphic {position:absolute;inset:auto;left:50%;top:50%;translate:-50% -50%;width:280px;max-width:calc(100% - 64px);height:128px;overflow:visible;transform:none!important;transition:none!important}
-.lab-card-visual .experience-cover-graphic * {animation:none!important;transition:none!important;stroke-dashoffset:0!important}
+.lab-card-visual .experience-cover-graphic:not(.cover-energy) * {animation:none!important;transition:none!important;stroke-dashoffset:0!important}
 .archive-collection[data-collection="campus"]>.archive-collection-heading h3 {color:#80583a}
 .archive-collection[data-collection="ai"]>.archive-collection-heading h3 {color:#315cc6}
 .archive-collection[data-collection="campus"] .collection-brace {color:#80583a}
@@ -470,10 +479,9 @@ body:is([data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .w
 body:is([data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content .story-related-link {grid-column:2}
 
 /* Filled cross sections distinguish a contact gap from a continuous graded coating. */
-body[data-project="energy"]:not(.showcase-home) .workspace .focus-content .enriched-note:has(:is(.energy-contact,.energy-layer-exhibit)) .story-section-heading {grid-column:1/-1;grid-row:1}
-body[data-project="energy"]:not(.showcase-home) .workspace .focus-content .enriched-note:has(:is(.energy-contact,.energy-layer-exhibit)) .story-section-copy {grid-column:1/-1;grid-row:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px}
-body[data-project="energy"]:not(.showcase-home) .workspace .focus-content .enriched-note:has(:is(.energy-contact,.energy-layer-exhibit)) .story-section-copy p {margin:0!important}
-body[data-project="energy"]:not(.showcase-home) .workspace .focus-content .enriched-note:has(:is(.energy-contact,.energy-layer-exhibit)) .story-section-visual {grid-column:1/-1!important;grid-row:3!important}
+body[data-project="energy"]:not(.showcase-home) .workspace .focus-content .enriched-note:has(:is(.energy-contact,.energy-layer-exhibit)) .story-section-heading {grid-column:1;grid-row:1}
+body[data-project="energy"]:not(.showcase-home) .workspace .focus-content .enriched-note:has(:is(.energy-contact,.energy-layer-exhibit)) .story-section-copy {grid-column:1;grid-row:2;display:block}
+body[data-project="energy"]:not(.showcase-home) .workspace .focus-content .enriched-note:has(:is(.energy-contact,.energy-layer-exhibit)) .story-section-visual {grid-column:2!important;grid-row:1/span 2!important}
 body[data-project="energy"]:not(.showcase-home) .workspace .focus-content .energy-contact {max-width:760px}
 body[data-project="energy"]:not(.showcase-home) .workspace .focus-content .energy-layer-exhibit {max-width:680px}
 .energy-cross-band {stroke:var(--theme-accent,#80583a);stroke-width:1.2}
@@ -485,7 +493,6 @@ body[data-project="energy"]:not(.showcase-home) .workspace .focus-content .energ
 .band-transition>circle {fill:var(--theme-accent,#80583a);fill-opacity:.55;stroke:none}
 .energy-cross-particle>circle:first-child,.band-nucleation>circle {fill:var(--portfolio-paper,#ece4d9)}
 .energy-cross-particle>circle:last-child {fill:var(--theme-accent,#80583a);stroke:none}
-.energy-label-backplates {fill:var(--portfolio-paper,#ece4d9);fill-opacity:.92;stroke:none}
 .energy-band-labels text,.energy-gap-label {fill:var(--theme-deep,#3c332b);text-anchor:middle;font-family:inherit;font-size:18px;stroke:none}
 .energy-gap-label {font-size:16px}
 .energy-contact-gap {fill:none;stroke:var(--theme-accent,#80583a);stroke-dasharray:4 5;stroke-opacity:.55}
@@ -494,9 +501,9 @@ body[data-project="energy"]:not(.showcase-home) .workspace .focus-content .energ
 body[data-project="energy"]:not(.showcase-home) .workspace .focus-content .energy-contact .interface-comparison>section {display:block;min-width:0}
 body[data-project="energy"]:not(.showcase-home) .workspace .focus-content .energy-contact .interface-comparison h4 {margin:0 0 12px;font-size:14px}
 body[data-project="energy"]:not(.showcase-home) .workspace .focus-content .energy-contact .interface-comparison p {margin:8px 0 0;font-size:12px;line-height:1.8;word-break:keep-all}
-.energy-layer-layout {display:grid;grid-template-columns:minmax(230px,1fr) minmax(0,1.08fr);gap:24px;align-items:stretch}
+.energy-layer-layout {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:24px;align-items:stretch}
 .energy-layer-diagram {min-width:0}
-.energy-stack-graphic {display:block;width:100%;height:auto;aspect-ratio:240/332;overflow:visible}
+.energy-stack-graphic {display:block;width:100%;height:auto;aspect-ratio:240/540;overflow:visible}
 .energy-cross-band {transition:stroke-width .2s,fill-opacity .2s}
 .energy-layer-exhibit[data-energy-layer="growth"] .band-growth,
 .energy-layer-exhibit[data-energy-layer="transition"] .band-transition,
@@ -510,6 +517,15 @@ body[data-project="energy"]:not(.showcase-home) .workspace .energy-layer-layout 
 body[data-project="energy"]:not(.showcase-home) .workspace .energy-layer-layout .energy-layer-button[aria-pressed="true"] {border-left-color:var(--theme-accent)}
 body[data-project="energy"]:not(.showcase-home) .workspace .energy-layer-layout .story-substrate {display:flex;flex-direction:column;justify-content:center;gap:3px;padding-left:14px!important}
 body[data-project="energy"]:not(.showcase-home) .workspace .energy-layer-layout .story-substrate :is(span,small) {font-size:11px;color:var(--theme-muted)}
+
+/* The summary follows the coating outward from the electrode across the page. */
+body[data-project="energy"]:not(.showcase-home) .workspace .focus-content .energy-summary .energy-layer-horizontal {max-width:none}
+.energy-layer-horizontal .energy-layer-layout {grid-template-columns:minmax(0,1fr);gap:14px}
+.energy-layer-horizontal .energy-stack-graphic {aspect-ratio:882/184}
+body[data-project="energy"]:not(.showcase-home) .workspace .energy-layer-horizontal .story-layer-stack {grid-template-columns:minmax(0,110fr) repeat(3,minmax(0,256fr));grid-template-rows:auto;max-width:none}
+body[data-project="energy"]:not(.showcase-home) .workspace .energy-layer-horizontal .energy-layer-button {justify-content:flex-start;height:100%;padding:14px 16px 0;border-left:0;border-top:2px solid transparent;box-shadow:none}
+body[data-project="energy"]:not(.showcase-home) .workspace .energy-layer-horizontal .energy-layer-button[aria-pressed="true"] {border-top-color:var(--theme-accent)}
+body[data-project="energy"]:not(.showcase-home) .workspace .energy-layer-horizontal .story-substrate {justify-content:flex-start;padding:16px 10px 0 0!important}
 
 /* The teaching drawings animate their mechanism, without introducing measured values. */
 .edu-machine-rotor {transform-origin:250px 144px;animation:edu-machine-turn 8s linear infinite}
