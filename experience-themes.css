@@ -491,3 +491,33 @@ body[data-project="energy"]:not(.showcase-home) .workspace .interface-layer.zinc
 @media(prefers-reduced-motion:reduce) {
  .lab-project-card:hover svg {transform:none}
 }
+
+/* Detail navigation: surface the next reading action without replacing each case theme. */
+body[data-project]:not(.showcase-home) .workspace .detail-panel .detail-label,
+body[data-project]:not(.showcase-home) .workspace .detail-panel .branch-group > h2 {
+ color:var(--theme-muted)!important;
+ font-size:11px!important;
+ font-weight:700!important;
+}
+body[data-project]:not(.showcase-home) .workspace .detail-panel .overview-link,
+body[data-project]:not(.showcase-home) .workspace .detail-panel .branch-link,
+body[data-project]:not(.showcase-home) .workspace .detail-panel .back-profile,
+body[data-project]:not(.showcase-home) .workspace .detail-panel .parent-link {
+ color:var(--theme-text)!important;
+}
+body[data-project]:not(.showcase-home) .workspace .detail-panel .branch-link strong {
+ font-weight:600!important;
+}
+body[data-project]:not(.showcase-home) .workspace .detail-panel .branch-link small {
+ color:var(--theme-muted)!important;
+}
+body[data-project]:not(.showcase-home) .workspace .detail-panel .project-action {
+ color:var(--theme-accent)!important;
+ font-size:10px!important;
+ font-weight:700!important;
+ opacity:1!important;
+}
+body[data-project]:not(.showcase-home) .workspace .detail-panel .branch-link:hover,
+body[data-project]:not(.showcase-home) .workspace .detail-panel .branch-link:focus-visible {
+ background:var(--theme-soft)!important;
+}
