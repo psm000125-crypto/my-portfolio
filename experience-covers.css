@@ -79,10 +79,9 @@ body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[dat
 .xrd-guide-rotor {transform-box:view-box;animation:cover-orbit 64s linear infinite}
 .xrd-guide-body {transform-origin:315px 181px}
 .energy-cover-atmosphere {opacity:1}
-.energy-guide-orbits {opacity:.26}
-.energy-guide-axes {opacity:.16}
-.energy-guide-dimension {opacity:.28}
-.energy-guide-rotor {transform-box:view-box;transform-origin:297px 220px;animation:cover-orbit 82s linear infinite}
+.energy-guide-planes {opacity:.17}
+.energy-guide-verticals {opacity:.11}
+.energy-guide-corners {opacity:.34}
 .fitness-cover-atmosphere {opacity:.27}
 .cover-drawing {stroke-width:1.8}
 .experience-cover-graphic {width:100%;height:100%;overflow:visible}

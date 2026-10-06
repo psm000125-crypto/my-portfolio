@@ -40,11 +40,9 @@ function experienceCoverGraphic(id, compact=false) {
    <g class="xrd-guide-dimension"><path d="M92 372H508M92 365v14M508 365v14"/></g>
   </g>`,
   energy:`<g class="cover-atmosphere energy-cover-atmosphere">
-   <g class="energy-guide-rotor">
-    <g class="energy-guide-orbits"><circle cx="297" cy="220" r="158"/><circle cx="297" cy="220" r="132" stroke-dasharray="2 9"/></g>
-    <g class="energy-guide-axes" transform="rotate(-18 297 220)"><path d="M112 220H482M297 45V395"/></g>
-   </g>
-   <g class="energy-guide-dimension"><path d="M86 398H514M86 391v14M514 391v14"/></g>
+   <g class="energy-guide-planes"><path d="M86 146H434L508 102M86 374H434L508 330"/></g>
+   <g class="energy-guide-verticals"><path d="M86 146V374M508 102V330" stroke-dasharray="3 8"/></g>
+   <g class="energy-guide-corners"><path d="M86 170V146H110M410 146H434V170M484 102H508V126M86 350V374H110M410 374H434V350M508 306V330l-22 13"/></g>
   </g>`,
   fitness:`<g class="cover-atmosphere fitness-cover-atmosphere"><path d="M78 352H522M78 345v14M522 345v14"/><path d="M116 294q34-22 68 0t68 0t68 0t68 0t68 0t68 0"/><path d="M132 104a174 174 0 0 1 336 0M156 130a148 148 0 0 1 288 0" stroke-dasharray="3 9"/><path d="M300 64V382M106 232H494"/></g>`
  }[id]||'':'';
@@ -95,7 +93,7 @@ function experienceCoverGraphic(id, compact=false) {
    <circle class="fitness-peak-marker" cx="418" cy="170" r="10"/>
   </g>`;
  const archiveViewBoxes={alloy:'70 55 470 310',xrd:'35 5 515 275',energy:'75 65 445 310',sejong:'45 65 330 270',fitness:'60 30 535 335'};
- const overviewViewBoxes={xrd:'55 20 490 368',energy:'75 40 450 370',fitness:'52 20 520 390'};
+ const overviewViewBoxes={xrd:'55 20 490 368',energy:'75 70 450 325',fitness:'52 20 520 390'};
  const viewBox=compact?archiveViewBoxes[id]:(overviewViewBoxes[id]||(id==='sejong'?'20 50 380 285':'0 0 600 450'));
  return `<svg class="experience-cover-graphic cover-${id}" viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${compact||['xrd','energy','sejong','fitness'].includes(id)?'':guides}${atmosphere}<g class="cover-drawing">${diagram}</g></svg>`;
 }
