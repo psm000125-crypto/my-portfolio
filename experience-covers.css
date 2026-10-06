@@ -124,8 +124,10 @@ body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[dat
 .xrd-measurement-edge {opacity:0;animation-delay:-3s}
 .xrd-beam {stroke-dasharray:5 7;animation:xrd-beam-travel 1.8s linear infinite}
 .xrd-measured-point {stroke-width:1.2}
-.xrd-blade-glint {fill:none;stroke:#b9824c;stroke-width:3;stroke-linecap:round;stroke-dasharray:.12 1;opacity:0;animation:xrd-blade-sweep 7s ease-in-out infinite}
-@keyframes xrd-blade-sweep {0%,8%{stroke-dashoffset:.14;opacity:0}15%{opacity:.9}62%{stroke-dashoffset:-1;opacity:.9}72%,100%{stroke-dashoffset:-1.12;opacity:0}}
+.xrd-blade-glint {fill:none;stroke-linecap:round;stroke-dasharray:.22 1;opacity:0;animation:xrd-blade-sweep 5s linear infinite}
+.xrd-blade-glint-halo {stroke:#b77425;stroke-width:9;stroke-opacity:.65;filter:blur(1.5px)}
+.xrd-blade-glint-core {stroke:#fffbe8;stroke-width:4;filter:drop-shadow(0 0 1.5px #b77425)}
+@keyframes xrd-blade-sweep {0%{stroke-dashoffset:.24;opacity:0}8%{opacity:1}72%{stroke-dashoffset:-1;opacity:1}82%,100%{stroke-dashoffset:-1.22;opacity:0}}
 @media(prefers-reduced-motion:reduce) {.xrd-blade-glint {display:none}}
 .energy-coating-cutaway {stroke-width:1.6}
 .energy-cover-electrode {fill:currentColor;fill-opacity:.3}

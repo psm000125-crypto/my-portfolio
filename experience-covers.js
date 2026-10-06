@@ -50,7 +50,7 @@ function experienceCoverGraphic(id, compact=false) {
    <path class="cover-material-solid" d="M72 141h130v70H72q-17 0-17-17v-36q0-17 17-17Z"/>
    <path class="cover-material-soft" d="M202 141h321q-24 43-98 59t-223 19Z"/>
    <path d="M202 211q191 2 274-35" opacity=".4"/>
-   ${!compact?'<path class="xrd-blade-glint" d="M202 219Q351 216 425 200Q499 184 523 141" pathLength="1"/>':''}
+   ${!compact?'<g class="xrd-blade-glint"><path class="xrd-blade-glint-halo" d="M202 219Q351 216 425 200Q499 184 523 141" pathLength="1"/><path class="xrd-blade-glint-core" d="M202 219Q351 216 425 200Q499 184 523 141" pathLength="1"/></g>':''}
    <circle cx="86" cy="176" r="5" opacity=".5"/>
    <circle cx="315" cy="181" r="5"/><circle cx="468" cy="168" r="5"/>
    <path d="M315 200v37M468 187v50" opacity=".4"/>
