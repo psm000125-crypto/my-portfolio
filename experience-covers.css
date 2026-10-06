@@ -221,13 +221,6 @@ body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[dat
 body:is([data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.story-section-visual,.story-diagram,.story-bar-chart,.story-visual,.evidence-chart,.summary-hero,.summary-panel,.summary-stat,.summary-callout,.summary-status,.pipeline-node,.story-process li,.story-layer-stack li,.interface-layer,.literature-evidence,.phase-comparison article) {background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important}
 body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.story-header,.enriched-note,.reading-tabs,.artifact-heading,.story-compare-list>div,.story-indicator-grid li) {border-color:var(--portfolio-line)!important}
 body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[data-project="sejong"],[data-project="fitness"]):not(.showcase-home) .workspace .focus-content :is(.evidence-chart,.story-bar-chart) {--series-before:color-mix(in srgb,var(--theme-accent) 40%,var(--portfolio-paper));--series-after:var(--theme-accent);--series-track:color-mix(in srgb,var(--theme-accent) 12%,var(--portfolio-paper))}
-body[data-project="xrd"] .xrd-specimens svg>path:first-of-type {fill:var(--theme-deep)}
-body[data-project="xrd"] .xrd-specimens svg>path:nth-of-type(2) {fill:var(--theme-soft);stroke:var(--theme-accent)}
-body[data-project="xrd"] .xrd-specimens svg>path:nth-of-type(3) {stroke:var(--series-before)}
-body[data-project="xrd"] .xrd-specimens svg>circle:first-of-type {fill:var(--theme-accent)}
-body[data-project="xrd"] .xrd-specimens svg>circle:last-of-type {fill:var(--theme-muted)}
-body[data-project="xrd"] .specimen-body {color:var(--theme-accent)}
-body[data-project="xrd"] .specimen-edge {color:var(--theme-muted)}
 body[data-project="energy"]:not(.showcase-home) .workspace .focus-content :is(.interface-layer.zinc,.interface-layer.transition,.story-layer-stack li:nth-child(2),.energy-layer-reading) {background:transparent!important;border-color:var(--theme-accent)!important}
 body[data-project="energy"] .energy-layer-reading :is(span,strong) {color:var(--theme-text)}
 body[data-project="energy"] .energy-layer-button[aria-pressed="true"] {box-shadow:inset 3px 0 var(--theme-accent)}
