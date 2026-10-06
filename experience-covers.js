@@ -32,7 +32,11 @@ function experienceCoverGraphic(id, compact=false) {
  const guides='<g class="cover-guides"><circle cx="300" cy="220" r="174"/><circle cx="300" cy="220" r="145" stroke-dasharray="2 9"/><path d="M92 400h416M92 393v14M508 393v14M300 28v18M290 37h20M300 394v18M290 403h20"/></g>';
  // These are conceptual background guides for the overview covers, not measurement data.
  const atmosphere=!compact?{
-  xrd:`<g class="cover-atmosphere xrd-cover-atmosphere"><path d="M92 372H508M92 365v14M508 365v14M300 82v28M286 96h28"/><path d="M116 286Q300 70 484 286"/><path d="M142 310Q300 122 458 310" stroke-dasharray="3 9"/><path d="M108 164L492 300M156 108L420 364"/></g>`,
+  xrd:`<g class="cover-atmosphere xrd-cover-atmosphere">
+   <g class="xrd-guide-orbits"><circle cx="315" cy="181" r="154"/><circle cx="315" cy="181" r="128" stroke-dasharray="2 9"/></g>
+   <g class="xrd-guide-axes" transform="rotate(18 315 181)"><path d="M112 181H518M315 18V344"/></g>
+   <g class="xrd-guide-dimension"><path d="M92 372H508M92 365v14M508 365v14"/></g>
+  </g>`,
   energy:`<g class="cover-atmosphere energy-cover-atmosphere"><path d="M86 352H514M86 345v14M514 345v14"/><path d="M102 106C196 48 396 48 498 106"/><path d="M80 134C190 194 410 194 520 134" stroke-dasharray="4 9"/><path d="M110 328C208 270 386 270 490 328M126 352C220 304 376 304 474 352"/><path d="M122 78L478 376"/></g>`,
   fitness:`<g class="cover-atmosphere fitness-cover-atmosphere"><path d="M78 352H522M78 345v14M522 345v14"/><path d="M116 294q34-22 68 0t68 0t68 0t68 0t68 0t68 0"/><path d="M132 104a174 174 0 0 1 336 0M156 130a148 148 0 0 1 288 0" stroke-dasharray="3 9"/><path d="M300 64V382M106 232H494"/></g>`
  }[id]||'':'';

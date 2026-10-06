@@ -72,7 +72,10 @@ body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[dat
 /* Drawings describe each subject without presenting invented measurements. */
 .cover-guides {opacity:.24;transform-origin:300px 220px}
 .cover-atmosphere {pointer-events:none;opacity:.32;stroke-width:1}
-.xrd-cover-atmosphere {transform-origin:300px 228px}
+.xrd-cover-atmosphere {opacity:1;stroke-width:1}
+.xrd-guide-orbits {opacity:.28}
+.xrd-guide-axes {opacity:.2}
+.xrd-guide-dimension {opacity:.3}
 .energy-cover-atmosphere {opacity:.28}
 .fitness-cover-atmosphere {opacity:.27}
 .cover-drawing {stroke-width:1.8}
