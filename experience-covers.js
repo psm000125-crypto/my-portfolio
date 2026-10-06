@@ -33,8 +33,14 @@ function experienceCoverGraphic(id, compact=false) {
  // These are conceptual background guides for the overview covers, not measurement data.
  const atmosphere=!compact?{
   xrd:`<g class="cover-atmosphere xrd-cover-atmosphere">
-   <g class="xrd-guide-orbits"><circle cx="315" cy="181" r="154"/><circle cx="315" cy="181" r="128" stroke-dasharray="2 9"/></g>
-   <g class="xrd-guide-axes" transform="rotate(18 315 181)"><path d="M112 181H518M315 18V344"/></g>
+   <g class="xrd-guide-rotor xrd-guide-body">
+    <g class="xrd-guide-orbits"><circle cx="315" cy="181" r="154"/><circle cx="315" cy="181" r="128" stroke-dasharray="2 9"/></g>
+    <g class="xrd-guide-axes" transform="rotate(18 315 181)"><path d="M112 181H518M315 18V344"/></g>
+   </g>
+   <g class="xrd-guide-rotor xrd-guide-edge">
+    <g class="xrd-guide-orbits"><circle cx="468" cy="168" r="58"/><circle cx="468" cy="168" r="46" stroke-dasharray="2 7"/></g>
+    <g class="xrd-guide-axes" transform="rotate(-22 468 168)"><path d="M400 168H536M468 100V236"/></g>
+   </g>
    <g class="xrd-guide-dimension"><path d="M92 372H508M92 365v14M508 365v14"/></g>
   </g>`,
   energy:`<g class="cover-atmosphere energy-cover-atmosphere"><path d="M86 352H514M86 345v14M514 345v14"/><path d="M102 106C196 48 396 48 498 106"/><path d="M80 134C190 194 410 194 520 134" stroke-dasharray="4 9"/><path d="M110 328C208 270 386 270 490 328M126 352C220 304 376 304 474 352"/><path d="M122 78L478 376"/></g>`,

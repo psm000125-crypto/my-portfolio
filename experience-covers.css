@@ -76,6 +76,9 @@ body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[dat
 .xrd-guide-orbits {opacity:.28}
 .xrd-guide-axes {opacity:.2}
 .xrd-guide-dimension {opacity:.3}
+.xrd-guide-rotor {transform-box:view-box;animation:cover-orbit 64s linear infinite}
+.xrd-guide-body {transform-origin:315px 181px}
+.xrd-guide-edge {transform-origin:468px 168px;animation-duration:38s;animation-direction:reverse}
 .energy-cover-atmosphere {opacity:.28}
 .fitness-cover-atmosphere {opacity:.27}
 .cover-drawing {stroke-width:1.8}
