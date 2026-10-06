@@ -37,10 +37,6 @@ function experienceCoverGraphic(id, compact=false) {
     <g class="xrd-guide-orbits"><circle cx="315" cy="181" r="154"/><circle cx="315" cy="181" r="128" stroke-dasharray="2 9"/></g>
     <g class="xrd-guide-axes" transform="rotate(18 315 181)"><path d="M112 181H518M315 18V344"/></g>
    </g>
-   <g class="xrd-guide-rotor xrd-guide-edge">
-    <g class="xrd-guide-orbits"><circle cx="468" cy="168" r="58"/><circle cx="468" cy="168" r="46" stroke-dasharray="2 7"/></g>
-    <g class="xrd-guide-axes" transform="rotate(-22 468 168)"><path d="M400 168H536M468 100V236"/></g>
-   </g>
    <g class="xrd-guide-dimension"><path d="M92 372H508M92 365v14M508 365v14"/></g>
   </g>`,
   energy:`<g class="cover-atmosphere energy-cover-atmosphere"><path d="M86 352H514M86 345v14M514 345v14"/><path d="M102 106C196 48 396 48 498 106"/><path d="M80 134C190 194 410 194 520 134" stroke-dasharray="4 9"/><path d="M110 328C208 270 386 270 490 328M126 352C220 304 376 304 474 352"/><path d="M122 78L478 376"/></g>`,
@@ -54,6 +50,7 @@ function experienceCoverGraphic(id, compact=false) {
    <path class="cover-material-solid" d="M72 141h130v70H72q-17 0-17-17v-36q0-17 17-17Z"/>
    <path class="cover-material-soft" d="M202 141h321q-24 43-98 59t-223 19Z"/>
    <path d="M202 211q191 2 274-35" opacity=".4"/>
+   ${!compact?'<path class="xrd-blade-glint" d="M202 219Q351 216 425 200Q499 184 523 141" pathLength="1"/>':''}
    <circle cx="86" cy="176" r="5" opacity=".5"/>
    <circle cx="315" cy="181" r="5"/><circle cx="468" cy="168" r="5"/>
    <path d="M315 200v37M468 187v50" opacity=".4"/>

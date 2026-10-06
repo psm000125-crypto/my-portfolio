@@ -78,7 +78,6 @@ body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[dat
 .xrd-guide-dimension {opacity:.3}
 .xrd-guide-rotor {transform-box:view-box;animation:cover-orbit 64s linear infinite}
 .xrd-guide-body {transform-origin:315px 181px}
-.xrd-guide-edge {transform-origin:468px 168px;animation-duration:38s;animation-direction:reverse}
 .energy-cover-atmosphere {opacity:.28}
 .fitness-cover-atmosphere {opacity:.27}
 .cover-drawing {stroke-width:1.8}
@@ -125,6 +124,9 @@ body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[dat
 .xrd-measurement-edge {opacity:0;animation-delay:-3s}
 .xrd-beam {stroke-dasharray:5 7;animation:xrd-beam-travel 1.8s linear infinite}
 .xrd-measured-point {stroke-width:1.2}
+.xrd-blade-glint {fill:none;stroke:#b9824c;stroke-width:3;stroke-linecap:round;stroke-dasharray:.12 1;opacity:0;animation:xrd-blade-sweep 7s ease-in-out infinite}
+@keyframes xrd-blade-sweep {0%,8%{stroke-dashoffset:.14;opacity:0}15%{opacity:.9}62%{stroke-dashoffset:-1;opacity:.9}72%,100%{stroke-dashoffset:-1.12;opacity:0}}
+@media(prefers-reduced-motion:reduce) {.xrd-blade-glint {display:none}}
 .energy-coating-cutaway {stroke-width:1.6}
 .energy-cover-electrode {fill:currentColor;fill-opacity:.3}
 .energy-cover-nucleation {fill:currentColor;fill-opacity:.17}
