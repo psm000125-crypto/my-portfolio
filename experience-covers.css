@@ -1,10 +1,10 @@
 /* A collection shares one palette across its covers, evidence and archive cards. */
 :is(body[data-project="alloy"],body[data-project="xrd"],body[data-project="energy"],[data-preview="alloy"],[data-preview="xrd"],[data-preview="energy"]):not(.showcase-home) {
- --portfolio-paper:#ece4d9;--portfolio-ink:#29231f;--portfolio-muted:#54483d;--portfolio-line:#b5a38f;
- --theme-accent:#653e27;--theme-deep:#29231f;--theme-soft:#e2d4c1;--theme-selected:#dbc5ad;
- --theme-text:#3e352e;--theme-muted:#54483d;--theme-raised:#f4ede4;--theme-surface:#f4ede4;
- --series-before:#b8a18b;--series-after:#653e27;--series-track:#ded3c4;
- --collection-card:#eed8c3;--collection-card-ink:#653e27;
+ --portfolio-paper:#ece4d9;--portfolio-ink:#3c332b;--portfolio-muted:#6b5e50;--portfolio-line:#bfb09e;
+ --theme-accent:#80583a;--theme-deep:#3c332b;--theme-soft:#e2d4c1;--theme-selected:#dbc5ad;
+ --theme-text:#554a3e;--theme-muted:#6b5e50;--theme-raised:#f4ede4;--theme-surface:#f4ede4;
+ --series-before:#b8a18b;--series-after:#80583a;--series-track:#ded3c4;
+ --collection-card:#eed8c3;--collection-card-ink:#80583a;
 }
 :is(body[data-project="sejong"],body[data-project="fitness"],[data-preview="sejong"],[data-preview="fitness"]):not(.showcase-home) {
  --portfolio-paper:#eaeef4;--portfolio-ink:#182e61;--portfolio-muted:#556684;--portfolio-line:#cbd4e2;
@@ -570,7 +570,10 @@ body[data-project="energy"]:not(.showcase-home) .workspace .energy-layer-horizon
 
 /* Campus reading: preserve the apricot canvas with darker, firmer type. */
 body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .experience-landing :is(.project-title,.project-lead,.experience-resource h3) {font-weight:500!important}
-body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .experience-resource p {font-size:14px;line-height:1.85;color:var(--theme-text)}
-body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace :is(.detail-label,.section-label,.branch-group>h2,.branch-link small,.focus-toolbar,.artifact-caption,.project-fact dt) {color:var(--theme-muted)!important}
-body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace :is(.story-section-copy p,.story-intro,.project-description,.summary-hero p,.summary-callout p,.project-fact dd) {color:var(--theme-text)!important}
-.archive-collection[data-collection="campus"]>.archive-collection-heading h3,.archive-collection[data-collection="campus"] .collection-brace {color:#653e27}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .experience-resource p {font-size:14px;line-height:1.85;color:#3e352e}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace :is(.detail-label,.section-label,.branch-group>h2,.branch-link small,.focus-toolbar,.artifact-caption,.project-fact dt) {color:#54483d!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace :is(.story-section-copy p,.story-intro,.project-description,.summary-hero p,.summary-callout p,.project-fact dd) {color:#3e352e!important}
+.archive-collection[data-collection="campus"]>.archive-collection-heading h3 {color:#653e27}
+/* Text colours are separate from the original diagram and chart palette. */
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .experience-landing :is(.project-title,.experience-resource h3) {color:#29231f!important}
+body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"]):not(.showcase-home) .workspace .experience-landing :is(.project-lead,.eyebrow) {color:#653e27!important}
