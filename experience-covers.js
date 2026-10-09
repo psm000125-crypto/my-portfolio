@@ -40,13 +40,13 @@ function experienceCoverGraphic(id, compact=false) {
    <g class="xrd-guide-dimension"><path d="M92 372H508M92 365v14M508 365v14"/></g>
   </g>`,
   energy:`<g class="cover-atmosphere energy-cover-atmosphere">
-   <path class="energy-ground-shadow" d="M104 390H416L490 346H178Z"/>
+   <ellipse class="energy-ground-shadow" cx="300" cy="393" rx="108" ry="13"/>
    <g class="energy-ground-grid">
     <path d="M80 416H428M102 403H450M124 390H472M146 377H494M168 364H516"/>
     <path d="M80 416l88-52M123.5 416l88-52M167 416l88-52M210.5 416l88-52M254 416l88-52M297.5 416l88-52M341 416l88-52M384.5 416l88-52M428 416l88-52"/>
    </g>
    <g class="energy-ground-datums"><path d="M66 416h24m-12-5v10M416 424h24m-12-5v10M506 364h20m-10-5v10"/></g>
-   <g class="energy-field-traces"><path d="M82 300V180l30-18M508 268V160l-18 11"/><path d="M82 250v-22M508 210v-22" class="energy-field-flow"/></g>
+   <g class="energy-field-traces"><path d="M158 108v254m-6-254h12m-12 254h12M432 148v190m-6-190h12m-12 190h12"/></g>
   </g>`,
   fitness:`<g class="cover-atmosphere fitness-cover-atmosphere"><path d="M78 352H522M78 345v14M522 345v14"/><path d="M116 294q34-22 68 0t68 0t68 0t68 0t68 0t68 0"/><path d="M132 104a174 174 0 0 1 336 0M156 130a148 148 0 0 1 288 0" stroke-dasharray="3 9"/><path d="M300 64V382M106 232H494"/></g>`
  }[id]||'':'';
@@ -67,14 +67,30 @@ function experienceCoverGraphic(id, compact=false) {
   <g class="xrd-measurement xrd-measurement-edge"><path class="xrd-beam" d="m242 76 226 92 31-92"/><circle class="xrd-measured-point" cx="468" cy="168" r="12"/></g>
   <g class="cover-diagram-labels"><text x="216" y="30">X선</text><text x="315" y="264" text-anchor="middle">몸통</text><text x="468" y="264" text-anchor="middle">날 끝</text></g>`;
  if(id==='energy')diagram=`
-  <g class="energy-coating-cutaway">
-   <g class="energy-cover-electrode"><path d="M104 322h312l74-44H178Z"/><path d="M104 322h312v34H104Z"/><path d="m416 322 74-44v34l-74 44Z"/></g>
-   <g class="energy-cover-nucleation"><path d="M104 266h312l74-44H178Z"/><path d="M104 266h312v56H104Z"/><path d="m416 266 74-44v56l-74 44Z"/>${Array.from({length:12},(_,i)=>`<g class="energy-cover-zinc"><circle cx="${125+(i%6)*54}" cy="${282+Math.floor(i/6)*24}" r="7"/><circle cx="${127+(i%6)*54}" cy="${280+Math.floor(i/6)*24}" r="1.5"/></g>`).join('')}</g>
-   <g class="energy-cover-transition"><path d="M104 220h312l74-44H178Z"/><path d="M104 220h312v46H104Z"/><path d="m416 220 74-44v46l-74 44Z"/>${Array.from({length:8},(_,i)=>`<circle cx="${122+i*39}" cy="${238+(i%2)*12}" r="${2+i%3}"/>`).join('')}</g>
-   <g class="energy-cover-growth"><path d="M104 164h312l74-44H178Z"/><path d="M104 164h312v56H104Z"/><path d="m416 164 74-44v56l-74 44Z"/></g>
-   <g class="energy-cover-network">${Array.from({length:10},(_,i)=>`<path d="M${113+i*31} 165q18 14 3 28t3 27"/><path d="M${113+i*31} 221q18 11 3 22t3 23"/>`).join('')}${Array.from({length:7},(_,i)=>`<path d="M${120+i*44} 155q14-16 29-18t28-16"/>`).join('')}</g>
-   <g class="energy-cover-deposition">${Array.from({length:14},(_,i)=>`<circle cx="${116+i*22}" cy="316" r="5" style="--deposit-delay:${-i*.18}s"/>`).join('')}</g>
-   <g class="energy-cover-ions">${Array.from({length:7},(_,i)=>`<circle cx="${130+i*44}" cy="98" r="4" style="--ion-delay:${-i*.65}s"/>`).join('')}</g>
+  <g class="energy-battery-cutaway">
+   <!-- Conceptual cutaway: the silhouette identifies a battery; particles suggest uniform deposition. -->
+   <path class="battery-shell" d="M196 108a104 30 0 0 1 208 0v254a104 30 0 0 1-208 0Z"/>
+   <path class="battery-shell-edge" d="M204 122v237M396 122v237M196 354a104 30 0 0 0 208 0"/>
+   <ellipse class="battery-cap" cx="300" cy="108" rx="104" ry="30"/>
+   <ellipse class="battery-cap-inset" cx="300" cy="106" rx="87" ry="22"/>
+   <path class="battery-terminal" d="M266 66a34 10 0 0 1 68 0v24a34 10 0 0 1-68 0Z"/>
+   <ellipse class="battery-cap" cx="300" cy="66" rx="34" ry="10"/>
+   <path class="battery-window" d="M220 150q80 27 160 0v184q-80 34-160 0Z"/>
+   <g class="battery-electrodes">
+    <path class="battery-sheet battery-sheet-back" d="M232 168q63 25 136-5v126q-62 26-136 4Z"/>
+    <path class="battery-sheet battery-sheet-middle" d="M232 168q46 18 82 8v131q-34 12-82-6Z"/>
+    <path class="battery-sheet battery-sheet-front" d="M232 168q23 10 44 9v140q-24 0-44-9Z"/>
+    <path class="battery-sheet-edges" d="M240 176v128M249 179v128M258 181v129"/>
+    <path class="battery-winding" d="M232 168c0-13 41-17 52-7 12 11-19 19-34 12-17-8 11-17 23-10 11 7-12 12-15 6"/>
+   </g>
+   <g class="battery-ion-tracks"><path d="M296 199v114M327 195v122M358 186v127"/></g>
+   <path class="battery-collector" d="M220 334q80 34 160 0v13q-80 34-160 0Z"/>
+   <path class="battery-interface" d="M226 331q74 27 148 0"/>
+   <g class="battery-deposit-bed">${Array.from({length:9},(_,i)=>`<circle cx="${236+i*16}" cy="${333+10*Math.sin(i*Math.PI/8)}" r="3"/>`).join('')}</g>
+   ${[296,327,358].map((x,i)=>`<g class="battery-ion-lane" style="--ion-delay:${-i*1.8}s;--ion-rest:${i*29}px">
+    <g class="battery-ion" transform="translate(${x} 192)"><g class="battery-ion-travel"><circle r="5.5"/><circle r="1.3"/></g></g>
+    <circle class="battery-arrival" cx="${x}" cy="${i===0?337:i===1?336:330}" r="4"/>
+   </g>`).join('')}
   </g>`;
  if(id==='sejong')diagram=`
   <g class="sejong-street-map">
@@ -96,11 +112,35 @@ function experienceCoverGraphic(id, compact=false) {
    <path class="fitness-signal-read" d="M315 252h24q12 0 23-18 7-8 13 9 11 15 24-23 12-65 24-43 17 30 25 75 10 61 27 30 10-17 17-30 10-17 20-8 9 9 15 8h37"/>
    <circle class="fitness-peak-marker" cx="418" cy="170" r="10"/>
   </g>`;
- const archiveViewBoxes={alloy:'70 55 470 310',xrd:'35 5 515 275',energy:'75 65 445 310',sejong:'45 65 330 270',fitness:'60 30 535 335'};
- const overviewViewBoxes={xrd:'55 20 490 368',energy:'55 65 485 380',fitness:'52 20 520 390'};
+ const archiveViewBoxes={alloy:'70 55 470 310',xrd:'35 5 515 275',energy:'160 42 280 365',sejong:'45 65 330 270',fitness:'60 30 535 335'};
+ const overviewViewBoxes={xrd:'55 20 490 368',energy:'55 30 485 400',fitness:'52 20 520 390'};
  const viewBox=compact?archiveViewBoxes[id]:(overviewViewBoxes[id]||(id==='sejong'?'20 50 380 285':'0 0 600 450'));
  return `<svg class="experience-cover-graphic cover-${id}" viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${compact||['xrd','energy','sejong','fitness'].includes(id)?'':guides}${atmosphere}<g class="cover-drawing">${diagram}</g></svg>`;
 }
+// Covers are replaced by the hash router. Observe only mounted battery SVGs,
+// and suspend their CSS timelines outside the viewport or in a hidden tab.
+function bindEnergyCoverMotion() {
+ if(!('IntersectionObserver' in window))return;
+ const covers=new Map();
+ const update=(cover,visible)=>cover.dataset.motion=visible&&!document.hidden?'active':'still';
+ const observer=new IntersectionObserver(entries=>entries.forEach(({target,isIntersecting})=>{
+  if(!covers.has(target))return;
+  covers.set(target,isIntersecting);
+  update(target,isIntersecting);
+ }),{threshold:0});
+ const register=node=>{
+  if(node.nodeType!==1)return;
+  const found=[...(node.matches('.cover-energy')?[node]:[]),...node.querySelectorAll('.cover-energy')];
+  found.forEach(cover=>{if(!covers.has(cover)){covers.set(cover,false);update(cover,false);observer.observe(cover);}});
+ };
+ new MutationObserver(records=>{
+  covers.forEach((_,cover)=>{if(!cover.isConnected){observer.unobserve(cover);covers.delete(cover);}});
+  records.forEach(record=>record.addedNodes.forEach(register));
+ }).observe(document.body,{childList:true,subtree:true});
+ document.addEventListener('visibilitychange',()=>covers.forEach((visible,cover)=>update(cover,visible)));
+ register(document.body);
+}
+bindEnergyCoverMotion();
 function experienceResourceIcon(type) {
  const paths=type==='story'?'<path d="M28 20h32l20 9 20-9h32v64h-32L80 93 60 84H28zM80 29v64M40 36h18M40 47h18M102 36h18M102 47h18"/>':type==='parts3d'?'<path d="m80 14 39 23v45L80 105 41 82V37zM41 37l39 23 39-23M80 60v45"/>':type==='map'?'<path d="m28 32 35-12 34 12 35-12v66l-35 12-34-12-35 12zM63 20v66M97 32v66"/><circle cx="81" cy="57" r="10"/>':type==='demo'?'<rect x="60" y="13" width="42" height="87" rx="6"/><path d="M67 58h8l5-19 8 34 5-15h5M73 90h16"/>':type==='equipment'?'<circle cx="79" cy="57" r="30"/><circle cx="79" cy="57" r="14"/><path d="M42 15h74M49 10v12M109 10v12M31 29v56M25 29h12M25 85h12"/>':type==='slides'?'<rect x="39" y="20" width="82" height="58"/><path d="M47 86h82V28M55 94h82V36M51 37h31M51 48h53M51 59h40"/>':'<path d="M31 83h100M39 76V50h17v26M72 76V34h17v42M105 76V19h17v57"/>';
  return `<svg viewBox="0 0 160 115" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">${paths}</svg>`;
