@@ -44,15 +44,7 @@ function experienceCoverGraphic(id, compact=false) {
    <g class="xrd-guide-dimension"><path d="M92 372H508M92 365v14M508 365v14"/></g>
   </g>`,
   energy:`<g class="cover-atmosphere energy-cover-atmosphere">
-   <g class="energy-field-orbit"><circle cx="300" cy="225" r="173"/><circle cx="300" cy="225" r="152" stroke-dasharray="2 10"/><path d="M300 41v26m0 316v26M116 225h26m316 0h26"/><path d="M175 103l250 244"/></g>
-   <g class="energy-field-current"><path d="M184 132q-57 94 0 192M416 132q57 94 0 192"/></g>
-   <ellipse class="energy-ground-shadow" cx="300" cy="393" rx="108" ry="13"/>
-   <g class="energy-ground-grid">
-    <path d="M80 416H428M102 403H450M124 390H472M146 377H494M168 364H516"/>
-    <path d="M80 416l88-52M123.5 416l88-52M167 416l88-52M210.5 416l88-52M254 416l88-52M297.5 416l88-52M341 416l88-52M384.5 416l88-52M428 416l88-52"/>
-   </g>
-   <g class="energy-ground-datums"><path d="M66 416h24m-12-5v10M416 424h24m-12-5v10M506 364h20m-10-5v10"/></g>
-   <g class="energy-field-traces"><path d="M158 108v254m-6-254h12m-12 254h12M432 148v190m-6-190h12m-12 190h12"/></g>
+   <g class="energy-field-orbit"><circle cx="300" cy="225" r="173" pathLength="100" stroke-dasharray="36 14"/></g>
   </g>`,
   sejong:`<g class="cover-atmosphere sejong-cover-atmosphere"><circle cx="200" cy="190" r="130"/><circle cx="200" cy="190" r="108" stroke-dasharray="2 9"/><g class="sejong-search-bearing"><path d="M200 53v274M63 190h274"/><path d="M200 60a130 130 0 0 1 112 65" stroke-width="2"/></g><circle class="sejong-search-radius" cx="200" cy="190" r="80"/></g>`,
   fitness:`<g class="cover-atmosphere fitness-cover-atmosphere"><path d="M78 352H522M78 345v14M522 345v14"/><path class="fitness-background-wave" d="M116 294q34-22 68 0t68 0t68 0t68 0t68 0t68 0"/><g class="fitness-sensor-orbit"><circle cx="300" cy="220" r="172"/><circle cx="300" cy="220" r="148" stroke-dasharray="3 9"/><path d="M300 38v32m0 300v32M118 220h32m300 0h32"/></g></g>`
