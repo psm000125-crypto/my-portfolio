@@ -242,7 +242,9 @@ body .workspace .navigation .nav-collection-link.active {box-shadow:none!importa
 .lab-card-visual:is([data-preview="alloy"],[data-preview="xrd"],[data-preview="energy"]) {background-image:linear-gradient(#80583a08 1px,transparent 1px),linear-gradient(90deg,#80583a08 1px,transparent 1px);background-size:22px 22px}
 .lab-card-visual .experience-cover-graphic {position:absolute;inset:auto;left:50%;top:50%;translate:-50% -50%;width:280px;max-width:calc(100% - 64px);height:128px;overflow:visible;transform:none!important;transition:none!important}
 .lab-card-visual .cover-energy {height:158px}
-.lab-card-visual .experience-cover-graphic:not(.cover-energy) * {animation:none!important;transition:none!important;stroke-dashoffset:0!important}
+.cover-static,.cover-static * {animation:none!important;transition:none!important;stroke-dashoffset:0!important}
+.cover-static .battery-ion-travel {transform:translateY(var(--ion-rest));opacity:.85}
+.cover-static .battery-arrival {opacity:.45}
 .archive-collection[data-collection="campus"]>.archive-collection-heading h3 {color:#80583a}
 .archive-collection[data-collection="ai"]>.archive-collection-heading h3 {color:#315cc6}
 .archive-collection[data-collection="campus"] .collection-brace {color:#80583a}

@@ -109,7 +109,7 @@ function experienceCoverGraphic(id, compact=false) {
  const archiveViewBoxes={alloy:'70 55 470 310',xrd:'35 5 515 275',energy:'160 42 280 365',sejong:'45 65 330 270',fitness:'60 30 535 335'};
  const overviewViewBoxes={xrd:'55 20 490 368',energy:'55 30 485 400',fitness:'52 20 520 390'};
  const viewBox=compact?archiveViewBoxes[id]:(overviewViewBoxes[id]||(id==='sejong'?'20 50 380 285':'0 0 600 450'));
- return `<svg class="experience-cover-graphic cover-${id}" viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${compact||atmosphere?'':guides}${atmosphere}<g class="cover-drawing">${diagram}</g></svg>`;
+ return `<svg class="experience-cover-graphic cover-${id}${compact?' cover-static':''}" viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${compact||atmosphere?'':guides}${atmosphere}<g class="cover-drawing">${diagram}</g></svg>`;
 }
 // Covers are replaced by the hash router. Observe only mounted cover SVGs,
 // and suspend their CSS timelines outside the viewport or in a hidden tab.
@@ -124,7 +124,8 @@ function bindExperienceCoverMotion() {
  }),{threshold:0});
  const register=node=>{
   if(node.nodeType!==1)return;
-  const found=[...(node.matches('.experience-cover-graphic')?[node]:[]),...node.querySelectorAll('.experience-cover-graphic')];
+  const selector='.experience-cover-graphic:not(.cover-static)';
+  const found=[...(node.matches(selector)?[node]:[]),...node.querySelectorAll(selector)];
   found.forEach(cover=>{if(!covers.has(cover)){covers.set(cover,false);update(cover,false);observer.observe(cover);}});
  };
  new MutationObserver(records=>{
