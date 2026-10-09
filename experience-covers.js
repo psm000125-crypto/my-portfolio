@@ -44,7 +44,8 @@ function experienceCoverGraphic(id, compact=false) {
    <g class="xrd-guide-dimension"><path d="M92 372H508M92 365v14M508 365v14"/></g>
   </g>`,
   energy:`<g class="cover-atmosphere energy-cover-atmosphere">
-   <g class="energy-field-orbit"><circle cx="300" cy="225" r="192" pathLength="100" stroke-dasharray="38 62" stroke-dashoffset="12"/><circle class="energy-orbit-tail" cx="300" cy="225" r="192" pathLength="100" stroke-dasharray="20 80" stroke-dashoffset="-49"/></g>
+   <g class="energy-orbit-ticks">${Array.from({length:8},(_,i)=>`<path d="M300 24v${i%2?4:7}" transform="rotate(${i*45} 300 225)"/>`).join('')}</g>
+   <g class="energy-field-orbit"><circle cx="300" cy="225" r="192" pathLength="100" stroke-dasharray="38 62" stroke-dashoffset="12"/><circle class="energy-orbit-tail" cx="300" cy="225" r="192" pathLength="100" stroke-dasharray="20 80" stroke-dashoffset="-49"/><g class="energy-orbit-points"><circle cx="300" cy="33" r="2.8"/><circle cx="108" cy="225" r="1.8"/></g></g>
   </g>`,
   sejong:`<g class="cover-atmosphere sejong-cover-atmosphere"><circle cx="200" cy="190" r="130"/><circle cx="200" cy="190" r="108" stroke-dasharray="2 9"/><g class="sejong-search-bearing"><path d="M200 53v274M63 190h274"/><path d="M200 60a130 130 0 0 1 112 65" stroke-width="2"/></g><circle class="sejong-search-radius" cx="200" cy="190" r="80"/></g>`,
   fitness:`<g class="cover-atmosphere fitness-cover-atmosphere"><path d="M78 352H522M78 345v14M522 345v14"/><path class="fitness-background-wave" d="M116 294q34-22 68 0t68 0t68 0t68 0t68 0t68 0"/><g class="fitness-sensor-orbit"><circle cx="300" cy="220" r="172"/><circle cx="300" cy="220" r="148" stroke-dasharray="3 9"/><path d="M300 38v32m0 300v32M118 220h32m300 0h32"/></g></g>`

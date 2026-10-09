@@ -79,8 +79,10 @@ body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[dat
 .xrd-guide-rotor {transform-box:view-box;animation:cover-orbit 64s linear infinite}
 .xrd-guide-body {transform-origin:315px 181px}
 .energy-cover-atmosphere {opacity:1}
-.energy-field-orbit {opacity:.36;stroke-width:1.3;transform-origin:300px 225px;animation:cover-orbit 36s linear infinite}
+.energy-field-orbit {opacity:.42;stroke-width:1.3;transform-origin:300px 225px;animation:cover-orbit 20s linear infinite}
 .energy-orbit-tail {opacity:.55}
+.energy-orbit-ticks {opacity:.2;stroke-width:1}
+.energy-orbit-points {fill:currentColor;stroke:none}
 .alloy-cover-atmosphere {opacity:.26}
 .alloy-roll-guide {animation:cover-orbit 64s linear infinite}
 .alloy-roll-guide.is-reverse {animation-direction:reverse}
