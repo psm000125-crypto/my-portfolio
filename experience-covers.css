@@ -79,7 +79,8 @@ body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[dat
 .xrd-guide-rotor {transform-box:view-box;animation:cover-orbit 64s linear infinite}
 .xrd-guide-body {transform-origin:315px 181px}
 .energy-cover-atmosphere {opacity:1}
-.energy-field-orbit {opacity:.23;transform-origin:300px 225px;animation:cover-orbit 90s linear infinite}
+.energy-field-orbit {opacity:.36;stroke-width:1.3;transform-origin:300px 225px;animation:cover-orbit 36s linear infinite}
+.energy-orbit-tail {opacity:.55}
 .alloy-cover-atmosphere {opacity:.26}
 .alloy-roll-guide {animation:cover-orbit 64s linear infinite}
 .alloy-roll-guide.is-reverse {animation-direction:reverse}
@@ -137,15 +138,12 @@ body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[dat
 .xrd-beam {stroke-dasharray:5 7;animation:xrd-beam-travel 1.8s linear infinite}
 .xrd-measured-point {stroke-width:1.2}
 .energy-battery-cutaway {stroke-width:1.6}
-.battery-shell {fill:var(--portfolio-paper,#ece4d9);stroke-width:2}
-.battery-shell-edge {opacity:.38;stroke-width:1}
+.battery-shell {fill:var(--portfolio-paper,#ece4d9);stroke-width:2.2}
 .battery-cap,.battery-terminal {fill:var(--portfolio-paper,#ece4d9);stroke-width:1.8}
-.battery-cap-inset {opacity:.4;stroke-width:1}
 .battery-window {fill:var(--portfolio-paper,#ece4d9);stroke-opacity:.65;stroke-width:1.2}
 .battery-upper-interface {fill:currentColor;fill-opacity:.1;stroke-opacity:.65;stroke-width:1.1}
 .battery-ion-tracks {stroke-width:.8;stroke-dasharray:2 7;opacity:.2}
 .battery-collector {fill:currentColor;fill-opacity:.22;stroke-width:1.3}
-.battery-interface {opacity:.65;stroke-width:1.2}
 .battery-deposit-bed {fill:currentColor;fill-opacity:.45;stroke:none}
 .battery-ion-travel {animation:battery-ion-descend 5.6s linear infinite;animation-delay:var(--ion-delay)}
 .battery-ion-travel>circle:first-child {fill:var(--portfolio-paper,#ece4d9);stroke-width:1.5}
@@ -155,8 +153,8 @@ body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[dat
 @keyframes battery-ion-descend {
  0%{transform:translateY(0);opacity:0}
  12%{opacity:.85}
- 72%{transform:translateY(134px);opacity:.85}
- 79%,100%{transform:translateY(140px);opacity:0}
+ 72%{transform:translateY(calc(var(--ion-distance) - 6px));opacity:.85}
+ 79%,100%{transform:translateY(var(--ion-distance));opacity:0}
 }
 @keyframes battery-ion-settle {
  0%,64%{transform:scale(.65);opacity:.15}

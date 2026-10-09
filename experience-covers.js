@@ -44,7 +44,7 @@ function experienceCoverGraphic(id, compact=false) {
    <g class="xrd-guide-dimension"><path d="M92 372H508M92 365v14M508 365v14"/></g>
   </g>`,
   energy:`<g class="cover-atmosphere energy-cover-atmosphere">
-   <g class="energy-field-orbit"><circle cx="300" cy="225" r="173" pathLength="100" stroke-dasharray="36 14"/></g>
+   <g class="energy-field-orbit"><circle cx="300" cy="225" r="192" pathLength="100" stroke-dasharray="38 62" stroke-dashoffset="12"/><circle class="energy-orbit-tail" cx="300" cy="225" r="192" pathLength="100" stroke-dasharray="20 80" stroke-dashoffset="-49"/></g>
   </g>`,
   sejong:`<g class="cover-atmosphere sejong-cover-atmosphere"><circle cx="200" cy="190" r="130"/><circle cx="200" cy="190" r="108" stroke-dasharray="2 9"/><g class="sejong-search-bearing"><path d="M200 53v274M63 190h274"/><path d="M200 60a130 130 0 0 1 112 65" stroke-width="2"/></g><circle class="sejong-search-radius" cx="200" cy="190" r="80"/></g>`,
   fitness:`<g class="cover-atmosphere fitness-cover-atmosphere"><path d="M78 352H522M78 345v14M522 345v14"/><path class="fitness-background-wave" d="M116 294q34-22 68 0t68 0t68 0t68 0t68 0t68 0"/><g class="fitness-sensor-orbit"><circle cx="300" cy="220" r="172"/><circle cx="300" cy="220" r="148" stroke-dasharray="3 9"/><path d="M300 38v32m0 300v32M118 220h32m300 0h32"/></g></g>`
@@ -69,20 +69,17 @@ function experienceCoverGraphic(id, compact=false) {
   <g class="energy-battery-cutaway">
    <!-- Conceptual cutaway: the silhouette identifies a battery; particles suggest uniform deposition. -->
    <path class="battery-shell" d="M196 108a104 30 0 0 1 208 0v254a104 30 0 0 1-208 0Z"/>
-   <path class="battery-shell-edge" d="M204 122v237M396 122v237M196 354a104 30 0 0 0 208 0"/>
    <ellipse class="battery-cap" cx="300" cy="108" rx="104" ry="30"/>
-   <ellipse class="battery-cap-inset" cx="300" cy="106" rx="87" ry="22"/>
-   <path class="battery-terminal" d="M266 66a34 10 0 0 1 68 0v24a34 10 0 0 1-68 0Z"/>
-   <ellipse class="battery-cap" cx="300" cy="66" rx="34" ry="10"/>
+   <path class="battery-terminal" d="M272 70a28 9 0 0 1 56 0v20a28 9 0 0 1-56 0Z"/>
+   <ellipse class="battery-cap" cx="300" cy="70" rx="28" ry="9"/>
    <path class="battery-window" d="M220 150q80 27 160 0v184q-80 34-160 0Z"/>
    <path class="battery-upper-interface" d="M232 169q68 22 136 0v8q-68 22-136 0Z"/>
-   <g class="battery-ion-tracks"><path d="M296 199v114M327 195v122M358 186v127"/></g>
+   <g class="battery-ion-tracks"><path d="M252 204v113M300 209v114M348 204v113"/></g>
    <path class="battery-collector" d="M220 334q80 34 160 0v13q-80 34-160 0Z"/>
-   <path class="battery-interface" d="M226 331q74 27 148 0"/>
    <g class="battery-deposit-bed">${Array.from({length:9},(_,i)=>`<circle cx="${236+i*16}" cy="${333+10*Math.sin(i*Math.PI/8)}" r="3"/>`).join('')}</g>
-   ${[296,327,358].map((x,i)=>`<g class="battery-ion-lane" style="--ion-delay:${-i*1.8}s;--ion-rest:${i*29}px">
+   ${[252,300,348].map((x,i)=>`<g class="battery-ion-lane" style="--ion-delay:${-i*1.8}s;--ion-rest:${i*29}px;--ion-distance:${i===1?151:145}px">
     <g class="battery-ion" transform="translate(${x} 192)"><g class="battery-ion-travel"><circle r="5.5"/><circle r="1.3"/></g></g>
-    <circle class="battery-arrival" cx="${x}" cy="${i===0?337:i===1?336:330}" r="4"/>
+    <circle class="battery-arrival" cx="${x}" cy="${i===1?343:337}" r="4"/>
    </g>`).join('')}
   </g>`;
  if(id==='sejong')diagram=`
