@@ -44,7 +44,10 @@ function experienceCoverGraphic(id, compact=false) {
    <g class="xrd-guide-dimension"><path d="M92 372H508M92 365v14M508 365v14"/></g>
   </g>`,
   energy:`<g class="cover-atmosphere energy-cover-atmosphere">
-   <g class="energy-orbit-ticks">${Array.from({length:8},(_,i)=>`<path d="M300 24v${i%2?4:7}" transform="rotate(${i*45} 300 225)"/>`).join('')}</g>
+   <g class="energy-orbit-ticks">${Array.from({length:24},(_,i)=>`<path d="M300 13v${i%3?3:8}" transform="rotate(${i*15} 300 225)" opacity="${i%3?.5:1}"/>`).join('')}</g>
+   <circle class="energy-inner-orbit" cx="300" cy="225" r="173" stroke-dasharray="1 10"/>
+   <g class="energy-counter-orbit"><circle cx="300" cy="225" r="204" pathLength="100" stroke-dasharray="9 41"/><g class="energy-orbit-satellites">${[25,145,265].map(angle=>`<g transform="rotate(${angle} 300 225)"><circle cx="300" cy="21" r="4.5"/><circle cx="300" cy="21" r="1.5"/></g>`).join('')}</g></g>
+   <g class="energy-field-nodes">${[76,524].map(x=>`<g><path d="M${x<300?x+7:x-22} 225h15"/><circle class="energy-node-pulse" cx="${x}" cy="225" r="8"/><circle cx="${x}" cy="225" r="3"/></g>`).join('')}</g>
    <g class="energy-field-orbit"><circle cx="300" cy="225" r="192" pathLength="100" stroke-dasharray="38 62" stroke-dashoffset="12"/><circle class="energy-orbit-tail" cx="300" cy="225" r="192" pathLength="100" stroke-dasharray="20 80" stroke-dashoffset="-49"/><g class="energy-orbit-points"><circle cx="300" cy="33" r="2.8"/><circle cx="108" cy="225" r="1.8"/></g></g>
   </g>`,
   sejong:`<g class="cover-atmosphere sejong-cover-atmosphere"><circle cx="200" cy="190" r="130"/><circle cx="200" cy="190" r="108" stroke-dasharray="2 9"/><g class="sejong-search-bearing"><path d="M200 53v274M63 190h274"/><path d="M200 60a130 130 0 0 1 112 65" stroke-width="2"/></g><circle class="sejong-search-radius" cx="200" cy="190" r="80"/></g>`,

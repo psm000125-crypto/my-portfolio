@@ -83,6 +83,15 @@ body:is([data-project="alloy"],[data-project="xrd"],[data-project="energy"],[dat
 .energy-orbit-tail {opacity:.55}
 .energy-orbit-ticks {opacity:.2;stroke-width:1}
 .energy-orbit-points {fill:currentColor;stroke:none}
+.energy-inner-orbit {opacity:.21;stroke-width:1.2}
+.energy-counter-orbit {opacity:.38;stroke-width:2;transform-origin:300px 225px;animation:cover-orbit 20s linear infinite reverse}
+.energy-orbit-satellites {stroke-width:1}
+.energy-orbit-satellites circle:first-child {fill:var(--portfolio-paper,#ece4d9)}
+.energy-orbit-satellites circle:last-child {fill:currentColor;stroke:none}
+.energy-field-nodes {opacity:.35;stroke-width:1}
+.energy-field-nodes circle:last-child {fill:currentColor;stroke:none}
+.energy-node-pulse {transform-box:fill-box;transform-origin:center;animation:energy-node-breathe 4s ease-in-out infinite}
+@keyframes energy-node-breathe {0%,100%{transform:scale(.8);opacity:.3}50%{transform:scale(1.15);opacity:.85}}
 .alloy-cover-atmosphere {opacity:.26}
 .alloy-roll-guide {animation:cover-orbit 64s linear infinite}
 .alloy-roll-guide.is-reverse {animation-direction:reverse}
