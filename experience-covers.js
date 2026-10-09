@@ -32,6 +32,10 @@ function experienceCoverGraphic(id, compact=false) {
  const guides='<g class="cover-guides"><circle cx="300" cy="220" r="174"/><circle cx="300" cy="220" r="145" stroke-dasharray="2 9"/><path d="M92 400h416M92 393v14M508 393v14M300 28v18M290 37h20M300 394v18M290 403h20"/></g>';
  // These are conceptual background guides for the overview covers, not measurement data.
  const atmosphere=!compact?{
+  alloy:`<g class="cover-atmosphere alloy-cover-atmosphere">
+   ${[139,279].map((y,i)=>`<g class="alloy-roll-guide${i?' is-reverse':''}" style="transform-origin:286px ${y}px"><circle cx="286" cy="${y}" r="91"/><circle cx="286" cy="${y}" r="76" stroke-dasharray="2 9"/><path d="M184 ${y}h204M286 ${y-102}v204"/></g>`).join('')}
+   <path class="alloy-feed-guide" d="M82 174h122M366 239h156" stroke-dasharray="4 12"/>
+  </g>`,
   xrd:`<g class="cover-atmosphere xrd-cover-atmosphere">
    <g class="xrd-guide-rotor xrd-guide-body">
     <g class="xrd-guide-orbits"><circle cx="315" cy="181" r="154"/><circle cx="315" cy="181" r="128" stroke-dasharray="2 9"/></g>
@@ -40,6 +44,8 @@ function experienceCoverGraphic(id, compact=false) {
    <g class="xrd-guide-dimension"><path d="M92 372H508M92 365v14M508 365v14"/></g>
   </g>`,
   energy:`<g class="cover-atmosphere energy-cover-atmosphere">
+   <g class="energy-field-orbit"><circle cx="300" cy="225" r="173"/><circle cx="300" cy="225" r="152" stroke-dasharray="2 10"/><path d="M300 41v26m0 316v26M116 225h26m316 0h26"/><path d="M175 103l250 244"/></g>
+   <g class="energy-field-current"><path d="M184 132q-57 94 0 192M416 132q57 94 0 192"/></g>
    <ellipse class="energy-ground-shadow" cx="300" cy="393" rx="108" ry="13"/>
    <g class="energy-ground-grid">
     <path d="M80 416H428M102 403H450M124 390H472M146 377H494M168 364H516"/>
@@ -48,7 +54,8 @@ function experienceCoverGraphic(id, compact=false) {
    <g class="energy-ground-datums"><path d="M66 416h24m-12-5v10M416 424h24m-12-5v10M506 364h20m-10-5v10"/></g>
    <g class="energy-field-traces"><path d="M158 108v254m-6-254h12m-12 254h12M432 148v190m-6-190h12m-12 190h12"/></g>
   </g>`,
-  fitness:`<g class="cover-atmosphere fitness-cover-atmosphere"><path d="M78 352H522M78 345v14M522 345v14"/><path d="M116 294q34-22 68 0t68 0t68 0t68 0t68 0t68 0"/><path d="M132 104a174 174 0 0 1 336 0M156 130a148 148 0 0 1 288 0" stroke-dasharray="3 9"/><path d="M300 64V382M106 232H494"/></g>`
+  sejong:`<g class="cover-atmosphere sejong-cover-atmosphere"><circle cx="200" cy="190" r="130"/><circle cx="200" cy="190" r="108" stroke-dasharray="2 9"/><g class="sejong-search-bearing"><path d="M200 53v274M63 190h274"/><path d="M200 60a130 130 0 0 1 112 65" stroke-width="2"/></g><circle class="sejong-search-radius" cx="200" cy="190" r="80"/></g>`,
+  fitness:`<g class="cover-atmosphere fitness-cover-atmosphere"><path d="M78 352H522M78 345v14M522 345v14"/><path class="fitness-background-wave" d="M116 294q34-22 68 0t68 0t68 0t68 0t68 0t68 0"/><g class="fitness-sensor-orbit"><circle cx="300" cy="220" r="172"/><circle cx="300" cy="220" r="148" stroke-dasharray="3 9"/><path d="M300 38v32m0 300v32M118 220h32m300 0h32"/></g></g>`
  }[id]||'':'';
  let diagram='';
  if(id==='mim')diagram=`<g class="cover-specimen"><ellipse cx="300" cy="185" rx="118" ry="65"/><ellipse cx="300" cy="185" rx="55" ry="31"/><path d="M182 185v70c0 36 53 65 118 65s118-29 118-65v-70M245 185v45c0 17 25 31 55 31s55-14 55-31v-45"/><path d="M208 208v69M392 208v69" opacity=".35"/></g><g class="cover-probe"><path d="M470 112H356v34M346 146h20M470 102v20"/><circle cx="356" cy="149" r="3"/></g><g class="cover-measure"><path d="M172 92h256M182 78v29M418 78v29M147 185v135M138 185h18M138 320h18"/><path d="m182 92 9-5m-9 5 9 5m227-5-9-5m9 5-9 5"/></g>`;
@@ -76,13 +83,7 @@ function experienceCoverGraphic(id, compact=false) {
    <path class="battery-terminal" d="M266 66a34 10 0 0 1 68 0v24a34 10 0 0 1-68 0Z"/>
    <ellipse class="battery-cap" cx="300" cy="66" rx="34" ry="10"/>
    <path class="battery-window" d="M220 150q80 27 160 0v184q-80 34-160 0Z"/>
-   <g class="battery-electrodes">
-    <path class="battery-sheet battery-sheet-back" d="M232 168q63 25 136-5v126q-62 26-136 4Z"/>
-    <path class="battery-sheet battery-sheet-middle" d="M232 168q46 18 82 8v131q-34 12-82-6Z"/>
-    <path class="battery-sheet battery-sheet-front" d="M232 168q23 10 44 9v140q-24 0-44-9Z"/>
-    <path class="battery-sheet-edges" d="M240 176v128M249 179v128M258 181v129"/>
-    <path class="battery-winding" d="M232 168c0-13 41-17 52-7 12 11-19 19-34 12-17-8 11-17 23-10 11 7-12 12-15 6"/>
-   </g>
+   <path class="battery-upper-interface" d="M232 169q68 22 136 0v8q-68 22-136 0Z"/>
    <g class="battery-ion-tracks"><path d="M296 199v114M327 195v122M358 186v127"/></g>
    <path class="battery-collector" d="M220 334q80 34 160 0v13q-80 34-160 0Z"/>
    <path class="battery-interface" d="M226 331q74 27 148 0"/>
@@ -115,11 +116,11 @@ function experienceCoverGraphic(id, compact=false) {
  const archiveViewBoxes={alloy:'70 55 470 310',xrd:'35 5 515 275',energy:'160 42 280 365',sejong:'45 65 330 270',fitness:'60 30 535 335'};
  const overviewViewBoxes={xrd:'55 20 490 368',energy:'55 30 485 400',fitness:'52 20 520 390'};
  const viewBox=compact?archiveViewBoxes[id]:(overviewViewBoxes[id]||(id==='sejong'?'20 50 380 285':'0 0 600 450'));
- return `<svg class="experience-cover-graphic cover-${id}" viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${compact||['xrd','energy','sejong','fitness'].includes(id)?'':guides}${atmosphere}<g class="cover-drawing">${diagram}</g></svg>`;
+ return `<svg class="experience-cover-graphic cover-${id}" viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${compact||atmosphere?'':guides}${atmosphere}<g class="cover-drawing">${diagram}</g></svg>`;
 }
-// Covers are replaced by the hash router. Observe only mounted battery SVGs,
+// Covers are replaced by the hash router. Observe only mounted cover SVGs,
 // and suspend their CSS timelines outside the viewport or in a hidden tab.
-function bindEnergyCoverMotion() {
+function bindExperienceCoverMotion() {
  if(!('IntersectionObserver' in window))return;
  const covers=new Map();
  const update=(cover,visible)=>cover.dataset.motion=visible&&!document.hidden?'active':'still';
@@ -130,7 +131,7 @@ function bindEnergyCoverMotion() {
  }),{threshold:0});
  const register=node=>{
   if(node.nodeType!==1)return;
-  const found=[...(node.matches('.cover-energy')?[node]:[]),...node.querySelectorAll('.cover-energy')];
+  const found=[...(node.matches('.experience-cover-graphic')?[node]:[]),...node.querySelectorAll('.experience-cover-graphic')];
   found.forEach(cover=>{if(!covers.has(cover)){covers.set(cover,false);update(cover,false);observer.observe(cover);}});
  };
  new MutationObserver(records=>{
@@ -140,7 +141,7 @@ function bindEnergyCoverMotion() {
  document.addEventListener('visibilitychange',()=>covers.forEach((visible,cover)=>update(cover,visible)));
  register(document.body);
 }
-bindEnergyCoverMotion();
+bindExperienceCoverMotion();
 function experienceResourceIcon(type) {
  const paths=type==='story'?'<path d="M28 20h32l20 9 20-9h32v64h-32L80 93 60 84H28zM80 29v64M40 36h18M40 47h18M102 36h18M102 47h18"/>':type==='parts3d'?'<path d="m80 14 39 23v45L80 105 41 82V37zM41 37l39 23 39-23M80 60v45"/>':type==='map'?'<path d="m28 32 35-12 34 12 35-12v66l-35 12-34-12-35 12zM63 20v66M97 32v66"/><circle cx="81" cy="57" r="10"/>':type==='demo'?'<rect x="60" y="13" width="42" height="87" rx="6"/><path d="M67 58h8l5-19 8 34 5-15h5M73 90h16"/>':type==='equipment'?'<circle cx="79" cy="57" r="30"/><circle cx="79" cy="57" r="14"/><path d="M42 15h74M49 10v12M109 10v12M31 29v56M25 29h12M25 85h12"/>':type==='slides'?'<rect x="39" y="20" width="82" height="58"/><path d="M47 86h82V28M55 94h82V36M51 37h31M51 48h53M51 59h40"/>':'<path d="M31 83h100M39 76V50h17v26M72 76V34h17v42M105 76V19h17v57"/>';
  return `<svg viewBox="0 0 160 115" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">${paths}</svg>`;
