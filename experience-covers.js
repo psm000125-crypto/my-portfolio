@@ -33,15 +33,12 @@ function experienceCoverGraphic(id, compact=false) {
  // These are conceptual background guides for the overview covers, not measurement data.
  const atmosphere=!compact?{
   alloy:`<g class="cover-atmosphere alloy-cover-atmosphere">
-   ${[139,279].map((y,i)=>`<g class="alloy-roll-guide${i?' is-reverse':''}" style="transform-origin:286px ${y}px"><circle cx="286" cy="${y}" r="91"/><circle cx="286" cy="${y}" r="76" stroke-dasharray="2 9"/><path d="M184 ${y}h204M286 ${y-102}v204"/></g>`).join('')}
-   <path class="alloy-feed-guide" d="M82 174h122M366 239h156" stroke-dasharray="4 12"/>
+   ${[139,279].map(y=>`<g class="alloy-roll-guide"><circle cx="286" cy="${y}" r="70"/><path d="M276 ${y}h20M286 ${y-10}v20"/></g>`).join('')}
+   <path class="alloy-feed-guide" d="M96 209h140M352 209h164" stroke-dasharray="4 12"/>
   </g>`,
   xrd:`<g class="cover-atmosphere xrd-cover-atmosphere">
-   <g class="xrd-guide-rotor xrd-guide-body">
-    <g class="xrd-guide-orbits"><circle cx="315" cy="181" r="154"/><circle cx="315" cy="181" r="128" stroke-dasharray="2 9"/></g>
-    <g class="xrd-guide-axes" transform="rotate(18 315 181)"><path d="M112 181H518M315 18V344"/></g>
-   </g>
-   <g class="xrd-guide-dimension"><path d="M92 372H508M92 365v14M508 365v14"/></g>
+   <path class="xrd-guide-axes" d="M315 141v96M468 141v96"/>
+   <g class="xrd-guide-dimension"><path d="M202 292h321M202 285v14M315 287v10M468 287v10M523 285v14"/></g>
   </g>`,
   energy:`<g class="cover-atmosphere energy-cover-atmosphere">
    <g class="energy-orbit-ticks">${Array.from({length:24},(_,i)=>`<path d="M300 13v${i%3?3:8}" transform="rotate(${i*15} 300 225)" opacity="${i%3?.5:1}"/>`).join('')}</g>
@@ -50,8 +47,8 @@ function experienceCoverGraphic(id, compact=false) {
    <g class="energy-field-nodes">${[76,524].map(x=>`<g><path d="M${x<300?x+7:x-22} 225h15"/><circle class="energy-node-pulse" cx="${x}" cy="225" r="8"/><circle cx="${x}" cy="225" r="3"/></g>`).join('')}</g>
    <g class="energy-field-orbit"><circle cx="300" cy="225" r="192" pathLength="100" stroke-dasharray="38 62" stroke-dashoffset="12"/><circle class="energy-orbit-tail" cx="300" cy="225" r="192" pathLength="100" stroke-dasharray="20 80" stroke-dashoffset="-49"/><g class="energy-orbit-points"><circle cx="300" cy="33" r="2.8"/><circle cx="108" cy="225" r="1.8"/></g></g>
   </g>`,
-  sejong:`<g class="cover-atmosphere sejong-cover-atmosphere"><circle cx="200" cy="190" r="130"/><circle cx="200" cy="190" r="108" stroke-dasharray="2 9"/><g class="sejong-search-bearing"><path d="M200 53v274M63 190h274"/><path d="M200 60a130 130 0 0 1 112 65" stroke-width="2"/></g><circle class="sejong-search-radius" cx="200" cy="190" r="80"/></g>`,
-  fitness:`<g class="cover-atmosphere fitness-cover-atmosphere"><path d="M78 352H522M78 345v14M522 345v14"/><path class="fitness-background-wave" d="M116 294q34-22 68 0t68 0t68 0t68 0t68 0t68 0"/><g class="fitness-sensor-orbit"><circle cx="300" cy="220" r="172"/><circle cx="300" cy="220" r="148" stroke-dasharray="3 9"/><path d="M300 38v32m0 300v32M118 220h32m300 0h32"/></g></g>`
+  sejong:`<g class="cover-atmosphere sejong-cover-atmosphere"><path d="M60 77h296M60 320h296M78 77v243M356 77v243"/><path class="sejong-map-scan" d="M88 90H352"/></g>`,
+  fitness:`<g class="cover-atmosphere fitness-cover-atmosphere"><path d="M78 352h170M78 345v14M248 345v14M105 77v269M221 77v269" stroke-dasharray="3 9"/><path d="M315 326h249M315 321v10M564 321v10"/><path class="fitness-chart-cursor" d="M315 153v155"/></g>`
  }[id]||'':'';
  let diagram='';
  if(id==='mim')diagram=`<g class="cover-specimen"><ellipse cx="300" cy="185" rx="118" ry="65"/><ellipse cx="300" cy="185" rx="55" ry="31"/><path d="M182 185v70c0 36 53 65 118 65s118-29 118-65v-70M245 185v45c0 17 25 31 55 31s55-14 55-31v-45"/><path d="M208 208v69M392 208v69" opacity=".35"/></g><g class="cover-probe"><path d="M470 112H356v34M346 146h20M470 102v20"/><circle cx="356" cy="149" r="3"/></g><g class="cover-measure"><path d="M172 92h256M182 78v29M418 78v29M147 185v135M138 185h18M138 320h18"/><path d="m182 92 9-5m-9 5 9 5m227-5-9-5m9 5-9 5"/></g>`;
